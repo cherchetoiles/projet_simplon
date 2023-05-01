@@ -1,5 +1,6 @@
 <?php
-class Theme{
+class Theme
+{
     public int $theme_id;
     public string $theme_name;
     public string $theme_logo;

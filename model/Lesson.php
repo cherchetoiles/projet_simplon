@@ -1,5 +1,6 @@
 <?php
-class Lesson{
+class Lesson
+{
     public int $lesson_id;
     public string $lesson_title;
     public string $lesson_description;
