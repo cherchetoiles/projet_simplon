@@ -11,12 +11,14 @@ class Lesson_repo extends Connect_bdd{
         $sql=$sql.",lesson_cover=?";
         $sql=$sql.",lesson_attract_title=?";
         $sql=$sql.",lesson_content=?";
+        $sql=$sql.",category_id=?";
         $req=prepare($this->bdd,$sql);
         $req->bindParam(1,$lesson->title);
         $req->bindParam(2,$lesson->description);
         $req->bindParam(3,$lesson->cover);
         $req->bindParam(4,$lesson->attract_title);
         $req->bindParam(5,$lesson->attract_content);
+        $req->bindParam(6,$lesson->category_id);
         $req->execute();
         $sql="SELECT lesson_id FROM lesson ORDER BY lesson_id DESC LIMIT 1";
         $req=prepare($this->bdd,$sql);
