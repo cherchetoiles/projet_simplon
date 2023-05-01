@@ -11,6 +11,7 @@ class Lesson
     public array $lesson_ressources;
     public int $lesson_views;
     public int $lesson_likes;
+    public int $category_id;
 
     function createLessonToInsert($lesson_title,$lesson_content,$lesson_description,$lesson_cover,$lesson_attract_title,$lesson_ressources){
         $this->lesson_title=$lesson_tile;
