@@ -18,7 +18,17 @@ class Lesson_repo extends Connect_bdd{
         $req->bindParam(4,$lesson->attract_title);
         $req->bindParam(5,$lesson->attract_content);
         $req->execute();
-        //rajouter l'insertions des ressources
+        $sql="SELECT lesson_id FROM lesson ORDER BY lesson_id DESC LIMIT 1";
+        $req=prepare($this->bdd,$sql);
+        $req->execute();
+        $tmpLesson=$req->fetch(PDO:FETCH_ASSOC);
+        $ressource_repo=new Ressource_repo();
+        foreach ($lesson->lesson_ressources as $ressource){
+            $tmpRessource=new Ressource();
+            $tmpRessource->createRessourceToInsert($ressource,$lesson->tmpLesson_id)
+            $ressource_repo->insertRessourceIntoBdd($tmpRessource);
+        }
+        return TRUE;
     }
 }
 ?>
