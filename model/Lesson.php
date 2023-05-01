@@ -4,6 +4,7 @@ class Lesson
     public int $lesson_id;
     public string $lesson_title;
     public string $lesson_description;
+    public string $lesson_level;
     public string $lesson_cover;
     public string $lesson_attract_title;
     public string $lesson_date;
@@ -12,7 +13,7 @@ class Lesson
     public int $lesson_views;
     public int $lesson_likes;
     public int $category_id;
-
+    
     function createLessonToInsert($lesson_title,$lesson_content,$lesson_description,$lesson_cover,$lesson_attract_title,$lesson_ressources,$category_id){
         $this->lesson_title=$lesson_tile;
         $this->lesson_description=$lesson_description;
