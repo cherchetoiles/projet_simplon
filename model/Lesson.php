@@ -7,6 +7,7 @@ class Lesson
     public string $lesson_cover;
     public string $lesson_attract_title;
     public string $lesson_date;
+    public string $lesson_content;
     public array $lesson_ressources;
     public int $lesson_views;
     public int $lesson_likes;
