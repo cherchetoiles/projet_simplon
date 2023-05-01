@@ -13,6 +13,5 @@ class Lesson
     public int $lesson_views;
     public int $lesson_likes;
     public int $category_id;
-    }
 }
 ?>
