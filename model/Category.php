@@ -7,5 +7,6 @@ class Category
     public array $category_views;
     public array $lessonsFromCategory;
     public array $categoriesNeeded;
+    public int $theme_id;
 }
 ?>

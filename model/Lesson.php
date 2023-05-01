@@ -11,5 +11,6 @@ class Lesson
     public array $lesson_ressources;
     public int $lesson_views;
     public int $lesson_likes;
+    public int $category_id;
 }
 ?>
