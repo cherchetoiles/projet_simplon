@@ -15,14 +15,14 @@
     <title>Connexion à K-ZEL Code</title>
     
 </head>
-<body class="flex justify-center w-full align-middle bg-gray-bg">
+<body class="flex justify-center w-full = align-middle bg-gray-bg">
 
-<div class="flex h-auto m-2 bg-white rounded-4xl drop-shadow-2xl">
+<div class="flex flex-col items-center justify-center h-auto bg-white rounded-4xl drop-shadow-2xl">
     <!-- RIGHT SECTION DESKTOP -->
-    <div class="flex flex-col items-center justify-center w-screen text-center">
-        <h1 class="py-16 font-sans text-5xl font-bold">Connexion</h1>
+    <div class="flex flex-col text-center">
+        <h1 class="pt-16 font-sans text-5xl font-bold pb-14">Connexion</h1>
         <!-- FORM -->
-        <form method="POST" action="" class="px-1 mb-12">
+        <form method="POST" action="" class="w-11/12 mx-auto">
 
             <div class="flex flex-col">
                 <div class="flex">
@@ -30,28 +30,28 @@
                     <input type="email" name="email" placeholder="Votre adresse mail" class="text-xl font-extralight placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
                 </div>
                 
-                <div class="w-full mt-1 h-[1px] rounded-full bg-gray-dark"></div>
+                <div class="flex items-center mt-1 h-[1px] rounded-full bg-gray-dark"></div>
 
-                <div class="flex mt-9">
+                <div class="flex mt-10">
                     <img src="assets/svg/Pass.svg" class="w-4 h-auto ml-1 mr-6">
                     <input type="email" name="email" placeholder="Votre mot de passe" class="text-xl font-extralight placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
                 </div>
 
                 <div class="w-full mt-1 h-[1px] rounded-full bg-gray-dark"></div>
 
-                <div class="flex mt-10 text-black">
-                    <input type="checkbox" name="save" value="" class="accent-red stroke-black"><p class="ml-5 text-base font-extralight font-body">Se souvenir de moi</p>
+                <div class="flex mt-12 text-black">
+                    <input type="checkbox" name="save" value="" class="ml-1.5 accent-red stroke-black"><p class="ml-5 text-base font-extralight font-body">Se souvenir de moi</p>
                 </div>
                 
                 <div class="flex items-center justify-center">
-                    <div class="flex items-center h-12 mt-10 rounded-lg w-52 bg-red hover:bg-white hover:border-red">
-                        <a href="" class="m-auto font-sans text-base text-white">Se connecter</a>   
+                    <div class="flex items-center h-12 mt-10 text-white rounded-lg w-52 bg-red hover:border hover:text-red hover:bg-white hover:border-red">
+                        <a href="" class="m-auto font-bodytext-base">Se connecter</a>   
                     </div>
                 </div>
 
                 <div class="flex items-center justify-center">
-                    <div class="flex items-center h-12 my-1 border-[1px] border-solid rounded-lg border-red w-52">
-                        <a href="" class="m-auto font-sans text-base text-red">S'inscrire</a>   
+                    <div class="flex items-center h-12 border-[1px] mt-3 border-solid rounded-lg text-red hover:text-white hover:border-0 hover:bg-red border-red w-52">
+                        <a href="" class="m-auto text-base font-body ">S'inscrire</a>   
                     </div>
                 </div>
 
@@ -59,8 +59,18 @@
 
         </form>
     </div>
-    <div></div>
+    <div class="flex w-full h-auto bg-cover">
+        <img src="assets/img/connexion.png" class="w-full h-auto px-5">
+    </div>
+   <div class="mx-5 mb-24 text-sm font-light leading-7 text-center font-body"> 
+        <p class="mx-10">
+            Pas encore <a href="" class="font-normal">inscript</a> ? 
+            N’attendez plus ! Rejoignez dès maintenant <span class="font-normal">la plateforme 
+            de cours en ligne</span> des apprenants 
+            de Simplon !
+        </p>
+   </div>
 </div>
-<p></p>
+
 </body> 
 </html>
