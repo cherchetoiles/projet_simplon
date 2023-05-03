@@ -7,7 +7,9 @@
     <link href="dist/output.css" rel="stylesheet">
     <title>Document</title>
 </head>
-<body class="bg-green-600">
-    <p class="uppercase">test</p>
+<body class="h-screen">
+    <section class="bg-red-700 h-screen">
+        <p class="text-green-600">test</p>
+    </section>
 </body>
 </html>
