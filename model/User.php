@@ -87,7 +87,7 @@ class User
         if (!password_verify($_POST['your_pass'],$this->getUserPassword())){
             return "uncorrectPassword";
         }
-        return "True"
+        return "True";
     }
 }
 ?>
