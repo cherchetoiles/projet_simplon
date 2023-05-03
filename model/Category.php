@@ -1,12 +1,12 @@
 <?php
 class Category
 {
-    public int $category_id;
-    public string $category_name;
-    public string $category_logo;
-    public array $category_views;
-    public array $lessonsFromCategory;
-    public array $categoriesNeeded;
-    public int $theme_id;
+    private int $category_id;
+    private string $category_name;
+    private string $category_logo;
+    private array $category_views;
+    private array $lessonsFromCategory;
+    private array $categoriesNeeded;
+    private int $theme_id;
 }
 ?>

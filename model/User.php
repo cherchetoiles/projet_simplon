@@ -1,15 +1,15 @@
 <?php
 class User
 {
-    public $user_id;
-    public $user_name;
-    public $user_surname;
-    public $user_email;
-    public $user_password;
-    public $user_statut;
-    public $user_token;
-    public $user_avatar;
-    public $role_nom;
-    public $speciality_name;
+    private $user_id;
+    private $user_name;
+    private $user_surname;
+    private $user_email;
+    private $user_password;
+    private $user_statut;
+    private $user_token;
+    private $user_avatar;
+    private $role_nom;
+    private $speciality_name;
 }
 ?>

@@ -1,17 +1,17 @@
 <?php
 class Lesson
 {
-    public int $lesson_id;
-    public string $lesson_title;
-    public string $lesson_description;
-    public string $lesson_level;
-    public string $lesson_cover;
-    public string $lesson_attract_title;
-    public string $lesson_date;
-    public string $lesson_content;
-    public array $lesson_ressources;
-    public int $lesson_views;
-    public int $lesson_likes;
-    public int $category_id;
+    private int $lesson_id;
+    private string $lesson_title;
+    private string $lesson_description;
+    private string $lesson_level;
+    private string $lesson_cover;
+    private string $lesson_attract_title;
+    private string $lesson_date;
+    private string $lesson_content;
+    private array $lesson_ressources;
+    private int $lesson_views;
+    private int $lesson_likes;
+    private int $category_id;
 }
 ?>

@@ -1,10 +1,10 @@
 <?php
 class Theme
 {
-    public int $theme_id;
-    public string $theme_name;
-    public string $theme_logo;
-    public array $theme_views;
-    public array $categoriesFromTheme;
+    private int $theme_id;
+    private string $theme_name;
+    private string $theme_logo;
+    private array $theme_views;
+    private array $categoriesFromTheme;
 }
 ?>
