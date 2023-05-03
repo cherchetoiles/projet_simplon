@@ -9,6 +9,6 @@ switch($_GET['action']){
         signup_treat();
         break;
     default:
-        header("location:view/index.php");
+        exit;
 }
 ?>

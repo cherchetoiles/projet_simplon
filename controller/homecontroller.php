@@ -7,7 +7,8 @@ include('repository/User_repo.php');
 include('model/User.php');
 
 
-function signin_treat(){   
+function signin_treat(){
+    var_dump($_POST);
     if (empty($_POST['your_name']) and empty($_POST['your_pass'])){
         header("location: index.php");
     }
@@ -25,7 +26,8 @@ function signin_treat(){
         header("location:index.php");    
         }
         else{
-            header("location:index.php?action=signin&error".$isOk);
+            echo $isOk;
+            //header("location:index.php?action=signin&error".$isOk);
         }
     }
     

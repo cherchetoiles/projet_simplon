@@ -85,6 +85,7 @@ class User
             return "unactiveUser";
         }
         if (!password_verify($_POST['your_pass'],$this->getUserPassword())){
+            var_dump($this->getUserPassword());
             return "uncorrectPassword";
         }
         return "True";
