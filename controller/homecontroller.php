@@ -5,6 +5,9 @@ include('repository/User_repo.php');
 
 include('model/User.php');
 
+function signin(){
+    require('view/signin.php');
+}
 
 function signin_treat(){
     if (empty($_POST['your_name']) and empty($_POST['your_pass'])){

@@ -5,7 +5,8 @@ switch($_GET['action']){
     case "signin_treat":
         signin_treat();
         break;
+
     default:
-        exit;
+        signin();
 }
 ?>
