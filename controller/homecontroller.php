@@ -7,7 +7,7 @@ include('model/User.php');
 
 
 function signin_treat(){
-    if (empty($_POST['your_name']) and empty($_POST['your_pass']) and empty($_POST['your_email'])){
+    if (empty($_POST['your_name']) and empty($_POST['your_pass'])){
         header("location: index.php");
     }
     $repo = new UserRepository();
@@ -20,7 +20,10 @@ function signin_treat(){
         header("location: index.php");
     }
     if (!password_verify($_POST['your_pass'],$tmpUser->user_password)){
-         header('location: index.php');
+        header('location: index.php');
+    }
+    if ($_POST['remember_me']=="on"){
+        setcookie("simplon_name",$_POST['your_email'],time()+60*60*24*30,"/",httponly:true);
     }
         $user->createUserFromQuery($tmpUser);
         $user->connectUser();
@@ -28,7 +31,7 @@ function signin_treat(){
 }
 
 
-function signup(){
+function signup_treat(){
     $repo = new UserRepository();
     if (empty($_POST["email"])){
         header("location:index.php?action=inscription&error=email");
