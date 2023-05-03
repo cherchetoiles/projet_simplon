@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,11 @@
     <title>Document</title>
 </head>
 <body class="bg-green-600">
-    <p class="uppercase">test</p>
+    <form method="POST" action='../index.php?action=signin_treat'>
+        <input name="your_email">
+        <input name="your_pass">
+        <input type="checkbox" name="remember_me">
+        <input type="submit">
+    </form>
 </body>
 </html>

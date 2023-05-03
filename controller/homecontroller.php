@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('config/Connect_bdd.php');
 
 include('repository/User_repo.php');
@@ -6,58 +7,45 @@ include('repository/User_repo.php');
 include('model/User.php');
 
 
-function signin_treat(){
+function signin_treat(){   
     if (empty($_POST['your_name']) and empty($_POST['your_pass'])){
         header("location: index.php");
     }
     $repo = new UserRepository();
     $tmpUser=$repo->getUserByEmail($_POST['your_email']);
     $user=new user();
-    if (!$tmpUser){
-        header("location: index.php");
-    }
-    if (!$tmpUser->user_statut==1){
-        header("location: index.php");
-    }
-    if (!password_verify($_POST['your_pass'],$tmpUser->user_password)){
-        header('location: index.php');
-    }
-    if ($_POST['remember_me']=="on"){
-        setcookie("simplon_name",$_POST['your_email'],time()+60*60*24*30,"/",httponly:true);
-    }
+    if ($tmpUser){
         $user->createUserFromQuery($tmpUser);
+        $isOk=$user->verifUserToSignin($_POST['your_pass']);
+        if ($isOk=="True"){
+            if ($_POST['remember_me']=="on"){
+            setcookie("simplon_name",$_POST['your_email'],time()+60*60*24*30,"/",httponly:true);
+            }
         $user->connectUser();
-        header("location:index.php");
+        header("location:index.php");    
+        }
+        else{
+            header("location:index.php?action=signin&error".$isOk);
+        }
+    }
+    
+    
 }
 
-
 function signup_treat(){
+    var_dump($_POST);
     $repo = new UserRepository();
-    if (empty($_POST["email"])){
-        header("location:index.php?action=inscription&error=email");
-    }
-    if (empty($_POST["name"])){
-        header("location:index.php?action=inscription&error=name");
-    }
-    if (empty($_POST["surname"])){
-        header("location:index.php?action=inscription&error=surname");
-    }
-    if ($repo->getUserByEmail($_POST["email"])){
-        header("location:index.php?action=inscription&error=emailreadyused");
-    }
-    if(empty($_POST['pass']) || $_POST['pass']!=$_POST['re_pass'] || !preg_match('/^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/',$_POST['pass'])){
-        header("location:index.php?action=inscription&error=mdp");
-    }
-    if (!$_POST["agree-term"]){
-        header("location:index.php?action=inscription&error=unacceptedagreeterm");
-    }
     $tmpUser=new User();
-    $tmpUser->user_email=$_POST["email"];
-    $tmpUser->user_surname=$_POST["surname"];
-    $tmpUser->user_name=$_POST["name"];
-    $tmpUser->user_password=password_hash($_POST["pass"],PASSWORD_BCRYPT);
-    $repo->insertUserIntoBdd($tmpUser);
-    header("location:index.php?action=viewtoken&email=$_POST[email]");
+    $tmpUser->createUserToSignup($_POST['email'],$_POST['name'],$_POST['surname'],$_POST['pass']);
+    $isOk=$tmpUser->verifUserToSignup($_POST['re_pass'],$repo,$_POST['agree-term']);
+    var_dump($isOk);
+    if ($isOk=="True"){
+        $tmpUser->cryptUserPassword();
+        $repo->insertUserIntoBdd($tmpUser);
+    }
+    else{
+        header("location:index.php?action=signup&error=".$isOk);
+    }
 }
 
 function recurBind($req,array $params,$i){
