@@ -6,6 +6,9 @@ include("model/Theme.php");
 include("repository/Theme_repo.php");
 
 
+function addTheme(){
+    include("view/addTheme.php");
+}
 
 function addThemeTreat(){
     var_dump($_FILES);
@@ -18,29 +21,19 @@ function addThemeTreat(){
         if (move_uploaded_file($_FILES["theme_logo"]["tmp_name"],"assets/theme_logo/".$theme->getThemeLogo())){
             $repo=new Theme_repo();
             if($repo->insertThemeIntoBdd($theme)){
-                echo "test";
-                // header("location:index.php");
+                header("location:index.php?action=addTheme");
             }
             else{
-                echo "test";
-                echo "test";
-                // unlink("assets/theme_logo/".$theme->getThemeLogo());
-                // header("location:index.php");
+                unlink("assets/theme_logo/".$theme->getThemeLogo());
+                header("location:index.php?action=addTheme&error=failedinsert");
             }
         }
         else{
-            echo "test";
-            echo "test";
-            echo "test";
-            // header("location:index.php");
+            header("location:index.php?action=addTheme&error=failedupload");
         }
     }
     else{
-        echo "test";
-        echo "test";
-        echo "test";
-        echo "test";
-        // header("location:index.php");
+        header("location:index.php?action=addTheme&error=".$isOk);
     }
 }
 
