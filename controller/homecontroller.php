@@ -25,7 +25,7 @@ function signin_treat(){
     if (empty($_POST['your_name']) and empty($_POST['your_pass'])){
         header("location: index.php");
     }
-    $repo = new UserRepository();
+    $repo = new User_repo();
     $tmpUser=$repo->getUserByEmail($_POST['your_email']);
     $user=new user();
     if ($tmpUser){
@@ -33,7 +33,7 @@ function signin_treat(){
         $isOk=$user->verifUserToSignin($_POST['your_pass']);
         if ($isOk=="True"){
             if ($_POST['remember_me']=="on"){
-            setcookie("simplon_name",$_POST['your_email'],time()+60*60*24*30,"/",httponly:true);
+            setcookie("simplon_name",$_POST['your_email'],time()+60*60*24*30,"/",httponly:TRUE);
             }
         $user->connectUser();
         header("location:index.php?action=signin");    
@@ -51,7 +51,7 @@ function signin_treat(){
 
 function signup_treat(){
     var_dump($_POST);
-    $repo = new UserRepository();
+    $repo = new User_repo();
     $tmpUser=new User();
     $tmpUser->createUserToSignup($_POST['email'],$_POST['name'],$_POST['surname'],$_POST['pass']);
     $isOk=$tmpUser->verifUserToSignup($_POST['re_pass'],$repo,$_POST['agree-term']);
