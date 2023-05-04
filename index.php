@@ -14,6 +14,12 @@ switch($_GET['action']){
     case "signup":
         signup();
         break;
+    case "addThemeTreat":
+        addThemeTreat();
+        break;
+    case "addTheme":
+        addTheme();
+        break;
     default:
         exit;
 }

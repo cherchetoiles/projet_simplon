@@ -12,6 +12,7 @@ class User
     private $role_nom;
     private $speciality_name;
 
+
     public function getUserName(){
         return $this->user_name;
     }

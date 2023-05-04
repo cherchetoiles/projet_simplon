@@ -1,5 +1,5 @@
 <?php
-class UserRepository extends Connect_bdd{
+class User_repo extends Connect_bdd{
 
     public function __construct(){
         parent::__construct();
@@ -20,6 +20,5 @@ class UserRepository extends Connect_bdd{
         $user=$req->fetch();
     }
 }
-
 
 ?>
