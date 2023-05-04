@@ -8,6 +8,12 @@ switch($_GET['action']){
     case "signup_treat":
         signup_treat();
         break;
+    case "signin":
+        signin();
+        break;
+    case "signup":
+        signup();
+        break;
     default:
         exit;
 }

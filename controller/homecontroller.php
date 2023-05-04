@@ -6,9 +6,15 @@ include('repository/User_repo.php');
 
 include('model/User.php');
 
+function signin(){
+    include("view/signin.php");
+}
+
+function signup(){
+    include("view/signup.php");
+}
 
 function signin_treat(){
-    var_dump($_POST);
     if (empty($_POST['your_name']) and empty($_POST['your_pass'])){
         header("location: index.php");
     }
@@ -23,12 +29,14 @@ function signin_treat(){
             setcookie("simplon_name",$_POST['your_email'],time()+60*60*24*30,"/",httponly:true);
             }
         $user->connectUser();
-        header("location:index.php");    
+        header("location:index.php?action=signin");    
         }
         else{
-            echo $isOk;
-            //header("location:index.php?action=signin&error".$isOk);
+            header("location:index.php?action=signin&error".$isOk);
         }
+    }
+    else{
+        header("location:index.php?action=signin&error=userdontexist");
     }
     
     
@@ -44,6 +52,7 @@ function signup_treat(){
     if ($isOk=="True"){
         $tmpUser->cryptUserPassword();
         $repo->insertUserIntoBdd($tmpUser);
+        header("location:index.php?action=signin");
     }
     else{
         header("location:index.php?action=signup&error=".$isOk);

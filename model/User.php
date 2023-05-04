@@ -59,7 +59,7 @@ class User
         if (empty($this->user_email)){
             return "email";
         }
-        if (filter_var($this->user_email,FILTER_VALIDATE_EMAIL)){
+        if (!filter_var($this->user_email,FILTER_VALIDATE_EMAIL)){
             return "email";
         }
         elseif (empty($this->user_name)){
