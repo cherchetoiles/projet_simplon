@@ -7,6 +7,14 @@ class Theme
     private array $theme_views;
     private array $categoriesFromTheme;
 
+    public function getThemeLogo(){
+        return $this->theme_logo;
+    }
+
+    public function getThemeName(){
+        return $this->theme_name;
+    }
+
     public function createThemeToInsert($theme_name,$theme_logo){
         $this->theme_name=$theme_name;
         $this->theme_logo=$theme_logo;
@@ -26,6 +34,12 @@ class Theme
             return "wrongFormat";
         }
         return "True";
+    }
+
+    public function setThemeId(){
+        $newName=explode(".",$this->theme_logo);
+        $newName=uniqid().".".end($newName);
+        $this->theme_logo=$newName;
     }
 }
 ?>

@@ -8,8 +8,10 @@
     <title>Document</title>
 </head>
 <body class="h-screen">
-    <section class="bg-red-700 h-screen">
-        <p class="text-green-600">test</p>
-    </section>
+    <form method="POST" enctype="multipart/form-data" action="index.php?action=addThemeTreat">
+        <input name="theme_name">
+        <input type="file" accept="image/webp" name="theme_logo">
+        <input type="submit">
+    </form>
 </body>
 </html>
