@@ -10,6 +10,7 @@ module.exports = {
         'gray-bg':'#EAEAEA',
         'gray-dark':'#858585',
         'gray':'#B7B7B7',
+        'hovered':"#B4131B"
 
       },
       borderRadius: {
@@ -19,7 +20,6 @@ module.exports = {
         'body':'"Poppins", sans-serif',
         'sans':'"Montserrat", sans-serif',
       },
-      plugins: [],
     }
   }
 }
