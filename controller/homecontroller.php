@@ -5,6 +5,10 @@ include('repository/User_repo.php');
 
 include('model/User.php');
 
+function signup(){
+    require('view/signup.php');
+}
+
 function signin(){
     require('view/signin.php');
 }

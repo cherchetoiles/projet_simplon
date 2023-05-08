@@ -68,7 +68,7 @@
     </div>
     <div class="w-9/12 text-base font-light leading-7 text-center lg:mt-12 lg:w-11/12 font-body"> 
         <p class="font-base">
-            Pas encore <a href="" class="font-normal">inscript</a> ? 
+            Pas encore <a href="action=signup?" class="font-normal">inscript</a> ? 
             N’attendez plus ! Rejoignez dès maintenant <span class="italic font-normal">la plateforme 
             de cours en ligne</span> des apprenants 
             de <a href="" target="_blank" class="font-normal"> Simplon !
