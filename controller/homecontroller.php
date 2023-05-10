@@ -9,16 +9,18 @@ include("repository/Theme_repo.php");
 include('model/User.php');
 include("model/Theme.php");
 
-function signin(){
-    include("view/signin.php");
-}
 
 function signup(){
-    include("view/signup.php");
+    require('view/signup.php');
+}
+
+function signin(){
+    require('view/signin.php');
 }
 
 function addTheme(){
     include("view/addTheme.php");
+
 }
 
 function signin_treat(){

@@ -5,6 +5,11 @@ switch($_GET['action']){
     case "signin_treat":
         signin_treat();
         break;
+
+    case "signup":
+        signup();
+        break;
+
     case "signup_treat":
         signup_treat();
         break;
@@ -20,7 +25,8 @@ switch($_GET['action']){
     case "addTheme":
         addTheme();
         break;
+
     default:
-        exit;
+        signin();
 }
 ?>
