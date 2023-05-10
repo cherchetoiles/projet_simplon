@@ -74,13 +74,9 @@
                     </label>
                     
                     <div class="flex flex-col items-center justify-center w-full h-auto text-center md:justify-evenly lg:items-end lg:justify-end md:flex-row">
-
-                        <a href="" class="px-7 py-4 text-white w-3/5 transition  rounded-lg lg:w-full hover:duration-150 border-[1px] border-solid hover:ease-out font-medium border-red hover:bg-hovered font-body hover:border-hovered bg-red">
-                            <div class="w-full m-auto text-base lg:text-sm xl:text-base">
-                                S'inscrire
-                            </div>
-                        </a>
-                        <a href="" class="w-3/5 lg:w-full mt-3 px-7 py-4 text-red md:mt-0 md:ml-1 border-[1px] border-solid text-lg transition font-medium rounded-lg hover:duration-150 hover:ease-out hover:text-hovered hover:border-hovered hover:bg-stroke/10">
+                        <input type="submit" class="px-7 py-4 text-white w-3/5 transition  rounded-lg lg:w-full hover:duration-150 border-[1px] border-solid hover:cursor-pointer hover:ease-out font-medium border-red hover:bg-hovered font-body hover:border-hovered bg-red"> 
+                        </input>
+                        <a href="?action=signin" class="w-3/5 lg:w-full mt-3 px-7 py-4 text-red md:mt-0 md:ml-1 border-[1px] border-solid text-lg transition font-medium rounded-lg hover:duration-150 hover:ease-out hover:text-hovered hover:border-hovered hover:bg-stroke/10">
                             <div class="w-full m-auto text-base lg:text-sm xl:text-base">
                                 Se connecter
                             </div>
@@ -97,7 +93,7 @@
     </div>
     <div class="w-9/12 text-base font-light leading-7 text-center lg:mt-12 lg:w-11/12 font-body"> 
         <p class="font-base">
-            Déjà inscript ? <a href="?action=signin" class="font-normal">Connectez-vous</a> 
+            Déjà inscrit ? <a href="?action=signin" class="font-normal">Connectez-vous</a> 
             dès maintenant <span class="italic font-normal">la plateforme 
             de cours en ligne</span> des apprenants 
             de <a href="" target="_blank" class="font-normal"> Simplon !
