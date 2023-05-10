@@ -15,6 +15,7 @@
     <title>Inscription à K-ZEL Code</title>
     
 </head>
+  
 <body class="flex items-center justify-center w-full h-auto lg:h-screen bg-gray-bg">
 
 <div class="flex flex-col justify-center w-full h-auto py-20 mx-2 my-2 bg-white xl:w-9/12 items-cent lg:px-16 md:py-20 xl:px-46 lg:my-0 rounded-4xl drop-shadow-2xl ">
@@ -23,7 +24,7 @@
         <div class="flex flex-col items-center w-11/12 lg:items-start lg:w-5/12">
             <h1 class=" font-body text-5xl md:text-[58px]  font-bold pb-14 ">Inscription</h1>
             <!-- FORM -->
-            <form method="POST" action="?action=signin_treat" class="w-full">
+            <form method="POST" action="?action=signup_treat" class="w-full">
 
                 <div class="flex flex-col"> 
 
@@ -37,10 +38,10 @@
                             <div class="w-full block mt-1 h-[1px] rounded-full bg-gray-dark"></div>
                         </label>
 
-                        <label class="flex flex-col w-1/2 " name="firstname">
+                        <label class="flex flex-col w-1/2 " name="surname">
                             <div class="flex">
                                 <img src="assets/svg/User.svg" class="w-5 h-auto ml-[3px] mr-6 h-max-5">
-                                <input type="firstname" name="firstname" placeholder="Prénom" class="w-full text-2xl font-light lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
+                                <input type="text" name="surname" placeholder="Prénom" class="w-full text-2xl font-light lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
                             </div>
                             <div class="w-full block mt-1 h-[1px] rounded-full bg-gray-dark"></div>
                         </label> 
@@ -54,22 +55,22 @@
                     
                     <div class="w-full block mt-1 h-[1px] rounded-full bg-gray-dark"></div>
 
-                    <label class="flex mt-10" name="password">
+                    <label class="flex mt-10" name="pass">
                         <img src="assets/svg/Pass.svg" class="w-5 h-auto mr-6 h-max-5">
-                        <input type="password" name="password" placeholder="Votre mot de passe" class="w-full text-2xl font-light lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
+                        <input type="password" name="pass" placeholder="Votre mot de passe" class="w-full text-2xl font-light lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
                     </label>
 
                     <div class="w-full block mt-1 h-[1px] rounded-full bg-gray-dark"></div>
 
-                    <label class="flex mt-10" name="password">
+                    <label class="flex mt-10" name="re-pass">
                         <img src="assets/svg/Repass.svg" class="w-5 h-auto mr-6 h-max-5">
-                        <input type="password" name="repassword" placeholder="Vérifiaction du mot de passe" class="w-full text-2xl font-light lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
+                        <input type="password" name="re-pass" placeholder="Vérifiaction du mot de passe" class="w-full text-2xl font-light lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
                     </label>
 
                     <div class="w-full block mt-1 h-[1px] rounded-full bg-gray-dark"></div>
                     
-                    <label class="flex text-black my-14" name="terms">
-                        <input type="checkbox" name="terms"  class="ml-1.5 accent-red stroke-black"><p class="ml-5 text-xl font-light font-body lg:text-base xl:text-xl ">Conditions d'utilisations</p>
+                    <label class="flex text-black my-14" name="agree-term">
+                        <input type="checkbox" name="agree-term"  class="ml-1.5 accent-red stroke-black"><p class="ml-5 text-xl font-light font-body lg:text-base xl:text-xl ">Conditions d'utilisations</p>
                     </label>
                     
                     <div class="flex flex-col items-center justify-center w-full h-auto text-center md:justify-evenly lg:items-end lg:justify-end md:flex-row">

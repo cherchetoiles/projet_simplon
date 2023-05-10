@@ -10,6 +10,22 @@ switch($_GET['action']){
         signup();
         break;
 
+    case "signup_treat":
+        signup_treat();
+        break;
+    case "signin":
+        signin();
+        break;
+    case "signup":
+        signup();
+        break;
+    case "addThemeTreat":
+        addThemeTreat();
+        break;
+    case "addTheme":
+        addTheme();
+        break;
+
     default:
         signin();
 }

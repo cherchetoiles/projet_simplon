@@ -635,6 +635,7 @@ video {
   height: 100vh;
 }
 
+
 .w-11\/12 {
   width: 91.666667%;
 }
@@ -722,9 +723,15 @@ video {
   background-color: rgb(133 133 133 / var(--tw-bg-opacity));
 }
 
-.bg-green-600 {
+.bg-green-700 {
   --tw-bg-opacity: 1;
-  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+  background-color: rgb(21 128 61 / var(--tw-bg-opacity));
+}
+
+.bg-red-700 {
+
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
 .bg-red {
@@ -1264,4 +1271,5 @@ video {
     font-size: 1rem;
     line-height: 1.5rem;
   }
+
 }
