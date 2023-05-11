@@ -530,6 +530,18 @@ video {
   right: 1.25rem;
 }
 
+.m-\[30px\] {
+  margin: 30px;
+}
+
+.m-\[50px\] {
+  margin: 50px;
+}
+
+.m-\[90px\] {
+  margin: 90px;
+}
+
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
@@ -584,6 +596,42 @@ video {
 
 .ml-10 {
   margin-left: 2.5rem;
+}
+
+.ml-\[50px\] {
+  margin-left: 50px;
+}
+
+.ml-\[90px\] {
+  margin-left: 90px;
+}
+
+.ml-\[200px\] {
+  margin-left: 200px;
+}
+
+.ml-\[30px\] {
+  margin-left: 30px;
+}
+
+.mr-\[90px\] {
+  margin-right: 90px;
+}
+
+.ml-\[130px\] {
+  margin-left: 130px;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.ml-\[170px\] {
+  margin-left: 170px;
+}
+
+.ml-\[120px\] {
+  margin-left: 120px;
 }
 
 .block {
@@ -659,8 +707,16 @@ video {
   border-radius: 0.5rem;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .border-t-2 {
   border-top-width: 2px;
+}
+
+.border-r-4 {
+  border-right-width: 4px;
 }
 
 .border-solid {
@@ -670,6 +726,16 @@ video {
 .border-gray-bg {
   --tw-border-opacity: 1;
   border-color: rgb(234 234 234 / var(--tw-border-opacity));
+}
+
+.border-indigo-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(79 70 229 / var(--tw-border-opacity));
+}
+
+.border-slate-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity));
 }
 
 .p-4 {
@@ -717,6 +783,42 @@ video {
   padding-top: 0.5rem;
 }
 
+.pt-\[40px\] {
+  padding-top: 40px;
+}
+
+.pt-\[200px\] {
+  padding-top: 200px;
+}
+
+.pt-\[170px\] {
+  padding-top: 170px;
+}
+
+.pt-\[140px\] {
+  padding-top: 140px;
+}
+
+.pt-\[120px\] {
+  padding-top: 120px;
+}
+
+.pt-\[100px\] {
+  padding-top: 100px;
+}
+
+.pt-\[90px\] {
+  padding-top: 90px;
+}
+
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
+.pb-9 {
+  padding-bottom: 2.25rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -746,6 +848,35 @@ video {
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
+}
+
+.text-9xl {
+  font-size: 8rem;
+  line-height: 1;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-\[58px\] {
+  font-size: 58px;
 }
 
 .font-bold {
