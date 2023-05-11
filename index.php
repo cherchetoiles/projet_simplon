@@ -21,6 +21,6 @@ switch($_GET['action']){
         addTheme();
         break;
     default:
-        exit;
+        include ('view/vue.php');
 }
 ?>
