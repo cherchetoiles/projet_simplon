@@ -1,3 +1,11 @@
 .snap-y-mandatory {
     scroll-snap-type: y mandatory;
   }
+
+.dir-rtl{
+  direction: rtl;
+}
+
+.dir-ltr{
+  direction:ltr;
+}

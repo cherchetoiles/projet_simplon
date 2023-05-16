@@ -12,38 +12,50 @@
     <title>Cours</title>
 </head>
 <body class="px-2">
-    <div class="flex px-2 pt-2">
+    <div class="flex  px-2 pt-2 ">
         <div class="flex flex-col">
             <!-- header -->
-            <div class="flex flex-col mb-5">
-                <span class="font-body font-light italic text-gray-dark text-xs">
-                    Cours > React
-                </span>
-                <div class="flex gap-1 pt-2">
-                    <img src="assets/categories_logo/logo_react.svg" class="w-16">
-                    <div class="flex flex-col gap-1">
-                        <span class="font-semibold font-body leading-3">Apprenez React</span>
-                        <span class="text-xs leading-3 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+            <div class="flex md:justify-evenly md:mx-auto">
+                <div class="flex flex-col md:w-6/12">
+                    <div class="flex flex-col mb-5">
+                        <span class="font-body font-light italic text-gray-dark text-xs">
+                            Cours > React
+                        </span>
+                        <div class="flex gap-1 pt-2">
+                            <img src="assets/categories_logo/logo_react.svg" class="w-16 md:w-32 lg:w-60">
+                            <div class="flex flex-col gap-1">
+                                <span class="font-semibold font-body leading-3 md:text-xl">Apprenez React</span>
+                                <span class="text-xs md:text-sm leading-3 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fin -->
+                    <!-- conteneur grid -->
+                    <div class="flex flex-col">
+                        <span class="font-semibold underline text-lg">
+                            Avant de commencer React
+                        </span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mt-5 gap-5">
+                            <div class="p-4 shadow-lg flex flex-col gap-3 md:gap-1 rounded-lg">
+                                <img src="assets/categories_logo/javascript_logo.svg" class="w-20">
+                                <span class="font-semibold">Apprendre le javascript</span>
+                                <p class="leading-3 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
+                            </div>
+                            <div class="p-4 shadow-lg flex flex-col gap-3 md:gap-1 rounded-lg">
+                                <img src="assets/categories_logo/javascript_logo.svg" class="w-20">
+                                <span class="font-semibold">Apprendre le javascript</span>
+                                <p class="leading-3 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
+                            </div>
+                            <div class="p-4 shadow-lg flex flex-col gap-3 md:gap-1 rounded-lg">
+                                <img src="assets/categories_logo/javascript_logo.svg" class="w-20">
+                                <span class="font-semibold">Apprendre le javascript</span>
+                                <p class="leading-3 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- fin -->
-            <!-- conteneur grid -->
-            <div class="flex flex-col">
-                <span class="font-semibold underline">
-                    Avant de commencer React
-                </span>
-                <div class="grid grid-cols-1 sm:grid-cols-2 mt-5 gap-5">
-                    <div class="p-4 shadow-lg flex flex-col gap-3 rounded-lg">
-                        <img src="assets/categories_logo/javascript_logo.svg" class="w-20">
-                        <span class="font-semibold">Apprendre le javascript</span>
-                        <p class="leading-3 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    </div>
-                    <div class="p-4 shadow-lg flex flex-col gap-3 rounded-lg">
-                        <img src="assets/categories_logo/javascript_logo.svg" class="w-20">
-                        <span class="font-semibold">Apprendre le javascript</span>
-                        <p class="leading-3 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    </div>
+                <div class="hidden md:inline-block w-4/12">
+                    <img src="assets/illustration_lesson.png">
                 </div>
             </div>
             <!-- fin -->
@@ -57,118 +69,150 @@
                     <span class="text-xs mt-4 leading-4">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..
                     </span>
-                    <video src="assets/lesson_videos/video.mp4" controls></video>
+                    <video src="assets/lesson_videos/video.mp4" controls class="hidden md:inline-block"></video>
                 </div>
                 <!-- fin -->
                 <!-- liste cours -->
-                <div class="font-body mt-10 md:w-5/12">
-                    <span class="underline font-semibold">
+                <div class="font-body md:w-5/12">
+                    <span class="underline font-semibold mb-5 inline-block">
                         Cours
                     </span>
                     <!-- conteneur -->
-                    <div class="flex flex-col overflow-y-scroll snap-y-mandatory h-[400px]">
+                    <div class="flex flex-col overflow-y-scroll snap-y-mandatory h-[400px] dir-rtl">
                         <!-- card -->
-                        <div class="flex flex-col snap-start snap-always shadow-lg p-3 mx-2 my-2 rounded-lg object-cover object-center h-[400px]">
-                            <span class="font-semibold">
-                                Niveau 1
-                            </span>
-                                <div class="flex flex-col mx-3 mt-5 gap-6">
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                        <div class="h-[370px] mb-[30px] block dir-ltr">
+                            <div class="flex flex-col snap-start snap-always shadow-lg p-3 mx-2 my-2 rounded-lg object-cover object-center h-[370px] overflow-y-scroll">
+                                <span class="font-semibold">
+                                    Niveau 1
+                                </span>
+                                    <div class="flex flex-col mx-3 mt-5 gap-6" >
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
+                                        </div>
                                     </div>
-                                </div>
-                            </span>
+                                </span>
+                            </div>
                         </div>
                         <!-- fin -->
                         <!-- card -->
-                        <div class="flex flex-col snap-start snap-always shadow-lg p-3 mx-2 my-2 rounded-lg object-cover object-center h-[400px]">
-                            <span class="font-semibold">
-                                Niveau 1
-                            </span>
-                                <div class="flex flex-col mx-3 mt-5 gap-6">
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                        <div class="h-[370px] mb-[30px] block dir-ltr">
+                            <div class="flex flex-col snap-start snap-always shadow-lg p-3 mx-2 my-2 rounded-lg object-cover object-center h-[370px] overflow-y-scroll">
+                                <span class="font-semibold">
+                                    Niveau 1
+                                </span>
+                                    <div class="flex flex-col mx-3 mt-5 gap-6">
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-4">
-                                            <img src="assets/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
+                                                <img src="assets/play_icon.svg" class="w-6">
+                                                <span class="font-semibold">Leçon 1</span>
+                                            </div>
+                                            <img src="assets/checktick_icon.svg" class="w-6">
                                         </div>
-                                        <img src="assets/checktick_icon.svg" class="w-6">
                                     </div>
-                                </div>
-                            </span>
+                                </span>
+                            </div>
                         </div>
                         <!-- fin -->
                     </div>
