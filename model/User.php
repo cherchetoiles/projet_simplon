@@ -85,8 +85,7 @@ class User
         if (!$this->user_statut==1){
             return "unactiveUser";
         }
-        if (!password_verify($_POST['your_pass'],$this->getUserPassword())){
-            var_dump($this->getUserPassword());
+        if (!password_verify($pass,$this->getUserPassword())){
             return "uncorrectPassword";
         }
         return "True";
