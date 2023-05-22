@@ -22,6 +22,7 @@ switch($_GET['action']){
         break;
     case "crud":
         crud();
+        break;
     case "cours":
         cours();
         break;
