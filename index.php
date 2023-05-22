@@ -20,6 +20,9 @@ switch($_GET['action']){
     case "addTheme":
         addTheme();
         break;
+    case "crud":
+        crud();
+        break;
     default:
         exit;
 }

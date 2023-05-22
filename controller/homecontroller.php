@@ -1,6 +1,5 @@
 <?php
 session_start();
-include('config/Connect_bdd.php');
 include("config/connect_bdd.php");
 
 include('repository/User_repo.php');
@@ -19,6 +18,10 @@ function signup(){
 
 function addTheme(){
     include("view/addTheme.php");
+}
+
+function crud(){
+    include("view/crud.php");
 }
 
 function signin_treat(){
