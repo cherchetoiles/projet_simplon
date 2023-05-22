@@ -46,12 +46,9 @@
                     
                     <div class="flex flex-col items-center justify-center w-full h-auto text-center md:justify-evenly lg:items-end lg:justify-end md:flex-row-reverse">
 
-                        <a href="" class="px-7 py-4 text-white w-3/5 transition  rounded-lg lg:w-full hover:duration-150 border-[1px] border-solid hover:ease-out font-medium border-red hover:bg-hovered font-body hover:border-hovered bg-red">
-                            <div class="w-full m-auto text-base lg:text-sm xl:text-base">
-                                Se connecter
-                            </div>
-                        </a>
-                        <a href="" class="w-3/5 lg:w-full mt-3 px-7 py-4 text-red md:mt-0 md:mr-1 border-[1px] border-solid text-lg transition font-medium rounded-lg hover:duration-150 hover:ease-out hover:text-hovered hover:border-hovered hover:bg-stroke/10">
+                        <input type="submit" class="px-7 py-4 text-white w-3/5 transition m-auto text-base lg:text-sm xl:text-base rounded-lg lg:w-full hover:duration-150 border-[1px] border-solid hover:ease-out font-medium border-red hover:bg-hovered font-body hover:border-hovered bg-red" value="Se connecter">
+                            
+                        <a href="?action=signup" class="w-3/5 lg:w-full mt-3 px-7 py-4 text-red md:mt-0 md:mr-1 border-[1px] border-solid text-lg transition font-medium rounded-lg hover:duration-150 hover:ease-out hover:text-hovered hover:border-hovered hover:bg-stroke/10">
                             <div class="w-full m-auto text-base lg:text-sm xl:text-base">
                                 S'inscrire
                             </div>
