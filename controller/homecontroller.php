@@ -1,6 +1,6 @@
 <?php
 session_start();    
-include("config/connect_bdd.php");
+include("config/Connect_bdd.php");
 
 include('repository/User_repo.php');
 include("repository/Theme_repo.php");
