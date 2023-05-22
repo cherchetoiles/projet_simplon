@@ -1,18 +1,25 @@
 {
 let sideBarContent = document.getElementById("crudSideBarContent");
 let sideBarOpenBtn = document.getElementById("openCrudSideBar");
+let mainContent = document.getElementById("mainCrudContent");
 
-function openSideBar(btn,sidebar){
-    console.log("btn");
+let dashboardIcon = document.getElementById("dashboard");
+console.log(dashboardIcon);
+
+
+
+function openSideBar(btn,sidebar,maincontent){
     sidebar.classList.toggle("-translate-x-full");
-    if (btn.innerHTML==="<"){
-        btn.innerHTML=">"
+    maincontent.classList.toggle("md:-translate-x-[320px]")
+    btn.classList.toggle("max-md:right-0");
+    btn.classList.toggle("max-md:-right-6");
+    if (btn.innerText==="<"){
+        btn.innerText=">"
     }
     else{
-        btn.innerHTML="<"
+        btn.innerText="<"
     }
 }
-console.log(sideBarContent,sideBarOpenBtn);
-sideBarOpenBtn.addEventListener("onclick",()=>{openSideBar(sideBarOpenBtn,sideBarContent)});
+sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
 
 }
