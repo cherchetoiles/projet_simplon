@@ -10,7 +10,7 @@ module.exports = {
         'gray-bg':'#EAEAEA',
         'gray-dark':'#858585',
         'gray':'#B7B7B7',
-
+        'hovered':"#B4131B"
       },
       borderRadius: {
         '4xl':'40px',
@@ -20,6 +20,9 @@ module.exports = {
         'sans':'"Montserrat", sans-serif',
       },
       plugins: [],
+      boxShadow: {
+        'lg': '20px 25px 20px -20px rgba(0, 0, 0, 0.3)',
+      }
     }
   }
 }
