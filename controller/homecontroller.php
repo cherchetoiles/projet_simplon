@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include('config/Connect_bdd.php');
 
 include('repository/User_repo.php');
@@ -7,7 +9,6 @@ include("repository/Theme_repo.php");
 include('model/User.php');
 include("model/Theme.php");
 
-session_start();
 
 function signup(){
     require('view/signup.php');
@@ -22,24 +23,19 @@ function addTheme(){
 
 }
 
-function cours(){
-    include("view/cours.php");
-    include("view/footer.php");
-}
-
 function signin_treat(){
-    if (empty($_POST['email']) OR empty($_POST['password'])){
+    if (empty($_POST['your_name']) and empty($_POST['your_pass'])){
         header("location: index.php");
     }
     $repo = new User_repo();
-    $tmpUser=$repo->getUserByEmail($_POST['email']);
+    $tmpUser=$repo->getUserByEmail($_POST['your_email']);
     $user=new user();
     if ($tmpUser){
         $user->createUserFromQuery($tmpUser);
-        $isOk=$user->verifUserToSignin($_POST['password']);
+        $isOk=$user->verifUserToSignin($_POST['your_pass']);
         if ($isOk=="True"){
             if ($_POST['remember_me']=="on"){
-            setcookie("simplon_name",$user->getUserEmail(),time()+60*60*24*30,"/",httponly:TRUE);
+            setcookie("simplon_name",$_POST['your_email'],time()+60*60*24*30,"/",httponly:TRUE);
             }
         $user->connectUser();
         header("location:index.php?action=signin");    
@@ -86,7 +82,7 @@ function addThemeTreat(){
                 header("location:index.php?action=addTheme");
             }
             else{
-                unlink("assets/img/theme_logo/".$theme->getThemeLogo());
+                unlink("assets/theme_logo/".$theme->getThemeLogo());
                 header("location:index.php?action=addTheme&error=failedinsert");
             }
         }
