@@ -12,7 +12,7 @@
     <title>Cours</title>
 </head>
 <body class="px-2">
-    <div class="flex px-2 sm:px-[10%] pt-2 ">
+    <div class="flex px-2 sm:px-[10%] pt-2 mb-5">
         <div class="flex flex-col">
             <!-- header -->
             <div class="flex md:justify-evenly md:mx-auto">

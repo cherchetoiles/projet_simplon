@@ -20,7 +20,9 @@ switch($_GET['action']){
     case "addTheme":
         addTheme();
         break;
+    case "cours":
+        cours();
     default:
-        include("view/cours.php");
+        exit;
 }
 ?>
