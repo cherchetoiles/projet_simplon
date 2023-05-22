@@ -69,7 +69,7 @@
             Pas encore <a href="?action=signup" class="font-normal">inscript</a> ? 
             N’attendez plus ! Rejoignez dès maintenant <span class="italic font-normal">la plateforme 
             de cours en ligne</span> des apprenants 
-            de <a href="" target="_blank" class="font-normal"> Simplon !
+            de <a href="https://simplon-charleville.fr/" target="_blank" class="font-normal"> Simplon !
         </p>
    </div>
   </div>
