@@ -22,6 +22,7 @@ switch($_GET['action']){
         break;
     case "cours":
         cours();
+        break;
     default:
         signin();
 }
