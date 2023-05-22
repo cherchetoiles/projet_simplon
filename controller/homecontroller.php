@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include('config/Connect_bdd.php');
 
 include('repository/User_repo.php');
@@ -55,7 +56,7 @@ function signup_treat(){
     $repo = new User_repo();
     $tmpUser=new User();
     $tmpUser->createUserToSignup($_POST['email'],$_POST['name'],$_POST['surname'],$_POST['pass']);
-    $isOk=$tmpUser->verifUserToSignup($_POST['re_pass'],$repo,$_POST['agree-term']);
+    $isOk=$tmpUser->verifUserToSignup($_POST['re-pass'],$repo,$_POST['agree-term']);
     var_dump($isOk);
     if ($isOk=="True"){
         $tmpUser->cryptUserPassword();
