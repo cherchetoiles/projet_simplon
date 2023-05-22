@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include('config/Connect_bdd.php');
 
 include('repository/User_repo.php');
@@ -8,16 +9,18 @@ include("repository/Theme_repo.php");
 include('model/User.php');
 include("model/Theme.php");
 
-function signin(){
-    include("view/signin.php");
-}
 
 function signup(){
-    include("view/signup.php");
+    require('view/signup.php');
+}
+
+function signin(){
+    require('view/signin.php');
 }
 
 function addTheme(){
     include("view/addTheme.php");
+
 }
 
 function cours(){
@@ -58,7 +61,7 @@ function signup_treat(){
     $repo = new User_repo();
     $tmpUser=new User();
     $tmpUser->createUserToSignup($_POST['email'],$_POST['name'],$_POST['surname'],$_POST['pass']);
-    $isOk=$tmpUser->verifUserToSignup($_POST['re_pass'],$repo,$_POST['agree-term']);
+    $isOk=$tmpUser->verifUserToSignup($_POST['re-pass'],$repo,$_POST['agree-term']);
     var_dump($isOk);
     if ($isOk=="True"){
         $tmpUser->cryptUserPassword();

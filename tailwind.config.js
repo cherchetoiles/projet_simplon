@@ -10,6 +10,7 @@ module.exports = {
         'gray-bg':'#EAEAEA',
         'gray-dark':'#858585',
         'gray':'#B7B7B7',
+        'hovered':"#B4131B"
       },
       borderRadius: {
         '4xl':'40px',
