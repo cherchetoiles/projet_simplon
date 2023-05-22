@@ -20,6 +20,8 @@ switch($_GET['action']){
     case "addTheme":
         addTheme();
         break;
+    case "cours":
+        cours();
     default:
         signin();
 }

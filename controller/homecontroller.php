@@ -23,6 +23,11 @@ function addTheme(){
 
 }
 
+function cours(){
+    include("view/cours.php");
+    include("view/footer.php");
+}
+
 function signin_treat(){
     if (empty($_POST['your_name']) and empty($_POST['your_pass'])){
         header("location: index.php");
