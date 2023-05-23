@@ -38,13 +38,13 @@
             <div class=" w-1/2 p-8">
                 <div class="pb-9">
                     <p class="font-bold">Dans quel formation es-tu ?</p>
-                    <select id="dropdown1" name="dropdown1" class="ml-[120px] mt-3 text-lg p-2 block border border-indigo-600 border-slate-300 rounded-md">
-                    <option class="stroky" value="1">Développeur Web et Web mobile</option>
+                    <select id="dropdown1" name="dropdown1" class="w-96 ml-[120px] mt-3 text-lg p-2 block border border-indigo-600 border-slate-300 rounded-md">
+                    <option class="" value="1">Développeur Web et Web mobile</option>
                     </select>
                 </div>
                 <div>
                     <p class="font-bold">Souhaites-tu contribuer à nos cours ?</p>
-                    <select id="dropdown2" name="dropdown2" class="ml-[120px] mt-3 text-lg p-2 block border border-indigo-600 border-slate-300  rounded-md">
+                    <select id="dropdown2" name="dropdown2" class="w-96 ml-[120px] mt-3 text-lg p-2 block border border-indigo-600 border-slate-300  rounded-md">
                     <option value="1">Je souhaite posté des cours</option>
                     </select>
                 </div>
