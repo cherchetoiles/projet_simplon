@@ -23,6 +23,9 @@ switch($_GET['action']){
     case "cours":
         cours();
         break;
+    case "homepage":
+        homepage();
+        break;
     default:
         signin();
 }
