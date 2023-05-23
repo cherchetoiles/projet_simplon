@@ -27,6 +27,10 @@ function cours(){
     include("view/footer.php");
 }
 
+function crud(){
+    include("view/crud.php");
+}
+
 function signin_treat(){
     if (empty($_POST['email']) OR empty($_POST['password'])){
         header("location: index.php");
