@@ -14,7 +14,7 @@ module.exports = {
       },
       borderRadius: {
         '4xl':'40px',
-     },
+      },
       fontFamily:{
         'body':'"Poppins", sans-serif',
         'sans':'"Montserrat", sans-serif',
