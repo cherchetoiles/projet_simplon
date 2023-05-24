@@ -1,15 +1,15 @@
-<div class="w-full border-t-2 border-gray-bg border-solid mx-auto">
-    <div class="flex flex-col lg:flex-row lg:justify-between lg:my-5 lg:mx-5 lg:gap-8 items-center">
+<div class="w-full mx-auto border-t-2 border-solid border-gray-bg">
+    <div class="flex flex-col items-center lg:flex-row lg:justify-between lg:my-5 lg:mx-5 lg:gap-8">
         <div class="text-center lg:w-72">
             <img src="assets/svg/logo.svg">
             <span class="text-red tracking-[0.35em] font-semibold text-sm lg:text-xs">APPRENDRE EN LIGNE</span>
         </div>
-        <span class="text-center font-light font-body mt-10 lg:mt-0 lg:w-7/12 text-gray-dark mx-5 lg:mx-0 leading-7">
+        <span class="mx-5 mt-10 font-light leading-7 text-center font-body lg:mt-0 lg:w-7/12 text-gray-dark lg:mx-0">
             En tant qu'apprenants, nous avons mis en place ce site afin d'aider nos futurs successeurs à acquérir des connaissances de manière simple et intuitive !
         </span>
-        <div class="flex flex-col lg:mt-0 mt-10">
-            <span class="text-blue font-sans">Code</span>
-            <div class="text-gray-dark grid grid-cols-2 gap-x-12 font-body">
+        <div class="flex flex-col mt-10 lg:mt-0">
+            <span class="font-sans text-blue">Code</span>
+            <div class="grid grid-cols-2 text-gray-dark gap-x-12 font-body">
                 <span>Python</span>
                 <span>HTML</span>
                 <span>JS</span>
@@ -19,8 +19,8 @@
             </div>
         </div>
     </div>
-    <div class="relative pt-10 lg:pt-4 mt-4 border-t-2 border-solid border-gray-bg flex flex-col lg:flex-row justify-evenly px-10 items-center gap-2 lg:gap-0 text-gray-dark font-light font-body">
-        <div class="flex flex-col lg:flex-row items-center">
+    <div class="relative flex flex-col items-center gap-2 px-10 pt-10 mt-4 font-light border-t-2 border-solid lg:pt-4 border-gray-bg lg:flex-row justify-evenly lg:gap-0 text-gray-dark font-body">
+        <div class="flex flex-col items-center lg:flex-row">
             <span>
                 ©Copyright Simplon.co
             </span>
