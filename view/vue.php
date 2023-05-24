@@ -33,8 +33,8 @@
     <div class="content">
       <h2 class="text-6xl font-bold">Elève de simplon ?</h2>
       <p class="pt-3">Faites partie de nos <span class="font-bold">créateurs</span> et battez les records de vues pour partager ton savoir et obtenir des récompenses !</p>
-      
-        <div class="text-2xl flex mx-8 my-8">
+      <form action="">
+        <div class="text-2xl  text-left flex ">
             <div class=" w-1/2 p-8">
                 <div class="pb-9">
                     <p class="font-bold">Dans quel formation es-tu ?</p>
@@ -53,6 +53,11 @@
                  <img src="assets/vuu.png" alt="Photo" class="max-w-full h-auto">
             </div>
         </div>
+        <div class="w-full flex  justify-center">
+                <button type="submit" class=" p-3 text-white bg-red border rounded-md">Soumettre mon dossier</button>
+        </div>
+             
+      </form>  
     </div>
   </div>
 </body>
