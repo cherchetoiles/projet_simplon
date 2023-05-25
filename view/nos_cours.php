@@ -12,10 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
     <title>Cours</title>
 </head>
-<body class="w-screen">
+<body class="w-screen"> 
 
     <!-- HERO -->
-    <div class="flex justify-center">
+    <div class="flex justify-center my-24">
         <div class="hero-content flex-col lg:flex-row-reverse">
             <img src="assets/lottie.png" class="hidden lg:block max-w-sm rounded-lg shadow-2xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in" />
             <div class="flex flex-col justify-around mx-20">
@@ -535,6 +535,4 @@
     <?php
     include("view/footer.php");
     ?>
-
-
 </body>
