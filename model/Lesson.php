@@ -13,5 +13,64 @@ class Lesson
     private int $lesson_views;
     private int $lesson_likes;
     private int $category_id;
+
+    public function createLessonToInsert($lesson_title,$lesson_description,$lesson_level,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type){
+        $this->lesson_title = $lesson_title;
+        $this->lesson_description = $lesson_description;
+        $this->lesson_level = $lesson_level;
+        $this->lesson_cover = uniqid().".".$cover_type;
+        $this->lesson_content = uniqid().".".$content_type;
+        $this->lesson_attract_title = $lesson_attract_title;
+        $this->category_id = $category_id;
+    }
+
+    public function getLessonContent(){
+        return $this->lesson_content;
+    }
+
+    public function getLessonTitle(){
+        return $this->lesson_title;
+    }
+
+    public function getLessonDescription(){
+        return $this->lesson_description;
+    }
+
+    public function getLessonCover(){
+        return $this->lesson_cover;
+    }
+
+    public function getLessonAttractTitle(){
+        return $this->lesson_attract_title;
+    }
+
+    public function getLessonCategoryId(){
+        return $this->category_id;
+    }
+
+    public function verifyLesson($cover_size,$cover_type,$video_size,$video_type){
+        if ($cover_size>MAX_IMG_SIZE){
+            return "Miniature trop lourde";
+        }
+        if (!in_array($cover_type,VALID_IMG_TYPE)){
+            return "Mauvais type de fichier de miniature";
+        }
+        if ($video_size>MAX_VIDEO_SIZE){
+            return "Vidéo trop lourde";
+        }
+        if (!in_array($video_type,VALID_VIDEO_TYPE)){
+            return "Mauvais type de fichier de vidéo";
+        }
+
+        if (strlen($this->lesson_title)>63){
+            return "titre trop long";
+        }
+
+        if (strlen($this->lesson_attract_title)>127){
+            return "titre de mise en avant trop long";
+        }
+
+        return "True";
+    }
 }
 ?>

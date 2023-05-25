@@ -26,6 +26,12 @@ switch($_GET['action']){
     case "cours":
         cours();
         break;
+    case "addVideo":
+        include("view/ajoutVideoForm.php");
+        break;
+    case "addVideoTreat":
+        addVideo();
+        break;
     default:
         signin();
 }
