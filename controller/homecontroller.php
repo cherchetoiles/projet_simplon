@@ -42,6 +42,11 @@ function cours(){
     include("view/footer.php");
 }
 
+
+function homepage(){
+    require('view/homepage.php');
+}
+
 function crud(){
     include("view/crud.php");
 }

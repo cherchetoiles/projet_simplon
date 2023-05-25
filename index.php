@@ -31,6 +31,8 @@ switch($_GET['action']){
         break;
     case "addVideoTreat":
         addVideo();
+    case "homepage":
+        homepage();
         break;
     default:
         signin();
