@@ -34,6 +34,12 @@ switch($_GET['action']){
     case "homepage":
         homepage();
         break;
+    case "profil":
+        profil();
+        break;
+    case "test":
+        modaltest();
+        break;
     default:
         signin();
 }

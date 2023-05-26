@@ -24,6 +24,10 @@ define("VALID_VIDEO_TYPE", ["mp4","webm"]);
 
 session_start();
 
+function modaltest() {
+    require('view/modaltest.php');
+}
+
 function signup(){
     require('view/signup.php');
 }
@@ -45,6 +49,10 @@ function cours(){
 
 function homepage(){
     require('view/homepage.php');
+}
+
+function profil(){
+    require('view/profil.php');
 }
 
 function crud(){
