@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
+    <!-- DAISY UI -->
     <link href="dist/output.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
     
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +21,9 @@
     
 </head>
 <body class="w-full h-auto">
+    <!-- NAVBAR -->
+<?php include('view/navbar.php') ?>
+</body>
 <div class="flex flex-col items-center justify-center w-10/12 h-auto mx-auto text-center lg:w-9/12 md:w-full font-body ">
     <div class="container">
         <div class="lg:text-start lg:w-2/3 xl:w-1/2">  
@@ -31,7 +36,7 @@
         
             <div class="bg-white shadow-lg drop-shadow-lg lg:w-2/3 rounded-b-2xl">
                 <!-- COVER -->
-                <img src="assets/img/cours-cover.png" alt="cover de cours" class="h-auto rounded-t-2xl ">
+                <img src="assets/img/cover.png" alt="cover de cours" class="h-auto rounded-t-2xl ">
 
                 <div class="flex items-center mx-4 my-2">
                     <div class="w-auto">

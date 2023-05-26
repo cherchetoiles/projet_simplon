@@ -24,6 +24,10 @@ define("VALID_VIDEO_TYPE", ["mp4","webm"]);
 
 session_start();
 
+function modaltest() {
+    require('view/modaltest.php');
+}
+
 function signup(){
     require('view/signup.php');
 }
@@ -42,9 +46,16 @@ function cours(){
     include("view/footer.php");
 }
 
+function formVideo(){
+    require("view/ajoutVideoForm.php");
+}
 
 function homepage(){
     require('view/homepage.php');
+}
+
+function profil(){
+    require('view/profil.php');
 }
 
 function crud(){
@@ -66,7 +77,7 @@ function signin_treat(){
             setcookie("simplon_name",$user->getUserEmail(),time()+60*60*24*30,"/",httponly:TRUE);
             }
         $user->connectUser();
-        header("location:index.php?action=signin");    
+        header("location:index.php?action=homepage");    
         }
         else{
             header("location:index.php?action=signin&error".$isOk);

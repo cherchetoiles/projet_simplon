@@ -27,13 +27,19 @@ switch($_GET['action']){
         cours();
         break;
     case "addVideo":
-        include("view/ajoutVideoForm.php");
+        formVideo();
         break;
     case "addVideoTreat":
         addVideo();
         break;
     case "homepage":
         homepage();
+        break;
+    case "profil":
+        profil();
+        break;
+    case "test":
+        modaltest();
         break;
     default:
         signin();
