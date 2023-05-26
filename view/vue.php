@@ -27,7 +27,7 @@
 </head>
 
 <body class="font-body">
-  <div class="container">
+  <div class="container mx-auto">
     <div class="content">
       <h2 class="text-4xl md:text-6xl md:pt-[30px] font-bold">Elève de simplon ?</h2>
       <p class="pt-3 text-sm md:text-base">Faites partie de nos <span class="font-bold">créateurs</span> et battez les records de vues pour partager ton savoir et obtenir des récompenses !</p>
