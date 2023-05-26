@@ -26,10 +26,10 @@
     <!-- MENU -->
     <div class="flex flex-col h-auto  lg:border-r justify-start lg:border-solid lg:w-1/4 border-[#C8C8C8] lg:my-10">
         <div class="flex text-[10px] lg:text-xl lg:border-b lg:border-solid border-[#C8C8C8] lg:px-12 lg:flex-col text-gray-dark ">
-            <p class="hidden mt-2 font-normal lg:flex text-red">Modification du profil</p>
-            <p class="mr-2 font-normal lg:mr-0 lg:my-7">Politique de cookies</p>    
+            <a href="" class="hidden mt-2 font-normal lg:flex text-red">Modification du profil</a>
+            <a href="" class="mr-2 font-normal lg:mr-0 lg:my-7">Politique de cookies</a>    
             <span class="font-normal lg:hidden">-</span>
-            <p class="ml-2 font-normal lg:ml-0 lg:mb-10">Politique de confidentialités</p>
+            <a href="" class="ml-2 font-normal lg:ml-0 lg:mb-10">Politique de confidentialités</a>
         </div>
         <a href="?action=creatorperm" class="flex justify-center mt-4 text-sm font-semibold leading-5 text-center lg:mx-9 text-red lg:text-gray-dark lg:text-xl">Envie de devenir Créateur ?<br> Rejoins notre équipe !</a>
     </div>

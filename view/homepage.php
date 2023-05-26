@@ -31,7 +31,7 @@
         
             <div class="bg-white shadow-lg drop-shadow-lg lg:w-2/3 rounded-b-2xl">
                 <!-- COVER -->
-                <img src="assets/img/cours-cover.png" alt="cover de cours" class="h-auto rounded-t-2xl ">
+                <img src="assets/img/cover.png" alt="cover de cours" class="h-auto rounded-t-2xl ">
 
                 <div class="flex items-center mx-4 my-2">
                     <div class="w-auto">
