@@ -2,7 +2,7 @@
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" /> 
   <div class="drawer-content flex flex-col">
     <!-- Navbar -->
-    <div class="w-full navbar max-h-[4rem] justify-between border-b">
+    <div class="w-full navbar max-h-[4rem] justify-between border-b border-b-gray lg:justify-center">
 
       <div class="flex-none lg:hidden">
         <label for="" class="btn btn-square btn-ghost">

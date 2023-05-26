@@ -15,10 +15,10 @@
     <title>Mon Profil</title>
     
 </head>
-<body class="w-full h-auto">
+<body class="flex flex-col w-full h-auto">
 <h1 class="hidden">Profil</h1>
 <!-- HEADER -->
-<div class="container flex justify-center pt-16 pb-8 mx-auto border-b border-solid lg:w-11/12 xl:w-8/12 border-stroke">
+<div class="container flex justify-center pt-16 pb-8 mx-auto my-auto border-b border-solid lg:w-11/12 xl:w-7/12 border-stroke">
    <!-- AVATAR -->
     <div class="px-2 md:w-1/5">
         <img src="assets/img/steven.png" alt="Photo de profil de Steven" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44">
@@ -38,7 +38,7 @@
         </div>
         <div>
             <!-- UPDATE PROFIL -->
-            <div class="bg-[#F5F5F5] hidden lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p></div>
+            <a href="?action=test" class="bg-[#F5F5F5] hidden lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p></a>
         </div>
     </div>
 </div>
@@ -52,7 +52,7 @@
             <p class="hidden lg:flex">Mes cours</p>
         </a>
         <!-- FAVORIS -->
-        <a class="flex items-center w-auto mx-4 mr-24 lg:mr-0">
+        <a href='' class="flex items-center w-auto mx-4 mr-24 lg:mr-0">
             <img src="assets/svg/fav.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
             <p class="hidden lg:flex">Mes favoris</p>
         </a>
@@ -67,7 +67,7 @@
         </a>
         <!-- CREATE FOR CREATOR -->
         <div class="absolute bottom-0 flex justify-center lg:bottom-auto lg:translate-y-[-31%] lg:right-24 xl:right-80 ">   
-            <a href="" class="flex items-center justify-center rounded-full lg:w-auto w-14 h-14 bg-red lg:bg-transparent">
+            <a href="?action=addVideo" class="flex items-center justify-center rounded-full lg:w-auto w-14 h-14 bg-red lg:bg-transparent">
                 <svg width=30 height=30 class="w-7 h-7 lg:w-4 lg:h-4 lg:mr-1 stroke-white lg:stroke-black" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.8252 5.0189H18.2147M18.2147 5.0189H21.6042M18.2147 5.0189V8.40841M18.2147 5.0189V1.62939" stroke-linecap="round"/>
                     <path d="M1.32227 15.1877C1.39451 14.4533 1.55778 13.9589 1.92677 13.5899C2.58862 12.928 3.65384 12.928 5.78427 12.928C7.91471 12.928 8.97993 12.928 9.64178 13.5899C10.3036 14.2517 10.3036 15.3169 10.3036 17.4474C10.3036 19.5778 10.3036 20.643 9.64178 21.3049C8.97993 21.9667 7.91471 21.9667 5.78427 21.9667C3.65384 21.9667 2.58862 21.9667 1.92677 21.3049C1.57723 20.9553 1.4123 20.4933 1.33447 19.8212" stroke=" stroke-linecap="round"/>

@@ -27,7 +27,7 @@ switch($_GET['action']){
         cours();
         break;
     case "addVideo":
-        include("view/ajoutVideoForm.php");
+        formVideo();
         break;
     case "addVideoTreat":
         addVideo();

@@ -2221,6 +2221,10 @@ video {
     justify-content: flex-end;
   }
 
+  .lg\:justify-center {
+    justify-content: center;
+  }
+
   .lg\:justify-between {
     justify-content: space-between;
   }
@@ -2403,8 +2407,8 @@ video {
     width: 80%;
   }
 
-  .xl\:w-8\/12 {
-    width: 66.666667%;
+  .xl\:w-7\/12 {
+    width: 58.333333%;
   }
 
   .xl\:w-80 {

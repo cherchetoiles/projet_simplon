@@ -46,6 +46,9 @@ function cours(){
     include("view/footer.php");
 }
 
+function formVideo(){
+    require("view/ajoutVideoForm.php");
+}
 
 function homepage(){
     require('view/homepage.php');
@@ -74,7 +77,7 @@ function signin_treat(){
             setcookie("simplon_name",$user->getUserEmail(),time()+60*60*24*30,"/",httponly:TRUE);
             }
         $user->connectUser();
-        header("location:index.php?action=signin");    
+        header("location:index.php?action=homepage");    
         }
         else{
             header("location:index.php?action=signin&error".$isOk);
