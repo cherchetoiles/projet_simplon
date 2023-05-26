@@ -19,6 +19,7 @@
     
 </head>
 <body class="w-full h-auto">
+<?php include('view/navbar.php')?>
 <div class="flex flex-col items-center justify-center w-10/12 h-auto mx-auto text-center lg:w-9/12 md:w-full font-body ">
     <div class="container">
         <div class="lg:text-start lg:w-2/3 xl:w-1/2">  
