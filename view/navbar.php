@@ -115,6 +115,25 @@
             </div>
           </div>
           <div class="collapse-content px-8">
+            <p class="text-blue font-body tracking-wider font-bold">
+              <a href="">Mon profil</a>
+            </p>
+            <p class="text-blue font-body tracking-wider font-bold">
+              <a href="">Se déconnecter</a>
+            </p>
+          </div>
+        </div>
+        <div class="collapse border-b border-b-gray">
+          <input type="checkbox" />
+          <div class="collapse-title text-xl font-bold font-body px-8 flex flex-row items-center gap-2">
+            Tableau de bord
+            <div class="">
+              <svg width="15" height="10" viewBox="0 0 15 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.8327 1.83234L7.50032 8.83234L1.16797 1.83234" stroke="#016484" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg> 
+            </div>
+          </div>
+          <div class="collapse-content px-8">
             <p>hello</p>
           </div>
         </div>
