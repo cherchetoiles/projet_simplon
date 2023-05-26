@@ -31,6 +31,7 @@ switch($_GET['action']){
         break;
     case "addVideoTreat":
         addVideo();
+        break;
     case "homepage":
         homepage();
         break;
