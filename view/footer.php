@@ -47,6 +47,8 @@
         </div>
     </div>
 </div>
+</div>
+=======
 
 <!--NAV IN FOOTER -->
 </div> 
