@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     
+
+
     <title>Mon Profil</title>
     
 </head>
@@ -38,13 +40,14 @@
         </div>
         <div>
             <!-- UPDATE PROFIL -->
-            <div class="bg-[#F5F5F5] hidden lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p></div>
+            <a href="?action=test" class="bg-[#F5F5F5] hidden lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p>
+            </a>
         </div>
     </div>
 </div>
 
-<!-- TABLE -->
-<div class="container mx-auto bg-white lg:bg-none">
+<!-- TABLE MENU -->
+<div class="container mx-auto bg-white xl:w-9/12 lg:bg-none">
     <div class="absolute bottom-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase border-t border-solid border-stroke lg:border-none lg:static">
         <!-- COURS OF CREATOR -->
         <a href="" class="flex items-center w-auto mx-4">
@@ -52,7 +55,7 @@
             <p class="hidden lg:flex">Mes cours</p>
         </a>
         <!-- FAVORIS -->
-        <a class="flex items-center w-auto mx-4 mr-24 lg:mr-0">
+        <a href="" class="flex items-center w-auto mx-4 mr-24 lg:mr-0">
             <img src="assets/svg/fav.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
             <p class="hidden lg:flex">Mes favoris</p>
         </a>
@@ -67,7 +70,7 @@
         </a>
         <!-- CREATE FOR CREATOR -->
         <div class="absolute bottom-0 flex justify-center lg:bottom-auto lg:translate-y-[-31%] lg:right-24 xl:right-80 ">   
-            <a href="" class="flex items-center justify-center rounded-full lg:w-auto w-14 h-14 bg-red lg:bg-transparent">
+            <a href="?action=addVideo" class="flex items-center justify-center rounded-full lg:w-auto w-14 h-14 bg-red lg:bg-transparent">
                 <svg width=30 height=30 class="w-7 h-7 lg:w-4 lg:h-4 lg:mr-1 stroke-white lg:stroke-black" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.8252 5.0189H18.2147M18.2147 5.0189H21.6042M18.2147 5.0189V8.40841M18.2147 5.0189V1.62939" stroke-linecap="round"/>
                     <path d="M1.32227 15.1877C1.39451 14.4533 1.55778 13.9589 1.92677 13.5899C2.58862 12.928 3.65384 12.928 5.78427 12.928C7.91471 12.928 8.97993 12.928 9.64178 13.5899C10.3036 14.2517 10.3036 15.3169 10.3036 17.4474C10.3036 19.5778 10.3036 20.643 9.64178 21.3049C8.97993 21.9667 7.91471 21.9667 5.78427 21.9667C3.65384 21.9667 2.58862 21.9667 1.92677 21.3049C1.57723 20.9553 1.4123 20.4933 1.33447 19.8212" stroke=" stroke-linecap="round"/>
@@ -79,36 +82,78 @@
         </div>
     </div>
     <!-- TABLE FILE -->
-    <div class="w-10/12 mx-auto my-5">
+    <div class="w-auto mx-auto my-5">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
 
         <!-- LESSON CARD -->
-            <div class="flex justify-start w-auto p-5 text-white bg-cover h-a uto rounded-xl flex- lesson bg-red">
+            <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl">
             <!-- LOGOWHITE+TITLE+DESC -->
-                <div class="flex flex-col justify-start font-body">
-                    <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-16 h-auto">
-                    <h2 class="mt-2 text-xl font-semibold">Apprendre le HTML</h2>
-                    <p class="mt-1 mb-2 leanding-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temuam explica ea voluptates?...</p>
-                    <!-- NUMBER DIFFICULT+LIKE+VIEW -->
-                    <div class="flex">
-                        <div class="flex mr-3">
-                            1 <img src="assets/svg/difficult/1.svg" class="ml-1" alt="difficult">
-                        </div>
-                        <div class="flex mr-3">
-                            1 <img src="assets/svg/iconlike.svg" class="ml-1" alt="like">
-                        </div>
-                        <div class="flex">
-                            1 <img src="assets/svg/view.svg" class="ml-1" alt="view">
+                <img src="assets/img/cover.png"  onclick="showFilter()" id="card_img" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                <div class="absolute hidden duration-700" id="card_filter">
+                    <div class="flex flex-col justify-start p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
+                    <div class="absolute flex right-4 top-4 ">
+                        <a href="?action=lesson">
+                            <svg width="24" height="24"  class="duration-300 hover:stroke-blue stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 8.5C8.90524 8.5 7.76142 8.5 11.6667 8.5M11.6667 8.5L9.16667 6M11.6667 8.5L9.16667 11"  stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                        <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
+                        <h2 class="mt-2 text-sm font-semibold filter_content">Apprendre le HTML</h2>
+                        <p class="mt-1 mb-2 text-[10px] leanding-8 filter_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temuam explica ea voluptates?...</p>
+                        <!-- NUMBER DIFFICULT+LIKE+VIEW -->
+                        <div class="flex text-[10px] filter_content">
+                            <div class="flex mr-3 filter_content">
+                                1 <img src="assets/svg/difficult/1.svg" class="w-3 h-auto ml-1" alt="difficult">
+                            </div>
+                            <div class="flex mr-3 filter_content">
+                                1 <img src="assets/svg/iconlike.svg" class="w-3 h-auto ml-1" alt="like">
+                            </div>
+                            <div class="flex filter_content">
+                                1 <img src="assets/svg/view.svg" class="w-3 h-auto ml-1" alt="view">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex items-start justify-start">
-                    <a href="">
-                        <svg width="24" height="24"  class="duration-300 hover:stroke-blue stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 8.5C8.90524 8.5 7.76142 8.5 11.6667 8.5M11.6667 8.5L9.16667 6M11.6667 8.5L9.16667 11"  stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
-                        </svg>
-                    </a>
+            </div>
+
+            <!-- Favorite CARD -->
+            <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl">
+            <!-- LOGOWHITE -->
+                <div class="w-[323px] h-[182px] flex justify-end">
+                    <img src="assets/img/cover.png"  onclick="showFav()" id="img_fav" class="flex brightness-75 w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                        <a href="" class="absolute mt-4 mr-4">
+                            <svg id="icon_fav" class="animate-pulse" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.5" d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="white"/>
+                                <path d="M14 12.0455V9.54876C14 7.40445 14 6.3323 13.4142 5.66615C12.8284 5 11.8856 5 10 5C8.11438 5 7.17157 5 6.58579 5.66615C6 6.3323 6 7.40445 6 9.54876V12.0455C6 13.5937 6 14.3679 6.32627 14.7062C6.48187 14.8675 6.67829 14.9688 6.88752 14.9958C7.32623 15.0522 7.83855 14.5425 8.86318 13.5229C9.3161 13.0722 9.54256 12.8469 9.80457 12.7875C9.93359 12.7583 10.0664 12.7583 10.1954 12.7875C10.4574 12.8469 10.6839 13.0722 11.1368 13.5229L11.1368 13.5229C12.1615 14.5425 12.6738 15.0522 13.1125 14.9958C13.3217 14.9688 13.5181 14.8675 13.6737 14.7062C14 14.3679 14 13.5937 14 12.0455Z" fill="#F01E29"/>
+                            </svg>
+                        </a>
+                </div>
+                <div class="absolute hidden duration-700" id="card_fav">
+                    <div class="flex flex-col justify-end p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
+                        <div class="absolute flex right-4 top-4 ">
+                        <!-- LESSON+FAV -->
+                            <a href="" class="mr-0.5">
+                                <svg width="24" height="24"  class="duration-300 hover:stroke-blue stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 8.5C8.90524 8.5 7.76142 8.5 11.6667 8.5M11.6667 8.5L9.16667 6M11.6667 8.5L9.16667 11"  stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            
+                            <a href="?action=lesson">
+                                <svg width="24" height="24" class="duration-300 hover:stroke-red stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 9.63636V7.63901C11 5.92356 11 5.06584 10.5607 4.53292C10.1213 4 9.41421 4 8 4C6.58579 4 5.87868 4 5.43934 4.53292C5 5.06584 5 5.92356 5 7.63901V9.63636C5 10.875 5 11.4943 5.2447 11.7649C5.3614 11.894 5.50872 11.9751 5.66564 11.9966C5.99467 12.0418 6.37891 11.634 7.14739 10.8183C7.48707 10.4578 7.65692 10.2775 7.85343 10.23C7.95019 10.2066 8.04981 10.2066 8.14657 10.23C8.34308 10.2775 8.51293 10.4578 8.85261 10.8183C9.62109 11.634 10.0053 12.0418 10.3344 11.9966C10.4913 11.9751 10.6386 11.894 10.7553 11.7649C11 11.4943 11 10.875 11 9.63636Z" stroke="#F01E29"/>
+                                    <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            
+                        </div>
+                        <!-- +TITLE+DESC -->
+                        <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
+                        <h2 class="mt-2 text-sm font-semibold filter_content">Apprendre le HTML</h2>
+                        <p class="mt-1 text-[10px] leanding-8 filter_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temuam explica ea voluptates?...</p>
+                    </div>
                 </div>
             </div>
             
@@ -116,4 +161,7 @@
         
     </div>
 </div>
+<script src="assets/script/card_creator.js"></script>
+
 </body>
+</html>

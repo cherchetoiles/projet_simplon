@@ -31,6 +31,9 @@ function cours(){
     include("view/footer.php");
 }
 
+function lesson(){
+    require('view/lesson.php');
+}
 
 function homepage(){
     require('view/homepage.php');
