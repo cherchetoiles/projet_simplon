@@ -87,19 +87,18 @@ if (tableAddRow!==null){
     }
 }
 {
-    const submitBtn = document.getElementById("submit");
-    const form = document.getElementById("form");
-    const test = document.getElementById("test");
+    const submitBtnAddVideo = document.getElementById("submit");
+    const formAddVideo = document.getElementById("form");
 
     function submit(){
-        let formData = new FormData(form,submitBtn);
+        let formData = new FormData(formAddVideo,submitBtnAddVideo);
         fetch("?action=addVideoTreat",{method: 'POST',body:formData})
-            .then((response)=>response.json())
-            .then((data)=>console.log(data))
+            .then(response=>response.json())
+            .then(data=>console.log(data))
             .catch(error=>console.error(error));
     }
 
-    if (submitBtn!==null){
-        submitBtn.addEventListener("click",function(click){click.preventDefault();submit()})
+    if (submitBtnAddVideo!==null){
+        submitBtnAddVideo.addEventListener("click",function(click){click.preventDefault();submit()})
     }
 }
