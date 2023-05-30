@@ -1,5 +1,7 @@
 <?php
 
+include('config/Connect_bdd.php');
+
 include('repository/User_repo.php');
 include("repository/Theme_repo.php");
 include("repository/Lesson_repo.php");
@@ -42,9 +44,11 @@ function addTheme(){
 
 }
 
+function nos_cours(){
+    include("view/nos_cours.php");
+}
 function cours(){
     include("view/cours.php");
-    include("view/footer.php");
 }
 
 function formVideo(){
