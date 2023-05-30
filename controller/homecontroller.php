@@ -51,6 +51,10 @@ function cours(){
     include("view/cours.php");
 }
 
+function lesson(){
+    require('view/lesson.php');
+}
+
 function formVideo(){
     require("view/ajoutVideoForm.php");
 }

@@ -41,6 +41,9 @@ switch($_GET['action']){
     case "profil":
         profil();
         break;
+    case "lesson":
+        lesson();
+        break;
     case "test":
         modaltest();
         break;

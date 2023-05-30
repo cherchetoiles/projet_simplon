@@ -17,6 +17,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     
+
+
     <title>Mon Profil</title>
     
 </head>
@@ -44,7 +46,10 @@
         </div>
         <div>
             <!-- UPDATE PROFIL -->
+
+   
             <a href="?action=test" class="bg-[#F5F5F5] hidden lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p></a>
+
         </div>
     </div>
 </div>
@@ -85,40 +90,78 @@
         </div>
     </div>
     <!-- TABLE FILE -->
-    <div class="w-10/12 mx-auto my-5">
+    <div class="flex justify-center w-auto mx-auto my-5">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
 
         <!-- LESSON CARD -->
-            <div class="flex justify-start w-[323px] h-[182px] px-5 py-4 text-white bg-cover bg-[url('data:image/jpeg;base64,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')] rounded-xl flex- lesson bg-blur">
-            </div>
-
-            <!-- CLICK CARD -->
-            <div class="flex justify-start w-[323px] h-[182px] px-5 py-4 text-white bg-cover odd:bg-red even:bg-black/40 rounded-xl flex- lesson bg-blur">
+            <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl mx-4">
             <!-- LOGOWHITE+TITLE+DESC -->
-                <div class="flex flex-col justify-start font-body">
-                    <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto">
-                    <h2 class="mt-1 text-sm font-semibold">Apprendre le HTML</h2>
-                    <p class="my-1 text-[12px]">Lorem ipsum dolor sit amet consectetur lorem  dolor sit amet consectetur adipisicing...</p>
-                    <!-- NUMBER DIFFICULT+LIKE+VIEW -->
-                    <div class="flex text-[12px]">
-                        <div class="flex mr-3">
-                            1 <img src="assets/svg/difficult/1.svg" class="w-3 h-auto ml-1" alt="difficult">
-                        </div>
-                        <div class="flex mr-3">
-                            1 <img src="assets/svg/iconlike.svg" class="w-3 h-auto ml-1" alt="like">
-                        </div>
-                        <div class="flex">
-                            1 <img src="assets/svg/view.svg" class="w-3 h-auto ml-1" alt="view">
+                <img src="assets/img/cover.png"  onclick="showFilter()" id="card_img" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                <div class="absolute hidden duration-700" id="card_filter">
+                    <div class="flex flex-col justify-start p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
+                    <div class="absolute flex right-4 top-4 ">
+                        <a href="?action=lesson">
+                            <svg width="24" height="24"  class="duration-300 hover:stroke-blue stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 8.5C8.90524 8.5 7.76142 8.5 11.6667 8.5M11.6667 8.5L9.16667 6M11.6667 8.5L9.16667 11"  stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                        <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
+                        <h2 class="mt-2 text-sm font-semibold filter_content">Apprendre le HTML</h2>
+                        <p class="mt-1 mb-2 text-[10px] leanding-8 filter_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temuam explica ea voluptates?...</p>
+                        <!-- NUMBER DIFFICULT+LIKE+VIEW -->
+                        <div class="flex text-[10px] filter_content">
+                            <div class="flex mr-3 filter_content">
+                                1 <img src="assets/svg/difficult/1.svg" class="w-3 h-auto ml-1" alt="difficult">
+                            </div>
+                            <div class="flex mr-3 filter_content">
+                                1 <img src="assets/svg/iconlike.svg" class="w-3 h-auto ml-1" alt="like">
+                            </div>
+                            <div class="flex filter_content">
+                                1 <img src="assets/svg/view.svg" class="w-3 h-auto ml-1" alt="view">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex items-start justify-start">
-                    <a href="">
-                        <svg width="24" height="24"  class="duration-300 hover:stroke-blue stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 8.5C8.90524 8.5 7.76142 8.5 11.6667 8.5M11.6667 8.5L9.16667 6M11.6667 8.5L9.16667 11"  stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
-                        </svg>
-                    </a>
+            </div>
+
+            <!-- Favorite CARD -->
+            <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl">
+            <!-- LOGOWHITE -->
+                <div class="w-[323px] h-[182px] flex justify-end">
+                    <img src="assets/img/cover.png"  onclick="showFav()" id="img_fav" class="flex brightness-75 w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                        <a href="" class="absolute mt-4 mr-4">
+                            <svg id="icon_fav" class="animate-pulse" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.5" d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="white"/>
+                                <path d="M14 12.0455V9.54876C14 7.40445 14 6.3323 13.4142 5.66615C12.8284 5 11.8856 5 10 5C8.11438 5 7.17157 5 6.58579 5.66615C6 6.3323 6 7.40445 6 9.54876V12.0455C6 13.5937 6 14.3679 6.32627 14.7062C6.48187 14.8675 6.67829 14.9688 6.88752 14.9958C7.32623 15.0522 7.83855 14.5425 8.86318 13.5229C9.3161 13.0722 9.54256 12.8469 9.80457 12.7875C9.93359 12.7583 10.0664 12.7583 10.1954 12.7875C10.4574 12.8469 10.6839 13.0722 11.1368 13.5229L11.1368 13.5229C12.1615 14.5425 12.6738 15.0522 13.1125 14.9958C13.3217 14.9688 13.5181 14.8675 13.6737 14.7062C14 14.3679 14 13.5937 14 12.0455Z" fill="#F01E29"/>
+                            </svg>
+                        </a>
+                </div>
+                <div class="absolute hidden duration-700" id="card_fav">
+                    <div class="flex flex-col justify-end p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
+                        <div class="absolute flex right-4 top-4 ">
+                        <!-- LESSON+FAV -->
+                            <a href="" class="mr-0.5">
+                                <svg width="24" height="24"  class="duration-300 hover:stroke-blue stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 8.5C8.90524 8.5 7.76142 8.5 11.6667 8.5M11.6667 8.5L9.16667 6M11.6667 8.5L9.16667 11"  stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            
+                            <a href="?action=lesson">
+                                <svg width="24" height="24" class="duration-300 hover:stroke-red stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 9.63636V7.63901C11 5.92356 11 5.06584 10.5607 4.53292C10.1213 4 9.41421 4 8 4C6.58579 4 5.87868 4 5.43934 4.53292C5 5.06584 5 5.92356 5 7.63901V9.63636C5 10.875 5 11.4943 5.2447 11.7649C5.3614 11.894 5.50872 11.9751 5.66564 11.9966C5.99467 12.0418 6.37891 11.634 7.14739 10.8183C7.48707 10.4578 7.65692 10.2775 7.85343 10.23C7.95019 10.2066 8.04981 10.2066 8.14657 10.23C8.34308 10.2775 8.51293 10.4578 8.85261 10.8183C9.62109 11.634 10.0053 12.0418 10.3344 11.9966C10.4913 11.9751 10.6386 11.894 10.7553 11.7649C11 11.4943 11 10.875 11 9.63636Z" stroke="#F01E29"/>
+                                    <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            
+                        </div>
+                        <!-- +TITLE+DESC -->
+                        <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
+                        <h2 class="mt-2 text-sm font-semibold filter_content">Apprendre le HTML</h2>
+                        <p class="mt-1 text-[10px] leanding-8 filter_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temuam explica ea voluptates?...</p>
+                    </div>
                 </div>
             </div>
             
@@ -126,5 +169,9 @@
         
     </div>
 </div>
+<script src="assets/script/card_creator.js"></script>
+
+</body>
+</html>
 <?php include('view/footer.php')?>
 </body>
