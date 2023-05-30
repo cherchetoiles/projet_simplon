@@ -86,6 +86,5 @@
         </div>
         <input type="submit" class="bg-red text-white mx-auto inline-block mt-10 px-10 py-4 rounded-lg leading-none" id="submit" value="Envoyer la demande de post">
     </form>
-    <div id="test"></div>
     <script src="assets/script/script.js"></script>
 </body>
