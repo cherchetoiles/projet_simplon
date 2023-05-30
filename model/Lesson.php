@@ -49,6 +49,24 @@ class Lesson
     }
 
     public function verifyLesson($cover_size,$cover_type,$video_size,$video_type){
+        if (strlen($this->lesson_title)>63){
+            return "titre trop long";
+        }
+        if ($this->lesson_title===""){
+            return "mettez un titre";
+        }
+        if (strlen($this->lesson_attract_title)>127){
+            return "titre de mise en avant trop long";
+        }
+        if (!in_array($this->lesson_level,[1,2,3,4,5,6,7,8,9])){
+            return "Merci de ne pas modifier les valeurs des choix de proposition";
+        }
+        if ($cover_type=="wrong"){
+            return "Mettez une miniature";
+        }
+        if ($video_type=="wrong"){
+            return "mettez une vidéo";
+        }
         if ($cover_size>MAX_IMG_SIZE){
             return "Miniature trop lourde";
         }
@@ -61,15 +79,7 @@ class Lesson
         if (!in_array($video_type,VALID_VIDEO_TYPE)){
             return "Mauvais type de fichier de vidéo";
         }
-
-        if (strlen($this->lesson_title)>63){
-            return "titre trop long";
-        }
-
-        if (strlen($this->lesson_attract_title)>127){
-            return "titre de mise en avant trop long";
-        }
-
+        
         return "True";
     }
 }

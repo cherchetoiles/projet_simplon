@@ -89,13 +89,24 @@ if (tableAddRow!==null){
 {
     const submitBtnAddVideo = document.getElementById("submit");
     const formAddVideo = document.getElementById("form");
+    const alert = document.getElementById("alert");
+    const alertTxt=document.getElementById("error_text")
 
     function submit(){
         let formData = new FormData(formAddVideo,submitBtnAddVideo);
         fetch("?action=addVideoTreat",{method: 'POST',body:formData})
             .then(response=>response.json())
-            .then(data=>console.log(data))
+            .then(data=>changeAlert(data))
             .catch(error=>console.error(error));
+    }
+
+    function changeAlert(newText){
+        alert.classList.remove("duration-[3000ms]");
+        alert.classList.remove("opacity-0");
+        alert.classList.remove("-z-10");
+        alert.classList.add("z-20");
+        alertTxt.innerHTML=newText;
+        setTimeout(()=>{alert.classList.add("duration-[3000ms]");alert.classList.add("opacity-0");setTimeout(()=>{alert.classList.remove("z-20"),alert.classList.add("-z-10")},3000)},1000);
     }
 
     if (submitBtnAddVideo!==null){

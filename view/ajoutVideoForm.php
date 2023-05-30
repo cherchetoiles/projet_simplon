@@ -11,7 +11,7 @@
     <link href="assets/style/custom.css" rel="stylesheet">
     <title>Ajout de vidéo</title>
 </head>
-<body class="font-body text-sm">
+<body class="font-body text-sm relative z-0">
     <form class="mx-auto w-full lg:w-4/5 xl:w-3/5 xl:min-w-[1200px] p-5 border-gray border border-solid flex flex-col items-center rounded-[40px] lg:px-20 mt-10 py-2" action="?action=addVideoTreat" method="POST" enctype="multipart/form-data" id="form">
         <div class="flex flex-col-reverse md:flex-row justify-between items-start w-full mt-5">
             <span class="font-bold text-4xl"> Formulaire d'ajout:</span>
@@ -86,5 +86,10 @@
         </div>
         <input type="submit" class="bg-red text-white mx-auto inline-block mt-10 px-10 py-4 rounded-lg leading-none" id="submit" value="Envoyer la demande de post">
     </form>
+    <div class="opacity-0 fixed flex bottom-1 right-1/2 translate-x-1/2 bg-white pr-10 rounded-xl border border-solid border-gray max-h-20 py-2 -z-10" id="alert">
+        <img src="assets/svg/failure_cross.svg" class="h-full"> 
+        <span id="error_text">
+        </span>
+    </div>
     <script src="assets/script/script.js"></script>
 </body>

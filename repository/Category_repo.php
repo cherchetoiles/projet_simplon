@@ -12,6 +12,9 @@ class Category_repo extends Connect_bdd{
         $req->execute();
         $catValues=$req->fetch(PDO::FETCH_NUM);
         $cat=new Category();
+        if (!$catValues){
+            return false;
+        }
         $cat->createCategoryFromRequest($catValues[0],$catValues[1],$catValues[2],$catValues[3],$catValues[4],$catValues[5]);
         return $cat;
     }
