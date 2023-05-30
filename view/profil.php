@@ -46,9 +46,9 @@
     </div>
 </div>
 
-<!-- TABLE MENU -->
-<div class="container mx-auto bg-white xl:w-9/12 lg:bg-none">
-    <div class="absolute bottom-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase border-t border-solid border-stroke lg:border-none lg:static">
+<!-- TABLE -->
+<div class="container mx-auto bg-white lg:bg-none">
+    <div class="absolute bottom-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase bg-white border-t border-solid lg:bg-none border-stroke lg:border-none lg:static">
         <!-- COURS OF CREATOR -->
         <a href="" class="flex items-center w-auto mx-4">
             <img src="assets/svg/lesson.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mes cours en ligne">
@@ -82,11 +82,11 @@
         </div>
     </div>
     <!-- TABLE FILE -->
-    <div class="w-auto mx-auto my-5">
+    <div class="flex justify-center w-auto mx-auto my-5">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
 
         <!-- LESSON CARD -->
-            <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl">
+            <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl m-4">
             <!-- LOGOWHITE+TITLE+DESC -->
                 <img src="assets/img/cover.png"  onclick="showFilter()" id="card_img" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
                 <div class="absolute hidden duration-700" id="card_filter">
