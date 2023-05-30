@@ -86,7 +86,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
 
         <!-- LESSON CARD -->
-            <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl m-4">
+            <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl mx-4">
             <!-- LOGOWHITE+TITLE+DESC -->
                 <img src="assets/img/cover.png"  onclick="showFilter()" id="card_img" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
                 <div class="absolute hidden duration-700" id="card_filter">
