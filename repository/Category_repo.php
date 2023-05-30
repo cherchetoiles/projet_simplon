@@ -22,5 +22,12 @@ class Category_repo extends Connect_bdd{
         $req->execute();
         return $req->fetchAll(PDO::FETCH_NUM);
     }
+    public function createCategoryToInsert(Category $category){
+        $sql="INSERT INTO category SET category_name=?, category_logo=?, category_description=?, theme_id=?";
+        $req=$this->bdd->prepare($sql);
+        recurBind($req,[$category->getCategoryName(),$category->getCategoryLogo(),$category->getCategoryDescription(),$category->getThemeId()],4);
+        $req->execute();
+        return true;
+    }
 }
 ?>
