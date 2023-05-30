@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DAISY UI -->
     <link href="dist/output.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
+    
+    <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="assets/style/custom.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
-    <title>Cours</title>
-</head>
-<body class="w-screen"> 
+    
+    <!-- LOTTIE -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> 
 
-    <!-- HERO -->
-    <div class="flex justify-center my-24">
-        <div class="hero-content flex-col lg:flex-row-reverse">
-            <img src="assets/lottie.png" class="hidden lg:block max-w-sm rounded-lg shadow-2xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in" />
-            <div class="flex flex-col justify-around mx-20">
-                <h1 class="text-5xl font-bold">Découvrez nos cours!</h1>
-                <p class="py-6 text-2xl">
-                    Apprenez avec les étudiants de Simplon
-                </p>
+    <title>Accueil K-ZEL Code</title>
+    
+</head>
+<body class="w-full h-auto">
+    <!-- NAVBAR -->
+<?php include('view/navbar.php') ?>
+</body>
+<div class="flex flex-col items-center justify-center gap-8 w-10/12 h-auto mx-auto text-center lg:w-9/12 md:w-full font-body ">
+    <div class="container">
+        <div class="flex flex-row justify-between text-start"> 
+            <div class="flex flex-col justify-center">
+                <h1 class="mt-20 font-sans text-[32px] w-full xl:w-4/5 font-semibold leading-9 lg:leading-snug lg:text-5xl mx-auto lg:mx-0">Découvrez nos cours</h1>
+                <p class="my-6 text-lg font-light leading-5 tracking-wide lg:text-2xl">Apprenez avec les étudiants de Simplon</p>
                 <div class="flex flex-row flex-wrap gap-4">
                     <div class="dropdown shadow-lg rounded-lg">
                         <label tabindex="0" class="btn btn-ghost m-0">
@@ -62,477 +69,234 @@
                     </div>
                 </div>
             </div>
+
+            <div class="hidden lg:block">
+                <img src="assets/lottie.png" alt="">
+            </div> 
+
         </div>
     </div>
-    <!-- HERO -->
 
-    <!-- CARDS -->
-    <div class="flex flex-wrap justify-center gap-8 p-4 max-w-7xl mx-auto my-12">
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- CONTAINER -->
+    <div class="container">
+        <div class="grid justify-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-14">
+
+            <!-- CARDS -->
+            <div class="flex flex-col gap-4 w-auto my-3 px-6 py-3 shadow-lg rounded-xl h-44">
+                <div class="flex flex-row justify-between border-b-gray">
+                    <div>
+                        <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
                         </svg>
                     </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
+                    <div>
+                        <div class="flex flex-row gap-2">
+                            <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
+                                <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
+                            </svg>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
 
+                <div>                    
+                    <p class="text-left font-body">Apprendre le HTML</p>
+                </div>
+
+                <div class="overflow-hidden">                    
+                    <p class="text-left font-body text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
                 </div>
             </div>
-        <!-- CARD -->
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <div class="flex flex-col gap-4 w-auto my-3 px-6 py-3 shadow-lg rounded-xl h-44">
+                <div class="flex flex-row justify-between border-b-gray">
+                    <div>
+                        <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
                         </svg>
                     </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
+                    <div>
+                        <div class="flex flex-row gap-2">
+                            <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
+                                <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
+                            </svg>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
 
+                <div>                    
+                    <p class="text-left font-body">Apprendre le HTML</p>
+                </div>
+
+                <div class="overflow-hidden">                    
+                    <p class="text-left font-body text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
                 </div>
             </div>
-        <!-- CARD -->
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <div class="flex flex-col gap-4 w-auto my-3 px-6 py-3 shadow-lg rounded-xl h-44">
+                <div class="flex flex-row justify-between border-b-gray">
+                    <div>
+                        <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
                         </svg>
                     </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
+                    <div>
+                        <div class="flex flex-row gap-2">
+                            <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
+                                <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
+                            </svg>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
 
+                <div>                    
+                    <p class="text-left font-body">Apprendre le HTML</p>
+                </div>
+
+                <div class="overflow-hidden">                    
+                    <p class="text-left font-body text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
                 </div>
             </div>
-        <!-- CARD -->
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <div class="flex flex-col gap-4 w-auto my-3 px-6 py-3 shadow-lg rounded-xl h-44">
+                <div class="flex flex-row justify-between border-b-gray">
+                    <div>
+                        <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
                         </svg>
                     </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
+                    <div>
+                        <div class="flex flex-row gap-2">
+                            <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
+                                <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
+                            </svg>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
 
+                <div>                    
+                    <p class="text-left font-body">Apprendre le HTML</p>
+                </div>
+
+                <div class="overflow-hidden">                    
+                    <p class="text-left font-body text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
                 </div>
             </div>
-        <!-- CARD -->
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <div class="flex flex-col gap-4 w-auto my-3 px-6 py-3 shadow-lg rounded-xl h-44">
+                <div class="flex flex-row justify-between border-b-gray">
+                    <div>
+                        <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
                         </svg>
                     </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
+                    <div>
+                        <div class="flex flex-row gap-2">
+                            <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
+                                <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
+                            </svg>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
 
+                <div>                    
+                    <p class="text-left font-body">Apprendre le HTML</p>
+                </div>
+
+                <div class="overflow-hidden">                    
+                    <p class="text-left font-body text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
                 </div>
             </div>
-        <!-- CARD -->
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <div class="flex flex-col gap-4 w-auto my-3 px-6 py-3 shadow-lg rounded-xl h-44">
+                <div class="flex flex-row justify-between border-b-gray">
+                    <div>
+                        <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
                         </svg>
                     </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
+                    <div>
+                        <div class="flex flex-row gap-2">
+                            <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
+                                <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
+                            </svg>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
 
+                <div>                    
+                    <p class="text-left font-body">Apprendre le HTML</p>
+                </div>
+
+                <div class="overflow-hidden">                    
+                    <p class="text-left font-body text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
                 </div>
             </div>
-        <!-- CARD -->
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <div class="flex flex-col gap-4 w-auto my-3 px-6 py-3 shadow-lg rounded-xl h-44">
+                <div class="flex flex-row justify-between border-b-gray">
+                    <div>
+                        <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
                         </svg>
                     </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
+                    <div>
+                        <div class="flex flex-row gap-2">
+                            <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
+                                <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
+                            </svg>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
 
+                <div>                    
+                    <p class="text-left font-body">Apprendre le HTML</p>
+                </div>
+
+                <div class="overflow-hidden">                    
+                    <p class="text-left font-body text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
                 </div>
             </div>
-        <!-- CARD -->
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
-                    </div>
-                </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
 
-                </div>
-            </div>
-        <!-- CARD -->
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
-                    </div>
-                </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
-
-                </div>
-            </div>
-        <!-- CARD -->
-        <!-- CARD -->
-            <div class="max-w-xs bg-base-100 shadow-xl rounded-xl cursor-pointer hover:scale-110 transition duration-150 ease-out hover:ease-in">
-                <figure class="px-10 pt-10 flex justify-between">
-                    <svg width="52" height="57" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.651997 1.88693L4.41631 49.2143C4.47282 49.9249 4.96232 50.531 5.65381 50.7464L25.4617 56.9182C25.812 57.0273 26.1881 57.0273 26.5384 56.9182L46.3463 50.7464C47.0378 50.531 47.5272 49.9249 47.5838 49.2143L51.3481 1.88693C51.429 0.869415 50.6108 0 49.5723 0H2.42788C1.38944 0 0.571172 0.869415 0.651997 1.88693ZM41.6947 16.571H17.162L17.9024 23.2807H41.1612L39.6396 42.409L26.0001 46.6588L12.3606 42.409L11.5657 32.4156H18.7248V37.3175L26.1914 39.2869L33.6134 37.3175L34.1892 29.5052H11.3341L9.81677 10.4271H42.1833L41.6947 16.571Z" fill="#FC490B"/>
-                    </svg>
-                    <div class="flex flex-row gap-2">
-                        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167" stroke="#1C274C" stroke-linecap="round"/>
-                            <path d="M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083" stroke="#F01E29" stroke-linecap="round"/>
-                        </svg>
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    
-                </figure>
-                <div class="flex flex-col gap-2 px-8 py-4 border-b-2 border-b-neutral-200">
-                    <h2 class="text-xl font-semibold leading-7">Apprendre le HTML</h2>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                    <div class="card-actions">
-                    </div>
-                </div>
-                <div class="flex flex-row justify-end px-4 py-2 gap-2">
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.512453 3.58069C0.368652 3.72449 0.368652 3.95593 0.368652 4.41882V7.36462C0.368652 7.8275 0.368652 8.05895 0.512453 8.20275C0.656254 8.34655 0.887697 8.34655 1.35058 8.34655C1.81347 8.34655 2.04491 8.34655 2.18872 8.20275C2.33252 8.05895 2.33252 7.8275 2.33252 7.36462V4.41882C2.33252 3.95593 2.33252 3.72449 2.18872 3.58069C2.04491 3.43689 1.81347 3.43689 1.35058 3.43689C0.887697 3.43689 0.656254 3.43689 0.512453 3.58069Z" fill="#F01E29"/>
-                            <path opacity="0.4" d="M7.38501 0.143801C7.24121 0.287601 7.24121 0.519045 7.24121 0.981932V7.36449C7.24121 7.82738 7.24121 8.05882 7.38501 8.20262C7.52881 8.34642 7.76026 8.34642 8.22314 8.34642C8.68603 8.34642 8.91747 8.34642 9.06127 8.20262C9.20507 8.05882 9.20507 7.82738 9.20507 7.36449V0.981932C9.20507 0.519045 9.20507 0.287601 9.06127 0.143801C8.91747 0 8.68603 0 8.22314 0C7.76026 0 7.52881 0 7.38501 0.143801Z" fill="black"/>
-                            <path opacity="0.7" d="M3.80518 2.45486C3.80518 1.99198 3.80518 1.76053 3.94898 1.61673C4.09278 1.47293 4.32422 1.47293 4.78711 1.47293C5.24999 1.47293 5.48144 1.47293 5.62524 1.61673C5.76904 1.76053 5.76904 1.99198 5.76904 2.45486V7.36452C5.76904 7.82741 5.76904 8.05885 5.62524 8.20265C5.48144 8.34645 5.24999 8.34645 4.78711 8.34645C4.32422 8.34645 4.09278 8.34645 3.94898 8.20265C3.80518 8.05885 3.80518 7.82741 3.80518 7.36452V2.45486Z" fill="black"/>
-                            <path d="M0.368224 9.45114C0.16486 9.45114 0 9.616 0 9.81937C0 10.0227 0.16486 10.1876 0.368224 10.1876H9.20561C9.40898 10.1876 9.57384 10.0227 9.57384 9.81937C9.57384 9.616 9.40898 9.45114 9.20561 9.45114H0.368224Z" fill="black"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="flex flex-row">
-                        <span>1</span>
-                        <svg width="22" height="22" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.3213 8.17075L10.7255 5.83393C10.8264 5.25027 10.3776 4.71643 9.78589 4.71643H6.81823C6.52411 4.71643 6.30013 4.45242 6.34774 4.16185L6.72731 1.84518C6.78897 1.46882 6.77136 1.08371 6.6756 0.714564C6.59628 0.408763 6.36034 0.163215 6.05006 0.0635362L5.96702 0.0368611C5.7795 -0.0233813 5.57482 -0.00936278 5.39802 0.0758328C5.20341 0.169608 5.06104 0.340655 5.00827 0.544082L4.73579 1.59449C4.6491 1.9287 4.52281 2.2513 4.35999 2.55612C4.12208 3.00149 3.75425 3.35793 3.37189 3.68741L2.54781 4.39755C2.31545 4.59777 2.19343 4.89763 2.21987 5.20341L2.68506 10.5834C2.72773 11.0769 3.14031 11.4557 3.63507 11.4557H6.29773C8.29176 11.4557 9.99353 10.0663 10.3213 8.17075Z" fill="black"/>
-                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M0.41119 4.28733C0.641028 4.27741 0.837885 4.45032 0.857703 4.67951L1.41422 11.1156C1.44997 11.5291 1.12432 11.8854 0.708489 11.8854C0.316809 11.8854 0.00012207 11.5676 0.00012207 11.1767V4.71652C0.00012207 4.48647 0.181352 4.29725 0.41119 4.28733Z" fill="black"/>
-                        </svg>
-                    </div>
-
-                </div>
-            </div>
-        <!-- CARD -->
+        </div>
     </div>
-    
-    <!-- CARDS -->
-
-    <?php
-    include("view/footer.php");
-    ?>
+</div>
+<!-- FOOTER -->
+<?php include('view/footer.php') ?>
 </body>
+
+</html>
