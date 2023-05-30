@@ -137,35 +137,52 @@ function addThemeTreat(){
 }
 
 function addVideo(){
+    if (isset(explode("/",$_FILES["content"]["type"])[1])){
+        $content_type=explode("/",$_FILES["content"]["type"])[1];
+    }
+    else{
+        $content_type="wrong";
+    }
+    if (isset(explode("/",$_FILES["cover"]["type"])[1])){
+        $cover_type=explode("/",$_FILES["cover"]["type"])[1];
+    }
+    else{
+        $cover_type="wrong";
+    }
     $cat_repo=new Category_repo();
+    
     $cat=$cat_repo->getCategoryByName($_POST["category"]);
-    $content_type=explode("/",$_FILES["content"]["type"])[1];
-    $cover_type=explode("/",$_FILES["cover"]["type"])[1];
-    $lesson=new Lesson();
-    $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type);
-    $isOk=$lesson->verifyLesson($_FILES['cover']["size"],$cover_type,$_FILES['content']["size"],$content_type);
+    if (!$cat){
+        $isOk="Merci de ne pas modifier les valeurs des choix de proposition.";
+    }
+    else{
+        $lesson=new Lesson();
+        $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type);
+        $isOk=$lesson->verifyLesson($_FILES['cover']["size"],$cover_type,$_FILES['content']["size"],$content_type);
+    }
     if($isOk=="True"){
         if (move_uploaded_file($_FILES["content"]["tmp_name"],"assets/lesson_videos/".$lesson->getLessonContent())){
             if (move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/lesson_miniature/".$lesson->getLessonCover())){ 
                 $repo=new Lesson_repo();
                 if($repo->insertLessonIntoBdd($lesson)){
                     $isOk="Reussite de l'upload des fichiers";
-                    $ressources=[];
                     $ressourcesRepo=new Ressource_repo();
                     $max_id=$repo->getMaxLessonId()[0];
-                    for ($i=0;$i<count($_POST['ressources-name']);$i++){
-                        $tmpRessource=new Ressource();
-                        $ressourceIsOk=$tmpRessource->createRessourceToInsert($_POST['ressources-content'][$i],$_POST['ressources-name'][$i],$max_id);
-                        if ($ressourceIsOk==""){
-                            if ($ressourcesRepo->insertRessourceIntoBdd($tmpRessource)){
-                                $isOk.="<br> $i. Upload de ressource réussi";
+                    if (isset($_POST['ressources_name'])){
+                        for ($i=0;$i<count($_POST['ressources-name']);$i++){
+                            $tmpRessource=new Ressource();
+                            $ressourceIsOk=$tmpRessource->createRessourceToInsert($_POST['ressources-content'][$i],$_POST['ressources-name'][$i],$max_id);
+                            if ($ressourceIsOk==""){
+                                if ($ressourcesRepo->insertRessourceIntoBdd($tmpRessource)){
+                                    $isOk.="<br> $i. Upload de ressource réussi";
+                                }
+                                else{
+                                    $isOk.="<br> $i. Upload de ressource échoué";
+                                }
                             }
                             else{
-                                $isOk.="<br> $i. Upload de ressource échoué";
+                                $isOk.="<br> $i.".$ressourceIsOk;
                             }
-                        }
-                        else{
-                            $isOk.="<br> $i.".$ressourceIsOk;
                         }
                     }
                     echo json_encode($isOk);
