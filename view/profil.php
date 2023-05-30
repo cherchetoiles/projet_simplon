@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <link href="dist/output.css" rel="stylesheet">
+
+    <!-- DAISY UI -->
+    <link href="dist/output.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
+    
     
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,10 +22,11 @@
     <title>Mon Profil</title>
     
 </head>
-<body class="w-full h-auto">
+<body class="flex flex-col w-full h-auto">
+<?php include('view/navbar.php')?>
 <h1 class="hidden">Profil</h1>
 <!-- HEADER -->
-<div class="container flex justify-center pt-16 pb-8 mx-auto border-b border-solid lg:w-11/12 xl:w-8/12 border-stroke">
+<div class="container flex justify-center pt-5 pb-10 mx-auto my-auto border-b border-solid lg:pt-16 lg:w-11/12 xl:w-7/12 border-stroke">
    <!-- AVATAR -->
     <div class="px-2 md:w-1/5">
         <img src="assets/img/steven.png" alt="Photo de profil de Steven" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44">
@@ -40,8 +46,10 @@
         </div>
         <div>
             <!-- UPDATE PROFIL -->
-            <a href="?action=test" class="bg-[#F5F5F5] hidden lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p>
-            </a>
+
+   
+            <a href="?action=test" class="bg-[#F5F5F5] hidden lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p></a>
+
         </div>
     </div>
 </div>
@@ -55,7 +63,7 @@
             <p class="hidden lg:flex">Mes cours</p>
         </a>
         <!-- FAVORIS -->
-        <a href="" class="flex items-center w-auto mx-4 mr-24 lg:mr-0">
+        <a href='' class="flex items-center w-auto mx-4 mr-24 lg:mr-0">
             <img src="assets/svg/fav.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
             <p class="hidden lg:flex">Mes favoris</p>
         </a>
@@ -165,3 +173,5 @@
 
 </body>
 </html>
+<?php include('view/footer.php')?>
+</body>

@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
   content: ["./view/*.{html,js,php}","./assets/script/*.js"],
   theme: {
     extend: {
@@ -14,7 +13,7 @@ module.exports = {
       },
       borderRadius: {
         '4xl':'40px',
-     },
+      },
       fontFamily:{
         'body':'"Poppins", sans-serif',
         'sans':'"Montserrat", sans-serif',

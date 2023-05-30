@@ -23,8 +23,17 @@ switch($_GET['action']){
     case "crud":
         crud();
         break;
+    case "nos_cours":
+        nos_cours();
+        break;
     case "cours":
         cours();
+        break;
+    case "addVideo":
+        formVideo();
+        break;
+    case "addVideoTreat":
+        addVideo();
         break;
     case "homepage":
         homepage();
