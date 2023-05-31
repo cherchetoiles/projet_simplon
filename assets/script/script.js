@@ -1,18 +1,20 @@
 {
 let sideBarContent = document.getElementById("crudSideBarContent");
 let sideBarOpenBtn = document.getElementById("openCrudSideBar");
-let mainContent = document.getElementById("mainCrudContent");
+let mainContent = document.getElementById("mainContent");
+let hiddenBlockElt = document.getElementById("hiddenBlockElt");
 
-let dashboardIcon = document.getElementById("dashboard");
-console.log(dashboardIcon);
+let dashboardBtn = document.getElementById("dashboard");
+let lessonBtn = document.getElementById("lesson");
+let userBtn = document.getElementById("user");
+let categoryBtn = document.getElementById("category");
+let themeBtn = document.getElementById("theme");
 
-
-
-function openSideBar(btn,sidebar,maincontent){
+function openSideBar(btn,sidebar){
     sidebar.classList.toggle("-translate-x-full");
-    maincontent.classList.toggle("md:-translate-x-[320px]")
     btn.classList.toggle("max-md:right-0");
     btn.classList.toggle("max-md:-right-6");
+    hiddenBlockElt.classList.toggle("md:w-[320px]");
     if (btn.innerText==="<"){
         btn.innerText=">"
     }
@@ -20,6 +22,20 @@ function openSideBar(btn,sidebar,maincontent){
         btn.innerText="<"
     }
 }
-sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
+
+async function changeContent(url){
+    mainContent.innerHTML="";
+    fetch("?action="+url)
+        .then(response => response.json())
+        .then(data => data.forEach(element => {
+            let newNode=document.createRange().createContextualFragment(element);
+            mainContent.appendChild(newNode);
+        }))
+}
+
+sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent)});
+lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard")});
+userBtn.addEventListener("click",()=>{changeContent("getAllUserCard")});
+
 
 }

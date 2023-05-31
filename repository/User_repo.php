@@ -5,6 +5,10 @@ class User_repo extends Connect_bdd{
         parent::__construct();
     }
 
+    function getAllUserFull(){
+        $sql="";
+    }
+
     function getUserByEmail($email){
         $req=$this->bdd->prepare('SELECT user_id,user_name,user_email,user_surname,user_password,user_statut,user_token,user_avatar,role_nom,speciality_name FROM user u NATURAL JOIN role LEFT JOIN speciality s ON s.speciality_id = u.speciality_id  WHERE user_email=?');
         $req->bindParam(1,$email);

@@ -3,9 +3,15 @@ include('config/Connect_bdd.php');
 
 include('repository/User_repo.php');
 include("repository/Theme_repo.php");
+include("repository/Lesson_repo.php");
+include("repository/Category_repo.php");
+include("repository/Ressource_repo.php");
 
 include('model/User.php');
 include("model/Theme.php");
+include("model/Lesson.php");
+include("model/Category.php");
+include("model/Ressource.php");
 
 session_start();
 
@@ -57,6 +63,66 @@ function signin_treat(){
     }
     
     
+}
+
+function getCardsForCrudLesson(){
+    $repo = new Lesson_repo();
+    $reqResult=$repo->getAllLessonFull();
+    // var_dump($reqResult);
+    $toEncode=[];
+    foreach ($reqResult as $result){
+        $showedViews=$result["lesson"]->getLessonViews();
+        $viewsSuffix="";
+        $showedLikes=$result["lesson"]->getLessonLikes();
+        $likesSuffix="";
+        if ($result["lesson"]->getLessonViews()>10000){
+            $showedViews=intdiv($result["lesson"]->getLessonViews(),1000);
+            $viewsSuffix="K";
+        }
+        if ($result["lesson"]->getLessonLikes()>10000){
+            $showedLikes=intdiv($result['lesson']->getLessonLikes(),1000);
+            $likesSuffix="K";
+        }
+        $toEncode[]="<div class='rounded-lg bg-white p-6 flex flex-col items-center gap-10'>
+                        <div class='flex flex-col items-center'>
+                            <img src='assets/img/lesson_minature/".$result["lesson"]->getLessonCover()."'>
+                        </div>
+                        <div class='flex flex-col items-center w-full'>
+                            <span class='font-semibold text-xl text-center'>".$result["lesson"]->getLessonTitle()."</span>
+                            <div class='flex items-center gap-2'>
+                                <img src='assets/img/user_avatar".$result["user"]->getUserAvatar()."' class='rounded-full w-12'>
+                                <span class='leading-none text-lg'>".$result["user"]->getUserSurname()." ".$result["user"]->getUserName()."</span>
+                            </div>
+                            <div class='flex mt-4 justify-evenly w-full'>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/eye_icon.svg'>
+                                    <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
+                                </div>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/heart_icon.svg'>
+                                    <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='flex flex-col items-center w-full gap-3'>
+                            <div class='flex justify-evenly w-full text-lg'>
+                                <span class='text-blue'>".$result["category"]->getCategoryName()."</span>
+                                <span class='italic'>Niveau ".$result["lesson"]->getLessonDifficult()."</span>
+                            </div>
+                            <span>05/04/2023</span>
+                            <div class='flex w-full justify-center gap-4'>
+                                <img src='assets/svg/edit_icon.svg' data-id='".$result["user"]->getUserId()."'>
+                                <img src='assets/svg/trash_icon.svg' data-id='".$result["user"]->getUserId()."'>
+                            </div>
+                        </div>
+                    </div>";
+    }
+    echo json_encode($toEncode);
+}
+
+function getCardsForCrudUser(){
+    $repo = new User_repo();
+    $reqResult=$repo->getAllUserFull();
 }
 
 function signup_treat(){

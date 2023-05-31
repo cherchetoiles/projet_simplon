@@ -26,6 +26,9 @@ switch($_GET['action']){
     case "cours":
         cours();
         break;
+    case "getAllLessonCard":
+        getCardsForCrudLesson();
+        break;
     default:
         signin();
 }
