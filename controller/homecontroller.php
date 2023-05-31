@@ -1,15 +1,18 @@
 <?php
+
 include('config/Connect_bdd.php');
 
 include('repository/User_repo.php');
 include("repository/Theme_repo.php");
 include("repository/Lesson_repo.php");
 include("repository/Category_repo.php");
+include("repository/Ressource_repo.php");
 
 include('model/User.php');
 include("model/Theme.php");
 include("model/Lesson.php");
 include("model/Category.php");
+include("model/Ressource.php");
 
 define('KB', 1024);
 define('MB', 1048576);
@@ -41,9 +44,15 @@ function addTheme(){
 
 }
 
+function nos_cours(){
+    include("view/nos_cours.php");
+}
 function cours(){
     include("view/cours.php");
-    include("view/footer.php");
+}
+
+function lesson(){
+    require('view/lesson.php');
 }
 
 function formVideo(){
@@ -163,29 +172,55 @@ function addCategoryTreat(){
     }
 
 function addVideo(){
-    var_dump($_FILES,$_POST);
-    exit;
+    if (isset(explode("/",$_FILES["content"]["type"])[1])){
+        $content_type=explode("/",$_FILES["content"]["type"])[1];
+    }
+    else{
+        $content_type="wrong";
+    }
+    if (isset(explode("/",$_FILES["cover"]["type"])[1])){
+        $cover_type=explode("/",$_FILES["cover"]["type"])[1];
+    }
+    else{
+        $cover_type="wrong";
+    }
     $cat_repo=new Category_repo();
+    
     $cat=$cat_repo->getCategoryByName($_POST["category"]);
-    $content_type=explode("/",$_FILES["content"]["type"])[1];
-    $cover_type=explode("/",$_FILES["cover"]["type"])[1];
-    $lesson=new Lesson();
-    $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type);
-    $isOk=$lesson->verifyLesson($_FILES['cover']["size"],$cover_type,$_FILES['content']["size"],$content_type);
+    if (!$cat){
+        $isOk="Merci de ne pas modifier les valeurs des choix de proposition.";
+    }
+    else{
+        $lesson=new Lesson();
+        $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type);
+        $isOk=$lesson->verifyLesson($_FILES['cover']["size"],$cover_type,$_FILES['content']["size"],$content_type);
+    }
     if($isOk=="True"){
         if (move_uploaded_file($_FILES["content"]["tmp_name"],"assets/lesson_videos/".$lesson->getLessonContent())){
             if (move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/lesson_miniature/".$lesson->getLessonCover())){ 
                 $repo=new Lesson_repo();
                 if($repo->insertLessonIntoBdd($lesson)){
-                    echo json_encode("success");
-                    // $maxId=$repo->getMaxLessonId();
-                    // $ressources=[];
-                    // for ($i=0;$i<count($_POST['ressources_name']);$i++){
-                    //     $tmpRessource=new Ressource();
-                    //     $tmpRessource->createRessourceToInsert($_POST['ressources_name'],$maxId);
-                    //     $ressources.array_push([$tmpRessource]);
-                    // }
-                    // #fonction qui insert l'array
+                    $isOk="Reussite de l'upload des fichiers";
+                    $ressourcesRepo=new Ressource_repo();
+                    $max_id=$repo->getMaxLessonId()[0];
+                    if (isset($_POST['ressources_name'])){
+                        for ($i=0;$i<count($_POST['ressources-name']);$i++){
+                            $tmpRessource=new Ressource();
+                            $ressourceIsOk=$tmpRessource->createRessourceToInsert($_POST['ressources-content'][$i],$_POST['ressources-name'][$i],$max_id);
+                            if ($ressourceIsOk==""){
+                                if ($ressourcesRepo->insertRessourceIntoBdd($tmpRessource)){
+                                    $isOk.="<br> $i. Upload de ressource réussi";
+                                }
+                                else{
+                                    $isOk.="<br> $i. Upload de ressource échoué";
+                                }
+                            }
+                            else{
+                                $isOk.="<br> $i.".$ressourceIsOk;
+                            }
+                        }
+                    }
+                    echo json_encode($isOk);
                 }
                 else{
                     unlink("assets/lesson_videos/".$lesson->getLessonContent());
@@ -194,11 +229,12 @@ function addVideo(){
                 }
             }
             else{
-
+                unlink("assets/lesson_videos/".$lesson->getLessonContent());
+                echo json_encode("échec de l'upload de la miniature");
             }
         }
         else{
-            echo json_encode("failedupload");
+            echo json_encode("échec de l'upload de la vidéo");
         }
     }
     else{

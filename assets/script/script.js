@@ -66,7 +66,7 @@ function appendTableRow(table){
     input1.placeholder="ici";
     input1.classList.add("w-full","ressources-name");
     input2.type="text";
-    input2.name="ressources-link[]";
+    input2.name="ressources-content[]";
     input2.placeholder="et la";
     input2.classList.add("w-full","ressources-link");
 
@@ -78,29 +78,6 @@ function appendTableRow(table){
     table.appendChild(tr);
     }
 
-// function dragShow(dropElement){
-//     dropElement.classList.add("bg-gray");
-//     console.log(DragEvent);
-// }
-
-// function dragHide(dropElement){
-//     dropElement.classList.remove("bg-gray");
-// }
-
-// function giveDropEventListener(dropElement,dropContainer){
-//     dropElement.addEventListener("dragenter", ()=>{dragShow(dropContainer);});
-//     dropElement.addEventListener("dragleave", ()=>{dragHide(dropContainer);});
-
-// }
-
-// function onDrop(event) {
-//     const data = event.dataTransfer.getData("text/plain");
-//     event.target.textContent = data;
-//     event.preventDefault();
-//   }
-
-// dropCover.addEventListener("drop", ()=>{onDrop(dropCover);});
-
 if (textarea!==null){
 textarea.addEventListener("keyup",() => {compteur();})
     }
@@ -108,25 +85,31 @@ textarea.addEventListener("keyup",() => {compteur();})
 if (tableAddRow!==null){
     tableAddRow.addEventListener("click",() => {appendTableRow(table);})
     }
-
-// if (dropCover!==null){
-//     giveDropEventListener(dropCover,dropCoverContainer)
-// }
 }
 {
-    // const submitBtn = document.getElementById("submit");
-    // const form = document.getElementById("form");
-    // const test = document.getElementById("test");
+    const submitBtnAddVideo = document.getElementById("submit");
+    const formAddVideo = document.getElementById("form");
+    const alert = document.getElementById("alert");
+    const alertTxt=document.getElementById("error_text")
 
-    // function submit(){
-    //     let formData = new FormData(form,submitBtn);
-    //     fetch("?action=addVideoTreat",{method: 'POST',body:formData})
-    //         .then((response)=>response.json())
-    //         .then((data)=>console.log(data))
-    //         .catch(error=>console.error(error));
-    // }
+    function submit(){
+        let formData = new FormData(formAddVideo,submitBtnAddVideo);
+        fetch("?action=addVideoTreat",{method: 'POST',body:formData})
+            .then(response=>response.json())
+            .then(data=>changeAlert(data))
+            .catch(error=>console.error(error));
+    }
 
-    // if (submitBtn!==null){
-    //     submitBtn.addEventListener("click",function(click){click.preventDefault();submit()})
-    // }
+    function changeAlert(newText){
+        alert.classList.remove("duration-[3000ms]");
+        alert.classList.remove("opacity-0");
+        alert.classList.remove("-z-10");
+        alert.classList.add("z-20");
+        alertTxt.innerHTML=newText;
+        setTimeout(()=>{alert.classList.add("duration-[3000ms]");alert.classList.add("opacity-0");setTimeout(()=>{alert.classList.remove("z-20"),alert.classList.add("-z-10")},3000)},1000);
+    }
+
+    if (submitBtnAddVideo!==null){
+        submitBtnAddVideo.addEventListener("click",function(click){click.preventDefault();submit()})
+    }
 }
