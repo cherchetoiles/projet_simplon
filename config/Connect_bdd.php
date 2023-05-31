@@ -5,8 +5,8 @@ class Connect_bdd{
 
     public function __construct(){
         $user = "root";
-        $pass="root"
-        $pass = "";
+        $pass="root";
+        // $pass = "";
 
         $host = "localhost";
         $db = "simplonsite";
