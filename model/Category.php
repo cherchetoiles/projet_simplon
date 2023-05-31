@@ -37,7 +37,27 @@ class Category
         $this->category_name=$category_name;
         $this->category_logo=$category_logo;
         $this->category_description=$category_description;
-        $this->theme_id;
+        $this->theme_id=$theme_id;
     }
+    public function verifyCategory($file_size, $file_type) {
+        if (empty($this->category_name) || strlen($this->category_name) > 63) {
+            return "wrong_name";
+        }
+        if (empty($this->category_logo)) {
+            return "no_logo";
+        }
+        if ($file_size > 300000) {
+            return "tooFatLogo";
+        }
+        if ($file_type != "webp") {
+            return "wrongFormat";
+        }
+        return "True";
+    }
+    public function setCategoryId(){
+        $newName=explode(".",$this->category_logo);
+        $newName=uniqid().".".end($newName);
+        $this->category_logo=$newName;
+    }    
 }
 ?>

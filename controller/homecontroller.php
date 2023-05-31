@@ -133,6 +133,34 @@ function addThemeTreat(){
         header("location:index.php?action=addTheme&error=".$isOk);
     }
 }
+function addCategory(){
+    include('view/addCategory.php');
+}
+function addCategoryTreat(){
+   var_dump($_FILES,$_POST);
+        
+        $file_type = explode("/", $_FILES["category_logo"]["type"])[1];
+        $category_logo = $_FILES["category_logo"]["name"];
+        $category = new Category();
+        $category->createCategoryToInsert($_POST["category_name"], $category_logo, $_POST["category_description"], $_POST["theme_id"]);
+        $isOk = $category->verifyCategory($_FILES["category_logo"]["size"], $file_type);
+        if ($isOk == "True") {
+            $category->setCategoryId();
+            if (move_uploaded_file($_FILES["category_logo"]["tmp_name"], "assets/img/category_logo/" . $category_logo)) {
+                $repo = new Category_repo();
+                if ($repo->insertCategoryIntoBdd($category)) {
+                    header("location: index.php?action=addCategory");
+                } else {
+                    unlink("assets/img/category_logo/" . $category_logo);
+                    header("location: index.php?action=addCategory&error=failedinsert");
+                }
+            } else {
+                header("location: index.php?action=addCategory&error=failedupload");
+            }
+        } else {
+            header("location: index.php?action=addCategory&error=" . $isOk);
+        }
+    }
 
 function addVideo(){
     var_dump($_FILES,$_POST);

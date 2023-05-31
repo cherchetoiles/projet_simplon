@@ -20,6 +20,12 @@ switch($_GET['action']){
     case "addTheme":
         addTheme();
         break;
+    case "addCategoryTreat":
+        addCategoryTreat();
+            break;
+    case "addCategory":
+        addCategory();
+            break;
     case "crud":
         crud();
         break;

@@ -29,5 +29,24 @@ class Category_repo extends Connect_bdd{
         $req->execute();
         return true;
     }
+    public function insertCategoryIntoBdd($category) {
+        $sql = "INSERT INTO category SET ";
+        $sql .= "category_name=?";
+        $sql .= ", category_logo=?";
+        $sql .= ", category_description=?";
+        $sql .= ", theme_id=?";
+        $req = $this->bdd->prepare($sql);
+        $categoryName = $category->getCategoryName();
+        $categoryLogo = $category->getCategoryLogo();
+        $categoryDescription = $category->getCategoryDescription();
+        $themeId = $category->getThemeId();
+        $req->bindParam(1, $categoryName);
+        $req->bindParam(2, $categoryLogo);
+        $req->bindParam(3, $categoryDescription);
+        $req->bindParam(4, $themeId);
+        $req->execute();
+        return true;
+    }
+    
 }
 ?>
