@@ -9,11 +9,11 @@
     <title>Dashboard</title>
 </head>
 <body class="bg-gray-bg h-full overflow-x-hidden">
-    <div class="w-screen flex overflow-hidden">
+    <div class="w-full flex overflow-hidden">
         <nav class="flex flex-col w-full left-0 z-10 -translate-x-full top-0 transition-transform fixed p-8 md:max-w-xs bg-white h-screen font-body" id="crudSideBarContent">
             <img src="assets/svg/logo.svg">
             <div class="mt-20 flex flex-col mx-auto text-xl">
-                <div class="flex items-center text-gray-dark gap-3 py-3">
+                <div class="flex items-center text-gray-dark gap-3 py-3" id="dashboard">
                     <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8">
                         <path d="M7.875 6.75C7.875 7.37132 7.37132 7.875 6.75 7.875C6.12868 7.875 5.625 7.37132 5.625 6.75C5.625 6.12868 6.12868 5.625 6.75 5.625C7.37132 5.625 7.875 6.12868 7.875 6.75Z" fill="#858585"/>
                         <path d="M11.25 6.75C11.25 7.37132 10.7463 7.875 10.125 7.875C9.50368 7.875 9 7.37132 9 6.75C9 6.12868 9.50368 5.625 10.125 5.625C10.7463 5.625 11.25 6.12868 11.25 6.75Z" fill="#858585"/>
@@ -24,7 +24,7 @@
                     </svg>
                     <span class="leading-[0px]">Tableau de bord</span>
                 </div>
-                <div class="flex items-center text-gray-dark bg-gray bg-opacity-10 gap-3 py-3">
+                <div class="flex items-center text-gray-dark bg-gray bg-opacity-10 gap-3 py-3" id="lesson">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8">
                         <path d="M14.7207 12.5L20.7577 14.1176" stroke="red" stroke-linecap="round"/>
                         <path d="M13.75 16.1221L17.3722 17.0927" stroke="red" stroke-linecap="round"/>
@@ -33,7 +33,7 @@
                     </svg>
                     <span class="leading-[0px]">Cours</span>
                 </div>
-                <div class="flex items-center text-gray-dark gap-3 py-3">
+                <div class="flex items-center text-gray-dark gap-3 py-3" id="user">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8">
                         <circle cx="9" cy="6" r="4" stroke="#858585"/>
                         <path d="M15 9C16.6569 9 18 7.65685 18 6C18 4.34315 16.6569 3 15 3" stroke="#858585" stroke-linecap="round"/>
@@ -42,14 +42,14 @@
                     </svg>
                     <span class="leading-[0px]">Utilisateurs</span>
                 </div>
-                <div class="flex items-center text-gray-dark gap-3 py-3">
+                <div class="flex items-center text-gray-dark gap-3 py-3" id="category">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8">
                         <path d="M27.5 14.7474C27.5 11.4569 27.5 9.81169 26.5382 8.74229C26.4497 8.64392 26.3561 8.5503 26.2577 8.46183C25.1883 7.5 23.5431 7.5 20.2526 7.5H19.7855C18.3434 7.5 17.6224 7.5 16.9504 7.30847C16.5813 7.20326 16.2255 7.05589 15.8901 6.86928C15.2796 6.52959 14.7697 6.01972 13.75 5L13.0622 4.31218C12.7204 3.97041 12.5495 3.79952 12.3699 3.65064C11.5957 3.00879 10.6458 2.61536 9.64446 2.52172C9.4122 2.5 9.17053 2.5 8.68718 2.5C7.58402 2.5 7.03244 2.5 6.57298 2.58669C4.55039 2.9683 2.9683 4.55039 2.58669 6.57298C2.5 7.03244 2.5 7.58402 2.5 8.68718M27.4891 20C27.4443 23.0995 27.2144 24.8567 26.0355 26.0355C24.5711 27.5 22.214 27.5 17.5 27.5H12.5C7.78595 27.5 5.42893 27.5 3.96447 26.0355C2.5 24.5711 2.5 22.214 2.5 17.5V13.75" stroke="#858585" stroke-linecap="round"/>
                         <path d="M12.5 16.875L14.1667 18.75L17.5 15" stroke="#858585" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <span class="leading-[0px]">Catégorie</span>
                 </div>
-                <div class="flex items-center text-gray-dark gap-3 py-3">
+                <div class="flex items-center text-gray-dark gap-3 py-3" id="theme">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="15" cy="20" r="3.75" stroke="#858585"/>
                         <path d="M15 24.075L12.1714 26.7868C11.7663 27.1752 11.5638 27.3694 11.3923 27.4366C11.0014 27.5897 10.5678 27.4586 10.3622 27.1253C10.272 26.9789 10.2439 26.7151 10.1876 26.1873C10.1559 25.8893 10.14 25.7403 10.0918 25.6155C9.98393 25.3361 9.75724 25.1188 9.46583 25.0153C9.33566 24.9691 9.18024 24.9539 8.86942 24.9235C8.3189 24.8696 8.04364 24.8426 7.89104 24.7561C7.54329 24.559 7.40661 24.1433 7.56632 23.7686C7.63641 23.6042 7.83895 23.41 8.24404 23.0216L10.0918 21.2501L11.3923 19.9497" stroke="#858585"/>
@@ -65,11 +65,15 @@
                 >
             </div>
         </nav>
-        <div class="md:-translate-x-[320px] relative z-0 transition-transform flex flex-col items-center w-[100vw] font-body" id="mainCrudContent">
-            <div>
-                <div class="flex flex-col text-red mx-auto items-center gap-2">
-                    Retour à la page d'accueil >
-                    <div class="flex text-4xl text-black font-semibold items-center w-fit gap-2">
+        <div class="inline-block h-screen transition-[padding]" id="hiddenBlockElt">
+        </div>
+        <div class="relative z-0 transition-all flex flex-col items-center font-body grow lg:ml-5" id="mainCrudContent">
+            <div class="w-full">
+                <div class="flex flex-col text-red mx-auto lg:mx-0 items-center gap-2">
+                    <span class="lg:flex lg:justify-end lg:w-full">
+                        Retour à la page d'accueil >
+                    </span>
+                    <div class="flex text-4xl text-black font-semibold items-center w-fit gap-2 lg:w-full lg:justify-start">
                         <svg width="40" height="40" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.7207 12.5L20.7577 14.1176" stroke="red" stroke-linecap="round"/>
                             <path d="M13.75 16.1221L17.3722 17.0927" stroke="red" stroke-linecap="round"/>
@@ -81,70 +85,31 @@
                         </div>
                     </div>
                 </div> 
-                <div class="flex flex-col items-center mt-5">
-                    <div>
+                <div class="flex flex-col items-center mt-5 lg:flex-row lg:justify-between lg:mx-5">
+                    <div class="lg:flex lg:gap-2">
                         <div class="relative">
                             <input type="text" class="rounded-lg bg-white pl-6 py-3 w-[260px] inline-block" placeholder="Rechercher un article">
                             <img src="assets/svg/searchbar-icon.svg" class="absolute right-5 top-3">
                         </div>
                         <label class="relative w-full">
-                            <select class="mt-5 py-3 rounded-lg pl-6 w-full">
+                            <select class="mt-5 py-3 rounded-lg pl-6 w-full lg:mt-0 lg:pr-10">
                                 <option>Le plus récent</option>
                             </select>
-                            <div class="absolute right-px p-2 top-[-2px] bg-white">
+                            <div class="absolute right-px p-2 top-[-2px] bg-white lg:top-4">
                             </div>
-                            <div class="absolute right-1 p-4 top-[-10px]">
+                            <div class="absolute right-1 p-4 top-[-10px] lg:top-[3px] lg:-right-2">
                                 <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18 1L9.5 9L1 1" stroke="#F01E29" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                         </label>
                     </div>
-                    <button class="bg-red text-white py-2 px-6 rounded-lg mt-5 inline-block font-semibold text-lg">
+                    <button class="bg-red text-white py-2 px-6 rounded-lg mt-5 inline-block font-semibold text-lg lg:mt-0 lg:whitespace-nowrap">
                         Ajouter un cours
                     </button>
                 </div>
             </div>
-            
-            <div class="grid grid-cols-1 mt-5 gap-5">
-                <!-- card -->
-                <div class="rounded-lg bg-white p-6 flex flex-col items-center gap-10">
-                    <div class="flex flex-col items-center">
-                        <span class="text-lg">
-                            1
-                        </span>
-                        <img src="assets/img/lesson_minature/minia_test.webp">
-                    </div>
-                    <div>
-                        <span class="font-semibold text-xl">Les bases de l'HTML</span>
-                        <div class="flex items-center gap-2">
-                            <img src="assets/img/user_avatar/avatar_test.jpg" class="rounded-full w-12">
-                            <span class="leading-none text-lg">Louis Gueret</span>
-                        </div>
-                        <div class="flex mt-4 justify-evenly ">
-                            <div class="flex gap-1 items-center">
-                                <img src="assets/svg/eye_icon.svg">
-                                <span class="italic leading-none">360K</span>
-                            </div>
-                            <div class="flex gap-1 items-center">
-                                <img src="assets/svg/heart_icon.svg">
-                                <span class="italic leading-none">120K</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center w-full gap-3">
-                        <div class="flex justify-evenly w-full text-lg">
-                            <span class="text-blue">HTML</span>
-                            <span class="italic">Niveau 1</span>
-                        </div>
-                        <span>05/04/2023</span>
-                        <div class="flex w-full justify-center gap-4">
-                            <img src="assets/svg/edit_icon.svg">
-                            <img src="assets/svg/trash_icon.svg">
-                        </div>
-                    </div>
-                </div>
-            <!-- fin -->
+            <div class="grid grid-cols-1 mt-5 gap-5" id="mainContent">
             </div>
         </div>
     </div>

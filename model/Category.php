@@ -10,6 +10,26 @@ class Category
     private array $categoriesNeeded;
     private int $theme_id;
 
+
+    public function getCategoryName(){
+        return $this->category_name;
+    }
+
+    public function createCategoryFromQuery($query){
+        if (isset($query["category_id"])){
+            $this->category_id=$query["category_id"];
+        }
+        if (isset($query["category_name"])){
+            $this->category_name=$query["category_name"];
+        }
+        if (isset($query["category_logo"])){
+            $this->category_logo=$query["category_logo"];
+        }
+        if (isset($query["theme_id"])){
+            $this->theme_id=$query["theme_id"];
+        }
+    }
+
     public function createCategoryFromRequest($category_id,$category_name,$category_logo,$category_description,$theme_id){
         $this->category_id=$category_id;
         $this->category_name=$category_name;
