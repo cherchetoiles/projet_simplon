@@ -39,10 +39,6 @@ class User
         return $this->user_avatar;
     }
 
-    public function getUserId(){
-        return $this->user_id;
-    }
-
     public function getUserViews(){
         return $this->user_views;
     }

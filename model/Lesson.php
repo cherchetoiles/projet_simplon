@@ -9,7 +9,6 @@ class Lesson
     private string $lesson_attract_title;
     private string $lesson_date;
     private string $lesson_content;
-    private int $lesson_difficult;
     private array $lesson_ressources;
     private int $lesson_views;
     private int $lesson_likes;
@@ -117,14 +116,6 @@ class Lesson
         return $this->category_id;
     }
 
-    public function getLessonViews(){
-        return $this->lesson_views;
-    }
-
-    public function getLessonLikes(){
-        return $this->lesson_likes;
-    }
-
     public function verifyLesson($cover_size,$cover_type,$video_size,$video_type){
         if (strlen($this->lesson_title)>63){
             return "titre trop long";
@@ -135,7 +126,7 @@ class Lesson
         if (strlen($this->lesson_attract_title)>127){
             return "titre de mise en avant trop long";
         }
-        if (!in_array($this->lesson_level,[1,2,3,4,5,6,7,8,9])){
+        if (!in_array($this->lesson_difficult,[1,2,3,4,5,6,7,8,9])){
             return "Merci de ne pas modifier les valeurs des choix de proposition";
         }
         if ($cover_type=="wrong"){

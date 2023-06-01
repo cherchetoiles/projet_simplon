@@ -143,7 +143,7 @@
                 </div>
             </div>
             <div class="px-8 collapse-content">
-                <p>hello</p>
+                <a href="?admin=crud">Tableu de bord</a>
             </div>
             </div>
 

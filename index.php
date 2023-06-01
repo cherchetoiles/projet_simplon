@@ -44,9 +44,13 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
                         case 'addVideoTreat':
                             addVideo();
                             break; 
-                        }   
-                }
+                        
+                        default:
+                            homepage();
+                        }  
+                } else{
                 homepage();
+                }
                 break;     
         }
     
