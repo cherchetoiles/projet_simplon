@@ -19,6 +19,21 @@ class User_repo extends Connect_bdd{
         $req->execute();
         $user=$req->fetch();
     }
+
+    function getLessonsByUser($user){
+        $req='SELECT * FROM lesson l JOIN category cat ON cat.category_id=l.category_id WHERE user_id =? ';
+        $req = $this->bdd->prepare($req);
+        $req->execute([$user]);
+        $result = $req->fetchAll();
+        $lessons = [];
+        foreach($result as $queryresult){
+            $lesson = new Lesson();
+            $lesson->createLessonFromQuery($queryresult);
+            $lessons[] = $lesson;
+        } 
+
+        return $lessons;
+    }
 }
 
 ?>

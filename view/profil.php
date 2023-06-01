@@ -6,61 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <link href="dist/output.css" rel="stylesheet">
+
     
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- JS CARD -->
+    <script src="assets/script/card_creator.js"></script>
 
 
     <title>Mon Profil</title>
     
 </head>
 <body class="w-full h-auto">
+<?php 
+    $user=$_SESSION['user'];    
+?>
 <h1 class="hidden">Profil</h1>
 <!-- HEADER -->
-<div class="container flex justify-center pt-16 pb-8 mx-auto border-b border-solid lg:w-11/12 xl:w-8/12 border-stroke">
+<div class="container flex justify-center pt-8 pb-8 mx-auto border-b border-solid lg:w-11/12 xl:w-8/12 border-stroke">
    <!-- AVATAR -->
     <div class="px-2 md:w-1/5">
-        <img src="assets/img/steven.png" alt="Photo de profil de Steven" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44">
+        <img src="assets/img/steven.png" alt="Photo de profil de <?= $user->getUserSurname()?>" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44">
     </div>
     <div class="flex flex-row justify-between sm:mt-2 lg:w-4/5">
         <div>
             <div class="flex flex-col justify-center">
                 <!-- NAME AND JOB -->
-                <h2 class="font-body text-xl md:text-[28px] font-medium tracking-wide">Steven Blombou</h2>                
-                <p class="text-lg font-normal tracking-wide md:pt-1 md:text-xl font-body">Apprenti Développeur Web</p>
+                <h2 class="font-body text-xl md:text-[28px] font-medium tracking-wide"><?= $user->getUserSurname()?> <?= $user->getUserName()?></h2>                
+                <p class="text-lg font-normal tracking-wide md:pt-1 md:text-xl font-body"><?= $user->getSpeName()?></p>
             </div>
             <div class="flex justify-between mt-1 md:mt-9">
                 <!-- LIKE AND POST NUMBRE -->
-                <p class="tracking-wide lg:text-lg"><strong>12 </strong>publications</p>
-                <p class="tracking-wide lg:text-lg"><strong>47 </strong>j'aime</p>
+                <p class="text-sm tracking-wide lg:text-lg"><strong>12 </strong>publications</p>
+                <p class="ml-1 text-sm tracking-wide lg:text-lg"><strong>47 </strong>j'aime</p>
             </div>
         </div>
         <div>
             <!-- UPDATE PROFIL -->
-            <a href="?action=test" class="bg-[#F5F5F5] hidden lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p>
+            <a href="?action=test" class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p>
             </a>
         </div>
     </div>
 </div>
 
 <!-- TABLE -->
-<div class="container mx-auto bg-white lg:bg-none">
+<div class="mx-auto bg-white lg:bg-none">
     <div class="absolute bottom-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase bg-white border-t border-solid lg:bg-none border-stroke lg:border-none lg:static">
-        <!-- COURS OF CREATOR -->
-        <a id="tabBtn1" class="flex items-center w-auto mx-4">
+        <div class="flex mx-auto lg:w-2/5 xl:w-1/4 justify-evenly">
+    <!-- COURS OF CREATOR -->
+        <a id="tabBtn1" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
             <img src="assets/svg/lesson.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mes cours en ligne">
             <p class="hidden lg:flex">Mes cours</p>
         </a>
         <!-- FAVORIS -->
-        <a id="tabBtn2" class="flex items-center w-auto mx-4 mr-24 lg:mr-0">
-            <img src="assets/svg/fav.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
+        <a id="tabBtn2" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0 lg:mr-0">
+            <img src="assets/svg/fav.svg" class="w-6 h-6 mr-20 lg:mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
             <p class="hidden lg:flex">Mes favoris</p>
         </a>
         <!-- HISTORIQUE -->
-        <a id="tabBtn3" class="flex items-center w-auto mx-4 ">
+        <a id="tabBtn3" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
             <img src="assets/svg/time.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mon historique">
             <p class="hidden lg:flex">Mon historique</p>
         </a>
@@ -68,6 +75,7 @@
         <a href="?action=test" class="flex items-center w-auto mx-4 lg:hidden">
             <img src="assets/svg/parm.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour changer mes données">
         </a>
+</div>
         <!-- CREATE FOR CREATOR -->
         <div class="absolute bottom-0 flex justify-center lg:bottom-auto lg:translate-y-[-31%] lg:right-24 xl:right-80 ">   
             <a href="?action=addVideo" class="flex items-center justify-center rounded-full lg:w-auto w-14 h-14 bg-red lg:bg-transparent">
@@ -86,7 +94,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
 
             <div id="content_1" class="flex">
+            <?php foreach($lessons as $lesson){  ?>
             <!-- LESSON CARD -->
+            
                 <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl my-3 mx-4">
                 <!-- LOGOWHITE+TITLE+DESC -->
                     <img src="assets/img/cover.png"  onclick="showFilter()" id="card_img" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
@@ -101,7 +111,7 @@
                             </a>
                         </div>
                             <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
-                            <h2 class="mt-2 text-sm font-semibold filter_content">Apprendre le HTML</h2>
+                            <h2 class="mt-2 text-sm font-semibold filter_content"><?=$lesson->getLessonTitle()?></h2>
                             <p class="mt-1 mb-2 text-[10px] leanding-8 filter_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temuam explica ea voluptates?...</p>
                             <!-- NUMBER DIFFICULT+LIKE+VIEW -->
                             <div class="flex text-[10px] filter_content">
@@ -118,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+                <?php } ?>
             </div>
 
             <div class="hidden" id="content_2">
@@ -125,21 +136,21 @@
                 <div class="w-[323px]  bg-cover h-[182px] card_container mx-4 mt-3 rounded-xl">
                 <!-- LOGOWHITE -->
                     <div class="w-[323px] h-[182px] flex justify-end">
-                        <img src="assets/img/cover.png"  onclick="showFav()" id="img_fav" class="flex brightness-75 w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
-                            <a href="" class="absolute mt-4 mr-4">
-                                <svg id="icon_fav" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <img src="assets/img/cover.png"  onclick="showFav()" id="img_fav" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                            <a href="?action=unfav" class="absolute mt-4 mr-4">
+                                <svg id="icon_fav" class="w-9 h-9" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5" d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="white"/>
                                     <path class="animate-pulse" d="M14 12.0455V9.54876C14 7.40445 14 6.3323 13.4142 5.66615C12.8284 5 11.8856 5 10 5C8.11438 5 7.17157 5 6.58579 5.66615C6 6.3323 6 7.40445 6 9.54876V12.0455C6 13.5937 6 14.3679 6.32627 14.7062C6.48187 14.8675 6.67829 14.9688 6.88752 14.9958C7.32623 15.0522 7.83855 14.5425 8.86318 13.5229C9.3161 13.0722 9.54256 12.8469 9.80457 12.7875C9.93359 12.7583 10.0664 12.7583 10.1954 12.7875C10.4574 12.8469 10.6839 13.0722 11.1368 13.5229L11.1368 13.5229C12.1615 14.5425 12.6738 15.0522 13.1125 14.9958C13.3217 14.9688 13.5181 14.8675 13.6737 14.7062C14 14.3679 14 13.5937 14 12.0455Z" fill="#F01E29"/>
                                 </svg>
                             </a>
                     </div>
                     <div class="absolute hidden duration-700" id="card_fav">
-                        <div class="flex flex-col justify-end p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
+                        <div class="flex flex-col justify-center p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
                             <div class="absolute flex right-4 top-4 ">
                             <!-- LESSON+FAV -->
                                 <a href="" class="mr-0.5">
                                     <svg width="24" height="24"  class="duration-300 hover:stroke-blue stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5 8.5C8.90524 8.5 7.76142 8.5 11.6667 8.5M11.6667 8.5L9.16667 6M11.6667 8.5L9.16667 11"  stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path class="hover:stroke-white" d="M5 8.5C8.90524 8.5 7.76142 8.5 11.6667 8.5M11.6667 8.5L9.16667 6M11.6667 8.5L9.16667 11"  stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
                                     </svg>
                                 </a>
@@ -162,32 +173,31 @@
             </div>
 
             <div class="hidden" id="content_3">
-                <!-- Favorite CARD -->
+                <!-- history CARD -->
                 <div class="w-[323px]  bg-cover h-[182px] card_container mx-4 mt-3 rounded-xl">
                 <!-- LOGOWHITE -->
                     <div class="w-[323px] h-[182px] flex justify-end">
-                        <img src="assets/img/cover.png"  onclick="showHistory()" id="cours_cover" class="flex brightness-75 w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                        <img src="assets/img/cover.png"  onclick="showHistory()" id="cours_cover" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
                         <a href="" class="absolute mt-4 mr-4">
-                            <svg id="icon_check"  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.5" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="white"/>
-<path class="animate-pulse" d="M14.0303 6.96967C14.3232 7.26256 14.3232 7.73744 14.0303 8.03033L9.03033 13.0303C8.73744 13.3232 8.26256 13.3232 7.96967 13.0303L5.96967 11.0303C5.67678 10.7374 5.67678 10.2626 5.96967 9.96967C6.26256 9.67678 6.73744 9.67678 7.03033 9.96967L8.5 11.4393L10.7348 9.2045L12.9697 6.96967C13.2626 6.67678 13.7374 6.67678 14.0303 6.96967Z" fill="#038900"/>
-</svg>
-
+                            <svg id="icon_history"  class="w-9 h-9" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.5" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="white"/>
+                                <path class="animate-pulse" d="M14.0303 6.96967C14.3232 7.26256 14.3232 7.73744 14.0303 8.03033L9.03033 13.0303C8.73744 13.3232 8.26256 13.3232 7.96967 13.0303L5.96967 11.0303C5.67678 10.7374 5.67678 10.2626 5.96967 9.96967C6.26256 9.67678 6.73744 9.67678 7.03033 9.96967L8.5 11.4393L10.7348 9.2045L12.9697 6.96967C13.2626 6.67678 13.7374 6.67678 14.0303 6.96967Z" fill="#038900"/>
+                            </svg>
                         </a>
                     </div>
                     <div class="absolute hidden duration-700" id="card_history">
-                        <div class="flex flex-col justify-end p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
+                        <div class="flex flex-col justify-center p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
                             <div class="absolute flex right-4 top-4 ">
-                            <!-- LESSON+FAV -->
+                            <!-- LESSON+regisger -->
                                 <a href="" class="mr-0.5">
-                                    <svg width="24" height="24"  class="duration-300 hover:stroke-blue stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="w-6 h-auto duration-300 hover:stroke-blue stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 8.5C8.90524 8.5 7.76142 8.5 11.6667 8.5M11.6667 8.5L9.16667 6M11.6667 8.5L9.16667 11"  stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
                                     </svg>
                                 </a>
                                 
                                 <a href="?action=lesson">
-                                    <svg width="24" height="24" class="duration-300 hover:stroke-red stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="w-6 h-auto duration-300 hover:stroke-[#038900] stroke-white" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M11 9.63636V7.63901C11 5.92356 11 5.06584 10.5607 4.53292C10.1213 4 9.41421 4 8 4C6.58579 4 5.87868 4 5.43934 4.53292C5 5.06584 5 5.92356 5 7.63901V9.63636C5 10.875 5 11.4943 5.2447 11.7649C5.3614 11.894 5.50872 11.9751 5.66564 11.9966C5.99467 12.0418 6.37891 11.634 7.14739 10.8183C7.48707 10.4578 7.65692 10.2775 7.85343 10.23C7.95019 10.2066 8.04981 10.2066 8.14657 10.23C8.34308 10.2775 8.51293 10.4578 8.85261 10.8183C9.62109 11.634 10.0053 12.0418 10.3344 11.9966C10.4913 11.9751 10.6386 11.894 10.7553 11.7649C11 11.4943 11 10.875 11 9.63636Z" stroke="#F01E29"/>
                                         <path d="M4.5 1.93648C5.52961 1.34088 6.725 1 8 1C11.866 1 15 4.13401 15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 6.72499 1.34088 5.52961 1.93648 4.5" stroke-linecap="round"/>
                                     </svg>
@@ -202,13 +212,8 @@
                     </div>
                 </div>
             </div>
-
-
-        </div>
-        
+        </div>   
     </div>
 </div>
-<script src="assets/script/card_creator.js"></script>
-
 </body>
 </html>

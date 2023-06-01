@@ -4,6 +4,7 @@ class Category
     private int $category_id;
     private string $category_name;
     private string $category_logo;
+    private string $category_white_logo;
     private string $category_description;
     private string $category_video;
     private array $category_views;
@@ -11,9 +12,10 @@ class Category
     private array $categoriesNeeded;
     private int $theme_id;
 
-    public function createCategoryFromRequest($category_id,$category_name,$category_logo,$category_description,$theme_id,$category_video){
+    public function createCategoryFromRequest($category_id,$category_name,$category_logo,$category_white_logo,$category_description,$theme_id,$category_video){
         $this->category_id=$category_id;
         $this->category_name=$category_name;
+        $this->category_white_logo=$category_white_logo;
         $this->category_logo=$category_logo;
         $this->category_description=$category_description;
         $this->category_video=$category_video;
@@ -23,5 +25,10 @@ class Category
     public function getCategoryId(){
         return $this->category_id;
     }
+
+    public function getCategoryWhiteLogo(){
+        return $this->category_white_logo;
+    }
+    
 }
 ?>

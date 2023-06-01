@@ -128,7 +128,7 @@
                 <a href="?action=profil">Mon profil</a>
                 </p>
                 <p class="font-bold tracking-wider text-blue font-body">
-                <a href="">Se déconnecter</a>
+                <a href="?action=logout">Se déconnecter</a>
                 </p>
             </div>
             </div>

@@ -12,6 +12,9 @@ class User
     private $role_nom;
     private $speciality_name;
 
+    public function getUserId(){
+        return $this->user_id;
+    }
 
     public function getUserName(){
         return $this->user_name;
@@ -33,20 +36,50 @@ class User
         $this->user_password=password_hash($this->user_password,PASSWORD_BCRYPT);
     }
 
+    public function getRoleNom(){
+        return $this->role_nom;
+    }
+
+    public function getSpeName(){
+        return $this->speciality_name;
+    }
+
     public function connectUser(){
         $_SESSION['user']=$this;
     }
 
     public function createUserFromQuery($queryResult){
-        $this->user_id=$queryResult['user_id'];
-        $this->user_name=$queryResult['user_name'];
-        $this->user_surname=$queryResult['user_surname'];
-        $this->user_email=$queryResult['user_email'];
-        $this->user_password=$queryResult['user_password'];
-        $this->user_statut=$queryResult['user_statut'];
-        $this->user_avatar=$queryResult['user_avatar'];
-        $this->role_nom=$queryResult['role_nom'];
-        $this->speciality_name=$queryResult['speciality_name'];
+        if (isset($queryResult['user_id'])){
+            $this->user_id=$queryResult['user_id'];
+        }
+        if (isset($queryResult['user_name'])){
+            $this->user_name=$queryResult['user_name'];
+        }
+        if (isset($queryResult['user_surname'])){
+            $this->user_surname=$queryResult['user_surname'];
+        }
+        if (isset($queryResult['user_email'])){
+            $this->user_email=$queryResult['user_email'];
+        }
+
+        if (isset($queryResult['user_password'])){
+            $this->user_password=$queryResult['user_password'];
+        }
+
+        if (isset($queryResult['user_statut'])){
+            $this->user_statut=$queryResult['user_statut'];
+        }
+
+        if (isset($queryResult['user_avatar'])){
+            $this->user_avatar=$queryResult['user_avatar'];
+        }
+        if (isset($queryResult['role_nom'])){
+            $this->role_nom=$queryResult['role_nom'];
+        }
+
+        if (isset($queryResult['speciality_name'])){
+            $this->speciality_name=$queryResult['speciality_name'];
+        }
     }
 
     public function createUserToSignup($email,$name,$surname,$pass){
@@ -90,5 +123,6 @@ class User
         }
         return "True";
     }
+
 }
 ?>
