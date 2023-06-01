@@ -32,11 +32,12 @@ class Lesson_repo extends Connect_bdd{
         $req->execute();
         $result=$req->fetchAll(PDO::FETCH_ASSOC);
         return array_map("activateOnMap",$result);
+    }
 
     public function insertLessonIntoBdd(Lesson $lesson){
-        $sql="INSERT INTO lesson SET lesson_title=?, lesson_description=?, lesson_content=?, lesson_cover=?, lesson_attract_title=?, lesson_date=?, category_id=?";
+        $sql="INSERT INTO lesson SET lesson_title=?, lesson_description=?, lesson_content=?, lesson_cover=?, lesson_attract_title=?, lesson_date=?, category_id=?,user_id=?";
         $req=$this->bdd->prepare($sql);
-        recurBind($req,[$lesson->getLessonTitle(),$lesson->getLessonDescription(),$lesson->getLessonContent(),$lesson->getLessonCover(),$lesson->getLessonAttractTitle(),date("Y-m-d H:i:s"),$lesson->getLessonCategoryId()],7);
+        recurBind($req,[$lesson->getLessonTitle(),$lesson->getLessonDescription(),$lesson->getLessonContent(),$lesson->getLessonCover(),$lesson->getLessonAttractTitle(),date("Y-m-d H:i:s"),$lesson->getLessonCategoryId(),$lesson->getLessonUserId()],8);
         $req->execute();
         return true;
     }

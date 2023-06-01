@@ -34,6 +34,7 @@ switch($_GET['action']){
         break;
     case "crudUser":
         crud();
+        break;
     case "nos_cours":
         nos_cours();
         break;
@@ -45,6 +46,7 @@ switch($_GET['action']){
         break;
     case "getAllUserCard":
         getCardsForCrudUser();
+        break;
     case "addVideo":
         formVideo();
         break;

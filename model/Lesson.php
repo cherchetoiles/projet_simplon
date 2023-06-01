@@ -15,18 +15,16 @@ class Lesson
     private int $category_id;
 
     private int $user_id;
-
-    public function getLessonCover(){
-        return $this->lesson_cover;
       
-    public function createLessonToInsert($lesson_title,$lesson_description,$lesson_level,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type){
+    public function createLessonToInsert($lesson_title,$lesson_description,$lesson_level,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type,$user_id){
         $this->lesson_title = $lesson_title;
         $this->lesson_description = $lesson_description;
-        $this->lesson_level = $lesson_level;
+        $this->lesson_difficult = $lesson_level;
         $this->lesson_cover = uniqid().".".$cover_type;
         $this->lesson_content = uniqid().".".$content_type;
         $this->lesson_attract_title = $lesson_attract_title;
         $this->category_id = $category_id;
+        $this->user_id = $user_id;
     }
 
     public function getLessonContent(){
@@ -43,6 +41,10 @@ class Lesson
 
     public function getLessonViews(){
         return $this->lesson_views;
+    }
+
+    public function getLessonUserId(){
+        return $this->user_id;
     }
 
     public function getLessonDifficult(){

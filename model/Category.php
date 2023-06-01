@@ -41,9 +41,6 @@ class Category
     public function getCategoryId(){
         return $this->category_id;
     }
-    public function getCategoryName(){
-        return $this->category_name;
-    }
     public function getCategoryLogo(){
         return $this->category_logo;
     }

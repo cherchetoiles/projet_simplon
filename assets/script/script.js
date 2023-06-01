@@ -35,7 +35,6 @@ async function changeContent(dataLocation,newUrl){
         }))
 }
 
-sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent)});
 lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});
 userBtn.addEventListener("click",()=>{changeContent("getAllUserCard","crudUser")});
 
