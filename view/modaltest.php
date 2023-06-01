@@ -19,13 +19,9 @@
 
 <!-- MODAL FOR UPDATE PROFIL DATA -->
 <div class="flex flex-col-reverse w-full p-5 mx-auto border border-solid-2 lg:w-10/12 lg:h-9/12 lg:flex-row font-body lg:shadow-lg border-stroke lg:rounded-2xl ">
-    <!-- EXIT -->
-    <a href="?action=profil" class="absolute right-32 top-6">
-        <img src="assets/svg/cross.svg" alt="Croix pour fermer la fenêtre">
-    </a>
     <!-- MENU -->
     <div class="flex flex-col h-auto  lg:border-r justify-start lg:border-solid lg:w-1/4 border-[#C8C8C8] lg:my-10">
-        <div class="flex text-[10px] lg:text-xl lg:border-b lg:border-solid border-[#C8C8C8] lg:px-12 lg:flex-col text-gray-dark ">
+        <div class="flex text-[10px] mx-auto lg:text-xl lg:border-b lg:border-solid border-[#C8C8C8] lg:px-12 lg:flex-col text-gray-dark ">
             <a href="" class="hidden mt-2 font-normal lg:flex text-red">Modification du profil</a>
             <a href="" class="mr-2 font-normal lg:mr-0 lg:my-7">Politique de cookies</a>    
             <span class="font-normal lg:hidden">-</span>
@@ -88,11 +84,14 @@
                 </div>
 
                 <input type="submit" value="Enregister" class="px-8 py-2 mx-auto text-sm font-semibold text-white rounded-lg lg:py-1 lg:mt-10 lg:mx-0 lg:text-lg bg-red">
-                
+
             </form>
-        </div>
-        
+        </div> 
     </div>
+    <!-- EXIT -->
+    <a href="?action=profil" class="absolute top-4 right-4 lg:flex lg:static lg:items-start">
+        <img src="assets/svg/cross.svg" alt="Croix pour fermer la fenêtre">
+    </a>
 </div>
 </body>
 </html>

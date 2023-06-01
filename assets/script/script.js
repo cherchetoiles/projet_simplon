@@ -1,17 +1,20 @@
 {
 let sideBarContent = document.getElementById("crudSideBarContent");
 let sideBarOpenBtn = document.getElementById("openCrudSideBar");
-let mainContent = document.getElementById("mainCrudContent");
+let mainContent = document.getElementById("mainContent");
+let hiddenBlockElt = document.getElementById("hiddenBlockElt");
 
-let dashboardIcon = document.getElementById("dashboard");
+let dashboardBtn = document.getElementById("dashboard");
+let lessonBtn = document.getElementById("lesson");
+let userBtn = document.getElementById("user");
+let categoryBtn = document.getElementById("category");
+let themeBtn = document.getElementById("theme");
 
-
-
-function openSideBar(btn,sidebar,maincontent){
+function openSideBar(btn,sidebar){
     sidebar.classList.toggle("-translate-x-full");
-    maincontent.classList.toggle("md:-translate-x-[320px]")
     btn.classList.toggle("max-md:right-0");
     btn.classList.toggle("max-md:-right-6");
+    hiddenBlockElt.classList.toggle("md:pr-[320px]");
     if (btn.innerText==="<"){
         btn.innerText=">"
     }
@@ -19,6 +22,22 @@ function openSideBar(btn,sidebar,maincontent){
         btn.innerText="<"
     }
 }
+  
+async function changeContent(dataLocation,newUrl){
+    mainContent.innerHTML="";
+    let stateObj = { id: "100" };
+    window.history.pushState(100,"crud","index.php?admin=".concat(newUrl));
+    fetch("?admin="+dataLocation)
+        .then(response => response.json())
+        .then(data => data.forEach(element => {
+            let newNode=document.createRange().createContextualFragment(element);
+            mainContent.appendChild(newNode);
+        }))
+}
+
+lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});
+userBtn.addEventListener("click",()=>{changeContent("getAllUserCard","crudUser")});
+
 if (sideBarOpenBtn!==null){
 sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
 }
@@ -33,8 +52,9 @@ let table = document.getElementById("table");
 let tableAddRow = document.getElementById("add_row");
 // let dropCover = document.getElementById("dropCover");
 // let dropCoverContainer = document.getElementById("dropCoverContainer")
+if (compteurBox !=null){
 compteurBox.innerHTML='511';
-var boxValue=511-textarea.value.length;
+var boxValue=511-textarea.value.length;}
 
 
 function compteur(){
@@ -87,19 +107,29 @@ if (tableAddRow!==null){
     }
 }
 {
-    const submitBtn = document.getElementById("submit");
-    const form = document.getElementById("form");
-    const test = document.getElementById("test");
+    const submitBtnAddVideo = document.getElementById("submit");
+    const formAddVideo = document.getElementById("form");
+    const alert = document.getElementById("alert");
+    const alertTxt=document.getElementById("error_text")
 
     function submit(){
-        let formData = new FormData(form,submitBtn);
+        let formData = new FormData(formAddVideo,submitBtnAddVideo);
         fetch("?action=addVideoTreat",{method: 'POST',body:formData})
-            .then((response)=>response.json())
-            .then((data)=>console.log(data))
+            .then(response=>response.json())
+            .then(data=>changeAlert(data))
             .catch(error=>console.error(error));
     }
 
-    if (submitBtn!==null){
-        submitBtn.addEventListener("click",function(click){click.preventDefault();submit()})
+    function changeAlert(newText){
+        alert.classList.remove("duration-[3000ms]");
+        alert.classList.remove("opacity-0");
+        alert.classList.remove("-z-10");
+        alert.classList.add("z-20");
+        alertTxt.innerHTML=newText;
+        setTimeout(()=>{alert.classList.add("duration-[3000ms]");alert.classList.add("opacity-0");setTimeout(()=>{alert.classList.remove("z-20"),alert.classList.add("-z-10")},3000)},1000);
+    }
+
+    if (submitBtnAddVideo!==null){
+        submitBtnAddVideo.addEventListener("click",function(click){click.preventDefault();submit()})
     }
 }

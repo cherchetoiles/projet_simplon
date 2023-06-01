@@ -22,9 +22,13 @@ class Ressource
     public function getRessourceContent(){
         return $this->ressource_content;
     }
-
+    
     public function getRessourceName(){
         return $this->ressource_name;
+    }
+
+    public function getRessourceLessonId(){
+        return $this->lesson_id;
     }
 }
 ?>
