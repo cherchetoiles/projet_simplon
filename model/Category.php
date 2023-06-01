@@ -29,7 +29,7 @@ class Category
             $this->theme_id=$query["theme_id"];
         }
     }
-    public function createCategoryFromRequest($category_id,$category_name,$category_logo,$category_white_logo,$category_description,$theme_id,$category_video){
+    public function createCategoryFromRequest($category_id,$category_name,$category_logo,$category_white_logo,$category_description,$theme_id){
         $this->category_id=$category_id;
         $this->category_name=$category_name;
         $this->category_white_logo=$category_white_logo;

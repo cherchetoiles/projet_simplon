@@ -34,10 +34,11 @@ async function changeContent(dataLocation,newUrl){
             mainContent.appendChild(newNode);
         }))
 }
-
-lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});
+if (lessonBtn!=null){
+lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});}
+if (userBtn!=null){
 userBtn.addEventListener("click",()=>{changeContent("getAllUserCard","crudUser")});
-
+}
 if (sideBarOpenBtn!==null){
 sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
 }
