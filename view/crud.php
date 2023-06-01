@@ -65,7 +65,7 @@
                 >
             </div>
         </nav>
-        <div class="inline-block h-screen" id="hiddenBlockElt">
+        <div class="inline-block h-screen transition-[padding]" id="hiddenBlockElt">
         </div>
         <div class="relative z-0 transition-all flex flex-col items-center font-body grow lg:ml-5" id="mainCrudContent">
             <div class="w-full">
@@ -109,46 +109,7 @@
                     </button>
                 </div>
             </div>
-            
             <div class="grid grid-cols-1 mt-5 gap-5" id="mainContent">
-                <!-- card -->
-                <div class="rounded-lg bg-white p-6 flex flex-col items-center gap-10">
-                    <div class="flex flex-col items-center">
-                        <span class="text-lg">
-                            1
-                        </span>
-                        <img src="assets/img/lesson_minature/minia_test.webp">
-                    </div>
-                    <div>
-                        <span class="font-semibold text-xl">Les bases de l'HTML</span>
-                        <div class="flex items-center gap-2">
-                            <img src="assets/img/user_avatar/avatar_test.jpg" class="rounded-full w-12">
-                            <span class="leading-none text-lg">Louis Gueret</span>
-                        </div>
-                        <div class="flex mt-4 justify-evenly ">
-                            <div class="flex gap-1 items-center">
-                                <img src="assets/svg/eye_icon.svg">
-                                <span class="italic leading-none">360K</span>
-                            </div>
-                            <div class="flex gap-1 items-center">
-                                <img src="assets/svg/heart_icon.svg">
-                                <span class="italic leading-none">120K</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center w-full gap-3">
-                        <div class="flex justify-evenly w-full text-lg">
-                            <span class="text-blue">HTML</span>
-                            <span class="italic">Niveau 1</span>
-                        </div>
-                        <span>05/04/2023</span>
-                        <div class="flex w-full justify-center gap-4">
-                            <img src="assets/svg/edit_icon.svg">
-                            <img src="assets/svg/trash_icon.svg">
-                        </div>
-                    </div>
-                </div>
-                <!-- fin -->
             </div>
         </div>
     </div>

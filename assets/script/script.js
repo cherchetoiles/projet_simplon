@@ -14,7 +14,7 @@ function openSideBar(btn,sidebar){
     sidebar.classList.toggle("-translate-x-full");
     btn.classList.toggle("max-md:right-0");
     btn.classList.toggle("max-md:-right-6");
-    hiddenBlockElt.classList.toggle("md:w-[320px]");
+    hiddenBlockElt.classList.toggle("md:pr-[320px]");
     if (btn.innerText==="<"){
         btn.innerText=">"
     }
@@ -23,9 +23,11 @@ function openSideBar(btn,sidebar){
     }
 }
 
-async function changeContent(url){
+async function changeContent(dataLocation,newUrl){
     mainContent.innerHTML="";
-    fetch("?action="+url)
+    let stateObj = { id: "100" };
+    window.history.pushState(100,"crud","index.php?action=".concat(newUrl));
+    fetch("?action="+dataLocation)
         .then(response => response.json())
         .then(data => data.forEach(element => {
             let newNode=document.createRange().createContextualFragment(element);
@@ -34,8 +36,8 @@ async function changeContent(url){
 }
 
 sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent)});
-lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard")});
-userBtn.addEventListener("click",()=>{changeContent("getAllUserCard")});
+lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});
+userBtn.addEventListener("click",()=>{changeContent("getAllUserCard","crudUser")});
 
 
 }

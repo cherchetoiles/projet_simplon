@@ -90,7 +90,7 @@ function getCardsForCrudLesson(){
                         <div class='flex flex-col items-center w-full'>
                             <span class='font-semibold text-xl text-center'>".$result["lesson"]->getLessonTitle()."</span>
                             <div class='flex items-center gap-2'>
-                                <img src='assets/img/user_avatar".$result["user"]->getUserAvatar()."' class='rounded-full w-12'>
+                                <img src='assets/img/user_avatar/".$result["user"]->getUserAvatar()."' class='rounded-full w-12'>
                                 <span class='leading-none text-lg'>".$result["user"]->getUserSurname()." ".$result["user"]->getUserName()."</span>
                             </div>
                             <div class='flex mt-4 justify-evenly w-full'>
@@ -109,7 +109,7 @@ function getCardsForCrudLesson(){
                                 <span class='text-blue'>".$result["category"]->getCategoryName()."</span>
                                 <span class='italic'>Niveau ".$result["lesson"]->getLessonDifficult()."</span>
                             </div>
-                            <span>05/04/2023</span>
+                            <span>".$result["lesson"]->getLessonDate()."</span>
                             <div class='flex w-full justify-center gap-4'>
                                 <img src='assets/svg/edit_icon.svg' data-id='".$result["user"]->getUserId()."'>
                                 <img src='assets/svg/trash_icon.svg' data-id='".$result["user"]->getUserId()."'>
@@ -123,6 +123,53 @@ function getCardsForCrudLesson(){
 function getCardsForCrudUser(){
     $repo = new User_repo();
     $reqResult=$repo->getAllUserFull();
+    foreach ($reqResult as $result){
+        $showedViews=$result->getUserViews();
+        $viewsSuffix="";
+        $showedLikes=$result->getUserLikes();
+        $likesSuffix="";
+        if ($result->getUserViews()>10000){
+            $showedViews=intdiv($result->getuserViews(),1000);
+            $viewsSuffix="K";
+        }
+        if ($result->getuserLikes()>10000){
+            $showedLikes=intdiv($result->getuserLikes(),1000);
+            $likesSuffix="K";
+        }
+        $toEncode[]="<div class='rounded-lg bg-white p-6 flex flex-col items-center gap-5'>
+                        <div class='flex flex-col items-center w-3/4 rounded-full overflow-hidden mt-3'>
+                            <img src='assets/img/user_avatar/".$result->getUserAvatar()."' class='w-full'>
+                        </div>
+                        <div class='flex flex-col items-center w-full'>
+                            <span class='font-semibold text-xl text-center'>".$result->getUserSurname()." ".$result->getUserName()."</span>
+                            <div class='flex flex-col items-center gap-2'>
+                                <span class='leading-none text-lg'>".$result->getUserSpe()."</span>
+                                <span class='leading-none text-lg'>".$result->getUserEmail()."</span>
+                            </div>
+                        </div>
+                        <div class='flex flex-col items-center w-full gap-3'>
+                            <div class='flex mt-4 justify-evenly w-full'>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/eye_icon.svg'>
+                                    <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
+                                </div>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/heart_icon.svg'>
+                                    <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
+                                </div>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/nb_lesson_icon.svg'>
+                                    <span class='italic leading-none'>".$result->getUserNbLesson()."</span>
+                                </div>
+                            </div>
+                            <div class='flex w-full justify-center gap-4'>
+                                <img src='assets/svg/edit_icon.svg' data-id='".$result->getUserId()."'>
+                                <img src='assets/svg/trash_icon.svg' data-id='".$result->getUserId()."'>
+                            </div>
+                        </div>
+                    </div>";
+    }
+    echo json_encode($toEncode);
 }
 
 function signup_treat(){

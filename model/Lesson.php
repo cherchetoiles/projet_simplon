@@ -35,6 +35,10 @@ class Lesson
         return $this->lesson_difficult;
     }
 
+    public function getLessonDate(){
+        return $this->lesson_date;
+    }
+
     function createLessonFromQuery($query){
         if (isset($query['lesson_id'])){
             $this->lesson_id = $query['lesson_id'];

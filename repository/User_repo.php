@@ -6,7 +6,21 @@ class User_repo extends Connect_bdd{
     }
 
     function getAllUserFull(){
-        $sql="";
+        function activateOnMap($query){
+            $tmpUser=new User();
+            $tmpUser->createUserFromQuery($query);
+            $tmpUser->setUserTotalViews();
+            $tmpUser->setUserTotalLikes();
+            $tmpUser->setUserNbLesson();
+            return $tmpUser;
+        };
+        $sql="SELECT u.user_id,u.user_name,u.user_surname,u.user_email,u.user_avatar,s.speciality_name
+        FROM user u
+        INNER JOIN speciality s ON u.speciality_id = s.speciality_id";
+        $req=$this->bdd->prepare($sql);
+        $req->execute();
+        $reqResult=$req->fetchAll(PDO::FETCH_ASSOC);
+        return array_map("activateOnMap",$reqResult);
     }
 
     function getUserByEmail($email){

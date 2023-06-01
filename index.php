@@ -23,11 +23,20 @@ switch($_GET['action']){
     case "crud":
         crud();
         break;
+    case "crudLesson":
+        crud();
+        break;
+    case "crudUser":
+        crud();
+        break;
     case "cours":
         cours();
         break;
     case "getAllLessonCard":
         getCardsForCrudLesson();
+        break;
+    case "getAllUserCard":
+        getCardsForCrudUser();
         break;
     default:
         signin();

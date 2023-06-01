@@ -9,6 +9,9 @@ class User
     private $user_statut;
     private $user_token;
     private $user_avatar;
+    private $user_views;
+    private $user_likes;
+    private $user_nb_lesson;
     private $role_nom;
     private $speciality_name;
 
@@ -33,12 +36,28 @@ class User
         return $this->user_avatar;
     }
 
-    public function cryptUserPassword(){
-        $this->user_password=password_hash($this->user_password,PASSWORD_BCRYPT);
-    }
-
     public function getUserId(){
         return $this->user_id;
+    }
+
+    public function getUserViews(){
+        return $this->user_views;
+    }
+
+    public function getUserLikes(){
+        return $this->user_likes;
+    }
+
+    public function getUserNbLesson(){
+        return $this->user_nb_lesson;
+    }
+
+    public function getUserSpe(){
+        return $this->speciality_name;
+    }
+
+    public function cryptUserPassword(){
+        $this->user_password=password_hash($this->user_password,PASSWORD_BCRYPT);
     }
 
     public function connectUser(){
@@ -58,24 +77,77 @@ class User
         if (isset($queryResult['user_email'])){
             $this->user_email=$queryResult['user_email'];
         }
-        
         if (isset($queryResult['user_password'])){
             $this->user_password=$queryResult['user_password'];
         }
-        
         if (isset($queryResult['user_statut'])){
             $this->user_statut=$queryResult['user_statut'];
         }
-        
         if (isset($queryResult['user_avatar'])){
             $this->user_avatar=$queryResult['user_avatar'];
         }
+        if (isset($queryResult['views'])){
+            $this->user_views=$queryResult['views'];
+        }
+        if (isset($queryResult['fav'])){
+            $this->user_likes=$queryResult['fav'];
+        }
+        if (isset($queryResult['nb_lesson'])){
+            $this->user_nb_lesson=$queryResult['nb_lesson'];
+        } 
         if (isset($queryResult['role_nom'])){
             $this->role_nom=$queryResult['role_nom'];
-        }
-        
+        } 
         if (isset($queryResult['speciality_name'])){
             $this->speciality_name=$queryResult['speciality_name'];
+        }
+    }
+
+    public function setUserTotalViews(){
+        $sql="SELECT SUM(nb_vue) as total_vue FROM(SELECT COUNT(DISTINCT w.user_id) as nb_vue FROM lesson l 
+        INNER JOIN watch w ON l.lesson_id = w.lesson_id
+        WHERE l.user_id = ".$this->user_id."
+        GROUP BY l.lesson_id) as views";
+        $repo=new User_repo();
+        $req=$repo->bdd->prepare($sql);
+        $req->execute();
+        $reqResult=$req->fetch(PDO::FETCH_NUM)[0];
+        if (!$reqResult){
+            $this->user_views=0;
+        }
+        else{
+            $this->user_views=intval($reqResult);
+        }
+    }
+
+    public function setUserTotalLikes(){
+        $sql="SELECT SUM(nb_like) as total_like FROM(SELECT COUNT(DISTINCT f.user_id) as nb_like FROM lesson l 
+        INNER JOIN fav f ON l.lesson_id = f.lesson_id
+        WHERE l.user_id = ".$this->user_id."
+        GROUP BY l.lesson_id) as likes";
+        $repo=new User_repo();
+        $req=$repo->bdd->prepare($sql);
+        $req->execute();
+        $reqResult=$req->fetch(PDO::FETCH_NUM)[0];
+        if (!$reqResult){
+            $this->user_likes=0;
+        }
+        else{
+            $this->user_likes=intval($reqResult);
+        }
+    }
+
+    public function setUserNbLesson(){
+        $sql="SELECT COUNT(DISTINCT lesson_id) as nb_lesson FROM lesson WHERE user_id=".$this->user_id;
+        $repo=new User_repo();
+        $req=$repo->bdd->prepare($sql);
+        $req->execute();
+        $reqResult=$req->fetch(PDO::FETCH_NUM)[0];
+        if (!$reqResult){
+            $this->user_nb_lesson=0;
+        }
+        else{
+            $this->user_nb_lesson=intval($reqResult);
         }
     }
 
