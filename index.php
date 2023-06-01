@@ -103,6 +103,22 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
                 crud();
                 break;
 
+            case 'crudLesson':
+                crud();
+                break;
+    
+            case 'crudUser':
+                crud();
+                break;
+
+            case 'getAllLessonCard':
+                getCardsForCrudLesson();
+                break;
+
+            case 'getAllUserCard':
+                getCardsForCrudUser();
+                break;
+    
             default:
                 homepage();
                 break;
