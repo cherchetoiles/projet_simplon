@@ -4,19 +4,19 @@ class Category
     private int $category_id;
     private string $category_name;
     private string $category_logo;
+    private string $category_white_logo;
     private string $category_description;
     private array $category_views;
     private array $lessonsFromCategory;
     private array $categoriesNeeded;
     private int $theme_id;
-
-
-    public function getCategoryName(){
+  
+  public function getCategoryName(){
         return $this->category_name;
     }
 
-    public function createCategoryFromQuery($query){
-        if (isset($query["category_id"])){
+   public function createCategoryFromQuery($query){
+       if (isset($query["category_id"])){
             $this->category_id=$query["category_id"];
         }
         if (isset($query["category_name"])){
@@ -29,10 +29,10 @@ class Category
             $this->theme_id=$query["theme_id"];
         }
     }
-
-    public function createCategoryFromRequest($category_id,$category_name,$category_logo,$category_description,$theme_id){
+    public function createCategoryFromRequest($category_id,$category_name,$category_logo,$category_white_logo,$category_description,$theme_id,$category_video){
         $this->category_id=$category_id;
         $this->category_name=$category_name;
+        $this->category_white_logo=$category_white_logo;
         $this->category_logo=$category_logo;
         $this->category_description=$category_description;
         $this->theme_id=$theme_id;
@@ -41,6 +41,11 @@ class Category
     public function getCategoryId(){
         return $this->category_id;
     }
+
+    public function getCategoryWhiteLogo(){
+        return $this->category_white_logo;
+    }
+    
     public function getCategoryLogo(){
         return $this->category_logo;
     }
@@ -75,6 +80,6 @@ class Category
         $newName=explode(".",$this->category_logo);
         $newName=uniqid().".".end($newName);
         $this->category_logo=$newName;
-    }    
+    }   
 }
 ?>

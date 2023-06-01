@@ -25,7 +25,10 @@ define("MAX_VIDEO_SIZE",100*MB);
 define("VALID_IMG_TYPE", ["png","webp","jpeg"]);
 define("VALID_VIDEO_TYPE", ["mp4","webm"]);
 
-session_start();
+function logout(){
+    session_destroy();
+    header('Location: ?action=signin');
+}
 
 function modaltest() {
     require('view/modaltest.php');
@@ -64,6 +67,8 @@ function homepage(){
 }
 
 function profil(){
+    $user=new User_repo();
+    $lessons=$user->getLessonsByUser($_SESSION['user']->getUserId());
     require('view/profil.php');
 }
 

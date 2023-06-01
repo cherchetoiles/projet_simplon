@@ -9,23 +9,26 @@ class Lesson
     private string $lesson_attract_title;
     private string $lesson_date;
     private string $lesson_content;
+    private int $lesson_difficult;
     private array $lesson_ressources;
     private int $lesson_views;
     private int $lesson_likes;
     private int $category_id;
-
     private int $user_id;
       
-    public function createLessonToInsert($lesson_title,$lesson_description,$lesson_level,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type,$user_id){
+    public function createLessonToInsert($lesson_title,$lesson_description,$lesson_level,$lesson_difficult,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type,$user_id){
         $this->lesson_title = $lesson_title;
         $this->lesson_description = $lesson_description;
         $this->lesson_difficult = $lesson_level;
+        $this->lesson_difficult = $lesson_difficult;
         $this->lesson_cover = uniqid().".".$cover_type;
         $this->lesson_content = uniqid().".".$content_type;
         $this->lesson_attract_title = $lesson_attract_title;
         $this->category_id = $category_id;
         $this->user_id = $user_id;
     }
+
+   
 
     public function getLessonContent(){
         return $this->lesson_content;
@@ -114,6 +117,14 @@ class Lesson
         return $this->category_id;
     }
 
+    public function getLessonViews(){
+        return $this->lesson_views;
+    }
+
+    public function getLessonLikes(){
+        return $this->lesson_likes;
+    }
+
     public function verifyLesson($cover_size,$cover_type,$video_size,$video_type){
         if (strlen($this->lesson_title)>63){
             return "titre trop long";
@@ -148,5 +159,7 @@ class Lesson
         
         return "True";
     }
+
+
 }
 ?>

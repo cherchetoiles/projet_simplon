@@ -15,6 +15,9 @@ class User
     private $role_nom;
     private $speciality_name;
 
+    public function getUserId(){
+        return $this->user_id;
+    }
 
     public function getUserName(){
         return $this->user_name;
@@ -58,6 +61,14 @@ class User
 
     public function cryptUserPassword(){
         $this->user_password=password_hash($this->user_password,PASSWORD_BCRYPT);
+    }
+
+    public function getRoleNom(){
+        return $this->role_nom;
+    }
+
+    public function getSpeName(){
+        return $this->speciality_name;
     }
 
     public function connectUser(){
@@ -192,5 +203,6 @@ class User
         }
         return "True";
     }
+
 }
 ?>
