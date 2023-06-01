@@ -4,7 +4,7 @@ class Lesson
     private int $lesson_id;
     private string $lesson_title;
     private string $lesson_description;
-    private string $lesson_level;
+    private int $lesson_difficult;
     private string $lesson_cover;
     private string $lesson_attract_title;
     private string $lesson_date;
@@ -14,16 +14,48 @@ class Lesson
     private int $lesson_views;
     private int $lesson_likes;
     private int $category_id;
-
-    public function createLessonToInsert($lesson_title,$lesson_description,$lesson_level,$lesson_difficult,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type){
+    private int $user_id;
+      
+    public function createLessonToInsert($lesson_title,$lesson_description,$lesson_level,$lesson_difficult,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type,$user_id){
         $this->lesson_title = $lesson_title;
         $this->lesson_description = $lesson_description;
-        $this->lesson_level = $lesson_level;
+        $this->lesson_difficult = $lesson_level;
         $this->lesson_difficult = $lesson_difficult;
         $this->lesson_cover = uniqid().".".$cover_type;
         $this->lesson_content = uniqid().".".$content_type;
         $this->lesson_attract_title = $lesson_attract_title;
         $this->category_id = $category_id;
+        $this->user_id = $user_id;
+    }
+
+   
+
+    public function getLessonContent(){
+        return $this->lesson_content;
+    }
+
+    public function getLessonTitle(){
+        return $this->lesson_title;
+    }
+
+    public function getLessonLikes(){
+        return $this->lesson_likes;
+    }
+
+    public function getLessonViews(){
+        return $this->lesson_views;
+    }
+
+    public function getLessonUserId(){
+        return $this->user_id;
+    }
+
+    public function getLessonDifficult(){
+        return $this->lesson_difficult;
+    }
+
+    public function getLessonDate(){
+        return $this->lesson_date;
     }
 
     function createLessonFromQuery($query){
@@ -68,13 +100,6 @@ class Lesson
         }
     }
 
-    public function getLessonContent(){
-        return $this->lesson_content;
-    }
-
-    public function getLessonTitle(){
-        return $this->lesson_title;
-    }
 
     public function getLessonDescription(){
         return $this->lesson_description;
