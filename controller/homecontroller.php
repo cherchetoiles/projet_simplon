@@ -1,4 +1,5 @@
 <?php
+
 include('config/Connect_bdd.php');
 
 include('repository/User_repo.php');
@@ -13,7 +14,22 @@ include("model/Lesson.php");
 include("model/Category.php");
 include("model/Ressource.php");
 
+define('KB', 1024);
+define('MB', 1048576);
+define('GB', 1073741824);
+define('TB', 1099511627776);
+
+define("MAX_IMG_SIZE", 5*MB);
+define("MAX_VIDEO_SIZE",100*MB);
+
+define("VALID_IMG_TYPE", ["png","webp","jpeg"]);
+define("VALID_VIDEO_TYPE", ["mp4","webm"]);
+
 session_start();
+
+function modaltest() {
+    require('view/modaltest.php');
+}
 
 function signup(){
     require('view/signup.php');
@@ -28,9 +44,27 @@ function addTheme(){
 
 }
 
+function nos_cours(){
+    include("view/nos_cours.php");
+}
 function cours(){
     include("view/cours.php");
-    include("view/footer.php");
+}
+
+function lesson(){
+    require('view/lesson.php');
+}
+
+function formVideo(){
+    require("view/ajoutVideoForm.php");
+}
+
+function homepage(){
+    require('view/homepage.php');
+}
+
+function profil(){
+    require('view/profil.php');
 }
 
 function crud(){
@@ -52,7 +86,7 @@ function signin_treat(){
             setcookie("simplon_name",$user->getUserEmail(),time()+60*60*24*30,"/",httponly:TRUE);
             }
         $user->connectUser();
-        header("location:index.php?action=signin");    
+        header("location:index.php?action=homepage");    
         }
         else{
             header("location:index.php?action=signin&error".$isOk);
@@ -197,7 +231,7 @@ function addThemeTreat(){
     $isOk=$theme->verifyTheme($_FILES['theme_logo']["size"],$file_type);
     if($isOk=="True"){
         $theme->setThemeId();
-        if (move_uploaded_file($_FILES["theme_logo"]["tmp_name"],"assets/theme_logo/".$theme->getThemeLogo())){
+        if (move_uploaded_file($_FILES["theme_logo"]["tmp_name"],"assets/img/theme_logo/".$theme->getThemeLogo())){
             $repo=new Theme_repo();
             if($repo->insertThemeIntoBdd($theme)){
                 header("location:index.php?action=addTheme");
@@ -213,6 +247,105 @@ function addThemeTreat(){
     }
     else{
         header("location:index.php?action=addTheme&error=".$isOk);
+    }
+}
+function addCategory(){
+    include('view/addCategory.php');
+}
+function addCategoryTreat(){
+   var_dump($_FILES,$_POST);
+        
+        $file_type = explode("/", $_FILES["category_logo"]["type"])[1];
+        $category_logo = $_FILES["category_logo"]["name"];
+        $category = new Category();
+        $category->createCategoryToInsert($_POST["category_name"], $category_logo, $_POST["category_description"], $_POST["theme_id"]);
+        $isOk = $category->verifyCategory($_FILES["category_logo"]["size"], $file_type);
+        if ($isOk == "True") {
+            $category->setCategoryId();
+            if (move_uploaded_file($_FILES["category_logo"]["tmp_name"], "assets/img/category_logo/" . $category_logo)) {
+                $repo = new Category_repo();
+                if ($repo->insertCategoryIntoBdd($category)) {
+                    header("location: index.php?action=addCategory");
+                } else {
+                    unlink("assets/img/category_logo/" . $category_logo);
+                    header("location: index.php?action=addCategory&error=failedinsert");
+                }
+            } else {
+                header("location: index.php?action=addCategory&error=failedupload");
+            }
+        } else {
+            header("location: index.php?action=addCategory&error=" . $isOk);
+        }
+    }
+
+function addVideo(){
+    if (isset(explode("/",$_FILES["content"]["type"])[1])){
+        $content_type=explode("/",$_FILES["content"]["type"])[1];
+    }
+    else{
+        $content_type="wrong";
+    }
+    if (isset(explode("/",$_FILES["cover"]["type"])[1])){
+        $cover_type=explode("/",$_FILES["cover"]["type"])[1];
+    }
+    else{
+        $cover_type="wrong";
+    }
+    $cat_repo=new Category_repo();
+    
+    $cat=$cat_repo->getCategoryByName($_POST["category"]);
+    if (!$cat){
+        $isOk="Merci de ne pas modifier les valeurs des choix de proposition.";
+    }
+    else{
+        $lesson=new Lesson();
+        $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type);
+        $isOk=$lesson->verifyLesson($_FILES['cover']["size"],$cover_type,$_FILES['content']["size"],$content_type);
+    }
+    if($isOk=="True"){
+        if (move_uploaded_file($_FILES["content"]["tmp_name"],"assets/lesson_videos/".$lesson->getLessonContent())){
+            if (move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/lesson_miniature/".$lesson->getLessonCover())){ 
+                $repo=new Lesson_repo();
+                if($repo->insertLessonIntoBdd($lesson)){
+                    $isOk="Reussite de l'upload des fichiers";
+                    $ressourcesRepo=new Ressource_repo();
+                    $max_id=$repo->getMaxLessonId()[0];
+                    if (isset($_POST['ressources_name'])){
+                        for ($i=0;$i<count($_POST['ressources-name']);$i++){
+                            $tmpRessource=new Ressource();
+                            $ressourceIsOk=$tmpRessource->createRessourceToInsert($_POST['ressources-content'][$i],$_POST['ressources-name'][$i],$max_id);
+                            if ($ressourceIsOk==""){
+                                if ($ressourcesRepo->insertRessourceIntoBdd($tmpRessource)){
+                                    $isOk.="<br> $i. Upload de ressource réussi";
+                                }
+                                else{
+                                    $isOk.="<br> $i. Upload de ressource échoué";
+                                }
+                            }
+                            else{
+                                $isOk.="<br> $i.".$ressourceIsOk;
+                            }
+                        }
+                    }
+                    echo json_encode($isOk);
+                }
+                else{
+                    unlink("assets/lesson_videos/".$lesson->getLessonContent());
+                    unlink("assets/img/lesson_miniature/".$lesson->getLessonCover());
+                    echo json_encode("failedinsert");
+                }
+            }
+            else{
+                unlink("assets/lesson_videos/".$lesson->getLessonContent());
+                echo json_encode("échec de l'upload de la miniature");
+            }
+        }
+        else{
+            echo json_encode("échec de l'upload de la vidéo");
+        }
+    }
+    else{
+        echo json_encode($isOk);
     }
 }
 

@@ -20,6 +20,12 @@ switch($_GET['action']){
     case "addTheme":
         addTheme();
         break;
+    case "addCategoryTreat":
+        addCategoryTreat();
+            break;
+    case "addCategory":
+        addCategory();
+            break;
     case "crud":
         crud();
         break;
@@ -28,6 +34,8 @@ switch($_GET['action']){
         break;
     case "crudUser":
         crud();
+    case "nos_cours":
+        nos_cours();
         break;
     case "cours":
         cours();
@@ -37,6 +45,23 @@ switch($_GET['action']){
         break;
     case "getAllUserCard":
         getCardsForCrudUser();
+    case "addVideo":
+        formVideo();
+        break;
+    case "addVideoTreat":
+        addVideo();
+        break;
+    case "homepage":
+        homepage();
+        break;
+    case "profil":
+        profil();
+        break;
+    case "lesson":
+        lesson();
+        break;
+    case "test":
+        modaltest();
         break;
     default:
         signin();
