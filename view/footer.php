@@ -55,7 +55,7 @@
         <ul class="w-3/4 menu bg-base-100">
             <!-- Sidebar content here -->
             <div class="flex items-center h-16 px-8 py-4 bg-gray">
-            <label for="my-drawer-3">
+            <label class="cursor-pointer" for="my-drawer-3">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17.9999 1.00007L1 18M0.999928 1L17.9999 17.9999" stroke="#393536" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
