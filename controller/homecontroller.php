@@ -87,7 +87,7 @@ function signin_treat(){
         $user->createUserFromQuery($tmpUser);
         $isOk=$user->verifUserToSignin($_POST['password']);
         if ($isOk=="True"){
-            if ($_POST['remember_me']=="on"){
+            if ($_POST['save']=="on"){
             setcookie("simplon_name",$user->getUserEmail(),time()+60*60*24*30,"/",httponly:TRUE);
             }
         $user->connectUser();
