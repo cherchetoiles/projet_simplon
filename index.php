@@ -1,59 +1,132 @@
 <?php
-include('controller/homecontroller.php');
+require_once('controller/homecontroller.php');
+session_start();
+if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) {
+    if(!empty($_SESSION['user'])){
+        switch($_GET['action']) {
+            case 'homepage':
+                homepage();
+                break;
+    
+            case 'nos_cours':
+                nos_cours();
+                break;
+        
+            case 'profil':
+                profil();
+                break;
+                
+            case 'cours':
+                cours();
+                break;
 
-switch($_GET['action']){
-    case "signin_treat":
-        signin_treat();
-        break;
-    case "signup":
-        signup();
-        break;
-    case "signup_treat":
-        signup_treat();
-        break;
-    case "signin":
+            case 'lesson':
+                lesson();
+                break;
+
+            case 'logout':
+                logout();
+                break;
+
+            case 'test':
+                modaltest();
+                break;
+                
+            default:
+                if($_SESSION['user']->getRoleNom() == 'creator' || $_SESSION['user']->getRoleNom() == 'admin')
+                {
+                    switch($_GET['action']) {
+                        
+                        case 'addVideo':
+                            formVideo();
+                            break;
+                        
+                        case 'addVideoTreat':
+                            addVideo();
+                            break; 
+                        
+                        default:
+                            homepage();
+                        }  
+                } else{
+                homepage();
+                }
+                break;     
+        }
+    
+
+        // }else{
+        //     switch($_GET['action']){
+                        
+        //         case 'ModelPremierVue':
+        //             modaltest();
+        //             break;
+
+        //         default:
+        //             homepage();
+        //             break;
+        //     }
+                
+        // }
+
+    }else{
+        switch($_GET['action']) {
+            case 'signup':
+                signup();
+                break; 
+    
+            case 'signup_treat':
+                signup_treat();
+                break;
+    
+            case 'signin_treat':
+                signin_treat();
+                break;
+
+            default:
+                signin();
+                break;
+        }
+    }
+}else{
+    if(isset($_GET['admin']) && (!empty($_SESSION) && $_SESSION['user']->getRoleNom() == 'admin')){
+        switch($_GET['admin']) {
+            case 'addTheme':
+                addTheme();
+                break;
+
+            case 'addThemeTreat':
+                addThemeTreat();
+                break; 
+    
+            case 'crud':
+                crud();
+                break;
+
+            case 'crudLesson':
+                crud();
+                break;
+    
+            case 'crudUser':
+                crud();
+                break;
+
+            case 'getAllLessonCard':
+                getCardsForCrudLesson();
+                break;
+
+            case 'getAllUserCard':
+                getCardsForCrudUser();
+                break;
+    
+            default:
+                homepage();
+                break;
+        }
+    }else{         
         signin();
-        break;
-    case "addThemeTreat":
-        addThemeTreat();
-        break;
-    case "addTheme":
-        addTheme();
-        break;
-    case "addCategoryTreat":
-        addCategoryTreat();
-            break;
-    case "addCategory":
-        addCategory();
-            break;
-    case "crud":
-        crud();
-        break;
-    case "nos_cours":
-        nos_cours();
-        break;
-    case "cours":
-        cours();
-        break;
-    case "addVideo":
-        formVideo();
-        break;
-    case "addVideoTreat":
-        addVideo();
-        break;
-    case "homepage":
-        homepage();
-        break;
-    case "profil":
-        profil();
-        break;
-    case "lesson":
-        lesson();
-        break;
-    case "test":
-        modaltest();
-        break;
-    default:
-        signin();
+    }
+        
 }
+
 ?>

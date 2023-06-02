@@ -128,7 +128,7 @@
                 <a href="?action=profil">Mon profil</a>
                 </p>
                 <p class="font-bold tracking-wider text-blue font-body">
-                <a href="">Se déconnecter</a>
+                <a href="?action=logout">Se déconnecter</a>
                 </p>
             </div>
             </div>
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <div class="px-8 collapse-content">
-                <p>hello</p>
+                <a href="?admin=crud">Tableu de bord</a>
             </div>
             </div>
 

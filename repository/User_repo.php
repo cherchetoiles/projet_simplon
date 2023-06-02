@@ -5,6 +5,24 @@ class User_repo extends Connect_bdd{
         parent::__construct();
     }
 
+    function getAllUserFull(){
+        function activateOnMap($query){
+            $tmpUser=new User();
+            $tmpUser->createUserFromQuery($query);
+            $tmpUser->setUserTotalViews();
+            $tmpUser->setUserTotalLikes();
+            $tmpUser->setUserNbLesson();
+            return $tmpUser;
+        };
+        $sql="SELECT u.user_id,u.user_name,u.user_surname,u.user_email,u.user_avatar,s.speciality_name
+        FROM user u
+        INNER JOIN speciality s ON u.speciality_id = s.speciality_id";
+        $req=$this->bdd->prepare($sql);
+        $req->execute();
+        $reqResult=$req->fetchAll(PDO::FETCH_ASSOC);
+        return array_map("activateOnMap",$reqResult);
+    }
+
     function getUserByEmail($email){
         $req=$this->bdd->prepare('SELECT user_id,user_name,user_email,user_surname,user_password,user_statut,user_token,user_avatar,role_nom,speciality_name FROM user u NATURAL JOIN role LEFT JOIN speciality s ON s.speciality_id = u.speciality_id  WHERE user_email=?');
         $req->bindParam(1,$email);
@@ -18,6 +36,21 @@ class User_repo extends Connect_bdd{
         recurBind($req,[$user->getUserName(),$user->getUserSurname(),$user->getUserEmail(),$user->getUserPassword(),kodex_random_string(26)],5);
         $req->execute();
         $user=$req->fetch();
+    }
+
+    function getLessonsByUser($user){
+        $req='SELECT * FROM lesson l JOIN category cat ON cat.category_id=l.category_id WHERE user_id =? ';
+        $req = $this->bdd->prepare($req);
+        $req->execute([$user]);
+        $result = $req->fetchAll();
+        $lessons = [];
+        foreach($result as $queryresult){
+            $lesson = new Lesson();
+            $lesson->createLessonFromQuery($queryresult);
+            $lessons[] = $lesson;
+        } 
+
+        return $lessons;
     }
 }
 
