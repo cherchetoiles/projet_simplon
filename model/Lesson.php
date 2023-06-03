@@ -19,7 +19,6 @@ class Lesson
         $this->lesson_id = $lesson_id;
         $this->lesson_title = $lesson_title;
         $this->lesson_description = $lesson_description;
-        $this->lesson_difficult = $lesson_level;
         $this->lesson_difficult = $lesson_difficult;
         $this->lesson_cover = uniqid().".".$cover_type;
         $this->lesson_content = uniqid().".".$content_type;

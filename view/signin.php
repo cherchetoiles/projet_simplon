@@ -28,7 +28,7 @@
                 <div class="flex flex-col"> 
                     <label class="flex" name="email">
                         <img src="assets/svg/User.svg" class="w-5 h-auto ml-[3px] mr-6 h-max-5">
-                        <input type="email" name="email" placeholder="Votre adresse mail" class="w-full text-2xl font-light tracking-wide lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
+                        <input type="email" name="email" placeholder="Votre adresse mail" class="w-full text-2xl font-light tracking-wide lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body" <?php if (isset($_COOKIE['simplon_name'])){echo "value=".$_COOKIE['simplon_name'];} ?>>
                     </label>
                     
                     <div class="w-full block mt-1 h-[1px] rounded-full  bg-gray-dark"></div>

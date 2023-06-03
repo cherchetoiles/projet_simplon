@@ -89,7 +89,7 @@ function signin_treat(){
         $user->createUserFromQuery($tmpUser);
         $isOk=$user->verifUserToSignin($_POST['password']);
         if ($isOk=="True"){
-            if ($_POST['remember_me']=="on"){
+            if ($_POST['save']=="on"){
             setcookie("simplon_name",$user->getUserEmail(),time()+60*60*24*30,"/",httponly:TRUE);
             }
         $user->connectUser();
@@ -316,12 +316,13 @@ function addVideo(){
     $cat_repo=new Category_repo();
     
     $cat=$cat_repo->getCategoryByName($_POST["category"]);
+    
     if (!$cat){
         $isOk="Merci de ne pas modifier les valeurs des choix de proposition.";
     }
     else{
         $lesson=new Lesson();
-        $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type,$_SESSION['user']->user_id);
+        $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type,$_SESSION['user']->getUserId());
         $isOk=$lesson->verifyLesson($_FILES['cover']["size"],$cover_type,$_FILES['content']["size"],$content_type);
     }
     if($isOk=="True"){
@@ -332,7 +333,7 @@ function addVideo(){
                     $isOk="Reussite de l'upload des fichiers";
                     $ressourcesRepo=new Ressource_repo();
                     $max_id=$repo->getMaxLessonId()[0];
-                    if (isset($_POST['ressources_name'])){
+                    if (isset($_POST['ressources-name'])){
                         for ($i=0;$i<count($_POST['ressources-name']);$i++){
                             $tmpRessource=new Ressource();
                             $ressourceIsOk=$tmpRessource->createRessourceToInsert($_POST['ressources-content'][$i],$_POST['ressources-name'][$i],$max_id);

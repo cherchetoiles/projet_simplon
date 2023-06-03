@@ -26,18 +26,19 @@ function openSideBar(btn,sidebar){
 async function changeContent(dataLocation,newUrl){
     mainContent.innerHTML="";
     let stateObj = { id: "100" };
-    window.history.pushState(100,"crud","index.php?action=".concat(newUrl));
-    fetch("?action="+dataLocation)
+    window.history.pushState(100,"crud","index.php?admin=".concat(newUrl));
+    fetch("?admin="+dataLocation)
         .then(response => response.json())
         .then(data => data.forEach(element => {
             let newNode=document.createRange().createContextualFragment(element);
             mainContent.appendChild(newNode);
         }))
 }
-
-lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});
+if (lessonBtn!=null){
+lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});}
+if (userBtn!=null){
 userBtn.addEventListener("click",()=>{changeContent("getAllUserCard","crudUser")});
-
+}
 if (sideBarOpenBtn!==null){
 sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
 }
@@ -52,8 +53,9 @@ let table = document.getElementById("table");
 let tableAddRow = document.getElementById("add_row");
 // let dropCover = document.getElementById("dropCover");
 // let dropCoverContainer = document.getElementById("dropCoverContainer")
+if (compteurBox !=null){
 compteurBox.innerHTML='511';
-var boxValue=511-textarea.value.length;
+var boxValue=511-textarea.value.length;}
 
 
 function compteur(){
