@@ -69,6 +69,8 @@ function homepage(){
 function profil(){
     $user=new User_repo();
     $lessons=$user->getLessonsByUser($_SESSION['user']->getUserId());
+    $fav_lessons=$user->getFavLesson($_SESSION['user']->getUserId());
+    $finish_lessons=$user->getFinishLesson($_SESSION['user']->getUserId());
     require('view/profil.php');
 }
 
@@ -100,8 +102,23 @@ function signin_treat(){
     else{
         header("location:index.php?action=signin&error=userdontexist");
     }
-    
-    
+}
+
+// function inFav($lesson_id, $user_id){
+//     $fav_count = new User_repo();
+//     $fav_count->getFavLesson($_SESSION['user']->getUserId());
+// }
+
+function FavLesson(){
+    $fav_lessons = new User_repo();
+    $fav_lessons->addFavLesson($_SESSION['user'],$_GET['lesson_id']);
+    header('Location:?action=profil');  
+}
+
+function UnFavLesson(){
+    $fav_lessons = new User_repo();
+    $fav_lessons->deleteFavLesson($_SESSION['user'],$_GET['lesson_id']);
+    header('Location:?action=profil');
 }
 
 function getCardsForCrudLesson(){
@@ -122,34 +139,34 @@ function getCardsForCrudLesson(){
             $showedLikes=intdiv($result['lesson']->getLessonLikes(),1000);
             $likesSuffix="K";
         }
-        $toEncode[]="<div class='rounded-lg bg-white p-6 flex flex-col items-center gap-10'>
+        $toEncode[]="<div class='flex flex-col items-center gap-10 p-6 bg-white rounded-lg'>
                         <div class='flex flex-col items-center'>
                             <img src='assets/img/lesson_minature/".$result["lesson"]->getLessonCover()."'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
-                            <span class='font-semibold text-xl text-center'>".$result["lesson"]->getLessonTitle()."</span>
+                            <span class='text-xl font-semibold text-center'>".$result["lesson"]->getLessonTitle()."</span>
                             <div class='flex items-center gap-2'>
-                                <img src='assets/img/user_avatar/".$result["user"]->getUserAvatar()."' class='rounded-full w-12'>
-                                <span class='leading-none text-lg'>".$result["user"]->getUserSurname()." ".$result["user"]->getUserName()."</span>
+                                <img src='assets/img/user_avatar/".$result["user"]->getUserAvatar()."' class='w-12 rounded-full'>
+                                <span class='text-lg leading-none'>".$result["user"]->getUserSurname()." ".$result["user"]->getUserName()."</span>
                             </div>
-                            <div class='flex mt-4 justify-evenly w-full'>
-                                <div class='flex gap-1 items-center'>
+                            <div class='flex w-full mt-4 justify-evenly'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/eye_icon.svg'>
                                     <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
                                 </div>
-                                <div class='flex gap-1 items-center'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/heart_icon.svg'>
                                     <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
                                 </div>
                             </div>
                         </div>
                         <div class='flex flex-col items-center w-full gap-3'>
-                            <div class='flex justify-evenly w-full text-lg'>
+                            <div class='flex w-full text-lg justify-evenly'>
                                 <span class='text-blue'>".$result["category"]->getCategoryName()."</span>
                                 <span class='italic'>Niveau ".$result["lesson"]->getLessonDifficult()."</span>
                             </div>
                             <span>".$result["lesson"]->getLessonDate()."</span>
-                            <div class='flex w-full justify-center gap-4'>
+                            <div class='flex justify-center w-full gap-4'>
                                 <img src='assets/svg/edit_icon.svg' data-id='".$result["user"]->getUserId()."'>
                                 <img src='assets/svg/trash_icon.svg' data-id='".$result["user"]->getUserId()."'>
                             </div>
@@ -175,33 +192,33 @@ function getCardsForCrudUser(){
             $showedLikes=intdiv($result->getuserLikes(),1000);
             $likesSuffix="K";
         }
-        $toEncode[]="<div class='rounded-lg bg-white p-6 flex flex-col items-center gap-5'>
-                        <div class='flex flex-col items-center w-3/4 rounded-full overflow-hidden mt-3'>
+        $toEncode[]="<div class='flex flex-col items-center gap-5 p-6 bg-white rounded-lg'>
+                        <div class='flex flex-col items-center w-3/4 mt-3 overflow-hidden rounded-full'>
                             <img src='assets/img/user_avatar/".$result->getUserAvatar()."' class='w-full'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
-                            <span class='font-semibold text-xl text-center'>".$result->getUserSurname()." ".$result->getUserName()."</span>
+                            <span class='text-xl font-semibold text-center'>".$result->getUserSurname()." ".$result->getUserName()."</span>
                             <div class='flex flex-col items-center gap-2'>
-                                <span class='leading-none text-lg'>".$result->getUserSpe()."</span>
-                                <span class='leading-none text-lg'>".$result->getUserEmail()."</span>
+                                <span class='text-lg leading-none'>".$result->getUserSpe()."</span>
+                                <span class='text-lg leading-none'>".$result->getUserEmail()."</span>
                             </div>
                         </div>
                         <div class='flex flex-col items-center w-full gap-3'>
-                            <div class='flex mt-4 justify-evenly w-full'>
-                                <div class='flex gap-1 items-center'>
+                            <div class='flex w-full mt-4 justify-evenly'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/eye_icon.svg'>
                                     <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
                                 </div>
-                                <div class='flex gap-1 items-center'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/heart_icon.svg'>
                                     <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
                                 </div>
-                                <div class='flex gap-1 items-center'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/nb_lesson_icon.svg'>
                                     <span class='italic leading-none'>".$result->getUserNbLesson()."</span>
                                 </div>
                             </div>
-                            <div class='flex w-full justify-center gap-4'>
+                            <div class='flex justify-center w-full gap-4'>
                                 <img src='assets/svg/edit_icon.svg' data-id='".$result->getUserId()."'>
                                 <img src='assets/svg/trash_icon.svg' data-id='".$result->getUserId()."'>
                             </div>

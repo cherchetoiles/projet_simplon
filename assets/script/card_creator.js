@@ -1,7 +1,7 @@
 function showFilter(){
-    var img = document.getElementById("card_img").classList;
+    var img = document.getElementsByClassName("card_img").classList;
     img.add("blur-[2px]","brightness-50");
-    var list = document.getElementById("card_filter").classList;
+    var list = document.getElementsByClassName("card_filter").classList;
     list.remove("hidden");}
 
 function showFav(){
@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         console.log(oldContent);
         oldContent.classList.add('hidden');
         newContent.classList.remove('hidden');
+        newContent.classList.add('grid');
         oldContentTmp=newContent;
     }
 

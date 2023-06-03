@@ -39,7 +39,7 @@ class User_repo extends Connect_bdd{
     }
 
     function getLessonsByUser($user){
-        $req='SELECT * FROM lesson l JOIN category cat ON cat.category_id=l.category_id WHERE user_id =? ';
+        $req = 'SELECT * FROM lesson l JOIN category cat ON cat.category_id=l.category_id WHERE user_id =? ';
         $req = $this->bdd->prepare($req);
         $req->execute([$user]);
         $result = $req->fetchAll();
@@ -52,6 +52,49 @@ class User_repo extends Connect_bdd{
 
         return $lessons;
     }
-}
 
+    function getFavLesson($user,$option=[]){
+        $req = 'SELECT * FROM bookmark b JOIN lesson l ON l.lesson_id = b.lesson_id WHERE b.user_id =?';
+        if(isset($option['lesson_id'])){
+            $req= ' AND l.lesson_id = option[$lesson_id]';
+        }
+        $req = $this->bdd->prepare($req);
+        $req->execute([$user]);
+        $result = $req->fetchAll();
+        $fav_lessons = [];
+        foreach ($result as $queryresult){
+            $fav_lesson = new Lesson();
+            $fav_lesson->createLessonFromQuery($queryresult);
+            $fav_lessons[] = $fav_lesson;
+        }
+        return $fav_lessons;
+    }
+
+    
+    function addFavLesson($user,$lesson_id){
+        $req = 'INSERT INTO bookmark (user_id,lesson_id) VALUES (?,?)';
+        $req = $this->bdd->prepare($req);
+        $req->execute([$user->getUserId(),$lesson_id]);
+    }
+
+    function deleteFavLesson($user,$lesson_id) {
+        $req = 'DELETE FROM bookmark WHERE user_id=? AND lesson_id=?';
+        $req = $this->bdd->prepare($req);
+        $req->execute([$user->getUserId(),$lesson_id]);
+    }
+
+    function getFinishLesson($user){
+        $req = 'SELECT * FROM finish f JOIN lesson l ON f.lesson_id = l.lesson_id WHERE f.user_id=?';
+        $req = $this->bdd->prepare($req);
+        $req->execute([$user]);
+        $result = $req->fetchAll();
+        $finish_lessons = [];
+        foreach ($result as $queryresult){
+            $finish_lesson = new Lesson();
+            $finish_lesson->createLessonFromQuery($queryresult);
+            $finish_lessons[] = $finish_lesson;
+        }
+        return $finish_lessons;       
+    }
+}
 ?>
