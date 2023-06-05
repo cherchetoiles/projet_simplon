@@ -229,6 +229,56 @@ function getCardsForCrudUser(){
     }
     echo json_encode($toEncode);
 }
+function getCardsForCrudCategory(){
+    $repo = new Category_repo();
+    $reqResult=$repo->getAllCategoryFull();
+    foreach ($reqResult as $result){
+        $showedViews=$result->getCategoryViews();
+        $viewsSuffix="";
+        $showedLikes=$result->getCategoryLikes();
+        $likesSuffix="";
+        if ($result->getCategoryViews()>10000){
+            $showedViews=intdiv($result->getCategoryViews(),1000);
+            $viewsSuffix="K";
+        }
+        if ($result->getCategoryLikes()>10000){
+            $showedLikes=intdiv($result->getCategoryLikes(),1000);
+            $likesSuffix="K";
+        }
+        $toEncode[]="<div class='rounded-lg bg-white p-6 flex flex-col items-center gap-5'>
+                        <div class='flex flex-col items-center w-3/4 rounded-full overflow-hidden mt-3'>
+                            <img src='assets/img/user_avatar/".$result->getCategoryLogo()."' class='w-full'>
+                        </div>
+                        <div class='flex flex-col items-center w-full'>
+                            <span class='font-semibold text-xl text-center'>".$result->getCategoryName()."
+                            <div class='flex flex-col items-center gap-2'>
+                                <span class='leading-none text-lg'>".$result->getCategoryDescription()."</span>
+                            </div>
+                        </div>
+                        <div class='flex flex-col items-center w-full gap-3'>
+                            <div class='flex mt-4 justify-evenly w-full'>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/eye_icon.svg'>
+                                    <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
+                                </div>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/heart_icon.svg'>
+                                    <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
+                                </div>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/nb_lesson_icon.svg'>
+                                    <span class='italic leading-none'>".$result->getCategoryNbLesson()."</span>
+                                </div>
+                            </div>
+                            <div class='flex w-full justify-center gap-4'>
+                                <img src='assets/svg/edit_icon.svg' data-id='".$result->getCategoryId()."'>
+                                <img src='assets/svg/trash_icon.svg' data-id='".$result->getCategoryId()."'>
+                            </div>
+                        </div>
+                    </div>";
+    }
+    echo json_encode($toEncode);
+}
 
 function signup_treat(){
     var_dump($_POST);
@@ -316,7 +366,7 @@ function addVideo(){
         $cover_type="wrong";
     }
     $cat_repo=new Category_repo();
-    
+
     $cat=$cat_repo->getCategoryByName($_POST["category"]);
     
     if (!$cat){

@@ -61,7 +61,7 @@
                 <img src="assets/svg/upload_icon.svg">
                 <span>Glissez votre image ici</span>
                 <span>ou</span>
-                <span>téléchargez de vos fichiers</span><span class="underline text-red"><input type="file"  id="cover" name="cover"></span>
+                <span>téléchargez de vos fichiers</span><span class="underline text-red"><input type="file" accept="image/jpeg, image/webp, image/png" id="cover" name="cover"></span>
             </div>
         </div>
         <div class="w-full h-72 drop-box rounded-[17px] transition-colors bg-opacity-60 mt-5 relative flex items-center justify-center" id="dropCoverContainer">
@@ -69,7 +69,7 @@
                 <img src="assets/svg/upload_video_icon.svg">    
                 <span>Glissez votre vidéo ici</span>
                 <span>ou</span>
-                <span>téléchargez de vos fichiers</span><span class="underline text-red"><input type="file" id="video" name="content"></span>
+                <span>téléchargez de vos fichiers</span><span class="underline text-red"><input type="file" accept="video/webp, video/mp4" id="video" name="content"></span>
             </div>
         </div>
         <div class="mt-10 w-full">

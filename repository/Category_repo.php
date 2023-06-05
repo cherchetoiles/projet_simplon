@@ -5,23 +5,38 @@ class Category_repo extends Connect_bdd{
         parent::__construct();
     }
 
+    function getAllCategoryFull(){
+        function activateOnMap($query){
+            $tmpUser=new Category();
+            $tmpUser->createCategoryFromQuery($query);
+            $tmpUser->setCategoryTotalViews();
+            $tmpUser->setCategoryTotalLikes();
+            $tmpUser->setCategoryNbLesson();
+            return $tmpUser;
+        };
+        $sql = "SELECT category_id, category_name, category_logo, category_description, theme_id
+        FROM category";
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $reqResult = $req->fetchAll(PDO::FETCH_ASSOC);
+        return array_map("activateOnMap", $reqResult);
+    }
+
     public function getCategoryByName($name){
         $sql="SELECT * FROM category WHERE category_name=?";
         $req=$this->bdd->prepare($sql);
         $req->bindParam(1,$name);
         $req->execute();
-        $catValues=$req->fetch(PDO::FETCH_NUM);
+        $catValues=$req->fetch(PDO::FETCH_ASSOC);
         $cat=new Category();
-
         $cat->createCategoryFromQuery($catValues);
-
         if (!$catValues){
             return false;
         }
 
         return $cat;
     }
-
+    
     public function getAllCategoryName(){
         $sql="SELECT category_name FROM category";
         $req=$this->bdd->prepare($sql);
@@ -75,6 +90,6 @@ class Category_repo extends Connect_bdd{
         $req->bindParam(4, $themeId);
         $req->execute();
         return true;
-    }
+    } 
 }
 ?>
