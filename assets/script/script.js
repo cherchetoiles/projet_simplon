@@ -39,6 +39,9 @@ lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLe
 if (userBtn!=null){
 userBtn.addEventListener("click",()=>{changeContent("getAllUserCard","crudUser")});
 }
+if (categoryBtn!=null){
+    categoryBtn.addEventListener("click",()=>{changeContent("getAllCategoryCard","crudUser")});
+    }
 if (sideBarOpenBtn!==null){
 sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
 }
