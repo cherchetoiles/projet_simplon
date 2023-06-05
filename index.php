@@ -118,6 +118,11 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
             case 'getAllUserCard':
                 getCardsForCrudUser();
                 break;
+                
+            case 'getAllCategoryCard': 
+                getCardsForCrudCategory();
+                break;
+
     
             default:
                 homepage();
