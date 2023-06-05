@@ -27,6 +27,9 @@ class Lesson
     }
 
    
+    public function getLessonId(){
+        return $this->lesson_id;
+    }   
 
     public function getLessonContent(){
         return $this->lesson_content;

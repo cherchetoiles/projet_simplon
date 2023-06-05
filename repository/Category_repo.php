@@ -50,6 +50,29 @@ class Category_repo extends Connect_bdd{
         $req->execute();
         return true;
     }
+
+    function getPopularCategory(){
+        function activateOnMap($query){
+            $tmpCat=new Category();
+            $tmpCat->createCategoryFromQuery($query);
+            return $tmpCat;
+        };
+        $sql = "SELECT c.category_id,c.category_name,c.category_logo,c.category_logo,c.category_main_color,c.category_description,c.category_white_logo
+        FROM category c
+        NATURAL JOIN lesson l
+        LEFT JOIN (SELECT COUNT(DISTINCT w.user_id) as nb_vues,COUNT(DISTINCT f.user_id) as nb_fav,l.lesson_id
+                   		FROM lesson l
+                   		LEFT JOIN watch w on l.lesson_id = w.lesson_id 
+                        LEFT JOIN fav f on l.lesson_id = f.lesson_id
+                   		GROUP BY l.lesson_id) total ON l.lesson_id=total.lesson_id
+        GROUP BY c.category_id
+        ORDER BY SUM(total.nb_vues)/SUM(total.nb_fav)";
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $reqResult = $req->fetchAll(PDO::FETCH_ASSOC);
+        return array_map("activateOnMap", $reqResult);
+    }
+
     public function insertCategoryIntoBdd($category) {
         $sql = "INSERT INTO category SET ";
         $sql .= "category_name=?";

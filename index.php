@@ -46,10 +46,13 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
                             break; 
                         
                         default:
-                            homepage();
+                        homepage();
+                        break;
+                        
                         }  
                 } else{
                 homepage();
+
                 }
                 break;     
         }
