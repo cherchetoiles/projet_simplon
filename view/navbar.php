@@ -1,10 +1,10 @@
 <div class="drawer drawer-end font-body">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" /> 
-  <div class="drawer-content flex flex-col">
+  <div class="flex flex-col drawer-content">
     <!-- Navbar -->
     <div class="border-b border-b-gray">
       <div class="flex flex-row items-center justify-center w-10/12 min-h-[4rem] mx-auto text-center lg:w-9/12 md:w-full font-body">
-        <div class="container flex justify-between items-center">
+        <div class="container flex items-center justify-between">
 
           <div class="flex-none lg:hidden">
             <label for="" class="btn btn-square btn-ghost sm:scale-125">
@@ -26,9 +26,9 @@
             <img class="w-44 sm:w-52 md:w-60 lg:w-64" src="assets/img/logo.png" alt="">
           </div>
 
-          <div class="hidden lg:flex flex-row gap-4 xl:gap-0">
+          <div class="flex-row hidden gap-4 lg:flex xl:gap-0">
             <div class="dropdown dropdown-hover">
-              <label tabindex="0" class="btn btn-ghost m-1 flex gap-2">
+              <label tabindex="0" class="flex gap-2 m-1 btn btn-ghost">
                 <span class="text-lg">
                   Cours
                 </span>
@@ -36,14 +36,14 @@
                   <path d="M17 1L9 9.84348L1 1" stroke="#F01E29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </label>
-              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+              <ul tabindex="0" class="p-2 shadow dropdown-content menu bg-base-100 rounded-box w-52">
                 <li><a>Item 1</a></li>
                 <li><a>Item 2</a></li>
               </ul>
             </div>
 
             <div class="dropdown dropdown-hover">
-              <label tabindex="0" class="btn btn-ghost m-1 flex gap-2">
+              <label tabindex="0" class="flex gap-2 m-1 btn btn-ghost">
                 <span class="text-lg">
                   Formations
                 </span>
@@ -54,7 +54,7 @@
 
               <div tabindex="0" class="dropdown-content p-8 shadow bg-base-100 rounded-box w-[768px] flex flex-row gap-4">
                 <img class="w-8 h-8" src="assets/img/formations.png" alt="formations">
-                <div class="text-left flex flex-col">
+                <div class="flex flex-col text-left">
                   <span class="text-2xl font-semibold">
                     Découvrez nos formations!
                   </span>
@@ -62,14 +62,14 @@
                     Venez étudier au campus de l’UIMM de 
                     Charleville-Mézières. Différentes formations y sont 
                     proposés autour du numérique. <br>
-                    Rendez-vous sur notre site <a class="text-red" href="https://simplon-charleville.fr/">simplon-charleville.fr</a>
+                    Rendez-vous sur notre site <a class="text-red" href="https://simplon-charleville.fr/" target="_blank">simplon-charleville.fr</a>
                   </span>
                 </div>
               </div>
             </div>
 
             <div>
-              <label tabindex="0" class="btn btn-ghost m-1">
+              <label tabindex="0" class="m-1 btn btn-ghost">
                 <span class="text-lg">
                   Forum
                 </span>
@@ -77,14 +77,14 @@
             </div>
           </div>
 
-          <div class="hidden xl:flex flex-row items-center p-2 border border-gray rounded-4xl">
+          <div class="flex-row items-center hidden p-2 border xl:flex border-gray rounded-4xl">
             <input class="w-32 focus:bg-white" type="search" placeholder="Rechercher">
             <img class="w-6 h-6" src="assets/img/search.png" alt="">
           </div>
 
-          <a class="hidden lg:flex flex-row gap-2 cursor-pointer bg-gray/20 p-2 rounded-4xl" href="?action=profil">
-            <span class="bg-blue rounded-full px-2 text-white">Z</span>
-            <span class="text-blue hidden xl:block">Profil</span>
+          <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 rounded-4xl" href="?action=profil">
+            <span class="px-2 text-white rounded-full bg-blue">Z</span>
+            <span class="hidden text-blue xl:block">Profil</span>
           </a>
 
 
