@@ -4,6 +4,7 @@ class Category
     private int $category_id;
     private string $category_name;
     private string $category_logo;
+    private string $category_main_color;
     private string $category_white_logo;
     private string $category_description;
     private array $category_views;
@@ -11,7 +12,7 @@ class Category
     private array $categoriesNeeded;
     private int $theme_id;
   
-  public function getCategoryName(){
+    public function getCategoryName(){
         return $this->category_name;
     }
 
@@ -28,6 +29,15 @@ class Category
         if (isset($query["theme_id"])){
             $this->theme_id=$query["theme_id"];
         }
+        if (isset($query["category_main_color"])){
+            $this->category_main_color=$query["category_main_color"];
+        }
+        if (isset($query["category_white_logo"])){
+            $this->category_white_logo=$query["category_white_logo"];
+        }
+        if (isset($query["category_description"])){
+            $this->category_description=$query["category_description"];
+        }
     }
     public function createCategoryFromRequest($category_id,$category_name,$category_logo,$category_white_logo,$category_description,$theme_id){
         $this->category_id=$category_id;
@@ -40,6 +50,10 @@ class Category
 
     public function getCategoryId(){
         return $this->category_id;
+    }
+
+    public function getCategoryMainColor(){
+        return $this->category_main_color;
     }
 
     public function getCategoryWhiteLogo(){
