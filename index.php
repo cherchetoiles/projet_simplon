@@ -11,6 +11,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
             case 'nos_cours':
                 nos_cours();
                 break;
+
+            case 'getAllLessonCardNosCours':
+                getCardsForNosCours();
+                break;
         
             case 'profil':
                 profil();

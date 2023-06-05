@@ -43,10 +43,26 @@ if (sideBarOpenBtn!==null){
 sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
 }
 
+
+{
+let mainContent = document.getElementById("mainContent");
+
+console.log(mainContent);
+
+async function displayNosCours(){
+    mainContent.innerHTML="";
+    fetch("?action=getAllLessonCardNosCours")
+        .then(response => response.json())
+        .then(data => data.forEach(element => {
+            let newNode = document.createRange().createContextualFragment(element);
+            mainContent.appendChild(newNode);
+        }))
+}
+
+displayNosCours();
 }
 
 
-{
 const textarea = document.getElementById("textarea");
 let compteurBox = document.getElementById("compteur");
 let table = document.getElementById("table");

@@ -44,11 +44,19 @@
                 <p class="ml-1 text-sm tracking-wide lg:text-lg"><strong>47 </strong>j'aime</p>
             </div>
         </div>
-        <div>
-            <!-- UPDATE PROFIL -->
-            <a href="?action=test" class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p>
-            </a>
+        <div class="flex flex-col gap-4">
+            <div>
+                <!-- UPDATE PROFIL -->
+                <a href="?action=test" class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p>
+                </a>
+            </div>
+            <div>
+                <!-- UPDATE PROFIL -->
+                <a href="?action=logout" class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Se déconnecter</p>
+                </a>
+            </div>
         </div>
+        
     </div>
 </div>
 

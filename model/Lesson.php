@@ -14,7 +14,7 @@ class Lesson
     private int $lesson_likes;
     private int $category_id;
     private int $user_id;
-      
+
     public function createLessonToInsert($lesson_title,$lesson_description,$lesson_difficult,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type,$user_id){
         $this->lesson_title = $lesson_title;
         $this->lesson_description = $lesson_description;
@@ -26,7 +26,7 @@ class Lesson
         $this->user_id = $user_id;
     }
 
-   
+
 
     public function getLessonContent(){
         return $this->lesson_content;

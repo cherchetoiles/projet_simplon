@@ -13,8 +13,7 @@ class Category_repo extends Connect_bdd{
         $catValues=$req->fetch(PDO::FETCH_NUM);
         $cat=new Category();
 
-        $cat->createCategoryFromRequest($catValues[0],$catValues[1],$catValues[2],$catValues[3],$catValues[4]);
-=======
+        $cat->createCategoryFromRequest($catValues[0],$catValues[1],$catValues[2],$catValues[3],$catValues[4],$catValues[5]);
         if (!$catValues){
             return false;
         }
@@ -52,6 +51,13 @@ class Category_repo extends Connect_bdd{
         $req->bindParam(4, $themeId);
         $req->execute();
         return true;
+    }
+
+    public function getCategoryLogoFromLesson($category_id) {
+        $sql = "SELECT category_logo FROM category WHERE category_id = ?";
+        $req = $this->bdd->prepare($sql);
+        $req->execute($category_id);
+        var_dump($req);
     }
 }
 ?>

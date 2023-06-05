@@ -23,7 +23,9 @@
           </div>
           
           <div class="lg:flex-none">
-            <img class="w-44 sm:w-52 md:w-60 lg:w-64" src="assets/img/logo.png" alt="">
+            <a href="?action=homepage">
+              <img class="w-44 sm:w-52 md:w-60 lg:w-64" src="assets/img/logo.png" alt="">
+            </a>
           </div>
 
           <div class="hidden lg:flex flex-row gap-4 xl:gap-0">

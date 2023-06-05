@@ -211,6 +211,46 @@ function getCardsForCrudUser(){
     echo json_encode($toEncode);
 }
 
+function getCardsForNosCours(){
+    $repo = new Lesson_repo();
+    $reqResult=$repo->getAllLessonFull();
+    $toEncode=[];
+    foreach ($reqResult as $result){
+        $toEncode[]="<div class='flex flex-col gap-4 w-auto my-3 px-6 py-3 shadow-lg rounded-xl h-44'>
+                        <div class='flex flex-row justify-between border-b-gray'>
+                            <div>
+                                <img src='assets/img/lesson_minature/<'>
+                            </div>
+                            <div>
+                                <div class='flex flex-row gap-2'>
+                                    <div class='cursor-pointer'>
+                                        <svg width='22' height='22' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                            <path d='M4.54167 1.94762C5.58353 1.34494 6.79315 1 8.08333 1C11.9954 1 15.1667 4.17132 15.1667 8.08333C15.1667 11.9954 11.9954 15.1667 8.08333 15.1667C4.17132 15.1667 1 11.9954 1 8.08333C1 6.79315 1.34494 5.58353 1.94762 4.54167' stroke='#1C274C' stroke-linecap='round'/>
+                                            <path d='M10.2083 8.08333L8.08325 8.08333M8.08325 8.08333L5.95825 8.08333M8.08325 8.08333L8.08325 5.95831M8.08325 8.08333L8.08325 10.2083' stroke='#F01E29' stroke-linecap='round'/>
+                                        </svg>
+                                    </div>
+                                    <div class='cursor-pointer'>
+                                        <svg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                            <path d='M6 2.33782C7.47087 1.48697 9.17856 1 11 1C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 9.17856 1.48697 7.47087 2.33782 6' stroke='#1C274C' stroke-width='1.5' stroke-linecap='round'/>
+                                            <path d='M7 11C11.6863 11 10.3137 11 15 11M15 11L12 8M15 11L12 14' stroke='#1C274C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='cursor-pointer'>                    
+                            <p class='text-left font-body'>".$result["lesson"]->getLessonTitle()."</p>
+                        </div>
+
+                        <div class='cursor-pointer overflow-hidden'>                     
+                            <p class='text-left font-body text-xs'>".$result["lesson"]->getLessonDescription()."</p>
+                        </div>
+                    </div>";
+    }
+    echo json_encode($toEncode);
+}
+
 function signup_treat(){
     var_dump($_POST);
     $repo = new User_repo();
