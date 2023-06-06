@@ -68,18 +68,23 @@ class Category
     public function getCategoryLogo(){
         return $this->category_logo;
     }
+    
     public function getCategoryDescription(){
         return $this->category_description;
     }
+    
     public function getThemeId(){
         return $this->theme_id;
     }
+    
     public function getCategoryViews(){
         return $this->category_views;
     }
+    
     public function getCategoryLikes(){
         return $this->category_likes;
     }
+
     public function getCategoryNbLesson(){
         return $this->category_nb_lesson;
     }
@@ -90,6 +95,7 @@ class Category
         $this->category_description=$category_description;
         $this->theme_id=$theme_id;
     }
+
     public function verifyCategory($file_size, $file_type) {
         if (empty($this->category_name) || strlen($this->category_name) > 63) {
             return "wrong_name";
@@ -105,6 +111,7 @@ class Category
         }
         return "True";
     }
+
     public function setCategoryTotalViews(){
         $sql="SELECT SUM(nb_vue) as total_vue FROM(SELECT COUNT(DISTINCT w.user_id) as nb_vue FROM lesson l 
         INNER JOIN watch w ON l.lesson_id = w.lesson_id
@@ -121,6 +128,7 @@ class Category
             $this->category_views=intval($reqResult);
         }
     }
+
     public function setCategoryTotalLikes(){
         $sql="SELECT SUM(nb_like) as total_like FROM(SELECT COUNT(DISTINCT f.user_id) as nb_like FROM lesson l 
         INNER JOIN fav f ON l.lesson_id = f.lesson_id
@@ -136,7 +144,8 @@ class Category
         else{
             $this->category_likes=intval($reqResult);
         }
-    }
+    } 
+
     public function setCategoryNbLesson(){
         $sql="SELECT COUNT(DISTINCT lesson_id) as nb_lesson FROM lesson WHERE category_id=".$this->category_id;
         $repo=new User_repo();
@@ -150,6 +159,7 @@ class Category
             $this->category_nb_lesson=intval($reqResult);
         }
     }
+
     public function setCategoryId(){
         $newName=explode(".",$this->category_logo);
         $newName=uniqid().".".end($newName);

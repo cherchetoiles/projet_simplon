@@ -16,6 +16,7 @@ class Theme_repo extends Connect_bdd{
         $req->bindParam(2,$themeLogo);
         $req->execute();
         return true;
+      
     }  
     
     public function getAllThemes($theme_name) {
@@ -23,6 +24,24 @@ class Theme_repo extends Connect_bdd{
         $req = $this->bdd->prepare($sql);
         $req->execute([$theme_name]);
         return $req->fetch();
+    }     
+
+    function getAllThemeFull(){
+        function activateOnMap($query){
+            $tmpUser=new Theme();
+            $tmpUser->createThemeFromQuery($query);
+            $tmpUser->setThemeTotalViews();
+            $tmpUser->setThemeTotalLikes();
+            $tmpUser->setThemeNbLesson();
+            return $tmpUser;
+        };
+        $sql = "SELECT theme_id, theme_name, theme_logo
+        FROM theme";
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $reqResult = $req->fetchAll(PDO::FETCH_ASSOC);
+        return array_map("activateOnMap", $reqResult);
+      
     }
 }
 ?>
