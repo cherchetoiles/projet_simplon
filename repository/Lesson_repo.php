@@ -42,6 +42,55 @@ class Lesson_repo extends Connect_bdd{
         return true;
     }
 
+    /**
+        retourne les leçons les plus populaires des deux dernières semaines
+        @param array $option support limit, offset, category_id, theme_id
+        @return Array liste des leçons les plus populaires
+        */
+    public function getLesson(string $orderBy,array $option = []){
+
+        function callback($query){
+            $tmpLesson=new Lesson();
+            $tmpLesson->createLessonFromQuery($query);
+            $tmpCategory=new Category;
+            $tmpCategory->createCategoryFromQuery($query);
+            $tmpUser=new User;
+            $tmpUser->createUserFromQuery($query);
+            return ["lesson"=>$tmpLesson,"category"=>$tmpCategory,"user"=>$tmpUser];
+        }
+      $sql="SELECT  l.lesson_id, l.lesson_title, l.lesson_content, l.lesson_cover,l.lesson_attract_title,l.lesson_difficult,
+                    c.category_id,c.category_logo,c.category_name,
+                    u.user_name,u.user_surname,u.user_avatar,s.speciality_name
+            FROM lesson l
+            LEFT JOIN (SELECT l.lesson_id,count(DISTINCT f.user_id) AS favorite,count(DISTINCT w.user_id) AS views
+                    FROM lesson l 
+                    INNER JOIN watch w ON l.lesson_id = w.lesson_id 
+                    INNER JOIN fav f ON l.lesson_id = f.lesson_id
+                    INNER JOIN category c ON l.category_id = c.category_id ) total ON l.lesson_id = total.lesson_id
+            NATURAL JOIN category c 
+            NATURAL JOIN user u
+            NATURAL JOIN speciality s";
+
+    if (isset($option["category_id"])){
+     $sql.=" WHERE l.category_id = ".$option["category_id"]." ";
+     }
+
+     if (isset($option["theme_id"])){
+        $sql.='WHERE c.category_id = ".$option["theme_id"]';
+     }
+     $sql.=" ORDER BY ".$orderBy;
+
+    if (isset($option["limit"])){
+     $sql.=" LIMIT ".$option["limit"];
+        if (isset($option["offset"])){
+     $sql.=" OFFSET ".$option["offset"];
+     }
+     }
+    $req=$this->bdd->prepare($sql);
+    $req->execute();
+    return array_map("callback",$req->fetchAll(PDO::FETCH_ASSOC));
+    }
+
     public function getMaxLessonId(){
         $sql="SELECT MAX(lesson_id) FROM lesson";
         $req=$this->bdd->prepare($sql);
