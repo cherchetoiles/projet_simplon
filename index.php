@@ -35,6 +35,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
             case 'unFavTreat':
                 UnFavLesson();
                 break;
+
+            case 'updateProfil':
+                updateProfil();
+                break;
             
             case 'test':
                 modaltest();

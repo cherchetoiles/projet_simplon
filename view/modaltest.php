@@ -11,12 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <title>test</title>
     
 </head>
 <body class="w-full h-auto">
-
+<?php 
+    $user=$_SESSION['user'];    
+?>
 <!-- MODAL FOR UPDATE PROFIL DATA -->
 <div class="flex flex-col-reverse w-full p-5 mx-auto border border-solid-2 lg:w-10/12 lg:h-9/12 lg:flex-row font-body lg:shadow-lg border-stroke lg:rounded-2xl ">
     <!-- MENU -->
@@ -35,50 +36,51 @@
         <div class="flex flex-col items-center w-auto h-auto lg:items-start">
             <div class="flex flex-col lg:flex-row">
             <!-- CONDITION IF PP  -->
-            <img class="w-[90px] h-[90px] mx-auto rounded-full" src="assets/img/steven.png">
+            <img class="w-[90px] h-[90px] mx-auto rounded-full" src="assets/img/user_avatar/<?=$user->getUserAvatar()?>">
             <!-- FALSE PP -->
             <!-- <img class="w-24 h-24 mx-auto rounded-full" src=""> --> 
                 <div class="flex flex-col-reverse justify-center text-center lg:text-start lg:flex-col lg:ml-5">
                     <div>
                         <!-- NAME+SPE+UPDATEPP -->
-                        <h6 class="text-xl font-normal ">Steven Blombou</h6>
-                        <p class="text-lg font-light leading-5">Apprenti Développer Web</p>
+                        <h6 class="text-xl font-normal "><?=$user->getUserSurName()?> <?=$user->getUserName()?></h6>
+                        <p class="text-lg font-light leading-5"><?=$user->getUSerSpe()?></p>
                     </div>
-                    <div class="flex mx-auto mt-2 text-base font-semibold lg:mt-0 text-red lg:text-lg ">
+                    <button id="btnChangeProfilePic" class="flex mx-auto mt-2 text-base font-semibold lg:mt-0 text-red lg:text-lg ">
                         <p>Modifier&nbsp;</p><span class="hidden lg:flex">la photo de profil</span>
-                    </div>
+                        <input id="inputFile" type="file" style="display:none;">
+                    </button>
                 </div>
             </div>
             <!-- UPDATEDATA -->
-            <form method="post" action="" class="flex flex-col items-start justify-start my-3 lg:my-10 ">
+            <form method="post" action="?action=updateProfil" class="flex flex-col items-start justify-start my-3 lg:my-10 ">
 
-                <div class="flex flex-col lg:flex-row">
+                <!-- <div class="flex flex-col lg:flex-row">
                     <label for="bio" class="w-11/12 text-sm font-semibold lg:text-lg ">
                         Bio
                     </label>
                     <div class="ml-4">
                         <input  type="text" name="bio" id="bio" class="h-24 lg:ml-[93.5px] border border-solid rounded-md outline-none placeholder:font-normal border-stroke">
-                        <div class="flex justify-end w-full mt-1 text-sm text-stroke">0/150</div>
+                        <div class="flex justify-end w-full mt-1 text-sm text-top text-stroke">0/150</div>
                     </div>
                     
-                </div>
+                </div> -->
 
                 <div class="flex flex-col lg:flex-row lg:my-4">
-                <label for="email" class="w-11/12 text-sm font-semibold lg:text-lg lg:pr-0.5">
+                <label for="user_email" class="w-11/12 text-sm font-semibold lg:text-lg lg:pr-0.5">
                     Adresse mail
                 </label>
                     <div class="ml-4">
-                        <input  type="mail" name="email" id="email" class="border border-solid rounded-md outline-none leanding-8 placeholder:font-normal border-stroke">
+                        <input  type="mail" name="user_email" id="email" value="<?= $user->getUserEmail()?>" class="border border-solid rounded-md outline-none leanding-8 placeholder:font-normal border-stroke">
                         <div class="flex justify-end w-full mt-1 text-sm text-stroke">0/40</div>
                     </div>
                 </div>
 
                 <div class="flex flex-col lg:flex-row">
-                    <label for="mdp" class="w-11/12 text-sm font-semibold lg:text-lg">
+                    <label for="user_password" class="w-11/12 text-sm font-semibold lg:text-lg">
                         Mot de passe
                     </label>
                     <div class="ml-4">
-                        <input  type="password" name="mdp" id="mdp" class="border border-solid rounded-md outline-none leanding-8 placeholder:font-normal border-stroke">
+                        <input type="password" name="user_password" id="mdp"  value="<?= $user->getUserPassword()?>"  class="border border-solid rounded-md outline-none leanding-8 placeholder:font-normal border-stroke">
                         <div class="flex justify-end w-full mt-1 text-sm text-stroke">0/12</div>
                     </div>
                 </div>
@@ -93,5 +95,7 @@
         <img src="assets/svg/cross.svg" alt="Croix pour fermer la fenêtre">
     </a>
 </div>
+<script src="assets/script/card_creator.js"></script>
+
 </body>
 </html>

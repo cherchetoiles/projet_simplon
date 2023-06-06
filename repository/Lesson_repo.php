@@ -19,7 +19,7 @@ class Lesson_repo extends Connect_bdd{
         $sql="SELECT 	
             count(distinct(watch.user_id)) as views,
 		    count(distinct(fav.user_id)) as fav,
-            lesson.lesson_id,lesson_title,lesson_cover,lesson_date,lesson_difficult,
+            lesson.lesson_id,lesson_title,lesson_description,lesson_cover,lesson_date,lesson_difficult,
             user.user_id,user_name,user_surname,user_avatar,
             category_name,category.category_id ";
         $sql.="FROM lesson ";

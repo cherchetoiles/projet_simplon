@@ -46,3 +46,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     tabBtn2.addEventListener("click",()=>{afficherTab(oldContentTmp,tabContent2)});
     tabBtn3.addEventListener("click",()=>{afficherTab(oldContentTmp,tabContent3)});
 })
+
+// const updateavatar = document.getElementById('updateclick');
+// updateavatar.addEventListener('click',() => editAvatar)
+
+// const editAvatar = console.log('lololo')
+
+// const form = document.createElement('form');
+// form.action = 'updateAvatar';
+
+document.addEventListener('DOMContentLoaded', function() {
+    var btnChangeProfilePic = document.getElementById('btnChangeProfilePic');
+    var inputFile = document.getElementById('inputFile');
+
+    btnChangeProfilePic.addEventListener('click', function() {
+      inputFile.click();
+    });
+
+    inputFile.addEventListener('change', function() {
+      var file = this.files[0];
+      var formData = new FormData();
+      formData.append('user_avatar', file);
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'upload.php', true);
+    
+      xhr.send(formData);
+    });
+  });
+
+let favcontainer = document.getElementById('content_2');
+let favbtn = favcontainer.querySelectorAll('a');
+
+function ajaxBootmark(link){
+    fetch(link);
+}
+

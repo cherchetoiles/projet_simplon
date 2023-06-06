@@ -67,6 +67,14 @@ class User
         return $this->speciality_name;
     }
 
+    public function setUserEmail($user_email){
+        $this->user_email = $user_email;
+    }
+
+    public function setUserPassword($user_password){
+        $this->user_password = $user_password;
+    }
+
     public function connectUser(){
         $_SESSION['user']=$this;
     }
@@ -201,4 +209,5 @@ class User
     }
 
 }
+
 ?>

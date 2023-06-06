@@ -30,8 +30,27 @@ function logout(){
     header('Location: ?action=signin');
 }
 
+function updateProfil(){
+    $user = $_SESSION['user'];
+    $repo = new User_repo();
+    $user_id = ($_SESSION['user']->getUserId());
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_password'];
+    $user->setUserEmail($user_email);
+    $user->setUserPassword($user_password);
+    if($user->getUserEmail() != ''){
+        $repo->updateEmail($user_email,$user->getUserId());
+    }
+    if($user->getUserPassword() != ''){
+        $repo->updatePassword($user_password,$user->getUserId());
+    }
+    header('Location:index.php?action=test');
+}
+
 function modaltest() {
     require('view/modaltest.php');
+    $user = new User_repo();
+    $profil_picture=$user->updateAvatar($_POST['user_avatar'],$user);
 }
 
 function signup(){
@@ -44,12 +63,16 @@ function signin(){
 
 function addTheme(){
     include("view/addTheme.php");
-
 }
 
 function nos_cours(){
+    $user = new User();
+    $repo=new User_repo();
+    $repo_lesson=new Lesson_repo();
+    $lessons=$repo_lesson->getAllLessonFull();
     include("view/nos_cours.php");
 }
+
 function cours(){
     include("view/cours.php");
 }
@@ -109,10 +132,11 @@ function signin_treat(){
 //     $fav_count->getFavLesson($_SESSION['user']->getUserId());
 // }
 
+
 function FavLesson(){
     $fav_lessons = new User_repo();
     $fav_lessons->addFavLesson($_SESSION['user'],$_GET['lesson_id']);
-    header('Location:?action=profil');  
+    // header('Location:?action=nos_cours');  
 }
 
 function UnFavLesson(){
