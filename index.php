@@ -125,6 +125,9 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
             case 'getAllCategoryCard': 
                 getCardsForCrudCategory();
                 break;
+            case 'getAllThemeCard': 
+                getCardsForCrudTheme();
+                break;    
 
     
             default:
