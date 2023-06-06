@@ -15,8 +15,7 @@ class Lesson
     private int $category_id;
     private int $user_id;
       
-    public function createLessonToInsert($lesson_id,$lesson_title,$lesson_description,$lesson_level,$lesson_difficult,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type,$user_id){
-        $this->lesson_id = $lesson_id;
+    public function createLessonToInsert($lesson_title,$lesson_description,$lesson_level,$lesson_difficult,$lesson_attract_title,$lesson_content,$category_id,$cover_type,$content_type,$user_id){
         $this->lesson_title = $lesson_title;
         $this->lesson_description = $lesson_description;
         $this->lesson_difficult = $lesson_difficult;
@@ -108,6 +107,10 @@ class Lesson
 
     public function getLessonAttractTitle(){
         return $this->lesson_attract_title;
+    }
+
+    public function getLessonUserId(){
+        return $this->user_id;
     }
 
     public function getLessonCategoryId(){

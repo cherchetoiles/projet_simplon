@@ -34,7 +34,6 @@
     function openAndCloseModal(modal){
         modal.classList.toggle("hidden");
         modal.classList.toggle("flex");
-        console.log(modal);
         let bg = document.createElement("div");
         if (document.getElementById("backgroundFilter")===null){
             bg.classList.add("bg-black","opacity-50","fixed","top-0","left-0","w-screen","h-screen");

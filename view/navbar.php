@@ -11,7 +11,6 @@ $categories=$repo -> getAllCategories();
     <div class="border-b border-b-gray">
       <div class="flex flex-row items-center justify-center w-10/12 min-h-[4rem] mx-auto text-center lg:w-9/12 md:w-full font-body">
         <div class="container flex items-center justify-between">
-
           <div class="flex-none lg:hidden">
             <label for="" class="btn btn-square btn-ghost sm:scale-125">
               <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +104,7 @@ $categories=$repo -> getAllCategories();
           </div>
 
           <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 rounded-4xl" href="?action=profil">
-            <span class="px-2 text-white rounded-full bg-blue">Z</span>
+            <img src="assets/img/user_avatar/<?php echo $_SESSION["user"]->getUserAvatar();?>" class="rounded-full">
             <span class="hidden text-blue xl:block">Profil</span>
           </a>
 
