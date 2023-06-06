@@ -82,3 +82,4 @@ function ajaxBootmark(link){
     fetch(link);
 }
 
+

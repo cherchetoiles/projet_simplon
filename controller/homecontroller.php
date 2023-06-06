@@ -161,7 +161,6 @@ function signin_treat(){
 function FavLesson(){
     $fav_lessons = new User_repo();
     $fav_lessons->addFavLesson($_SESSION['user'],$_GET['lesson_id']);
-    // header('Location:?action=nos_cours');  
 }
 
 function UnFavLesson(){

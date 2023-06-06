@@ -108,11 +108,8 @@
                 </div>
 
                 <div>                    
-                    <p class="text-left font-body"><?=$lesson['lesson']->getLessonTitle()?></p>
-                </div>
-
-                <div class="overflow-hidden">                    
-                    <p class="text-xs text-left font-body"><?=$lesson['lesson']->getLessonDescription()?>..</p>
+                    <p class="overflow-hidden text-left  font-body"><?=$lesson['lesson']->getLessonTitle()?></p>                   
+                    <p class="text-xs text-left font-body line-clamp-3"><?=$lesson['lesson']->getLessonDescription()?>..</p>
                 </div>
             </div>
             <?php }?>
@@ -122,5 +119,5 @@
 <!-- FOOTER -->
 <?php include('view/footer.php') ?>
 </body>
-
+<script src="assets/script/fav.js"></script>
 </html>
