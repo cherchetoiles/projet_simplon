@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- JS CARD -->
-    https://code.jquery.com/jquery-2.2.4.min.js
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-2.2.4.min.js">
 
     <title>Mon Profil</title>
     
