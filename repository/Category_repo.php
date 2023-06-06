@@ -32,7 +32,7 @@ class Category_repo extends Connect_bdd{
         $cat->createCategoryFromRequest($catValues[0],$catValues[1],$catValues[2],$catValues[5],$catValues[3],$catValues[4]);
         if (!$catValues){
             return false;
-        }
+        } 
 
         return $cat;
     }

@@ -17,5 +17,22 @@ class Theme_repo extends Connect_bdd{
         $req->execute();
         return true;
     }     
+
+    function getAllThemeFull(){
+        function activateOnMap($query){
+            $tmpUser=new Theme();
+            $tmpUser->createThemeFromQuery($query);
+            $tmpUser->setThemeTotalViews();
+            $tmpUser->setThemeTotalLikes();
+            $tmpUser->setThemeNbLesson();
+            return $tmpUser;
+        };
+        $sql = "SELECT theme_id, theme_name, theme_logo
+        FROM theme";
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $reqResult = $req->fetchAll(PDO::FETCH_ASSOC);
+        return array_map("activateOnMap", $reqResult);
+    }
 }
 ?>

@@ -34,14 +34,18 @@ async function changeContent(dataLocation,newUrl){
             mainContent.appendChild(newNode);
         }))
 }
+
 if (lessonBtn!=null){
 lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});}
 if (userBtn!=null){
 userBtn.addEventListener("click",()=>{changeContent("getAllUserCard","crudUser")});
 }
 if (categoryBtn!=null){
-    categoryBtn.addEventListener("click",()=>{changeContent("getAllCategoryCard","crudUser")});
+    categoryBtn.addEventListener("click",()=>{changeContent("getAllCategoryCard","crudCategory")});
     }
+if (themeBtn!=null){
+    themeBtn.addEventListener("click",()=>{changeContent("getAllThemeCard","crudTheme")});
+   }    
 if (sideBarOpenBtn!==null){
 sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
 }
