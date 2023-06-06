@@ -74,9 +74,12 @@ class Lesson_repo extends Connect_bdd{
     if (isset($option["category_id"])){
      $sql.=" WHERE l.category_id = ".$option["category_id"]." ";
      }
+    if (isset($option["lesson_id"])){
+     $sql.=" WHERE l.lesson_id = ".$option["lesson_id"]." ";
+     }
 
      if (isset($option["theme_id"])){
-        $sql.='WHERE c.category_id = ".$option["theme_id"]';
+        $sql.='WHERE c.category_id = '.$option["theme_id"].' ';
      }
      $sql.=" ORDER BY ".$orderBy;
 

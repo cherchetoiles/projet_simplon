@@ -78,6 +78,9 @@ function cours(){
 }
 
 function lesson(){
+    $repo = new Lesson_repo();
+    $lesson = $repo -> getLesson("lesson_id",["lesson_id"=>75]);
+    var_dump($lesson);
     require('view/lesson.php');
 }
 
