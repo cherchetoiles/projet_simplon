@@ -84,10 +84,12 @@
                                 </span>
                                 <div class="flex flex-col gap-6 mx-3 mt-5" >
                                     <div class="flex justify-between">
+                                        <a href="index?action=lesson">
                                         <div class="flex gap-4">
                                             <img src="assets/svg/play_icon.svg" class="w-6">
                                             <span class="font-semibold">Leçon 1</span>
                                         </div>
+                                        </a>
                                         <img src="assets/svg/checktick_icon.svg" class="w-6">
                                     </div>
                                 </div>
