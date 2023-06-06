@@ -366,7 +366,7 @@ function addVideo(){
         $cover_type="wrong";
     }
     $cat_repo=new Category_repo();
-
+    
     $cat=$cat_repo->getCategoryByName($_POST["category"]);
     
     if (!$cat){
