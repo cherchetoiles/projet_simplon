@@ -48,9 +48,10 @@ function updateProfil(){
 }
 
 function modaltest() {
-    require('view/modaltest.php');
     $user = new User_repo();
+    $_POST['user_avatar'] = null;
     $profil_picture=$user->updateAvatar($_POST['user_avatar'],$user);
+    require('view/modaltest.php');
 }
 
 function signup(){
@@ -74,6 +75,11 @@ function nos_cours(){
 }
 
 function cours(){
+    $category = new Category();
+    $repo = new Category_repo();
+    $need_category = new Category();
+    $repo_lesson=new Lesson_repo();
+    $lessons=$repo_lesson->getAllLessonFull();
     include("view/cours.php");
 }
 
