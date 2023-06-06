@@ -36,6 +36,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
                 UnFavLesson();
                 break;
 
+            case 'updateAvatar':
+                updateAvatar();
+                break;
+
             case 'updateProfil':
                 updateProfil();
                 break;

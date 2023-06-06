@@ -48,10 +48,14 @@ function updateProfil(){
 }
 
 function modaltest() {
-    $user = new User_repo();
-    $_POST['user_avatar'] = null;
-    $profil_picture=$user->updateAvatar($_POST['user_avatar'],$user);
     require('view/modaltest.php');
+}
+
+function updateAvatar(){
+    $user_repo = new User_repo();
+    $user = $_SESSION['user'];
+    $profil_picture=$user_repo->updateAvatar($_FILES,$user);
+    echo $profil_picture;
 }
 
 function signup(){
