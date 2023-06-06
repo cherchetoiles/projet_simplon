@@ -1,3 +1,9 @@
+<?php
+$repo = new Theme_repo();
+$themes = $repo -> getAllThemes("Code");
+$repo = new Category_repo();
+$categories=$repo -> getAllCategories();
+?>
 <div class="drawer drawer-end font-body">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" /> 
   <div class="flex flex-col drawer-content">
@@ -23,7 +29,9 @@
           </div>
           
           <div class="lg:flex-none">
-            <img class="w-44 sm:w-52 md:w-60 lg:w-64" src="assets/img/logo.png" alt="">
+            <a href="?action=homepage">
+              <img class="w-44 sm:w-52 md:w-60 lg:w-64" src="assets/img/logo.png" alt="">
+            </a>
           </div>
 
           <div class="flex-row hidden gap-4 lg:flex xl:gap-0">
@@ -37,8 +45,22 @@
                 </svg>
               </label>
               <ul tabindex="0" class="p-2 shadow dropdown-content menu bg-base-100 rounded-box w-52">
-                <li><a>Item 1</a></li>
-                <li><a>Item 2</a></li>
+                <div class="flex flex-row items-center w-fit gap-1 border-b-4 border-b-red mb-4">
+                  <img class="w-6 h-5" src="assets/img/<?php echo $themes["theme_logo"] ?>" alt="">
+                  <span class="text-lg font-semibold">
+                    <?php echo $themes["theme_name"] ?>
+                  </span>
+                </div>
+                <div>
+                  <a class="font-semibold" href="?action=nos_cours">Tous nos cours</a>
+                </div>
+                <?php foreach($categories as $category) { ?>
+                  <div>
+                    <a href="?action=cours&id=<?php echo $category->getCategoryId() ?>">
+                      <?php echo $category->getCategoryName() ?>
+                    </a>
+                  </div>
+                <?php } ?>
               </ul>
             </div>
 
