@@ -12,7 +12,7 @@
     <title>Ajout de vidéo</title>
 </head>
 <body class="font-body text-sm relative z-0">
-    <form class="mx-auto w-full lg:w-4/5 xl:w-3/5 xl:min-w-[1200px] p-5 border-gray border border-solid flex flex-col items-center rounded-[40px] lg:px-20 mt-10 py-2" action="?action=addVideoTreat" method="POST" enctype="multipart/form-data" id="form">
+    <form class="font-body text-sm relative z-0 mx-auto w-full lg:w-4/5 xl:w-3/5 xl:min-w-[1200px] p-5 border-gray border border-solid flex flex-col items-center rounded-[40px] lg:px-20 mt-10 py-2" action="?action=addVideoTreat" method="POST" enctype="multipart/form-data" id="form-video">
         <div class="flex flex-col-reverse md:flex-row justify-between items-start w-full mt-5">
             <span class="font-bold text-4xl"> Formulaire d'ajout:</span>
             <button class="font-semibold flex items-start py-2 px-5 border border-solid border-gray gap-2 rounded-lg leading-none">Annuler <span class="text-red font-light text-xs leading-none">x</span></button>
@@ -24,7 +24,7 @@
             </div>
             <div class="flex flex-col lg:ml-20">
                 <span class="font-semibold">catégorie</span>
-                <select id="category" name="category" class="border border-solid border-gray py-1 px-4 rounded-lg focus:outline-none" form="form">
+                <select id="category" name="category" class="border border-solid border-gray py-1 px-4 rounded-lg focus:outline-none" form="">
                     <?php
                     $catRepo=new Category_repo();
                     foreach ($catRepo->getAllCategoryName() as $catName):?>
@@ -39,7 +39,7 @@
             </div>  
             <div class="flex flex-col md:ml-20">
                 <span class="font-semibold">Difficulté</span>
-                <select id="level" class="border border-solid border-gray px-4 py-1 rounded-lg focus:outline-none" name="level" form="form">
+                <select id="level" class="border border-solid border-gray px-4 py-1 rounded-lg focus:outline-none" name="level" form="">
                     <?php for ($i=1;$i<10;$i++):?>
                         <option><?=$i?></option>
                     <?php endfor ?>
@@ -51,7 +51,7 @@
         </span>
         <div class='relative rounded-lg border border-gray border-solid w-full'>
             <div class='relative rounded-lg pb-4'>
-                <textarea name='description' id='textarea' name="description" form="form" class='relative w-full border-transparent rounded-lg resize-none focus:outline-none' rows="6"></textarea>
+                <textarea name='description' id='textarea' name="description" form="" class='relative w-full border-transparent rounded-lg resize-none focus:outline-none' rows="6"></textarea>
             </div>
             <span class='absolute bottom-0 right-1 z-10' id='compteur'>
             </span>
