@@ -38,7 +38,7 @@
         </a>
          <!-- card -->
          
-            <div class="p-6 w-4/12 h-[370px] mb-[30px] block dir-ltr flex flex-col snap-start snap-always  p-3 mx-2 my-2 rounded-lg object-cover object-center h-[370px] overflow-y-scroll">
+            <div class="w-4/12 h-[370px] mb-[30px] dir-ltr flex flex-col snap-start snap-always ml-2 my-2 rounded-lg object-cover object-center overflow-y-scroll">
                 <span class="font-semibold">
                     Niveau 1
                 </span>
