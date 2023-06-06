@@ -102,7 +102,7 @@
         <div class="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-14">
         <?php foreach($topCategory as $cat) { ?>
             <a href="?action=cours&id=<?php echo $cat->getCategoryId() ?>" class="flex items-center justify-center w-auto mx-2 my-3 shadow-lg rounded-xl h-44" style="background-color:#<?php echo $cat->getCategoryMainColor()?>">
-                <img src="assets/svg/categories/white/<?php echo $cat->getCategoryWhiteLogo() ?>" alt="Logo Html">
+                <img src="assets/svg/categories/white/<?=$cat->getCategoryWhiteLogo() ?>" alt="Logo Html">
             </a>
         <?php };?>
         </div>
