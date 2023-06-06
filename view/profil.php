@@ -35,7 +35,7 @@
         <div>
             <div class="flex flex-col justify-center">
                 <!-- NAME AND JOB -->
-                <h2 class="font-body text-xl md:text-[28px] font-medium tracking-wide"><?= $user->getUserSurname()?> <?= $user->getUserName()?></h2>                
+                <h2 class="font-body text-xl md:text-[28px] font-medium tracking-wide"><?= $user->getUserName()?> <?= $user->getUserSurname()?></h2>                
                 <p class="text-lg font-normal tracking-wide md:pt-1 md:text-xl font-body"><?= $user->getSpeName()?></p>
             </div>
             <div class="flex justify-between mt-1 md:mt-9">
