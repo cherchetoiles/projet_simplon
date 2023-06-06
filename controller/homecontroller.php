@@ -86,6 +86,25 @@ function formVideo(){
 }
 
 function homepage(){
+    $repo = new Lesson_repo();
+    $topLesson=$repo -> getLesson("total.views/total.favorite DESC",["limit"=>1])[0];
+    $repo = new Category_repo();
+    $topCategory=$repo -> getPopularCategory("total.views/total.favorite DESC",["limit"=>16]);
+    if ($topLesson["lesson"]-> getLessonDifficult() < 4){
+        $colors = ["red","#D9D9D9","#EAEAEA"];
+    }
+    elseif ($topLesson["lesson"]->getLessonDifficult() > 6){
+        $colors = ["red","red","red"];
+    }
+    else {
+        $colors = ["red","red","#D9D9D9"];
+    }
+    $svg = '<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.04289 7.29289C0.75 7.58579 0.75 8.05719 0.75 9V15C0.75 15.9428 0.75 16.4142 1.04289 16.7071C1.33579 17 1.80719 17 2.75 17C3.69281 17 4.16421 17 4.45711 16.7071C4.75 16.4142 4.75 15.9428 4.75 15V9C4.75 8.05719 4.75 7.58579 4.45711 7.29289C4.16421 7 3.69281 7 2.75 7C1.80719 7 1.33579 7 1.04289 7.29289Z" fill='.$colors[0].' />
+                <path d="M7.75 5C7.75 4.05719 7.75 3.58579 8.04289 3.29289C8.33579 3 8.80719 3 9.75 3C10.6928 3 11.1642 3 11.4571 3.29289C11.75 3.58579 11.75 4.05719 11.75 5V15C11.75 15.9428 11.75 16.4142 11.4571 16.7071C11.1642 17 10.6928 17 9.75 17C8.80719 17 8.33579 17 8.04289 16.7071C7.75 16.4142 7.75 15.9428 7.75 15V5Z" fill='.$colors[1].' />
+                <path d="M15.0429 0.292893C14.75 0.585786 14.75 1.05719 14.75 2V15C14.75 15.9428 14.75 16.4142 15.0429 16.7071C15.3358 17 15.8072 17 16.75 17C17.6928 17 18.1642 17 18.4571 16.7071C18.75 16.4142 18.75 15.9428 18.75 15V2C18.75 1.05719 18.75 0.585786 18.4571 0.292893C18.1642 0 17.6928 0 16.75 0C15.8072 0 15.3358 0 15.0429 0.292893Z" fill='.$colors[2].' />
+                <path d="M0.75 19.25C0.335786 19.25 0 19.5858 0 20C0 20.4142 0.335786 20.75 0.75 20.75H18.75C19.1642 20.75 19.5 20.4142 19.5 20C19.5 19.5858 19.1642 19.25 18.75 19.25H0.75Z" fill="#B7B7B7"/>
+            </svg>';
     require('view/homepage.php');
 }
 
@@ -245,6 +264,105 @@ function getCardsForCrudUser(){
                             <div class='flex justify-center w-full gap-4'>
                                 <img src='assets/svg/edit_icon.svg' data-id='".$result->getUserId()."'>
                                 <img src='assets/svg/trash_icon.svg' data-id='".$result->getUserId()."'>
+                            </div>
+                        </div>
+                    </div>";
+    }
+    echo json_encode($toEncode);
+}
+function getCardsForCrudCategory(){
+    $repo = new Category_repo();
+    $reqResult=$repo->getAllCategoryFull();
+    foreach ($reqResult as $result){
+        $showedViews=$result->getCategoryViews();
+        $viewsSuffix="";
+        $showedLikes=$result->getCategoryLikes();
+        $likesSuffix="";
+        if ($result->getCategoryViews()>10000){
+            $showedViews=intdiv($result->getCategoryViews(),1000);
+            $viewsSuffix="K";
+        }
+        if ($result->getCategoryLikes()>10000){
+            $showedLikes=intdiv($result->getCategoryLikes(),1000);
+            $likesSuffix="K";
+        }
+        $toEncode[]="<div class='rounded-lg bg-white p-6 flex flex-col items-center gap-5'>
+                        <div class='flex flex-col items-center w-3/4 rounded-full overflow-hidden mt-3'>
+                            <img src='assets/img/user_avatar/".$result->getCategoryLogo()."' class='w-full'>
+                        </div>
+                        <div class='flex flex-col items-center w-full'>
+                            <span class='font-semibold text-xl text-center'>".$result->getCategoryName()."
+                            <div class='flex flex-col items-center gap-2'>
+                                <span class='leading-none text-lg'>".$result->getCategoryDescription()."</span>
+                            </div>
+                        </div>
+                        <div class='flex flex-col items-center w-full gap-3'>
+                            <div class='flex mt-4 justify-evenly w-full'>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/eye_icon.svg'>
+                                    <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
+                                </div>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/heart_icon.svg'>
+                                    <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
+                                </div>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/nb_lesson_icon.svg'>
+                                    <span class='italic leading-none'>".$result->getCategoryNbLesson()."</span>
+                                </div>
+                            </div>
+                            <div class='flex w-full justify-center gap-4'>
+                                <img src='assets/svg/edit_icon.svg' data-id='".$result->getCategoryId()."'>
+                                <img src='assets/svg/trash_icon.svg' data-id='".$result->getCategoryId()."'>
+                            </div>
+                        </div>
+                    </div>";
+    }
+    echo json_encode($toEncode);
+}
+function getCardsForCrudTheme(){
+    $repo = new Theme_repo();
+    $reqResult=$repo->getAllThemeFull();
+    foreach ($reqResult as $result){
+        $showedViews=$result->getThemeViews();
+        $viewsSuffix="";
+        $showedLikes=$result->getThemelikes();
+        $likesSuffix="";
+        if ($result->getThemeViews()>10000){
+            $showedViews=intdiv($result->getThemeViews(),1000);
+            $viewsSuffix="K";
+        }
+        if ($result->getThemelikes()>10000){
+            $showedLikes=intdiv($result->getThemelikes(),1000);
+            $likesSuffix="K";
+        }
+        $toEncode[]="<div class='rounded-lg bg-white p-6 flex flex-col items-center gap-5'>
+                        <div class='flex flex-col items-center w-3/4 rounded-full overflow-hidden mt-3'>
+                            <img src='assets/img/user_avatar/".$result->getThemeLogo()."' class='w-full'>
+                        </div>
+                        <div class='flex flex-col items-center w-full'>
+                            <span class='font-semibold text-xl text-center'>".$result->getThemeName()."
+                            <div class='flex flex-col items-center gap-2'>
+                            </div>
+                        </div>
+                        <div class='flex flex-col items-center w-full gap-3'>
+                            <div class='flex mt-4 justify-evenly w-full'>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/eye_icon.svg'>
+                                    <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
+                                </div>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/heart_icon.svg'>
+                                    <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
+                                </div>
+                                <div class='flex gap-1 items-center'>
+                                    <img src='assets/svg/nb_lesson_icon.svg'>
+                                    <span class='italic leading-none'>".$result->getThemeNbLesson()."</span>
+                                </div>
+                            </div>
+                            <div class='flex w-full justify-center gap-4'>
+                                <img src='assets/svg/edit_icon.svg' data-id='".$result->getThemeId()."'>
+                                <img src='assets/svg/trash_icon.svg' data-id='".$result->getThemeId()."'>
                             </div>
                         </div>
                     </div>";
