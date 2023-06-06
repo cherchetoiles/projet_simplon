@@ -1,22 +1,23 @@
 
 {
-let addBtn = document.getElementById("addBtn");
-let closeModalButtons = document.getElementsByClassName("close-modal");
+    let addBtn = document.getElementById("addBtn");
+    let closeModalButtons = document.getElementsByClassName("close-modal");
 
-let sideBarContent = document.getElementById("crudSideBarContent");
-let sideBarOpenBtn = document.getElementById("openCrudSideBar");
-let mainContent = document.getElementById("mainContent");
-let hiddenBlockElt = document.getElementById("hiddenBlockElt");
+    let sideBarContent = document.getElementById("crudSideBarContent");
+    let sideBarOpenBtn = document.getElementById("openCrudSideBar");
+    let mainContent = document.getElementById("mainContent");
+    let hiddenBlockElt = document.getElementById("hiddenBlockElt");
 
-let dashboardBtn = document.getElementById("dashboard");
-let lessonBtn = document.getElementById("lesson");
-let userBtn = document.getElementById("user");
-let categoryBtn = document.getElementById("category");
-let themeBtn = document.getElementById("theme");
+    let dashboardBtn = document.getElementById("dashboard");
+    let lessonBtn = document.getElementById("lesson");
+    let userBtn = document.getElementById("user");
+    let categoryBtn = document.getElementById("category");
+    let themeBtn = document.getElementById("theme");
+    // modal
+    let formAddVideo = document.getElementById("form-video");
 
-let formAddVideo = document.getElementById("form-video");
+    let activeModal = formAddVideo;
 
-let activeModal = formAddVideo;
     function openSideBar(btn,sidebar){
         sidebar.classList.toggle("-translate-x-full");
         btn.classList.toggle("max-md:right-0");
@@ -81,92 +82,6 @@ if (addBtn!==null){
 }
 
 }
-
-
-// nav crud + ajax crud + bouton ajouter
-    {
-    let addBtn = document.getElementById("addBtn");
-    let closeModalButtons = document.getElementsByClassName("close-modal");
-
-    let sideBarContent = document.getElementById("crudSideBarContent");
-    let sideBarOpenBtn = document.getElementById("openCrudSideBar");
-    let mainContent = document.getElementById("mainContent");
-    let hiddenBlockElt = document.getElementById("hiddenBlockElt");
-
-    let dashboardBtn = document.getElementById("dashboard");
-    let lessonBtn = document.getElementById("lesson");
-    let userBtn = document.getElementById("user");
-    let categoryBtn = document.getElementById("category");
-    let themeBtn = document.getElementById("theme");
-    // modal
-    let formAddVideo = document.getElementById("form-video");
-
-    let activeModal = formAddVideo;
-        
-    function openSideBar(btn,sidebar){
-        sidebar.classList.toggle("-translate-x-full");
-        btn.classList.toggle("max-md:right-0");
-        btn.classList.toggle("max-md:-right-6");
-        hiddenBlockElt.classList.toggle("md:pr-[320px]");
-        if (btn.innerText==="<"){
-            btn.innerText=">"
-        }
-        else{
-            btn.innerText="<"
-        }
-    }
-
-
-    function openAndCloseModal(modal){
-        modal.classList.toggle("hidden");
-        modal.classList.toggle("flex");
-        let bg = document.createElement("div");
-        if (document.getElementById("backgroundFilter")===null){
-            bg.classList.add("bg-black","opacity-50","fixed","top-0","left-0","w-screen","h-screen");
-            bg.id="backgroundFilter";
-            document.body.appendChild(bg);
-        }
-        else{
-            document.getElementById("backgroundFilter").remove();
-        }
-
-
-    }
-    
-    async function changeContent(dataLocation,newUrl){
-        mainContent.innerHTML="";
-        let stateObj = { id: "100" };
-        window.history.pushState(100,"crud","index.php?admin=".concat(newUrl));
-        fetch("?admin="+dataLocation)
-            .then(response => response.json())
-            .then(data => data.forEach(element => {
-                let newNode=document.createRange().createContextualFragment(element);
-                mainContent.appendChild(newNode);
-            }))
-    }
-
-
-    if (lessonBtn!=null){
-        lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});}
-    if (userBtn!=null){
-        userBtn.addEventListener("click",()=>{changeContent("getAllUserCard","crudUser")});
-    }
-    if (categoryBtn!=null){
-        categoryBtn.addEventListener("click",()=>{changeContent("getAllCategoryCard","crudCategory")});
-        }
-    if (sideBarOpenBtn!==null){
-    sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
-    }
-    if (closeModalButtons!==null){
-        Array.from(closeModalButtons).forEach(element => {
-            element.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(activeModal)})  
-        });
-    }
-    if (addBtn!==null){
-        addBtn.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(activeModal)})  
-    }
-}
-
 // formulaire ajout de leçon
 {
     const textarea = document.getElementById("textarea");
