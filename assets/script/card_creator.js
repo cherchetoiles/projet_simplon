@@ -1,7 +1,7 @@
 function showFilter(){
-    var img = document.getElementById("card_img").classList;
+    var img = document.getElementsByClassName("card_img").classList;
     img.add("blur-[2px]","brightness-50");
-    var list = document.getElementById("card_filter").classList;
+    var list = document.getElementsByClassName("card_filter").classList;
     list.remove("hidden");}
 
 function showFav(){
@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         console.log(oldContent);
         oldContent.classList.add('hidden');
         newContent.classList.remove('hidden');
+        newContent.classList.add('grid');
         oldContentTmp=newContent;
     }
 
@@ -45,3 +46,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     tabBtn2.addEventListener("click",()=>{afficherTab(oldContentTmp,tabContent2)});
     tabBtn3.addEventListener("click",()=>{afficherTab(oldContentTmp,tabContent3)});
 })
+
+// const updateavatar = document.getElementById('updateclick');
+// updateavatar.addEventListener('click',() => editAvatar)
+
+// const editAvatar = console.log('lololo')
+
+// const form = document.createElement('form');
+// form.action = 'updateAvatar';
+
+document.addEventListener('DOMContentLoaded', function() {
+    var btnChangeProfilePic = document.getElementById('btnChangeProfilePic');
+    var inputFile = document.getElementById('inputFile');
+
+    btnChangeProfilePic.addEventListener('click', function() {
+      inputFile.click();
+    });
+
+    inputFile.addEventListener('change', function() {
+      var file = this.files[0];
+      var formData = new FormData();
+      formData.append('user_avatar', file);
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'upload.php', true);
+    
+      xhr.send(formData);
+    });
+  });
+
+let favcontainer = document.getElementById('content_2');
+let favbtn = favcontainer.querySelectorAll('a');
+
+function ajaxBootmark(link){
+    fetch(link);
+}
+

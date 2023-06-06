@@ -28,6 +28,18 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
                 logout();
                 break;
 
+            case 'favTreat':
+                FavLesson();
+                break;
+
+            case 'unFavTreat':
+                UnFavLesson();
+                break;
+
+            case 'updateProfil':
+                updateProfil();
+                break;
+            
             case 'test':
                 modaltest();
                 break;
