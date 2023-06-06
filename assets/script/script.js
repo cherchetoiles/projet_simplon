@@ -1,5 +1,8 @@
 
 {
+let addBtn = document.getElementById("addBtn");
+let closeModalButtons = document.getElementsByClassName("close-modal");
+
 let sideBarContent = document.getElementById("crudSideBarContent");
 let sideBarOpenBtn = document.getElementById("openCrudSideBar");
 let mainContent = document.getElementById("mainContent");
@@ -11,18 +14,36 @@ let userBtn = document.getElementById("user");
 let categoryBtn = document.getElementById("category");
 let themeBtn = document.getElementById("theme");
 
-function openSideBar(btn,sidebar){
-    sidebar.classList.toggle("-translate-x-full");
-    btn.classList.toggle("max-md:right-0");
-    btn.classList.toggle("max-md:-right-6");
-    hiddenBlockElt.classList.toggle("md:pr-[320px]");
-    if (btn.innerText==="<"){
-        btn.innerText=">"
+let formAddVideo = document.getElementById("form-video");
+
+let activeModal = formAddVideo;
+    function openSideBar(btn,sidebar){
+        sidebar.classList.toggle("-translate-x-full");
+        btn.classList.toggle("max-md:right-0");
+        btn.classList.toggle("max-md:-right-6");
+        hiddenBlockElt.classList.toggle("md:pr-[320px]");
+        if (btn.innerText==="<"){
+            btn.innerText=">"
+        }
+        else{
+            btn.innerText="<"
+        }
     }
-    else{
-        btn.innerText="<"
+
+    function openAndCloseModal(modal){
+        modal.classList.toggle("hidden");
+        modal.classList.toggle("flex");
+        console.log(modal);
+        let bg = document.createElement("div");
+        if (document.getElementById("backgroundFilter")===null){
+            bg.classList.add("bg-black","opacity-50","fixed","top-0","left-0","w-screen","h-screen");
+            bg.id="backgroundFilter";
+            document.body.appendChild(bg);
+        }
+        else{
+            document.getElementById("backgroundFilter").remove();
+        }
     }
-}
   
 async function changeContent(dataLocation,newUrl){
     mainContent.innerHTML="";
@@ -47,8 +68,16 @@ if (categoryBtn!=null){
 if (themeBtn!=null){
     themeBtn.addEventListener("click",()=>{changeContent("getAllThemeCard","crudTheme")});
    }    
+if (closeModalButtons!==null){
+Array.from(closeModalButtons).forEach(element => {
+    element.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(activeModal)})  
+});
+}
 if (sideBarOpenBtn!==null){
 sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarContent,mainContent)});
+}
+if (addBtn!==null){
+    addBtn.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(activeModal)})  
 }
 
 }

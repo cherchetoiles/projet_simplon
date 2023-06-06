@@ -31,10 +31,6 @@ class Lesson
     return $this->lesson_id;
    }
    
-    public function getLessonId(){
-        return $this->lesson_id;
-    }   
-
     public function getLessonContent(){
         return $this->lesson_content;
     }
@@ -49,10 +45,6 @@ class Lesson
 
     public function getLessonViews(){
         return $this->lesson_views;
-    }
-
-    public function getLessonUserId(){
-        return $this->user_id;
     }
 
     public function getLessonDifficult(){
