@@ -61,11 +61,11 @@
                                     <path d="M15.0429 0.292893C14.75 0.585786 14.75 1.05719 14.75 2V15C14.75 15.9428 14.75 16.4142 15.0429 16.7071C15.3358 17 15.8072 17 16.75 17C17.6928 17 18.1642 17 18.4571 16.7071C18.75 16.4142 18.75 15.9428 18.75 15V2C18.75 1.05719 18.75 0.585786 18.4571 0.292893C18.1642 0 17.6928 0 16.75 0C15.8072 0 15.3358 0 15.0429 0.292893Z" fill='.$colors[2].' />
                                     <path d="M0.75 19.25C0.335786 19.25 0 19.5858 0 20C0 20.4142 0.335786 20.75 0.75 20.75H18.75C19.1642 20.75 19.5 20.4142 19.5 20C19.5 19.5858 19.1642 19.25 18.75 19.25H0.75Z" fill="#B7B7B7"/>
                                 </svg>';?>
-                <span class="font-semibold sticky bg-gray-bg text-red items-center top-0 pl-3 py-px gap-5 flex <?php if (!$first){echo "mt-4";} ?>">
+                <span class="font-semibold sticky bg-gray-bg text-red items-center top-0 pl-3 py-px gap-5 flex <?php if (!$first){echo "mt-2";} ?>">
                     <?php echo $svg."Niveau ".$i ; $first=FALSE;?>
                 </span>
                 <?php }?>
-                <div class="flex flex-col gap-6 px-3 mt-4 <?php if ($linkedLesson["lesson"]->getLessonId()==$_GET["id"]){echo "bg-slate-200";} ?>">
+                <div class="flex flex-col gap-6 px-3 py-1 mt-2 <?php if ($linkedLesson["lesson"]->getLessonId()==$_GET["id"]){echo "bg-slate-200";} ?>">
                     <div class="flex justify-between">
                         <a href="index?action=lesson&id=<?php echo $linkedLesson["lesson"]->getLessonId() ?>">
                         <div class="flex gap-4">
