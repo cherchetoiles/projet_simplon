@@ -20,7 +20,6 @@ class Ressource
     }
 
     public function createRessourceFromQuery($query){
-        var_dump($query);
         if (isset($query['id_ressource'])){
             $this->ressource_id = $query['id_ressource'];
         }
