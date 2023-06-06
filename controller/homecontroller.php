@@ -78,6 +78,9 @@ function cours(){
 }
 
 function lesson(){
+    $repo = new Lesson_repo();
+    $lesson = $repo -> getLesson("lesson_id",["lesson_id"=>76,"withcategorieslesson"=>TRUE,"limit"=>1])[0];
+    $lesson['category']->setLessonFromCategory();
     require('view/lesson.php');
 }
 

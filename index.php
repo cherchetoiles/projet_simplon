@@ -3,6 +3,7 @@ require_once('controller/homecontroller.php');
 session_start();
 if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) {
     if(!empty($_SESSION['user'])){
+        
         switch($_GET['action']) {
             case 'homepage':
                 homepage();
