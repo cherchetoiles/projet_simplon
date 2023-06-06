@@ -108,5 +108,6 @@ class Category_repo extends Connect_bdd{
         $reqResult = $req->fetchAll(PDO::FETCH_ASSOC);
         return array_map("activate", $reqResult);
     }
+
 }
 ?>
