@@ -19,6 +19,22 @@ class Ressource
         return "";
     }
 
+    public function createRessourceFromQuery($query){
+        var_dump($query);
+        if (isset($query['id_ressource'])){
+            $this->ressource_id = $query['id_ressource'];
+        }
+        if (isset($query['content'])){
+            $this->ressource_content = $query['content'];
+        }
+        if (isset($query['ressource_name'])){
+            $this->ressource_name = $query['ressource_name'];
+        }
+        if (isset($query['lesson_id'])){
+            $this->lesson_id = $query['lesson_id'];
+        }
+    }
+
     public function getRessourceContent(){
         return $this->ressource_content;
     }

@@ -81,56 +81,44 @@
                         <!-- <img src="assets/svg/checktick_icon.svg" class="w-6"> -->
                     </div>
                     </a>
-                    <img src="assets/svg/checktick_icon.svg" class="w-6">
                 </div>
                 <?php ;}?>
             </div>        
         </div>
     </div>
-</div>
-
- <!-- profil -->
- 
-<div class="container flex justify-center pt-8 pb-8 mx-auto border-b border-solid lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
-   <!-- AVATAR -->
-    <div class="px-2 md:w-1/5">
-        <img src="assets/img/user_avatar/<?=$user->getUserAvatar()?>" alt="Photo de profil de <?= $user->getUserSurname()?>" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:h-40 lg:w-40 xl:w-44 xl:h-44">
-    </div>
-    <div class="flex flex-row justify-between sm:mt-2 lg:w-4/5">
-        <div>
-            <div class="flex flex-col justify-center">
-                <!-- NAME AND JOB -->
-                <h2 class="font-body text-xl md:text-[28px] font-medium tracking-wide"><?= $user->getUserSurname()?> <?= $user->getUserName()?></h2>                
-                <p class="text-lg font-normal tracking-wide md:pt-1 md:text-xl font-body"><?= $user->getSpeName()?></p>
+    <!-- profil -->
+    <div class="container flex justify-center pt-8 pb-8 mx-auto border-b border-solid border-stroke">
+    <!-- AVATAR -->
+        <div class="px-2 md:w-1/5">
+            <img src="assets/img/user_avatar/<?php echo $lesson['user']->getUserAvatar()?>" alt="Photo de profil de <?= $lesson['user']->getUserSurname()?>" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:h-40 lg:w-40 xl:w-44 xl:h-44">
+        </div>
+        <div class="flex flex-row justify-between sm:mt-2 lg:w-4/5">
+            <div>
+                <div class="flex flex-col justify-center">
+                    <!-- NAME AND JOB -->
+                    <h2 class="font-body text-xl md:text-[28px] font-medium tracking-wide"><?= $lesson['user']->getUserSurname()?> <?= $lesson['user']->getUserName()?></h2>                
+                    <p class="text-lg font-normal tracking-wide md:pt-1 md:text-xl font-body"><?= $lesson['user']->getSpeName()?></p>
+                </div>
             </div>
         </div>
     </div>
+    <!-- Description -->
+    <div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
+        <span class="mb-4 underline">Description:</span>
+        <p><?= $lesson['lesson']->getLessonDescription() ?></p>
+    </div>
+    <!-- Ressources -->
+    <div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
+        <h1 class="mb-4 underline">Ressources:</h1>
+        <?php foreach($lesson["lesson"]->getLessonRessources() as $ressource){ ?>
+            <div>
+            <?= $ressource->getRessourceName() ?>
+                <a href="<?= $ressource->getRessourceContent() ?>"><span class="text-xs italic font-light font-body text-gray-dark"> <?= $ressource->getRessourceContent() ?> </span>
+                </a>
+            </div>
+        <?php }?>
+    </div>
 </div>
-<!-- Description -->
-<div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
-    <h1 class="mb-4 underline">Description:</h1>
-    <p>Sed tenetur velit eum voluptas nobis non tenetur aliquam. Sit labore iure id quisquam voluptatem qui praesentium accusamus eum molestiae quibusdam est eligendi harum.Sed tenetur velit eum voluptas nobis non tenetur aliquam. Sit labore iure id quisquam voluptatem qui praesentium accusamus eum molestiae quibusdam est eligendi harum.</p>
-</div>
-<!-- Ressources -->
-<div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
-    <h1 class="mb-4 underline">Ressources:</h1>
-        <div>
-        React Quick Start
-            <a href=""><span class=" text-xs italic font-light font-body text-gray-dark"> https://react.dev/learn.com </span>
-            </a>
-        </div>
-        <div>
-        Start a New React Project 
-            <a href=""><span class=" text-xs italic font-light font-body text-gray-dark">https://react.dev/learn/start-a-new-react-project</span>
-            </a>
-        </div>
-</div>
-
-
-
-
-
-<br><br>
 <!-- FOOTER -->
 <?php include('view/footer.php') ?>
 <script src="assets/script/js_trick.js"></script>

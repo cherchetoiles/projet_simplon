@@ -58,6 +58,15 @@ class Lesson
         return $this->lesson_date;
     }
 
+    public function getLessonRessources(){
+        return $this->lesson_ressources;
+    }
+
+    public function setLessonRessources(){
+        $repo = new Ressource_repo();
+        $this->lesson_ressources=$repo->getRessourcesByLessonId($this->lesson_id);
+    }
+
     function createLessonFromQuery($query){
         if (isset($query['lesson_id'])){
             $this->lesson_id = $query['lesson_id'];
