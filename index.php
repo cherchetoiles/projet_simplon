@@ -58,10 +58,13 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
                             break; 
                         
                         default:
-                            homepage();
+                        homepage();
+                        break;
+                        
                         }  
                 } else{
                 homepage();
+
                 }
                 break;     
         }
@@ -130,6 +133,14 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
             case 'getAllUserCard':
                 getCardsForCrudUser();
                 break;
+                
+            case 'getAllCategoryCard': 
+                getCardsForCrudCategory();
+                break;
+            case 'getAllThemeCard': 
+                getCardsForCrudTheme();
+                break;    
+
     
             default:
                 homepage();

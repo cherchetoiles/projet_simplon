@@ -34,26 +34,25 @@
         <!-- CARD VIDEO -->
         <div class="flex">  
         
-            <div class="bg-white shadow-lg drop-shadow-lg lg:w-2/3 rounded-b-2xl">
+            <div class="bg-white shadow-lg drop-shadow-lg lg:w-2/3 rounded-2xl" data-lesson-id=<?php echo $topLesson["lesson"]->getLessonId() ?>>
                 <!-- COVER -->
-                <img src="assets/img/cover.png" alt="cover de cours" class="h-auto rounded-t-2xl ">
-
+                <img src="assets/img/lesson_miniature/<?php echo $topLesson["lesson"]->getLessonCover() ?>" alt="<?php echo $topLesson["lesson"]->getLessonTitle() ?>" class="w-full rounded-t-2xl ">
                 <div class="flex items-center mx-4 my-2">
                     <div class="w-auto">
                         <img src="assets/img/steven.png" alt="Photo de profil de Steven Blombou" class="w-10 h-10 rounded-full">
                     </div> 
                     <div class="flex items-center justify-between w-full">
-                        <div class="ml-2">
+                        <div class="flex flex-col items-start ml-2">
                             <!-- TITLE + CAT -->
-                            <p class="text-[10px] md:text-lg font-semibold">Un langage de balisage - HTML</p>
+                            <p class="text-[10px] md:text-lg font-semibold"><?php echo $topLesson["lesson"]->getLessonAttractTitle() ?> - <?php echo $topLesson["category"]->getCategoryName() ?></p>
                             <div class="flex flex-row items-center">
                                 <!-- FIRSTNAME + NAME + SPE + DIFFICULT -->
-                                <p class="md:text-sm font-light text-[8px]  mr-1">Steven Blomboo - Apprenti dev - 1</p>
-                                <img src="assets/svg/difficult/1.svg" class="w-auto h-2 md:h-4">
+                                <p class="md:text-sm font-light text-[8px]  mr-1"><?php echo $topLesson['user']->getUserName() ?> <?php echo $topLesson['user']->getUserSurname() ?> - <?php echo $topLesson['user']->getUserSpe() ?> - <?php echo $topLesson["lesson"]->getLessonDifficult() ?></p>
+                                <?php echo $svg ?>
                             </div>    
                         </div>
                         <div>
-                            <img src="assets/svg/categories/html.svg" alt="Logo Html" class="w-auto h-8 my-auto">
+                            <img src="assets/svg/categories/<?php echo $topLesson['category']->getCategoryLogo() ?>" alt="Logo Html" class="w-auto h-8 my-auto">
                         </div>
                     </div>
                 </div>
@@ -101,33 +100,11 @@
         <h2 class="mt-20 mb-16 font-sans text-[28px] font-semibold leading-10 lg:text-[42px]">Nos catégories de cours :</h2>
         
         <div class="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-14">
-            <a href="?action=cours" class="flex items-center justify-center w-auto mx-2 my-3 shadow-lg rounded-xl h-44 bg-red">
-                <img src="assets/svg/categories/white/html.svg" alt="Logo Html">
+        <?php foreach($topCategory as $cat) { ?>
+            <a href="?action=cours&id=<?php echo $cat->getCategoryId() ?>" class="flex items-center justify-center w-auto mx-2 my-3 shadow-lg rounded-xl h-44" style="background-color:#<?php echo $cat->getCategoryMainColor()?>">
+                <img src="assets/svg/categories/white/<?=$cat->getCategoryWhiteLogo() ?>" alt="Logo <?php echo $cat->getCategoryName()?>">
             </a>
-
-            <div class="flex items-center justify-center w-auto my-3 mx-2 shadow-lg rounded-xl h-44 bg-[#F0DB4F]">
-                <img src="assets/svg/categories/white/html.svg" alt="Logo Html">
-            </div>
-
-            <div class="flex items-center justify-center w-auto my-3 mx-2 shadow-lg rounded-xl h-44 bg-[#8993BE]">
-                <img src="assets/svg/categories/white/html.svg" alt="Logo Html">
-            </div>
-
-            <div class="flex items-center justify-center w-auto my-3 mx-2 shadow-lg rounded-xl h-44 bg-[#2684FC]">
-                <img src="assets/svg/categories/white/html.svg" alt="Logo Html">
-            </div> 
-            
-            <div class="flex items-center justify-center w-auto mx-2 my-3 shadow-lg rounded-xl h-44 bg-red">
-                <img src="assets/svg/categories/white/html.svg" alt="Logo Html">
-            </div>
-
-            <div class="flex items-center justify-center w-auto my-3 mx-2 shadow-lg rounded-xl h-44 bg-[#F0DB4F]">
-                <img src="assets/svg/categories/white/html.svg" alt="Logo Html">
-            </div>
-
-            <div class="flex items-center justify-center w-auto my-3 mx-2 shadow-lg rounded-xl h-44 bg-[#2684FC]">
-                <img src="assets/svg/categories/white/html.svg" alt="Logo Html">
-            </div>  
+        <?php };?>
         </div>
     </div>
 </div>

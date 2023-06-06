@@ -25,34 +25,36 @@
                 <div class="flex flex-col lg:w-7/12">
                     <div class="flex flex-col mb-5">
                         <span class="text-xs italic font-light font-body text-gray-dark">
-                            Cours > React
+                            Cours > <?= $category->getCategoryName()?>
                         </span>
-                        <div class="flex gap-1 pt-2">
-                            <img src="assets/img/categories_logo/logo_react.svg" class="w-16 md:w-32">
-                            <div class="flex flex-col gap-1">
-                                <span class="font-semibold leading-3 font-body md:text-xl">Apprenez React</span>
-                                <span class="text-xs md:text-sm lg:text-base lg:leading-[1.1rem] font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</span>
+                        <div class="flex gap-1 pt-4">
+                            <img src="assets/svg/categories/<?=$category->getCategoryLogo()?>" class="w-16 md:w-64">
+                            <div class="flex flex-col gap-1 pl-4">
+                                <span class="font-semibold leading-3 font-body md:text-2xl 2xl:text-3xl ">Apprennez <?= $category->getCategoryName()?></span>
+                                <span class="text-xs md:text-sm lg:text-lg lg:leading-6 font-body"><?= $category->getCategoryDescription()?></span>
                             </div>
                         </div>
                     </div>
                     <!-- fin -->
                     <!-- conteneur grid -->
+                    <?php if(isset($necessite)){ ?>
                     <div class="flex flex-col">
                         <span class="text-lg font-semibold underline md:text-2xl xl:text-3xl">
-                            Avant de commencer React
+                            Avant de commencer  <?= $category->getCategoryName()?>
                         </span>
                         <div class="grid grid-cols-1 min-[400px]:grid-cols-2 mt-5 gap-5 lg:gap-2 lg:w-11/12">
                             <div class="relative flex flex-col gap-3 p-4 bg-white rounded-lg shadow-lg md:gap-1">
-                                <img src="assets/img/categories_logo/javascript_logo.svg" class="w-20 min-[400px]:w-1/3 min-[400px]:min-w-[60px]">
+                                <img src="assets/img/categories_logo/<?= $need_category->getCategoryLogo() ?>" class="w-20 min-[400px]:w-1/3 min-[400px]:min-w-[60px]">
                                 <span class="font-semibold leading-4">Apprendre le javascript</span>
                                 <p class="text-xs leading-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
                                 <img src="assets/svg/continue_icon.svg" class="absolute w-8 top-4 right-4">
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
-                <div class="hidden w-5/12 lg:inline-block">
-                    <img src="assets/img/illustration_lesson.png">
+                <div class="hidden w-5/12 lg:inline-block ">
+                    <img class="w-2/3 h-auto pt-4" src="assets/img/illustration_lesson.png">
                 </div>
             </div>
             <!-- fin -->
@@ -60,11 +62,14 @@
             <div class="flex flex-col mt-8 md:flex-row-reverse md:justify-between font-body">
                 <!-- présentation -->
                 <div class="flex flex-col md:w-6/12">
-                    <span class="font-semibold w-2/3 text-lg md:text-2xl xl:text-3xl underline underline-offset-[3px]">
-                        Qu'est ce que React ?
+                    <span class="pb-1 text-xs italic font-light font-body text-gray-dark">
+                            Notre premier cours <?= $category->getCategoryName()?>
+                        </span>
+                    <span class="font-semibold w-2/3 text-lg md:text-2xl underline underline-offset-[3px]">
+                        Qu'est ce que <?= $category->getCategoryName()?> ?
                     </span>
                     <span class="mt-4 mb-10 text-xs leading-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..
+                     elit. Cras molestie est a eros sodales efficitur quis nec neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..
                     </span>
                     <video src="assets/lesson_videos/video.mp4" controls class="hidden md:inline-block"></video>
                 </div>
@@ -83,6 +88,8 @@
                                     Niveau 1
                                 </span>
                                 <div class="flex flex-col gap-6 mx-3 mt-5" >
+                                <a href="">
+                                    
                                     <div class="flex justify-between">
                                         <div class="flex gap-4">
                                             <img src="assets/svg/play_icon.svg" class="w-6">
@@ -90,6 +97,7 @@
                                         </div>
                                         <img src="assets/svg/checktick_icon.svg" class="w-6">
                                     </div>
+                                </a>
                                 </div>
                             </div>
                         </div>
