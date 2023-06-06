@@ -91,5 +91,22 @@ class Category_repo extends Connect_bdd{
         $req->execute();
         return true;
     } 
+
+    function getAllCategories(){
+        function activate($query){
+            $tmpUser=new Category();
+            $tmpUser->createCategoryFromQuery($query);
+            $tmpUser->setCategoryTotalViews();
+            $tmpUser->setCategoryTotalLikes();
+            $tmpUser->setCategoryNbLesson();
+            return $tmpUser;
+        };
+        $sql = "SELECT category_id, category_name, category_logo, category_description, theme_id
+        FROM category";
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $reqResult = $req->fetchAll(PDO::FETCH_ASSOC);
+        return array_map("activate", $reqResult);
+    }
 }
 ?>
