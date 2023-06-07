@@ -45,10 +45,15 @@
                         <h6 class="text-xl font-normal "><?=$user->getUserSurName()?> <?=$user->getUserName()?></h6>
                         <p class="text-lg font-light leading-5"><?=$user->getUSerSpe()?></p>
                     </div>
-                    <button id="btnChangeProfilePic" class="flex mx-auto mt-2 text-base font-semibold lg:mt-0 text-red lg:text-lg ">
-                        <p>Modifier&nbsp;</p><span class="hidden lg:flex">la photo de profil</span>
+                    <form id="updateAvatarForm" method="POST">
                         <input id="inputFile" type="file" style="display:none;">
-                    </button>
+                        <button type="button" id="btnChangeProfilePic" class="flex mx-auto mt-2 text-base font-semibold lg:mt-0 text-red lg:text-lg">
+                        <p>Modifier&nbsp;</p>
+                        <span class="hidden lg:flex">la photo de profil</span>
+                        </button>
+                    </form>
+
+                    
                 </div>
             </div>
             <!-- UPDATEDATA -->
@@ -96,6 +101,5 @@
     </a>
 </div>
 <script src="assets/script/card_creator.js"></script>
-
 </body>
 </html>

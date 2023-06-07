@@ -123,8 +123,7 @@ class User_repo extends Connect_bdd{
             $destination = 'assets/img/user_avatar/' . $fileName;
             if (move_uploaded_file($fileTmp, $destination)) {
             // Effectuer les opérations de base de données pour mettre à jour la nouvelle photo de profil
-            // Assurez-vous d'avoir une connexion à la base de données établie
-            if (isset($_SESSION['user_avatar'])) {
+            // Assurez-vous d'avoir une connexion à la base de données établies
                 $updateQuery = "UPDATE user SET user_avatar = ? WHERE user_id = ?";
                 $updateQuery = $this->bdd->prepare($updateQuery);
                 $updateQuery->execute([$fileName,$user->getUserId()]);
@@ -132,11 +131,6 @@ class User_repo extends Connect_bdd{
                 // Envoyer une réponse JSON pour indiquer le succès
                 $response = ['success' => true, 'message' => 'The profile picture has been updated.'];
                 return json_encode($response);
-            } else {
-                // Erreur de connexion à la base de données
-                $response = ['success' => false, 'message' => 'Database connection error.'];
-                return json_encode($response);
-            }
             } else {
             // Le déplacement du fichier a échoué
             $response = ['success' => false, 'message' => 'Error moving the uploaded file.'];

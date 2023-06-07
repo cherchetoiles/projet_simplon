@@ -137,7 +137,7 @@
             <div class="flex flex-col">
                 <span class="font-semibold">Titre de mise en avant</span>
                 <input type="text" placeholder="Ex : Qu'est ce que le PHP ????" id="attract_title" class="border border-solid border-gray px-4 py-1 rounded-lg focus:outline-none" name="attract_title">
-                <span class="">Un titre attrayant vous fera gagner en visibilité !</span>
+                <span>Un titre attrayant vous fera gagner en visibilité !</span>
             </div>  
             <div class="flex flex-col md:ml-20">
                 <span class="font-semibold">Difficulté</span>

@@ -122,6 +122,10 @@ class Lesson
         return $this->lesson_attract_title;
     }
 
+    public function getLessonUserId(){
+        return $this->user_id;
+    }
+
     public function getLessonCategoryId(){
         return $this->category_id;
     }

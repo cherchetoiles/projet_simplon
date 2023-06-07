@@ -49,8 +49,13 @@ function updateProfil(){
 
 function modaltest() {
     require('view/modaltest.php');
-    $user = new User_repo();
-    $profil_picture=$user->updateAvatar($_POST['user_avatar'],$user);
+}
+
+function updateAvatar(){
+    $user_repo = new User_repo();
+    $user = $_SESSION['user'];
+    $profil_picture=$user_repo->updateAvatar($_FILES['profile_photo'],$user);
+    echo $profil_picture;
 }
 
 function signup(){
@@ -74,6 +79,11 @@ function nos_cours(){
 }
 
 function cours(){
+    $category = new Category();
+    $repo = new Category_repo();
+    $need_category = new Category();
+    $repo_lesson=new Lesson_repo();
+    $lessons=$repo_lesson->getAllLessonFull();
     include("view/cours.php");
 }
 
@@ -302,32 +312,32 @@ function getCardsForCrudCategory(){
             $showedLikes=intdiv($result->getCategoryLikes(),1000);
             $likesSuffix="K";
         }
-        $toEncode[]="<div class='rounded-lg bg-white p-6 flex flex-col items-center gap-5'>
-                        <div class='flex flex-col items-center w-3/4 rounded-full overflow-hidden mt-3'>
+        $toEncode[]="<div class='flex flex-col items-center gap-5 p-6 bg-white rounded-lg'>
+                        <div class='flex flex-col items-center w-3/4 mt-3 overflow-hidden rounded-full'>
                             <img src='assets/img/user_avatar/".$result->getCategoryLogo()."' class='w-full'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
-                            <span class='font-semibold text-xl text-center'>".$result->getCategoryName()."
+                            <span class='text-xl font-semibold text-center'>".$result->getCategoryName()."
                             <div class='flex flex-col items-center gap-2'>
-                                <span class='leading-none text-lg'>".$result->getCategoryDescription()."</span>
+                                <span class='text-lg leading-none'>".$result->getCategoryDescription()."</span>
                             </div>
                         </div>
                         <div class='flex flex-col items-center w-full gap-3'>
-                            <div class='flex mt-4 justify-evenly w-full'>
-                                <div class='flex gap-1 items-center'>
+                            <div class='flex w-full mt-4 justify-evenly'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/eye_icon.svg'>
                                     <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
                                 </div>
-                                <div class='flex gap-1 items-center'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/heart_icon.svg'>
                                     <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
                                 </div>
-                                <div class='flex gap-1 items-center'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/nb_lesson_icon.svg'>
                                     <span class='italic leading-none'>".$result->getCategoryNbLesson()."</span>
                                 </div>
                             </div>
-                            <div class='flex w-full justify-center gap-4'>
+                            <div class='flex justify-center w-full gap-4'>
                                 <img src='assets/svg/edit_icon.svg' data-id='".$result->getCategoryId()."'>
                                 <img src='assets/svg/trash_icon.svg' data-id='".$result->getCategoryId()."'>
                             </div>
@@ -352,31 +362,31 @@ function getCardsForCrudTheme(){
             $showedLikes=intdiv($result->getThemelikes(),1000);
             $likesSuffix="K";
         }
-        $toEncode[]="<div class='rounded-lg bg-white p-6 flex flex-col items-center gap-5'>
-                        <div class='flex flex-col items-center w-3/4 rounded-full overflow-hidden mt-3'>
+        $toEncode[]="<div class='flex flex-col items-center gap-5 p-6 bg-white rounded-lg'>
+                        <div class='flex flex-col items-center w-3/4 mt-3 overflow-hidden rounded-full'>
                             <img src='assets/img/user_avatar/".$result->getThemeLogo()."' class='w-full'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
-                            <span class='font-semibold text-xl text-center'>".$result->getThemeName()."
+                            <span class='text-xl font-semibold text-center'>".$result->getThemeName()."
                             <div class='flex flex-col items-center gap-2'>
                             </div>
                         </div>
                         <div class='flex flex-col items-center w-full gap-3'>
-                            <div class='flex mt-4 justify-evenly w-full'>
-                                <div class='flex gap-1 items-center'>
+                            <div class='flex w-full mt-4 justify-evenly'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/eye_icon.svg'>
                                     <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
                                 </div>
-                                <div class='flex gap-1 items-center'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/heart_icon.svg'>
                                     <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
                                 </div>
-                                <div class='flex gap-1 items-center'>
+                                <div class='flex items-center gap-1'>
                                     <img src='assets/svg/nb_lesson_icon.svg'>
                                     <span class='italic leading-none'>".$result->getThemeNbLesson()."</span>
                                 </div>
                             </div>
-                            <div class='flex w-full justify-center gap-4'>
+                            <div class='flex justify-center w-full gap-4'>
                                 <img src='assets/svg/edit_icon.svg' data-id='".$result->getThemeId()."'>
                                 <img src='assets/svg/trash_icon.svg' data-id='".$result->getThemeId()."'>
                             </div>
@@ -480,7 +490,7 @@ function addVideo(){
     }
     else{
         $lesson=new Lesson();
-        $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type,$_SESSION['user']->getUserId());
+        $lesson->createLessonToInsert($_POST['title'],$_POST['level'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type,$_SESSION['user']->getUserId());
         $isOk=$lesson->verifyLesson($_FILES['cover']["size"],$cover_type,$_FILES['content']["size"],$content_type);
     }
     if($isOk=="True"){
