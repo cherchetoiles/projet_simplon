@@ -25,13 +25,13 @@
                 <div class="flex flex-col lg:w-7/12">
                     <div class="flex flex-col mb-5">
                         <span class="text-xs italic font-light font-body text-gray-dark">
-                            Cours > <?= $category->getCategoryName()?>
+                            Cours > <?= $cat->getCategoryName()?>
                         </span>
                         <div class="flex gap-1 pt-4">
-                            <img src="assets/svg/categories/<?=$category->getCategoryLogo()?>" class="w-16 md:w-64">
+                            <img src="assets/svg/categories/<?=$cat->getCategoryLogo()?>" class="w-16 md:w-64">
                             <div class="flex flex-col gap-1 pl-4">
-                                <span class="font-semibold leading-3 font-body md:text-2xl 2xl:text-3xl ">Apprennez <?= $category->getCategoryName()?></span>
-                                <span class="text-xs md:text-sm lg:text-lg lg:leading-6 font-body"><?= $category->getCategoryDescription()?></span>
+                                <span class="font-semibold leading-3 font-body md:text-2xl 2xl:text-3xl ">Apprennez <?= $cat->getCategoryName()?></span>
+                                <span class="text-xs md:text-sm lg:text-lg lg:leading-6 font-body"><?= $cat->getCategoryDescription()?></span>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                     <?php if(isset($necessite)){ ?>
                     <div class="flex flex-col">
                         <span class="text-lg font-semibold underline md:text-2xl xl:text-3xl">
-                            Avant de commencer  <?= $category->getCategoryName()?>
+                            Avant de commencer  <?= $cat->getCategoryName()?>
                         </span>
                         <div class="grid grid-cols-1 min-[400px]:grid-cols-2 mt-5 gap-5 lg:gap-2 lg:w-11/12">
                             <div class="relative flex flex-col gap-3 p-4 bg-white rounded-lg shadow-lg md:gap-1">
@@ -63,10 +63,10 @@
                 <!-- présentation -->
                 <div class="flex flex-col md:w-6/12">
                     <span class="pb-1 text-xs italic font-light font-body text-gray-dark">
-                            Notre premier cours <?= $category->getCategoryName()?>
+                            Notre premier cours <?= $cat->getCategoryName()?>
                         </span>
                     <span class="font-semibold w-2/3 text-lg md:text-2xl underline underline-offset-[3px]">
-                        Qu'est ce que <?= $category->getCategoryName()?> ?
+                        Qu'est ce que <?= $cat->getCategoryName()?> ?
                     </span>
                     <span class="mt-4 mb-10 text-xs leading-4">
                      elit. Cras molestie est a eros sodales efficitur quis nec neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..

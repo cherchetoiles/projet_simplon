@@ -36,6 +36,21 @@ class Category_repo extends Connect_bdd{
 
         return $cat;
     }
+
+    public function getCategoryById($id){
+        $sql="SELECT * FROM category WHERE category_id=?";
+        $req=$this->bdd->prepare($sql);
+        $req->bindParam(1,$id);
+        $req->execute();
+        $catValues=$req->fetch(PDO::FETCH_ASSOC);
+        $cat=new Category();
+        $cat->createCategoryFromQuery($catValues);
+        if (!$catValues){
+            return false;
+        } 
+
+        return $cat;
+    }
     
     public function getAllCategoryName(){
         $sql="SELECT category_name FROM category";
