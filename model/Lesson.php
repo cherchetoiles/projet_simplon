@@ -128,34 +128,34 @@ class Lesson
 
     public function verifyLesson($cover_size,$cover_type,$video_size,$video_type){
         if (strlen($this->lesson_title)>63){
-            return "titre trop long";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Titre trop long</div>";
         }
         if ($this->lesson_title===""){
-            return "mettez un titre";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Mettez un titre</div>";
         }
         if (strlen($this->lesson_attract_title)>127){
-            return "titre de mise en avant trop long";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Titre de mise en avant trop long</div>";
         }
         if (!in_array($this->lesson_difficult,[1,2,3,4,5,6,7,8,9])){
-            return "Merci de ne pas modifier les valeurs des choix de proposition";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Merci de ne pas modifier les valeurs des choix de proposition</div>";
         }
         if ($cover_type=="wrong"){
-            return "Mettez une miniature";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Mettez une miniature</div>";
         }
         if ($video_type=="wrong"){
-            return "mettez une vidéo";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Mettez une vidéo</div>";
         }
         if ($cover_size>MAX_IMG_SIZE){
-            return "Miniature trop lourde";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Miniature trop lourde</div>";
         }
         if (!in_array($cover_type,VALID_IMG_TYPE)){
-            return "Mauvais type de fichier de miniature";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Mauvais type de fichier de miniature</div>";
         }
         if ($video_size>MAX_VIDEO_SIZE){
-            return "Vidéo trop lourde";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Vidéo trop lourde</div>";
         }
         if (!in_array($video_type,VALID_VIDEO_TYPE)){
-            return "Mauvais type de fichier de vidéo";
+            return "<div class='flex flex-row items-center gap-2'><img src='assets/svg/failure_cross.svg'> Mauvais type de fichier de vidéo</div>";
         }
         
         return "True";

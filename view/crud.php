@@ -191,7 +191,6 @@
         <input type="submit" class="inline-block px-10 py-4 mx-auto mt-10 leading-none text-white rounded-lg bg-red" id="submit" value="Envoyer la demande de post">
     </form>
     <div class="fixed flex py-2 pr-10 translate-x-1/2 bg-white border border-solid opacity-0 bottom-1 right-1/2 rounded-xl border-gray max-h-20 -z-10" id="alert">
-        <img src="assets/svg/failure_cross.svg" class="h-full"> 
         <span id="error_text">
         </span>
     </div>

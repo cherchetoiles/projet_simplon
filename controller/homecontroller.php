@@ -501,7 +501,7 @@ function addVideo(){
             if (move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/lesson_miniature/".$lesson->getLessonCover())){ 
                 $repo=new Lesson_repo();
                 if($repo->insertLessonIntoBdd($lesson)){
-                    $isOk="Reussite de l'upload des fichiers";
+                    $isOk="<div class='flex flex-row items-center gap-2'><img src='assets/svg/success_check.svg'> Reussite de l'upload des fichiers</div>";
                     $ressourcesRepo=new Ressource_repo();
                     $max_id=$repo->getMaxLessonId()[0];
                     if (isset($_POST['ressources-name'])){
