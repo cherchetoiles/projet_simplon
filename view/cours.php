@@ -39,21 +39,22 @@
                     </div>
                     <!-- fin -->
                     <!-- conteneur grid -->
-                    <?php if(isset($necessite)){ ?>
+                    <?php if($cat->getNeededCategories()){ 
+                        foreach ($cat->getNeededCategories() as $neededCat){ ?>
                     <div class="flex flex-col">
                         <span class="text-lg font-semibold underline md:text-2xl xl:text-3xl">
                             Avant de commencer  <?= $cat->getCategoryName()?>
                         </span>
                         <div class="grid grid-cols-1 min-[400px]:grid-cols-2 mt-5 gap-5 lg:gap-2 lg:w-11/12">
                             <div class="relative flex flex-col gap-3 p-4 bg-white rounded-lg shadow-lg md:gap-1">
-                                <img src="assets/img/categories_logo/<?= $need_category->getCategoryLogo() ?>" class="w-20 min-[400px]:w-1/3 min-[400px]:min-w-[60px]">
+                                <img src="assets/svg/categories/<?= $neededCat->getCategoryLogo() ?>" class="w-20 min-[400px]:w-1/3 min-[400px]:min-w-[60px]">
                                 <span class="font-semibold leading-4">Apprendre le javascript</span>
                                 <p class="text-xs leading-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
                                 <img src="assets/svg/continue_icon.svg" class="absolute w-8 top-4 right-4">
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php }} ?>
                 </div>
                 <div class="hidden w-5/12 lg:inline-block ">
                     <img class="w-2/3 h-auto pt-4" src="assets/img/illustration_lesson.png">

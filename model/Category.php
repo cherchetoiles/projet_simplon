@@ -19,7 +19,7 @@ class Category
     }
 
    public function createCategoryFromQuery($query){
-       if (isset($query["category_id"])){
+        if (isset($query["category_id"])){
             $this->category_id=$query["category_id"];
         }
         if (isset($query["category_name"])){
@@ -87,6 +87,15 @@ class Category
 
     public function getCategoryNbLesson(){
         return $this->category_nb_lesson;
+    }
+
+    public function getNeededCategories(){
+        return $this->categoriesNeeded;
+    }
+
+    public function setCategoryNeededCategories(){
+        $repo = new Category_repo();
+        $this->categoriesNeeded=$repo -> getNeededCategories($this);
     }
     
     public function createCategoryToInsert($category_name,$category_logo,$category_description,$theme_id){

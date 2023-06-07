@@ -81,11 +81,11 @@ function nos_cours(){
 }
 
 function cours(){
-    
-    $repo = new Category_repo();
-    $cat = $repo->getCategoryById($_GET['id']);
-    $repo_lesson=new Lesson_repo();
-    $lessons=$repo_lesson->getAllLessonFull();
+    $repo_cat = new Category_repo();
+    $cat = $repo_cat->getCategoryById($_GET['id']);
+    $cat -> setCategoryNeededCategories();
+    $cat -> setLessonFromCategory();
+    var_dump($cat);
     include("view/cours.php");
 }
 

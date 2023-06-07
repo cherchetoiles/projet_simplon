@@ -48,7 +48,6 @@ class Category_repo extends Connect_bdd{
         if (!$catValues){
             return false;
         } 
-
         return $cat;
     }
     
@@ -58,6 +57,29 @@ class Category_repo extends Connect_bdd{
         $req->execute();
         return $req->fetchAll(PDO::FETCH_NUM);
     }
+
+    /** retourn toutes les catégories nécessaires à une catégorie donnée */
+    public function getNeededCategories(Category $category){
+        function callback($query){
+            $tmpCat=new Category();
+            $tmpCat->createCategoryFromQuery($query);
+            return $tmpCat;
+        }
+        $sql="SELECT c2.category_id,c2.category_name,c2.category_logo,c2.category_description 
+        FROM category c1 INNER JOIN necessite n on c1.category_id = n.necessite_child
+        INNER JOIN category c2 on n.necessite_parent = c2.category_id
+        WHERE c1.category_id = ".$category->getCategoryId();
+        $req=$this->bdd->prepare($sql);
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($result);
+        if (!$result){
+            return $result;
+        }
+        return array_map("callback",$result);
+        
+    }
+
     public function createCategoryToInsert(Category $category){
         $sql="INSERT INTO category SET category_name=?, category_logo=?, category_description=?, theme_id=?";
         $req=$this->bdd->prepare($sql);
