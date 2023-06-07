@@ -127,6 +127,14 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
                 crud();
                 break;
     
+            case 'crudCategory':
+                crud();
+                break;
+
+            case 'crudTheme':
+                crud();
+                break;
+    
             case 'crudUser':
                 crud();
                 break;

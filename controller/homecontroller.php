@@ -210,7 +210,7 @@ function getCardsForCrudLesson(){
         }
         $toEncode[]="<div class='flex flex-col items-center gap-10 p-6 bg-white rounded-lg'>
                         <div class='flex flex-col items-center'>
-                            <img src='assets/img/lesson_minature/".$result["lesson"]->getLessonCover()."'>
+                            <img src='assets/img/lesson_miniature/".$result["lesson"]->getLessonCover()."'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
                             <span class='text-xl font-semibold text-center'>".$result["lesson"]->getLessonTitle()."</span>
@@ -314,7 +314,7 @@ function getCardsForCrudCategory(){
         }
         $toEncode[]="<div class='flex flex-col items-center gap-5 p-6 bg-white rounded-lg'>
                         <div class='flex flex-col items-center w-3/4 mt-3 overflow-hidden rounded-full'>
-                            <img src='assets/img/user_avatar/".$result->getCategoryLogo()."' class='w-full'>
+                            <img src='assets/svg/categories/".$result->getCategoryLogo()."' class='w-full'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
                             <span class='text-xl font-semibold text-center'>".$result->getCategoryName()."
@@ -363,8 +363,8 @@ function getCardsForCrudTheme(){
             $likesSuffix="K";
         }
         $toEncode[]="<div class='flex flex-col items-center gap-5 p-6 bg-white rounded-lg'>
-                        <div class='flex flex-col items-center w-3/4 mt-3 overflow-hidden rounded-full'>
-                            <img src='assets/img/user_avatar/".$result->getThemeLogo()."' class='w-full'>
+                        <div class='flex flex-col items-center w-3/4 mt-3'>
+                            <img src='assets/img/theme_logo/".$result->getThemeLogo()."' class='w-full'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
                             <span class='text-xl font-semibold text-center'>".$result->getThemeName()."
