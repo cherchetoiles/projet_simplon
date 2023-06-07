@@ -96,7 +96,7 @@
         </div> 
     </div>
     <!-- EXIT -->
-    <a href="?action=profil" class="absolute top-4 right-4 lg:flex lg:static lg:items-start">
+    <a href="?action=profil&userId=<?= $_SESSION['user']->getUserId()?>" class="absolute top-4 right-4 lg:flex lg:static lg:items-start">
         <img src="assets/svg/cross.svg" alt="Croix pour fermer la fenêtre">
     </a>
 </div>
