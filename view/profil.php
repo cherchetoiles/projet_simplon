@@ -65,7 +65,7 @@
 </div>
 
 <!-- TABLE -->
-<div class="bg-white  lg:bg-none">
+<div class="z-10 bg-white lg:bg-none">
     <div class="absolute bottom-0 left-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase bg-white border-t border-solid lg:bg-none border-stroke lg:border-none lg:static">
         <div class="flex mx-auto lg:w-2/5 xl:w-1/4 justify-evenly">
     <!-- COURS OF CREATOR -->
@@ -151,7 +151,7 @@
                 <!-- LOGOWHITE -->
                     <div class="w-[323px] h-[182px] flex justify-end">
                         <img src="assets/img/lesson_miniature/<?=$fav_lesson->getLessonCover()?>"  onclick="showFav()" id="img_fav" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
-                            <a href="?action=unFavTreat&lesson_id=<?=$fav_lesson->getLessonId()?>" class="absolute mt-4 mr-4">
+                            <a href="?action=unFavTreat&lesson_id=<?=$fav_lesson->getLessonId()?>" class="fixed mt-4 mr-4">
                                 <svg id="icon_fav" class="w-9 h-9" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5" d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="white"/>
                                     <path class="animate-pulse" d="M14 12.0455V9.54876C14 7.40445 14 6.3323 13.4142 5.66615C12.8284 5 11.8856 5 10 5C8.11438 5 7.17157 5 6.58579 5.66615C6 6.3323 6 7.40445 6 9.54876V12.0455C6 13.5937 6 14.3679 6.32627 14.7062C6.48187 14.8675 6.67829 14.9688 6.88752 14.9958C7.32623 15.0522 7.83855 14.5425 8.86318 13.5229C9.3161 13.0722 9.54256 12.8469 9.80457 12.7875C9.93359 12.7583 10.0664 12.7583 10.1954 12.7875C10.4574 12.8469 10.6839 13.0722 11.1368 13.5229L11.1368 13.5229C12.1615 14.5425 12.6738 15.0522 13.1125 14.9958C13.3217 14.9688 13.5181 14.8675 13.6737 14.7062C14 14.3679 14 13.5937 14 12.0455Z" fill="#F01E29"/>
@@ -233,7 +233,6 @@
         </div>   
     </div>
 </div>
-<?php include('view/footer.php'); ?>
-
+<?php include('view/footer.php') ?>
 </body>
 </html>
