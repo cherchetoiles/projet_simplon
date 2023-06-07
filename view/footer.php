@@ -1,6 +1,6 @@
 <!-- FOOTER -->
 <div class="border-t-2 border-solid border-gray-bg">
-    <div class="w-4/5 mx-auto px-8">
+    <div class="w-4/5 px-8 mx-auto">
         <div class="flex flex-col items-center lg:flex-row lg:justify-between lg:my-5 lg:mx-5 lg:gap-8">
             <div class="text-center lg:w-72">
                 <img src="assets/svg/logo.svg">
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="border-t-2 border-solid border-gray-bg">
-        <div class="w-4/5 mx-auto relative flex flex-col items-center gap-2 px-10 pt-10 mt-4 font-light  lg:pt-4 border-gray-bg lg:flex-row justify-evenly lg:gap-0 text-gray-dark font-body">
+        <div class="relative flex flex-col items-center w-4/5 gap-2 px-10 pt-10 mx-auto mt-4 font-light lg:pt-4 border-gray-bg lg:flex-row justify-evenly lg:gap-0 text-gray-dark font-body">
             <div class="flex flex-col items-center lg:flex-row">
                 <span>
                     ©Copyright Simplon.co
@@ -102,7 +102,7 @@
             </div>
             <div class="px-8 collapse-content">
                 <p class="font-bold tracking-wider text-blue font-body">
-                <a href="?action=profil">Mon profil</a>
+                <a href="?action=profil&userId=<?=$_SESSION['user']->getUserId()?>">Mon profil</a>
                 </p>
                 <p class="font-bold tracking-wider text-blue font-body">
                 <a href="?action=logout">Se déconnecter</a>
