@@ -135,6 +135,7 @@ function homepage(){
 }
 
 function profil(){
+    $user = $_SESSION['user'];
     $user_repo=new User_repo();
     $lessons=$user_repo->getLessonsByUser($_SESSION['user']->getUserId());
     $fav_lessons=$user_repo->getFavLesson($_SESSION['user']->getUserId());

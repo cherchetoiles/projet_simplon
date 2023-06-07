@@ -2849,6 +2849,14 @@ video {
     width: 11rem;
   }
 
+  .xl\:w-1\/4 {
+    width: 25%;
+  }
+
+  .xl\:w-8\/12 {
+    width: 66.666667%;
+  }
+
   .xl\:min-w-\[1200px\] {
     min-width: 1200px;
   }
