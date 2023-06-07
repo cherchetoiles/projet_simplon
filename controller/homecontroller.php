@@ -88,7 +88,23 @@ function cours(){
 }
 
 function lesson(){
-    require('view/lesson.php');
+    if (isset($_GET['id'])){
+        $repo = new Lesson_repo();
+        $reqResult = $repo -> getLesson("lesson_id",["lesson_id"=>$_GET['id'],"withcategorieslesson"=>TRUE,"limit"=>1]);
+        if ($reqResult){
+            $lesson=$reqResult[0];
+            $lesson['lesson']->setLessonRessources();
+            $lesson['category']->setLessonFromCategory();
+            require('view/lesson.php');
+        }
+        else{
+            header("location: ?action=homepage");
+        }   
+    }
+    else{
+        header("location: ?action=homepage");
+    }
+    
 }
 
 function formVideo(){

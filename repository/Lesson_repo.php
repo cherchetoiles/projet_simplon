@@ -6,6 +6,7 @@ class Lesson_repo extends Connect_bdd{
         parent::__construct();
     }
 
+    
     public function getAllLessonFull(){
         function activateOnMap($query){
             $tmpLesson=new Lesson();
@@ -35,30 +36,30 @@ class Lesson_repo extends Connect_bdd{
     }
 
     public function insertLessonIntoBdd(Lesson $lesson){
-        $sql="INSERT INTO lesson SET lesson_title=?, lesson_description=?, lesson_content=?, lesson_cover=?, lesson_attract_title=?, lesson_date=?, category_id=?,user_id=?";
+        $sql="INSERT INTO lesson SET lesson_title=?, lesson_description=?, lesson_difficult=?, lesson_content=?, lesson_cover=?, lesson_attract_title=?, lesson_date=?, category_id=?,user_id=?";
         $req=$this->bdd->prepare($sql);
-        recurBind($req,[$lesson->getLessonTitle(),$lesson->getLessonDescription(),$lesson->getLessonContent(),$lesson->getLessonCover(),$lesson->getLessonAttractTitle(),date("Y-m-d H:i:s"),$lesson->getLessonCategoryId(),$lesson->getLessonUserId()],8);
+        recurBind($req,[$lesson->getLessonTitle(),$lesson->getLessonDescription(),$lesson->getLessonDifficult(),$lesson->getLessonContent(),$lesson->getLessonCover(),$lesson->getLessonAttractTitle(),date("Y-m-d H:i:s"),$lesson->getLessonCategoryId(),$lesson->getLessonUserId()],9);
         $req->execute();
         return true;
     }
 
     /**
         retourne les leçons les plus populaires des deux dernières semaines
-        @param array $option support limit, offset, category_id, theme_id
-        @return Array liste des leçons les plus populaires
+        @param array $option support limit, offset, category_id, theme_id, lesson_id, withcategorieslessons(bool)
+        @return Array liste des leçons avec les paramètres
         */
     public function getLesson(string $orderBy,array $option = []){
-
-        function callback($query){
+        if (!function_exists("callback_getlesson"))
+        {function callback_getlesson($query){
             $tmpLesson=new Lesson();
             $tmpLesson->createLessonFromQuery($query);
             $tmpCategory=new Category;
             $tmpCategory->createCategoryFromQuery($query);
             $tmpUser=new User;
             $tmpUser->createUserFromQuery($query);
-            return ["lesson"=>$tmpLesson,"category"=>$tmpCategory,"user"=>$tmpUser];
+            return ["lesson"=>$tmpLesson,"category"=>$tmpCategory,"user"=>$tmpUser];}
         }
-      $sql="SELECT  l.lesson_id, l.lesson_title, l.lesson_content, l.lesson_cover,l.lesson_attract_title,l.lesson_difficult,
+      $sql="SELECT  l.lesson_id, l.lesson_title, l.lesson_description,  l.lesson_content, l.lesson_cover,l.lesson_attract_title,l.lesson_difficult,
                     c.category_id,c.category_logo,c.category_name,
                     u.user_name,u.user_surname,u.user_avatar,s.speciality_name
             FROM lesson l
@@ -74,9 +75,11 @@ class Lesson_repo extends Connect_bdd{
     if (isset($option["category_id"])){
      $sql.=" WHERE l.category_id = ".$option["category_id"]." ";
      }
-
+    if (isset($option["lesson_id"])){
+     $sql.=" WHERE l.lesson_id = ".$option["lesson_id"]." ";
+     }
      if (isset($option["theme_id"])){
-        $sql.='WHERE c.category_id = ".$option["theme_id"]';
+        $sql.='WHERE c.category_id = '.$option["theme_id"].' ';
      }
      $sql.=" ORDER BY ".$orderBy;
 
@@ -88,7 +91,7 @@ class Lesson_repo extends Connect_bdd{
      }
     $req=$this->bdd->prepare($sql);
     $req->execute();
-    return array_map("callback",$req->fetchAll(PDO::FETCH_ASSOC));
+    return array_map("callback_getlesson",$req->fetchAll(PDO::FETCH_ASSOC));
     }
 
     public function getMaxLessonId(){

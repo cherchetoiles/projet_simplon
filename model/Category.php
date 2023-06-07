@@ -112,6 +112,15 @@ class Category
         return "True";
     }
 
+    public function getLessonFromCategory(){
+        return $this->lessonsFromCategory;
+    }
+
+    public function setLessonFromCategory(){
+        $repo = new Lesson_repo();
+        $this->lessonsFromCategory = $repo->getLesson("lesson_difficult",["category_id"=>$this->category_id]); 
+    }
+
     public function setCategoryTotalViews(){
         $sql="SELECT SUM(nb_vue) as total_vue FROM(SELECT COUNT(DISTINCT w.user_id) as nb_vue FROM lesson l 
         INNER JOIN watch w ON l.lesson_id = w.lesson_id
