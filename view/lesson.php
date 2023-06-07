@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.svg">
+
     <!-- DAISY UI -->
     <link href="dist/output.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
@@ -30,21 +32,21 @@
             Cours > <?php echo $lesson["category"]->getCategoryName()." > Niveau ".$lesson["lesson"]->getLessonDifficult()?>
         </span>
     </div>
-    <div class="flex items-end mt-5 gap-6">
+    <div class="flex items-end gap-6 mt-5">
         <img src="assets/svg/categories/<?php echo $lesson["category"]->getCategoryLogo() ?>" class="w-16">
-        <h2 class="font-bold text-4xl leading-0">
+        <h2 class="text-4xl font-bold leading-0">
             <?php echo $lesson['lesson']->getLessonTitle() ?>
         </h2>     
     </div>
     <div class="flex mt-5">
-        <div class="rounded-lg shadow-lg bg-white flex mx-auto">
-            <a href="#!" class="w-9/12 flex">
+        <div class="flex mx-auto bg-white rounded-lg shadow-lg">
+            <a href="#!" class="flex w-9/12">
                 <video controls id="video">
                     <source src="assets/lesson_videos/<?php echo $lesson["lesson"]->getLessonContent(); ?>">
                 </video>
             </a>
             <!-- card -->
-            <div class="flex flex-col w-3/12 overflow-y-scroll relative grow" id="sideMenu">
+            <div class="relative flex flex-col w-3/12 overflow-y-scroll grow" id="sideMenu">
                 <?php 
                 $i=0;
                 $first=TRUE;
@@ -103,12 +105,12 @@
         </div>
     </div>
     <!-- Description -->
-    <div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
+    <div class="w-10/12 pt-4 pb-4 mx-auto border-b lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
         <span class="mb-4 underline">Description:</span>
         <p><?= $lesson['lesson']->getLessonDescription() ?></p>
     </div>
     <!-- Ressources -->
-    <div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
+    <div class="w-10/12 pt-4 pb-4 mx-auto border-b lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
         <h1 class="mb-4 underline">Ressources:</h1>
         <?php foreach($lesson["lesson"]->getLessonRessources() as $ressource){ ?>
             <div>
@@ -119,9 +121,9 @@
         <?php }?>
     </div>
     <!-- Notes -->
-    <div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
+    <div class="w-10/12 pt-4 pb-4 mx-auto border-b lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
             <label for="lname">n'oubliez pas d'écrire vos notes!</label>
-            <textarea  class=" h-auto w-full bg-gray/20 text-black-500" name="" id="" cols="30" rows="10"></textarea> 
+            <textarea  class="w-full h-auto  bg-gray/20 text-black-500" name="" id="" cols="30" rows="10"></textarea> 
     </div>     
 </div>
 <!-- FOOTER -->
