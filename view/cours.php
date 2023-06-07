@@ -112,5 +112,7 @@
             <!-- fin -->
         </div>
     </div>
+    <!-- FOOTER -->
+<?php include('view/footer.php') ?>
 </body>
 </html>
