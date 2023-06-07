@@ -19,9 +19,7 @@
 </head>
 <body class="w-full h-auto mx-auto">
 <?php include('view/navbar.php') ?>
-<?php 
-    $user=$_SESSION['user'];
-?>
+
 <h1 class="hidden">Profil</h1>
 <!-- HEADER -->
 <div class="container flex justify-center pt-8 pb-8 mx-auto border-b border-solid lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke ">
