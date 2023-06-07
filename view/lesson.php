@@ -30,21 +30,21 @@
             Cours > <?php echo $lesson["category"]->getCategoryName()." > Niveau ".$lesson["lesson"]->getLessonDifficult()?>
         </span>
     </div>
-    <div class="flex items-center mt-5 gap-6">
+    <div class="flex items-end mt-5 gap-6">
+        <img src="assets/svg/categories/<?php echo $lesson["category"]->getCategoryLogo() ?>" class="w-16">
         <h2 class="font-bold text-4xl leading-0">
             <?php echo $lesson['lesson']->getLessonTitle() ?>
-        </h2>
-        <img src="assets/svg/categories/<?php echo $lesson["category"]->getCategoryLogo() ?>" class="w-16">
+        </h2>     
     </div>
     <div class="flex mt-5">
-        <div class="rounded-lg shadow-lg bg-white flex">
-            <a href="#!" class="w-9/12">
+        <div class="rounded-lg shadow-lg bg-white flex mx-auto">
+            <a href="#!" class="w-9/12 flex">
                 <video controls id="video">
                     <source src="assets/lesson_videos/<?php echo $lesson["lesson"]->getLessonContent(); ?>">
                 </video>
             </a>
             <!-- card -->
-            <div class="flex flex-col overflow-y-scroll relative grow" id="sideMenu">
+            <div class="flex flex-col w-3/12 overflow-y-scroll relative grow" id="sideMenu">
                 <?php 
                 $i=0;
                 $first=TRUE;
