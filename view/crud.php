@@ -70,9 +70,9 @@
         <div class="relative z-0 transition-all flex flex-col items-center font-body grow lg:ml-5" id="mainCrudContent">
             <div class="w-full">
                 <div class="flex flex-col text-red mx-auto lg:mx-0 items-center gap-2">
-                    <span class="lg:flex lg:justify-end lg:w-full">
+                    <a href="?action=homepage" class="lg:flex lg:justify-end lg:w-full">
                         Retour à la page d'accueil >
-                    </span>
+                    </a>
                     <div class="flex text-4xl text-black font-semibold items-center w-fit gap-2 lg:w-full lg:justify-start">
                         <svg width="40" height="40" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.7207 12.5L20.7577 14.1176" stroke="red" stroke-linecap="round"/>

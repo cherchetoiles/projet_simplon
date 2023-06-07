@@ -29,7 +29,7 @@
         <div class="lg:text-start lg:w-2/3 xl:w-1/2">  
             <h1 class="mt-10 font-sans text-[32px] w-full xl:w-4/5 font-semibold leading-9 lg:leading-snug lg:text-5xl mx-auto lg:mx-0">Apprendre en ligne avec <bold>K-ZEL CODE</bold> !</h1>
             <p class="my-6 text-lg font-light leading-5 tracking-wide lg:text-2xl">Notre platforme à pour but d’aider à l’échange de connaissances à travers de courtes vidéos.</p>
-            <p class="mb-2 text-lg font-medium md:mb-6 lg:text-2xl text-start">Notre dernier cours :</p>
+            <p class="mb-2 text-lg font-medium md:mb-6 lg:text-2xl text-start">Cours le plus populaire :</p>
         </div>
         <!-- CARD VIDEO -->
         <div class="flex">

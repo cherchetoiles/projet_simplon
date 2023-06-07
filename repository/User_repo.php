@@ -5,6 +5,15 @@ class User_repo extends Connect_bdd{
         parent::__construct();
     }
 
+    // function getUserById($idUser){
+    //     $req = $this->bdd->prepare('SELECT * FROM user WHERE user_id = ?');
+    //     $req->execute([$idUser]);
+    //     $data = $req->fetch();
+    //     $user = new User();
+    //     $user->createUserFromQuery($data);
+    //     return $user;
+    // }
+
     function getAllUserFull(){
         function activateOnMap($query){
             $tmpUser=new User();

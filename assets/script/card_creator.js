@@ -1,7 +1,7 @@
 function showFilter(){
-    var img = document.getElementsByClassName("card_img").classList;
+    var img = document.getElementsByClassId("card_img").classList;
     img.add("blur-[2px]","brightness-50");
-    var list = document.getElementsByClassName("card_filter").classList;
+    var list = document.getElementsByClassId("card_filter").classList;
     list.remove("hidden");}
 
 function showFav(){

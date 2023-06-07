@@ -58,7 +58,9 @@ async function changeContent(dataLocation,newUrl){
 }
 
 if (lessonBtn!=null){
-lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});}
+lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});
+changeContent("getAllLessonCard","crudLesson")
+}
 if (userBtn!=null){
 userBtn.addEventListener("click",()=>{changeContent("getAllUserCard","crudUser")});
 }
@@ -168,7 +170,7 @@ if (addBtn!==null){
         setTimeout(()=>{alert.classList.add("duration-[3000ms]");alert.classList.add("opacity-0");setTimeout(()=>{alert.classList.remove("z-20"),alert.classList.add("-z-10")},3000)},1000);
     }
 
-    if (submitBtnAddVideo!==null){
-        submitBtnAddVideo.addEventListener("click",function(click){click.preventDefault();submit()})
-    }
+    // if (submitBtnAddVideo!==null){
+    //     submitBtnAddVideo.addEventListener("click",function(click){click.preventDefault();submit()})
+    // }
 }
