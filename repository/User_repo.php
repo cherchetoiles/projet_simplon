@@ -105,9 +105,11 @@ class User_repo extends Connect_bdd{
         return $finish_lessons;       
     }
     function updateUserData($user){
-        $req = 'UPDATE user u SET u.user_email = ? WHERE u.user_id = ?';
-        $req = $this->bdd->prepare($req);
-        $req->execute([$user->getUserEmail(),$user->getUserId()]);
+        if (!$this->getUserByEmail($user->getUserEmail())){
+            $req = 'UPDATE user u SET u.user_email = ? WHERE u.user_id = ?';
+            $req = $this->bdd->prepare($req);
+            $req->execute([$user->getUserEmail(),$user->getUserId()]);
+        }
     }
     function updatePassword($password,$userId){
         $req = 'UPDATE user u SET u.user_password = ?  WHERE u.user_id = ?';
