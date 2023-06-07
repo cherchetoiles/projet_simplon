@@ -65,7 +65,7 @@
 </div>
 
 <!-- TABLE -->
-<div class="mx-auto bg-white lg:bg-none ">
+<div class="bg-white  lg:bg-none">
     <div class="absolute bottom-0 left-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase bg-white border-t border-solid lg:bg-none border-stroke lg:border-none lg:static">
         <div class="flex mx-auto lg:w-2/5 xl:w-1/4 justify-evenly">
     <!-- COURS OF CREATOR -->
