@@ -32,7 +32,7 @@
             <p class="mb-2 text-lg font-medium md:mb-6 lg:text-2xl text-start">Notre dernier cours :</p>
         </div>
         <!-- CARD VIDEO -->
-        <div class="flex">  
+        <div class="flex">
         
             <div class="bg-white shadow-lg drop-shadow-lg lg:w-2/3 rounded-2xl" data-lesson-id=<?php echo $topLesson["lesson"]->getLessonId() ?>>
                 <!-- COVER -->

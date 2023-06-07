@@ -32,7 +32,7 @@ class User_repo extends Connect_bdd{
     }
 
     function insertUserIntoBdd($user){
-        $req=$this->bdd->prepare('INSERT INTO user SET user_name=?,user_surname=?,user_email=?,user_password=?,user_statut=1,user_token=?,user_company=" ",user_phone=" ",user_description=" ",user_linkedin=" ",user_github=" ",user_avatar=" ",role_id=2,speciality_id=1');
+        $req=$this->bdd->prepare('INSERT INTO user SET user_name=?,user_surname=?,user_email=?,user_password=?,user_statut=1,user_token=?,user_company=" ",user_phone=" ",user_description=" ",user_linkedin=" ",user_github=" ",user_avatar="random.png",role_id=2,speciality_id=1');
         recurBind($req,[$user->getUserName(),$user->getUserSurname(),$user->getUserEmail(),$user->getUserPassword(),kodex_random_string(26)],5);
         $req->execute();
         $user=$req->fetch();
