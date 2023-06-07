@@ -118,6 +118,11 @@
             </div>
         <?php }?>
     </div>
+    <!-- Notes -->
+    <div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
+            <label for="lname">n'oubliez pas d'écrire vos notes!</label>
+            <textarea  class=" h-auto w-full bg-gray/20 text-black-500" name="" id="" cols="30" rows="10"></textarea> 
+    </div>     
 </div>
 <!-- FOOTER -->
 <?php include('view/footer.php') ?>
