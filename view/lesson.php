@@ -20,6 +20,7 @@
 
 <?php 
     $user=$_SESSION['user'];
+    $notes = isset($_COOKIE['notes']) ? $_COOKIE['notes'] : '';
 ?>
 
     <!-- NAVBAR -->
@@ -120,13 +121,25 @@
     </div>
     <!-- Notes -->
     <div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
-            <label for="lname">n'oubliez pas d'écrire vos notes!</label>
-            <textarea  class=" h-auto w-full bg-gray/20 text-black-500" name="" id="" cols="30" rows="10"></textarea> 
-    </div>     
+        <label for="lname">n'oubliez pas d'écrire vos notes!</label>
+        <textarea id="notesTextarea" class="h-auto w-full bg-gray/20 text-black-500" name="" cols="30" rows="10"><?php echo $notes; ?></textarea> 
+    </div>          
 </div>
 <!-- FOOTER -->
 <?php include('view/footer.php') ?>
 <script src="assets/script/js_trick.js"></script>
+
+<script>
+    function saveNotesToCookie() {
+        var notes = document.getElementById('notesTextarea').value;
+        document.cookie = "notes=" + encodeURIComponent(notes);
+    }
+
+    document.getElementById('notesTextarea').addEventListener('blur', saveNotesToCookie);
+
+    window.addEventListener('beforeunload', saveNotesToCookie);
+</script>
+
 </body>
 
 </html>
