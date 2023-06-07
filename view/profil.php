@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.svg">
-    
     <link href="dist/output.css" rel="stylesheet">
  
     <!-- DAISY UI -->
@@ -54,13 +52,20 @@
             </div>
         </div>
         <div>
-            <!-- UPDATE PROFIL -->
             <div class="flex flex-col gap-4">
-            <!-- UPDATE PROFIL -->
-            <a href="?action=test" class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Modifier le profil</p>
+            <a href="?action=test" class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl">
+                <p>Modifier le profil</p>
             </a>
-            <a href="?action=logout" class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl"><p>Se déconnecter</p>
+            
+            <a href="?action=logout" class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl">
+                <p>Se déconnecter</p>
             </a>
+
+            <?php if(isset($_SESSION) AND ($_SESSION["user"]->getRoleNom()) === "admin" ) { ?>
+                <a href="?admin=crud" class="bg-red hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl">
+                    <p class="text-[#F5F5F5] font-medium">Tableau de bord</p>
+                </a>
+            <?php } ?>
         </div>
         </div>
     </div>
