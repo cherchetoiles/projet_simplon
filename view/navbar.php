@@ -44,7 +44,7 @@ $categories=$repo -> getAllCategories();
                 </svg>
               </label>
               <ul tabindex="0" class="p-2 shadow dropdown-content menu bg-base-100 rounded-box w-52">
-                <div class="flex flex-row items-center w-fit gap-1 border-b-4 border-b-red mb-4">
+                <div class="flex flex-row items-center gap-1 mb-4 border-b-4 w-fit border-b-red">
                   <img class="w-6 h-5" src="assets/img/<?php echo $themes["theme_logo"] ?>" alt="">
                   <span class="text-lg font-semibold">
                     <?php echo $themes["theme_name"] ?>
@@ -103,9 +103,10 @@ $categories=$repo -> getAllCategories();
             <img class="w-6 h-6" src="assets/img/search.png" alt="">
           </div>
 
-          <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 items-center rounded-4xl" href="?action=profil">
-            <img src="assets/img/user_avatar/<?php echo $_SESSION["user"]->getUserAvatar();?>" class="rounded-full w-8">
-            <span class="hidden text-blue xl:block leading-none">Profil</span>
+
+          <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 rounded-4xl" href="?action=profil&userId=<?=$_SESSION['user']->getUserId()?>">
+            <img src="assets/img/user_avatar/<?php echo $_SESSION["user"]->getUserAvatar();?>" class="rounded-full">
+            <span class="hidden text-blue xl:block">Profil</span>
           </a>
 
 

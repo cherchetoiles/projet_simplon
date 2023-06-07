@@ -135,10 +135,11 @@ function homepage(){
 }
 
 function profil(){
-    $user=new User_repo();
-    $lessons=$user->getLessonsByUser($_SESSION['user']->getUserId());
-    $fav_lessons=$user->getFavLesson($_SESSION['user']->getUserId());
-    $finish_lessons=$user->getFinishLesson($_SESSION['user']->getUserId());
+    $user_repo=new User_repo();
+    $user = $user_repo->getUserById($_GET['userId']);
+    $lessons=$user_repo->getLessonsByUser($_SESSION['user']->getUserId());
+    $fav_lessons=$user_repo->getFavLesson($_SESSION['user']->getUserId());
+    $finish_lessons=$user_repo->getFinishLesson($_SESSION['user']->getUserId());
     require('view/profil.php');
 }
 
