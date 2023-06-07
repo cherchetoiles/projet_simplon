@@ -22,7 +22,7 @@ class Lesson_repo extends Connect_bdd{
 		    count(distinct(fav.user_id)) as fav,
             lesson.lesson_id,lesson_title,lesson_description,lesson_cover,lesson_date,lesson_difficult,
             user.user_id,user_name,user_surname,user_avatar,
-            category_name,category.category_id ";
+            category_name,category.category_id,category_logo ";
         $sql.="FROM lesson ";
         $sql.="LEFT JOIN user ON lesson.user_id = user.user_id ";
         $sql.="LEFT JOIN category ON lesson.category_id = category.category_id ";

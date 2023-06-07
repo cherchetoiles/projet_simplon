@@ -103,6 +103,7 @@ $categories=$repo -> getAllCategories();
             <img class="w-6 h-6" src="assets/img/search.png" alt="">
           </div>
 
+
           <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 rounded-4xl" href="?action=profil&userId=<?= $_SESSION['user']->getUserId() ?>">
             <img src="assets/img/user_avatar/<?php echo $_SESSION["user"]->getUserAvatar();?>" class="rounded-full">
             <span class="hidden text-blue xl:block">Profil</span>
