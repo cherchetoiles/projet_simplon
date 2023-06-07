@@ -105,11 +105,11 @@ class User_repo extends Connect_bdd{
         return $finish_lessons;       
     }
     function updateUserData($user){
-        if (!$this->getUserByEmail($user->getUserEmail())){
-            $req = 'UPDATE user u SET u.user_email = ? WHERE u.user_id = ?';
-            $req = $this->bdd->prepare($req);
-            $req->execute([$user->getUserEmail(),$user->getUserId()]);
-        }
+        
+        $req = 'UPDATE user u SET u.user_email = ? WHERE u.user_id = ?';
+        $req = $this->bdd->prepare($req);
+        $req->execute([$user->getUserEmail(),$user->getUserId()]);
+        
     }
     function updatePassword($password,$userId){
         $req = 'UPDATE user u SET u.user_password = ?  WHERE u.user_id = ?';
@@ -118,9 +118,13 @@ class User_repo extends Connect_bdd{
         $req->execute([$password,$userId]);
     }
     function updateEmail($email,$userId){
-        $req = 'UPDATE user u SET u.user_email = ?  WHERE u.user_id = ?';
-        $req = $this->bdd->prepare($req);
-        $req->execute([$email,$userId]);
+        if (!$this->getUserByEmail($email)){
+            $req = 'UPDATE user u SET u.user_email = ?  WHERE u.user_id = ?';
+            $req = $this->bdd->prepare($req);
+            $req->execute([$email,$userId]);
+            return True;
+        }
+        return false;
     }
 
     function updateAvatar($file,$user) {

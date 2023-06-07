@@ -36,10 +36,13 @@ function updateProfil(){
     $user_id = ($_SESSION['user']->getUserId());
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
+    $oldEmail=$user->getUserEmail();
     $user->setUserEmail($user_email);
     $user->setUserPassword($user_password);
     if($user->getUserEmail() != ''){
-        $repo->updateEmail($user_email,$user->getUserId());
+        if (!$repo->updateEmail($user_email,$user->getUserId())){
+            $user->setUserEmail($oldEmail);
+        }
     }
     if($user->getUserPassword() != ''){
         $repo->updatePassword($user_password,$user->getUserId());
