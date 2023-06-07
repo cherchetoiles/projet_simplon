@@ -85,7 +85,7 @@
                         Mot de passe
                     </label>
                     <div class="ml-4">
-                        <input type="password" name="user_password" id="mdp"  value="<?= $user->getUserPassword()?>"  class="border border-solid rounded-md outline-none leanding-8 placeholder:font-normal border-stroke">
+                        <input type="password" name="user_password" id="mdp"  placeholder="●●●●●●●●●"  class="border border-solid rounded-md outline-none leanding-8 placeholder:font-normal border-stroke">
                         <div class="flex justify-end w-full mt-1 text-sm text-stroke">0/12</div>
                     </div>
                 </div>
