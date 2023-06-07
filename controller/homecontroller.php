@@ -315,9 +315,9 @@ function getCardsForCrudCategory(){
             $showedLikes=intdiv($result->getCategoryLikes(),1000);
             $likesSuffix="K";
         }
-        $toEncode[]="<div class='flex flex-col items-center gap-5 p-6 bg-white rounded-lg'>
+        $toEncode[]="<div class='flex flex-col items-center gap-5 p-6 bg-white rounded-lg w-1/2 m-auto'>
                         <div class='flex flex-col items-center w-3/4 mt-3 overflow-hidden rounded-full'>
-                            <img src='assets/svg/categories/".$result->getCategoryLogo()."' class='w-full'>
+                            <img src='assets/svg/categories/".$result->getCategoryLogo()."'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
                             <span class='text-xl font-semibold text-center'>".$result->getCategoryName()."
