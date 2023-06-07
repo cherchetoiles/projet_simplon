@@ -1,5 +1,5 @@
 <!-- FOOTER -->
-<div class="border-t-2 border-solid border-gray-bg">
+<div class="relative z-0 border-t-2 border-solid border-gray-bg">
     <div class="w-4/5 px-8 mx-auto">
         <div class="flex flex-col items-center lg:flex-row lg:justify-between lg:my-5 lg:mx-5 lg:gap-8">
             <div class="text-center lg:w-72">
@@ -46,8 +46,8 @@
                 </span>
             </div>
             <div class="lg:absolute right-5 bottom-1.5 flex gap-2 my-2 lg:my-0">
-                <a href="https://www.linkedin.com/company/simplon-charleville/" target="blank"><img src="assets/svg/in.svg"></a>
-                <a href="https://www.facebook.com/ecoledescodeurs" target="_blank"><img src="assets/svg/fb.svg"></a>
+                <a href="https://www.linkedin.com/company/simplon-charleville/" target="blank"><img class="z-2" src="assets/svg/in.svg"></a>
+                <a href="https://www.facebook.com/ecoledescodeurs" target="_blank"><img class="z-2" src="assets/svg/fb.svg"></a>
             </div>
         </div>
     </div>

@@ -63,6 +63,8 @@ function updateAvatar() {
           var response = JSON.parse(xhr.responseText);
           if (response.success) {
             alert('La photo de profil a été mise à jour.');
+            // modifier image ici
+            document.getElementById("avatar").setAttribute("src",response.new_file)
           } else {
             alert('Erreur : ' + response.message);
           }

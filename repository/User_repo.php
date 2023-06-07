@@ -105,9 +105,11 @@ class User_repo extends Connect_bdd{
         return $finish_lessons;       
     }
     function updateUserData($user){
+        
         $req = 'UPDATE user u SET u.user_email = ? WHERE u.user_id = ?';
         $req = $this->bdd->prepare($req);
         $req->execute([$user->getUserEmail(),$user->getUserId()]);
+        
     }
     function updatePassword($password,$userId){
         $req = 'UPDATE user u SET u.user_password = ?  WHERE u.user_id = ?';
@@ -116,16 +118,20 @@ class User_repo extends Connect_bdd{
         $req->execute([$password,$userId]);
     }
     function updateEmail($email,$userId){
-        $req = 'UPDATE user u SET u.user_email = ?  WHERE u.user_id = ?';
-        $req = $this->bdd->prepare($req);
-        $req->execute([$email,$userId]);
+        if (!$this->getUserByEmail($email)){
+            $req = 'UPDATE user u SET u.user_email = ?  WHERE u.user_id = ?';
+            $req = $this->bdd->prepare($req);
+            $req->execute([$email,$userId]);
+            return True;
+        }
+        return false;
     }
 
     function updateAvatar($file,$user) {
         // Vérifier si un fichier a été téléchargé avec le nom "profile_photo"
         if (isset($file['profile_photo'])) {
             // Récupérer les informations sur le fichier téléchargé
-            $fileName = $file['profile_photo']['name'];
+            $fileName = uniqid().".".explode("/",$file['profile_photo']['type'])[1];
             $fileTmp = $file['profile_photo']['tmp_name'];
 
             // Déplacer le fichier vers le répertoire de destination souhaité
@@ -136,9 +142,10 @@ class User_repo extends Connect_bdd{
                 $updateQuery = "UPDATE user SET user_avatar = ? WHERE user_id = ?";
                 $updateQuery = $this->bdd->prepare($updateQuery);
                 $updateQuery->execute([$fileName,$user->getUserId()]);
+                $user->setUserAvatar($fileName);
 
                 // Envoyer une réponse JSON pour indiquer le succès
-                $response = ['success' => true, 'message' => 'The profile picture has been updated.'];
+                $response = ['success' => true, 'message' => 'The profile picture has been updated.','new_file'=>"assets/img/user_avatar/".$fileName];
                 return json_encode($response);
             } else {
             // Le déplacement du fichier a échoué

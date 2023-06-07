@@ -36,10 +36,13 @@ function updateProfil(){
     $user_id = ($_SESSION['user']->getUserId());
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
+    $oldEmail=$user->getUserEmail();
     $user->setUserEmail($user_email);
     $user->setUserPassword($user_password);
     if($user->getUserEmail() != ''){
-        $repo->updateEmail($user_email,$user->getUserId());
+        if (!$repo->updateEmail($user_email,$user->getUserId())){
+            $user->setUserEmail($oldEmail);
+        }
     }
     if($user->getUserPassword() != ''){
         $repo->updatePassword($user_password,$user->getUserId());
@@ -53,8 +56,7 @@ function modaltest() {
 
 function updateAvatar(){
     $user_repo = new User_repo();
-    $user = $_SESSION['user'];
-    $profil_picture=$user_repo->updateAvatar($_FILES,$user);
+    $profil_picture=$user_repo->updateAvatar($_FILES,$_SESSION['user']);
     echo $profil_picture;
 }
 
@@ -491,7 +493,7 @@ function addVideo(){
     }
     else{
         $lesson=new Lesson();
-        $lesson->createLessonToInsert($_POST['title'],$_POST['level'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type,$_SESSION['user']->getUserId());
+        $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type,$_SESSION['user']->getUserId());
         $isOk=$lesson->verifyLesson($_FILES['cover']["size"],$cover_type,$_FILES['content']["size"],$content_type);
     }
     if($isOk=="True"){

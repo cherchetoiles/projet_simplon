@@ -75,6 +75,10 @@ class User
         $this->user_password = $user_password;
     }
 
+    public function setUserAvatar($user_avatar){
+        $this->user_avatar = $user_avatar;
+    }
+
     public function connectUser(){
         $_SESSION['user']=$this;
     }
