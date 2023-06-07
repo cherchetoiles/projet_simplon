@@ -125,7 +125,7 @@ class User_repo extends Connect_bdd{
         // Vérifier si un fichier a été téléchargé avec le nom "profile_photo"
         if (isset($file['profile_photo'])) {
             // Récupérer les informations sur le fichier téléchargé
-            $fileName = $file['profile_photo']['name'];
+            $fileName = uniqid().".".explode("/",$file['profile_photo']['type'])[1];
             $fileTmp = $file['profile_photo']['tmp_name'];
 
             // Déplacer le fichier vers le répertoire de destination souhaité
@@ -136,9 +136,10 @@ class User_repo extends Connect_bdd{
                 $updateQuery = "UPDATE user SET user_avatar = ? WHERE user_id = ?";
                 $updateQuery = $this->bdd->prepare($updateQuery);
                 $updateQuery->execute([$fileName,$user->getUserId()]);
+                $user->setUserAvatar($fileName);
 
                 // Envoyer une réponse JSON pour indiquer le succès
-                $response = ['success' => true, 'message' => 'The profile picture has been updated.'];
+                $response = ['success' => true, 'message' => 'The profile picture has been updated.','new_file'=>"assets/img/user_avatar/".$fileName];
                 return json_encode($response);
             } else {
             // Le déplacement du fichier a échoué

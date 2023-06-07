@@ -53,8 +53,7 @@ function modaltest() {
 
 function updateAvatar(){
     $user_repo = new User_repo();
-    $user = $_SESSION['user'];
-    $profil_picture=$user_repo->updateAvatar($_FILES,$user);
+    $profil_picture=$user_repo->updateAvatar($_FILES,$_SESSION['user']);
     echo $profil_picture;
 }
 

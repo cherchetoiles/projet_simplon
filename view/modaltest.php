@@ -36,7 +36,7 @@
         <div class="flex flex-col items-center w-auto h-auto lg:items-start">
             <div class="flex flex-col lg:flex-row">
             <!-- CONDITION IF PP  -->
-            <img class="w-[90px] h-[90px] mx-auto rounded-full" src="assets/img/user_avatar/<?=$user->getUserAvatar()?>">
+            <img class="w-[90px] h-[90px] mx-auto rounded-full" src="assets/img/user_avatar/<?=$user->getUserAvatar()?>" id="avatar">
             <!-- FALSE PP -->
             <!-- <img class="w-24 h-24 mx-auto rounded-full" src=""> --> 
                 <div class="flex flex-col-reverse justify-center text-center lg:text-start lg:flex-col lg:ml-5">
