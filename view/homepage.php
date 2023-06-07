@@ -39,7 +39,7 @@
                 <img src="assets/img/lesson_miniature/<?php echo $topLesson["lesson"]->getLessonCover() ?>" alt="<?php echo $topLesson["lesson"]->getLessonTitle() ?>" class="w-full rounded-t-2xl ">
                 <div class="flex items-center mx-4 my-2">
                     <div class="w-auto">
-                        <img src="assets/img/steven.png" alt="Photo de profil de Steven Blombou" class="w-10 h-10 rounded-full">
+                        <img src="assets/img/user_avatar/<?php echo $topLesson["user"]->getUserAvatar()?>" alt="Photo de profil de Steven Blombou" class="w-10 h-10 rounded-full">
                     </div> 
                     <div class="flex items-center justify-between w-full">
                         <div class="flex flex-col items-start ml-2">
