@@ -47,33 +47,52 @@ document.addEventListener("DOMContentLoaded", function(event) {
     tabBtn3.addEventListener("click",()=>{afficherTab(oldContentTmp,tabContent3)});
 })
 
-// const updateavatar = document.getElementById('updateclick');
-// updateavatar.addEventListener('click',() => editAvatar)
-
-// const editAvatar = console.log('lololo')
-
-// const form = document.createElement('form');
-// form.action = 'updateAvatar';
-
-document.addEventListener('DOMContentLoaded', function() {
-    var btnChangeProfilePic = document.getElementById('btnChangeProfilePic');
+function updateAvatar() {
     var inputFile = document.getElementById('inputFile');
-
-    btnChangeProfilePic.addEventListener('click', function() {
-      inputFile.click();
-    });
-
-    inputFile.addEventListener('change', function() {
-      var file = this.files[0];
-      var formData = new FormData();
-      formData.append('user_avatar', file);
-
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'upload.php', true);
+    var file = inputFile.files[0];
     
+    if (file) {
+      var formData = new FormData();
+      formData.append('profile_photo', file);
+    
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '?action=updateAvatar', true);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // Traitement réussi
+          var response = JSON.parse(xhr.responseText);
+          if (response.success) {
+            alert('La photo de profil a été mise à jour.');
+          } else {
+            alert('Erreur : ' + response.message);
+          }
+        } else {
+          // Gestion des erreurs
+          console.error(xhr.responseText);
+        }
+      };
+      xhr.onerror = function() {
+        // Gestion des erreurs
+        console.error(xhr.responseText);
+      };
       xhr.send(formData);
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var btnChangeProfilePic = document.getElementById('btnChangeProfilePic');
+    btnChangeProfilePic.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('inputFile').click();
+    });
+  
+    var inputFile = document.getElementById('inputFile');
+    inputFile.addEventListener('change', function() {
+      updateAvatar();
     });
   });
+
+
 
 let favcontainer = document.getElementById('content_2');
 let favbtn = favcontainer.querySelectorAll('a');
