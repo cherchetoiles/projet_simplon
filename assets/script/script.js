@@ -1,6 +1,7 @@
 
 {
     let addBtn = document.getElementById("addBtn");
+    let editBtn = document.getElementById("editBtn");
     let closeModalButtons = document.getElementsByClassName("close-modal");
 
     let sideBarContent = document.getElementById("crudSideBarContent");
@@ -80,6 +81,9 @@ sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarC
 }
 if (addBtn!==null){
     addBtn.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(activeModal)})  
+}
+if (editBtn!==null){
+    editBtn.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(activeModal)})  
 }
 
 }

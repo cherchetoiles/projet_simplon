@@ -47,7 +47,7 @@ function updateProfil(){
     if($user->getUserPassword() != ''){
         $repo->updatePassword($user_password,$user->getUserId());
     }
-    header('Location:index.php?action=test');
+    header('Location:index.php?action=profil');
 }
 
 function modaltest() {
