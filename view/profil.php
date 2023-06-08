@@ -241,7 +241,7 @@
 <?php include('view/footer.php') ?>
 
 <!-- MODAL FOR UPDATE PROFIL DATA -->
-<div class="hidden z-20  absolute right-1/2 top-32 translate-x-1/2 mx-auto w-full lg:w-4/5 lg:rounded-2xl xl:w-3/5 xl:min-w-[1200px] bg-white" id="form-video">
+<div class="hidden z-20 absolute right-1/2 top-32 translate-x-1/2 mx-auto w-full lg:w-4/5 lg:rounded-2xl xl:w-3/5 xl:min-w-[1200px] bg-white" id="form-video">
     <div class="flex flex-col-reverse w-full p-5 mx-auto border border-solid-2 lg:flex-row font-body lg:shadow-lg border-stroke lg:rounded-2xl" >
         <!-- MENU -->
         <div class="flex flex-col h-auto  lg:border-r justify-start lg:border-solid lg:w-1/4 border-[#C8C8C8] lg:my-10">
@@ -280,7 +280,7 @@
                     </div>
                 </div>
                 <!-- UPDATEDATA -->
-                <form method="post" action="?action=updateProfil" class="flex flex-col items-start justify-start my-3 lg:my-10 ">
+                <form method="post" action="?action=updateProfil" class="flex flex-col items-start justify-start my-3 lg:my-10 " id="form-update">
 
                     <!-- <div class="flex flex-col lg:flex-row">
                         <label for="bio" class="w-11/12 text-sm font-semibold lg:text-lg ">
@@ -292,6 +292,11 @@
                         </div>
                         
                     </div> -->
+
+                    <div class="" id="alert">
+                        <span id="error_text">
+                        </span>
+                    </div>
 
                     <div class="flex flex-col lg:flex-row lg:my-4">
                     <label for="user_email" class="w-11/12 text-sm font-semibold lg:text-lg lg:pr-0.5">
@@ -313,7 +318,7 @@
                         </div>
                     </div>
 
-                    <input type="submit" value="Enregister" class="cursor-pointer px-8 py-2 mx-auto text-sm font-bold text-red border-4 rounded-lg lg:py-1 lg:mt-10 lg:mx-0 lg:text-lg">
+                    <input type="submit" id="submit" value="Enregister" class="cursor-pointer px-8 py-2 mx-auto text-sm font-bold text-red border-4 rounded-lg lg:py-1 lg:mt-10 lg:mx-0 lg:text-lg">
 
                 </form>
             </div> 
@@ -324,6 +329,7 @@
         </a>
     </div>
 </div>
+
 
 </body>
 <script src="assets/script/script.js"></script>
