@@ -83,9 +83,11 @@ function nos_cours(){
 function cours(){
     $repo_cat = new Category_repo();
     $cat = $repo_cat->getCategoryById($_GET['id']);
+    if (!$cat){
+        header("location: ?action=homepage");
+    }
     $cat -> setCategoryNeededCategories();
     $cat -> setLessonFromCategory();
-    var_dump($cat);
     include("view/cours.php");
 }
 

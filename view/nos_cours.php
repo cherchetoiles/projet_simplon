@@ -74,7 +74,7 @@
             </div>
 
             <div class="hidden lg:block">
-                <img src="assets/lottie.png" alt="">
+                <img src="assets/img/lottie.png" alt="">
             </div> 
 
         </div>

@@ -72,7 +72,6 @@ class Category_repo extends Connect_bdd{
         $req=$this->bdd->prepare($sql);
         $req->execute();
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($result);
         if (!$result){
             return $result;
         }

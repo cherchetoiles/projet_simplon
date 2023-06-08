@@ -48,9 +48,11 @@
                         <div class="grid grid-cols-1 min-[400px]:grid-cols-2 mt-5 gap-5 lg:gap-2 lg:w-11/12">
                             <div class="relative flex flex-col gap-3 p-4 bg-white rounded-lg shadow-lg md:gap-1">
                                 <img src="assets/svg/categories/<?= $neededCat->getCategoryLogo() ?>" class="w-20 min-[400px]:w-1/3 min-[400px]:min-w-[60px]">
-                                <span class="font-semibold leading-4">Apprendre le javascript</span>
-                                <p class="text-xs leading-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..</p>
-                                <img src="assets/svg/continue_icon.svg" class="absolute w-8 top-4 right-4">
+                                <span class="font-semibold leading-4"><?= $neededCat->getCategoryName() ?></span>
+                                <p class="text-xs leading-3"><?= $neededCat->getCategoryDescription() ?></p>
+                                <a href="?action=cours&id=<?= $neededCat->getCategoryId() ?>">
+                                    <img src="assets/svg/continue_icon.svg" class="absolute w-8 top-4 right-4">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -62,9 +64,10 @@
             </div>
             <!-- fin -->
             <!-- présentation + liste cours -->
-            <div class="flex flex-col mt-8 md:flex-row-reverse md:justify-between font-body">
+            <div class="flex flex-col mt-8 md:flex-row-reverse md:justify-between font-body border-t border-stroke border-solid">
                 <!-- présentation -->
-                <div class="flex flex-col md:w-6/12">
+                <div class="flex flex-col md:w-6/12 md:border-l border-solid border-stroke pl-3">
+                    <?php $firstLesson=$cat->getLessonFromCategory()[0] ?>
                     <span class="pb-1 text-xs italic font-light font-body text-gray-dark">
                             Notre premier cours <?= $cat->getCategoryName()?>
                         </span>
@@ -72,9 +75,9 @@
                         Qu'est ce que <?= $cat->getCategoryName()?> ?
                     </span>
                     <span class="mt-4 mb-10 text-xs leading-4">
-                     elit. Cras molestie est a eros sodales efficitur quis nec neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie est a eros sodales efficitur quis nec neque..
+                    <?= $firstLesson["lesson"]->getLessonDescription() ?>
                     </span>
-                    <video src="assets/lesson_videos/video.mp4" controls class="hidden md:inline-block"></video>
+                    <video src="assets/lesson_videos/<?= $firstLesson["lesson"]->getLessonContent() ?>" controls class="hidden md:inline-block"></video>
                 </div>
                 <!-- fin -->
                 <!-- liste cours -->
@@ -85,24 +88,35 @@
                     <!-- conteneur -->
                     <div class="flex flex-col overflow-y-scroll snap-y-mandatory h-[400px] dir-rtl">
                         <!-- card -->
-                        <div class="h-[370px] mb-[30px] block dir-ltr">
-                            <div class="flex flex-col snap-start snap-always shadow-lg p-3 mx-2 my-2 rounded-lg object-cover object-center h-[370px] overflow-y-scroll">
-                                <span class="font-semibold">
-                                    Niveau 1
-                                </span>
-                                <div class="flex flex-col gap-6 mx-3 mt-5" >
-                                <a href="">
-                                    
-                                    <div class="flex justify-between">
-                                        <a href="index?action=lesson">
-                                        <div class="flex gap-4">
-                                            <img src="assets/svg/play_icon.svg" class="w-6">
-                                            <span class="font-semibold">Leçon 1</span>
-                                        </div>
-                                        </a>
-                                        <img src="assets/svg/checktick_icon.svg" class="w-6">
+                        <?php 
+                        $i=0;
+                        $oldI=$i;
+                        foreach ($cat->getLessonFromCategory() as $lesson){
+                        if ($lesson['lesson']->getLessonDifficult()>$i){
+                            if ($i >= 1){
+                            echo "      </div>
                                     </div>
-                                </a>
+                                </div>";}
+                            $i=$lesson['lesson']->getLessonDifficult();?>
+                        <div class="h-[370px] mb-[30px] block dir-ltr">
+                            <div class="flex flex-col snap-start snap-always shadow-lg p-3 my-2 rounded-lg object-cover items-start h-[370px] overflow-y-scroll overflow-x-hidden">
+                                <span class="font-semibold">
+                                    Niveau <?php echo $i ?>
+                                </span>                    
+                                <div class="flex flex-col mt-5 ml-3 gap-3 w-full">
+                                <?php   }?>
+                                <div class="flex justify-between">
+                                    <a href="?action=lesson&id=<?php echo $lesson['lesson']->getLessonId()?>">
+                                    <div class="flex gap-4">
+                                        <img src="assets/svg/play_icon.svg" class="w-6">
+                                        <span class="font-semibold"><?= $lesson['lesson']->getLessonTitle() ?></span>
+                                    </div>
+                                    </a>
+                                    <img src="assets/svg/checktick_icon.svg" class="w-6 mr-3">
+                                </div>
+                                <?php if ($i>$oldI){ ?>
+                        <?php $oldI=$i; } ?>
+                        <?php }?>
                                 </div>
                             </div>
                         </div>
