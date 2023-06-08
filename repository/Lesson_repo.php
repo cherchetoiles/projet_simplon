@@ -43,6 +43,34 @@ class Lesson_repo extends Connect_bdd{
         return true;
     }
 
+    public function deleteLessonFromBdd($id){
+        $sql="DELETE FROM bookmark WHERE lesson_id=?";
+        $req=$this->bdd->prepare($sql);
+        $req->bindParam(1,$id);
+        if (!$req->execute()){
+            return false;
+        }
+        $sql="DELETE FROM watch WHERE lesson_id=?";
+        $req=$this->bdd->prepare($sql);
+        $req->bindParam(1,$id);
+        if (!$req->execute()){
+            return false;
+        }
+        $sql="DELETE FROM fav WHERE lesson_id=?";
+        $req=$this->bdd->prepare($sql);
+        $req->bindParam(1,$id);
+        if (!$req->execute()){
+            return false;
+        }
+        $sql="DELETE FROM lesson WHERE lesson_id=?";
+        $req=$this->bdd->prepare($sql);
+        $req->bindParam(1,$id);
+        if (!$req->execute()){
+            return false;
+        }
+        return true;
+    }
+
     /**
         retourne les leçons les plus populaires des deux dernières semaines
         @param array $option support limit, offset, category_id, theme_id, lesson_id, withcategorieslessons(bool)

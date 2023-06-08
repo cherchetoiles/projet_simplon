@@ -119,7 +119,7 @@
     <form class="z-20 font-body text-sm absolute right-1/2 top-0 translate-x-1/2 mx-auto w-full lg:w-4/5 xl:w-3/5 xl:min-w-[1200px] p-5 border-gray border border-solid hidden flex-col items-center rounded-[40px] lg:px-20 mt-10 py-2 bg-white" action="?action=addVideoTreat" method="POST" enctype="multipart/form-data" id="form-video" >
         <div class="flex flex-col-reverse items-start justify-between w-full mt-5 md:flex-row">
             <span class="text-4xl font-bold"> Formulaire d'ajout:</span>
-            <button class="flex items-start gap-2 px-5 py-2 font-semibold leading-none border border-solid rounded-lg border-gray close-modal">Annuler <span class="text-xs font-light leading-none text-red">x</span></button>
+            <button class="flex items-start gap-2 px-5 py-2 font-semibold leading-none border border-solid rounded-lg border-gray close-modal" data-target="form-video">Annuler <span class="text-xs font-light leading-none text-red">x</span></button>
         </div>
         <div class="grid w-full grid-cols-1 mt-10 md:grid-cols-2 gap-y-5">
             <div class="flex flex-col">
@@ -193,6 +193,13 @@
     <div class="fixed flex py-2 pr-10 translate-x-1/2 bg-white border border-solid opacity-0 bottom-1 right-1/2 rounded-xl border-gray max-h-20 -z-10" id="alert">
         <span id="error_text">
         </span>
+    </div>
+
+    <!-- modal delete cours -->
+    <div id="delModal" class="hidden fixed gap-5 bg-white right-1/2 translate-x-1/2 top-1/2 z-20">
+        <div>êtes vous sûr ?</div>
+        <div id="acceptDel">oui</div>
+        <div class="close-modal" data-target="delModal">Annuler</div>
     </div>
 </body>
 <script src="assets/script/script.js"></script>

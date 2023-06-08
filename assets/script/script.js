@@ -16,6 +16,9 @@
     // modal
     let formAddVideo = document.getElementById("form-video");
 
+    let delModal = document.getElementById("delModal");
+    let delBtn = document.getElementById("acceptDel");
+
     let activeModal = formAddVideo;
 
     function openSideBar(btn,sidebar){
@@ -44,6 +47,23 @@
             document.getElementById("backgroundFilter").remove();
         }
     }
+
+    function openDeleteModal(modal,id,table){
+        modal.classList.toggle("hidden");
+        modal.classList.toggle("flex");
+        let delBtn=modal.querySelector("#acceptDel");
+        delBtn.setAttribute("data-id",id);
+        delBtn.setAttribute("data-table",table)
+        let bg = document.createElement("div");
+        if (document.getElementById("backgroundFilter")===null){
+            bg.classList.add("bg-black","opacity-50","fixed","top-0","left-0","w-screen","h-screen");
+            bg.id="backgroundFilter";
+            document.body.appendChild(bg);
+        }
+        else{
+            document.getElementById("backgroundFilter").remove();
+        }
+    }
   
 async function changeContent(dataLocation,newUrl){
     mainContent.innerHTML="";
@@ -51,12 +71,22 @@ async function changeContent(dataLocation,newUrl){
     window.history.pushState(100,"crud","index.php?admin=".concat(newUrl));
     fetch("?admin="+dataLocation)
         .then(response => response.json())
-        .then(data => data.forEach(element => {
+        .then(data => data.forEach(element => { 
             let newNode=document.createRange().createContextualFragment(element);
-            mainContent.appendChild(newNode);
-        }))
+            mainContent.appendChild(newNode)}))
 }
 
+function deleteLesson(id){
+    fetch("?admin=deleteLesson&id="+id)
+        .then(response => response.json())
+        .then(data => console.log())
+    changeContent("getAllLessonCard","crudLesson");
+    openAndCloseModal(delModal);
+}
+
+if (delBtn!=null){
+    delBtn.addEventListener("click",()=>{deleteLesson(delBtn.dataset.id)});
+    }
 if (lessonBtn!=null){
 lessonBtn.addEventListener("click",()=>{changeContent("getAllLessonCard","crudLesson")});
 changeContent("getAllLessonCard","crudLesson")
@@ -72,7 +102,8 @@ if (themeBtn!=null){
    }    
 if (closeModalButtons!==null){
 Array.from(closeModalButtons).forEach(element => {
-    element.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(activeModal)})  
+    console.log(element.dataset.target)
+    element.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(document.getElementById(element.dataset.target))})  
 });
 }
 if (sideBarOpenBtn!==null){

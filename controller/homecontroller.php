@@ -213,7 +213,7 @@ function getCardsForCrudLesson(){
             $showedLikes=intdiv($result['lesson']->getLessonLikes(),1000);
             $likesSuffix="K";
         }
-        $toEncode[]="<div class='flex flex-col items-center gap-10 p-6 bg-white rounded-lg'>
+        $toEncode[]="<div class='flex flex-col items-center gap-10 p-6 bg-white rounded-lg' data-id=".$result['lesson']->getLessonId().">
                         <div class='flex flex-col items-center'>
                             <img src='assets/img/lesson_miniature/".$result["lesson"]->getLessonCover()."'>
                         </div>
@@ -241,8 +241,8 @@ function getCardsForCrudLesson(){
                             </div>
                             <span>".$result["lesson"]->getLessonDate()."</span>
                             <div class='flex justify-center w-full gap-4'>
-                                <img src='assets/svg/edit_icon.svg' data-id='".$result["user"]->getUserId()."'>
-                                <img src='assets/svg/trash_icon.svg' data-id='".$result["user"]->getUserId()."'>
+                                <img src='assets/svg/edit_icon.svg' data-id='".$result["lesson"]->getLessonId()." data-table=lesson'>
+                                <img src='assets/svg/trash_icon.svg' class='delete-btn test-btn' data-id='".$result["lesson"]->getLessonId()."' data-table=lesson onclick='openDeleteModal(delModal,".$result["lesson"]->getLessonId().",`lesson`)'>
                             </div>
                         </div>
                     </div>";
@@ -542,6 +542,18 @@ function addVideo(){
     }
     else{
         echo json_encode($isOk);
+    }
+}
+
+function deleteLessonAjax(){
+    if (isset($_GET['id'])){
+        $repo=new Lesson_repo();
+        if ($repo->deleteLessonFromBdd($_GET['id'])){
+            echo json_encode("succes");
+        }
+        else{
+            echo json_encode("failure");
+        }    
     }
 }
 

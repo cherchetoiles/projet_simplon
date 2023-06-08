@@ -111,6 +111,9 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
 }else{
     if(isset($_GET['admin']) && (!empty($_SESSION) && $_SESSION['user']->getRoleNom() == 'admin')){
         switch($_GET['admin']) {
+            case 'deleteLesson':
+                deleteLessonAjax();
+                break;
             case 'addTheme':
                 addTheme();
                 break;
