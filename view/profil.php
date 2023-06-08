@@ -53,7 +53,7 @@
         </div>
         <div>
             <div class="flex flex-col gap-4">
-            <a href="?action=test" class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl">
+            <a class="bg-[#F5F5F5] hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl" id="editBtn">
                 <p>Modifier le profil</p>
             </a>
             
@@ -74,7 +74,7 @@
 <!-- TABLE -->
 <div class="z-10 bg-white lg:bg-none">
     <div class="absolute bottom-0 left-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase bg-white border-t border-solid lg:bg-none border-stroke lg:border-none lg:static">
-        <div class="flex mx-auto lg:w-2/5 xl:w-1/4 justify-evenly">
+        <div class="flex mx-auto lg:w-2/5 xl:w-1/4 justify-between">
     <!-- COURS OF CREATOR -->
         <a id="tabBtn1" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
             <img src="assets/svg/lesson.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mes cours en ligne">
@@ -82,8 +82,18 @@
         </a>
         <!-- FAVORIS -->
         <a id="tabBtn2" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0 lg:mr-0">
-            <img src="assets/svg/fav.svg" class="w-6 h-6 mr-20 lg:mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
+            <img src="assets/svg/fav.svg" class="w-6 h-6    lg:mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
             <p class="hidden lg:flex">Mes favoris</p>
+        </a>
+        <!-- CREATE FOR CREATOR -->
+        <a href="?action=addVideo" class="flex items-center justify-center rounded-full lg:w-auto mx-4 w-14 h-14 bg-red lg:bg-transparent">
+            <svg width=30 height=30 class="w-7 h-7 lg:w-4 lg:h-4 lg:mr-1 stroke-white lg:stroke-black" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.8252 5.0189H18.2147M18.2147 5.0189H21.6042M18.2147 5.0189V8.40841M18.2147 5.0189V1.62939" stroke-linecap="round"/>
+                <path d="M1.32227 15.1877C1.39451 14.4533 1.55778 13.9589 1.92677 13.5899C2.58862 12.928 3.65384 12.928 5.78427 12.928C7.91471 12.928 8.97993 12.928 9.64178 13.5899C10.3036 14.2517 10.3036 15.3169 10.3036 17.4474C10.3036 19.5778 10.3036 20.643 9.64178 21.3049C8.97993 21.9667 7.91471 21.9667 5.78427 21.9667C3.65384 21.9667 2.58862 21.9667 1.92677 21.3049C1.57723 20.9553 1.4123 20.4933 1.33447 19.8212" stroke=" stroke-linecap="round"/>
+                <path d="M1.2666 5.01934C1.2666 2.88891 1.2666 1.82369 1.92844 1.16184C2.59029 0.5 3.65551 0.5 5.78595 0.5C7.91639 0.5 8.98161 0.5 9.64345 1.16184C10.3053 1.82369 10.3053 2.88891 10.3053 5.01934C10.3053 7.14978 10.3053 8.215 9.64345 8.87685C8.98161 9.53869 7.91639 9.53869 5.78595 9.53869C3.65551 9.53869 2.59029 9.53869 1.92844 8.87685C1.2666 8.215 1.2666 7.14978 1.2666 5.01934Z"/>
+                <path d="M13.6943 17.4474C13.6943 15.3169 13.6943 14.2517 14.3562 13.5899C15.018 12.928 16.0832 12.928 18.2137 12.928C20.3441 12.928 21.4093 12.928 22.0712 13.5899C22.733 14.2517 22.733 15.3169 22.733 17.4474C22.733 19.5778 22.733 20.643 22.0712 21.3049C21.4093 21.9667 20.3441 21.9667 18.2137 21.9667C16.0832 21.9667 15.018 21.9667 14.3562 21.3049C13.6943 20.643 13.6943 19.5778 13.6943 17.4474Z"/>
+            </svg>
+            <p class="hidden lg:flex">Ajouter</p>
         </a>
         <!-- HISTORIQUE -->
         <a id="tabBtn3" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
@@ -91,28 +101,16 @@
             <p class="hidden lg:flex">Mon historique</p>
         </a>
         <!-- SETTING -->
-        <a href="?action=test" class="flex items-center w-auto mx-4 lg:hidden">
+        <a class="flex items-center w-auto mx-4 lg:hidden" id="editBtn">
             <img src="assets/svg/parm.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour changer mes données">
         </a>
 </div>
-        <!-- CREATE FOR CREATOR -->
-        <div class="absolute bottom-0 flex justify-center lg:bottom-auto lg:translate-y-[-31%] lg:right-24 xl:right-80 ">   
-            <a href="?action=addVideo" class="flex items-center justify-center rounded-full lg:w-auto w-14 h-14 bg-red lg:bg-transparent">
-                <svg width=30 height=30 class="w-7 h-7 lg:w-4 lg:h-4 lg:mr-1 stroke-white lg:stroke-black" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.8252 5.0189H18.2147M18.2147 5.0189H21.6042M18.2147 5.0189V8.40841M18.2147 5.0189V1.62939" stroke-linecap="round"/>
-                    <path d="M1.32227 15.1877C1.39451 14.4533 1.55778 13.9589 1.92677 13.5899C2.58862 12.928 3.65384 12.928 5.78427 12.928C7.91471 12.928 8.97993 12.928 9.64178 13.5899C10.3036 14.2517 10.3036 15.3169 10.3036 17.4474C10.3036 19.5778 10.3036 20.643 9.64178 21.3049C8.97993 21.9667 7.91471 21.9667 5.78427 21.9667C3.65384 21.9667 2.58862 21.9667 1.92677 21.3049C1.57723 20.9553 1.4123 20.4933 1.33447 19.8212" stroke=" stroke-linecap="round"/>
-                    <path d="M1.2666 5.01934C1.2666 2.88891 1.2666 1.82369 1.92844 1.16184C2.59029 0.5 3.65551 0.5 5.78595 0.5C7.91639 0.5 8.98161 0.5 9.64345 1.16184C10.3053 1.82369 10.3053 2.88891 10.3053 5.01934C10.3053 7.14978 10.3053 8.215 9.64345 8.87685C8.98161 9.53869 7.91639 9.53869 5.78595 9.53869C3.65551 9.53869 2.59029 9.53869 1.92844 8.87685C1.2666 8.215 1.2666 7.14978 1.2666 5.01934Z"/>
-                    <path d="M13.6943 17.4474C13.6943 15.3169 13.6943 14.2517 14.3562 13.5899C15.018 12.928 16.0832 12.928 18.2137 12.928C20.3441 12.928 21.4093 12.928 22.0712 13.5899C22.733 14.2517 22.733 15.3169 22.733 17.4474C22.733 19.5778 22.733 20.643 22.0712 21.3049C21.4093 21.9667 20.3441 21.9667 18.2137 21.9667C16.0832 21.9667 15.018 21.9667 14.3562 21.3049C13.6943 20.643 13.6943 19.5778 13.6943 17.4474Z"/>
-                </svg>
-                <p class="hidden lg:flex">Ajouter</p>
-            </a>
-        </div>
     </div>
     <!-- TABLE FILE -->
     <div class="flex justify-center w-auto min-h-screen mx-auto my-5 ">
         <div class="flex">
 
-            <div id="content_1" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"">
+            <div id="content_1" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             <?php foreach($lessons as $lesson){  ?>
             <!-- LESSON CARD -->
             
@@ -241,5 +239,98 @@
     </div>
 </div>
 <?php include('view/footer.php') ?>
+
+<!-- MODAL FOR UPDATE PROFIL DATA -->
+<div class="hidden z-20 absolute right-1/2 top-32 translate-x-1/2 mx-auto w-full lg:w-4/5 lg:rounded-2xl xl:w-3/5 xl:min-w-[1200px] bg-white" id="form-video">
+    <div class="flex flex-col-reverse w-full p-5 mx-auto border border-solid-2 lg:flex-row font-body lg:shadow-lg border-stroke lg:rounded-2xl" >
+        <!-- MENU -->
+        <div class="flex flex-col h-auto  lg:border-r justify-start lg:border-solid lg:w-1/4 border-[#C8C8C8] lg:my-10">
+            <div class="flex text-[10px] mx-auto lg:text-xl lg:border-b lg:border-solid border-[#C8C8C8] lg:px-12 lg:flex-col text-gray-dark ">
+                <a href="" class="hidden mt-2 font-normal lg:flex text-red">Modification du profil</a>
+                <a href="" class="mr-2 font-normal lg:mr-0 lg:my-7">Politique de cookies</a>    
+                <span class="font-normal lg:hidden">-</span>
+                <a href="" class="ml-2 font-normal lg:ml-0 lg:mb-10">Politique de confidentialités</a>
+            </div>
+            <a href="?action=creatorperm" class="flex justify-center mt-4 text-sm font-semibold leading-5 text-center lg:mx-9 text-red lg:text-gray-dark lg:text-xl">Envie de devenir Créateur ?<br> Rejoins notre équipe !</a>
+        </div>
+        <!-- PROFILUPDATE -->
+        <div class="mx-auto lg:pl-10 lg:w-3/4 lg:my-8">
+            <!-- PROFILPIC -->
+            <div class="flex flex-col items-center w-auto h-auto lg:items-start">
+                <div class="flex flex-col lg:flex-row">
+                <!-- CONDITION IF PP  -->
+                <img class="w-[90px] h-[90px] mx-auto rounded-full" src="assets/img/user_avatar/<?=$user->getUserAvatar()?>" id="avatar">
+                <!-- FALSE PP -->
+                <!-- <img class="w-24 h-24 mx-auto rounded-full" src=""> --> 
+                    <div class="flex flex-col-reverse justify-center text-center lg:text-start lg:flex-col lg:ml-5">
+                        <div>
+                            <!-- NAME+SPE+UPDATEPP -->
+                            <h6 class="text-xl font-normal "><?=$user->getUserSurName()?> <?=$user->getUserName()?></h6>
+                            <p class="text-lg font-light leading-5"><?=$user->getUSerSpe()?></p>
+                        </div>
+                        <form id="updateAvatarForm" method="POST">
+                            <input id="inputFile" type="file" style="display:none;">
+                            <button type="button" id="btnChangeProfilePic" class="flex mx-auto mt-2 text-base font-semibold lg:mt-0 text-red lg:text-lg">
+                            <p>Modifier&nbsp;</p>
+                            <span class="hidden lg:flex">la photo de profil</span>
+                            </button>
+                        </form>
+
+                        
+                    </div>
+                </div>
+                <!-- UPDATEDATA -->
+                <form method="post" action="?action=updateProfil" class="flex flex-col items-start justify-start my-3 lg:my-10 " id="form-update">
+
+                    <!-- <div class="flex flex-col lg:flex-row">
+                        <label for="bio" class="w-11/12 text-sm font-semibold lg:text-lg ">
+                            Bio
+                        </label>
+                        <div class="ml-4">
+                            <input  type="text" name="bio" id="bio" class="h-24 lg:ml-[93.5px] border border-solid rounded-md outline-none placeholder:font-normal border-stroke">
+                            <div class="flex justify-end w-full mt-1 text-sm text-top text-stroke">0/150</div>
+                        </div>
+                        
+                    </div> -->
+
+                    <div class="" id="alert">
+                        <span id="error_text">
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row lg:my-4">
+                    <label for="user_email" class="w-11/12 text-sm font-semibold lg:text-lg lg:pr-0.5">
+                        Adresse mail
+                    </label>
+                        <div class="ml-4">
+                            <input  type="mail" name="user_email" id="email" value="<?= $user->getUserEmail()?>" class="border border-solid rounded-md outline-none leanding-8 placeholder:font-normal border-stroke">
+                            <div class="flex justify-end w-full mt-1 text-sm text-stroke">0/40</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row">
+                        <label for="user_password" class="w-11/12 text-sm font-semibold lg:text-lg">
+                            Mot de passe
+                        </label>
+                        <div class="ml-4">
+                            <input type="password" name="user_password" id="mdp"  placeholder="●●●●●●●●●"  class="border border-solid rounded-md outline-none leanding-8 placeholder:font-normal border-stroke">
+                            <div class="flex justify-end w-full mt-1 text-sm text-stroke">0/12</div>
+                        </div>
+                    </div>
+
+                    <input type="submit" id="submit" value="Enregister" class="cursor-pointer px-8 py-2 mx-auto text-sm font-bold text-red border-4 rounded-lg lg:py-1 lg:mt-10 lg:mx-0 lg:text-lg">
+
+                </form>
+            </div> 
+        </div>
+        <!-- EXIT -->
+        <a class="absolute top-4 right-4 lg:flex lg:static lg:items-start close-modal cursor-pointer">
+            <img src="assets/svg/cross.svg" alt="Croix pour fermer la fenêtre">
+        </a>
+    </div>
+</div>
+
+
 </body>
+<script src="assets/script/script.js"></script>
 </html>

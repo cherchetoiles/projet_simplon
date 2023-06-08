@@ -34,20 +34,61 @@ function updateProfil(){
     $user = $_SESSION['user'];
     $repo = new User_repo();
     $user_id = ($_SESSION['user']->getUserId());
-    $user_email = $_POST['user_email'];
-    $user_password = $_POST['user_password'];
-    $oldEmail=$user->getUserEmail();
-    $user->setUserEmail($user_email);
-    $user->setUserPassword($user_password);
-    if($user->getUserEmail() != ''){
-        if (!$repo->updateEmail($user_email,$user->getUserId())){
-            $user->setUserEmail($oldEmail);
+    if (isset($_POST['user_email'])) {
+        $user_email = $_POST['user_email'];
+        var_dump($user_email);
+        $oldEmail=$user->getUserEmail();
+        var_dump($oldEmail);
+        $user->setUserEmail($user_email);
+        if($user->getUserEmail() != '') {
+            if (filter_var($user->getUserEmail(),FILTER_VALIDATE_EMAIL)) {
+                if (!$repo->updateEmail($user_email,$user->getUserId())){
+                    $user->setUserEmail($oldEmail);
+                    var_dump("Email modifiée avec succès");
+                    header('Location:?action=?updateProfil');
+                } else {
+                    var_dump("Email déjà utilisée");
+                    header('?action=?updateProfil');
+                }
+            }
+            else {
+                var_dump("Veuillez remplir une adresse email valide.");
+                header('?action=?updateProfil');
+            }
+        }
+        else {
+            var_dump("Ce champ ne peut être vide");
+            header('?action=?updateProfil');
         }
     }
-    if($user->getUserPassword() != ''){
-        $repo->updatePassword($user_password,$user->getUserId());
+    else {
+        var_dump("Ce champ ne peut être vide");
+        header('?action=?updateProfil');
     }
-    header('Location:index.php?action=test');
+
+    
+    if (isset($_POST['user_password'])) {
+        $user_password = $_POST['user_password'];
+        $user->setUserPassword($user_password);
+        if($user->getUserPassword() != '') {
+            if (preg_match('/^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/',$user->getUserPassword())) {
+            $repo->updatePassword($user_password,$user->getUserId());
+            }
+            else {
+                var_dump("Veuillez remplir un mot de passe valide.");
+                header('?action=?updateProfil');
+            }
+        }
+        else {
+            var_dump("Ce champ ne peut être vide");
+            header('?action=?updateProfil');
+        }
+    }
+    else {
+        var_dump("Ce champ ne peut être vide");
+        header('?action=?updateProfil');
+    }
+
 }
 
 function modaltest() {

@@ -1,6 +1,7 @@
 
 {
     let addBtn = document.getElementById("addBtn");
+    let editBtn = document.getElementById("editBtn");
     let closeModalButtons = document.getElementsByClassName("close-modal");
 
     let sideBarContent = document.getElementById("crudSideBarContent");
@@ -112,6 +113,9 @@ sideBarOpenBtn.addEventListener("click",()=>{openSideBar(sideBarOpenBtn,sideBarC
 if (addBtn!==null){
     addBtn.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(activeModal)})  
 }
+if (editBtn!==null){
+    editBtn.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(activeModal)})  
+}
 
 }
 // formulaire ajout de leçon
@@ -203,5 +207,34 @@ if (addBtn!==null){
 
     if (submitBtnAddVideo!==null){
         submitBtnAddVideo.addEventListener("click",function(click){click.preventDefault();submit()})
+    }
+}
+
+// ajax formulaire modif profil
+{
+    const submitBtnUpdateProfil = document.getElementById("submit");
+    const formUpdateProfil = document.getElementById("form-update");
+    const alert = document.getElementById("alert");
+    const alertTxt=document.getElementById("error_text")
+
+    function submit(){
+        let updateData = new FormData(formUpdateProfil,submitBtnUpdateProfil);
+        fetch("?action=updateProfil",{method: 'POST',body:updateData})
+            .then(response=>response.json())
+            .then(data=>changeAlert(data))
+            .catch(error=>console.error(error));
+    }
+
+    function changeAlert(newText){
+        alert.classList.remove("duration-[3000ms]");
+        alert.classList.remove("opacity-0");
+        alert.classList.remove("-z-10");
+        alert.classList.add("z-20");
+        alertTxt.innerHTML=newText;
+        setTimeout(()=>{alert.classList.add("duration-[3000ms]");alert.classList.add("opacity-0");setTimeout(()=>{alert.classList.remove("z-20"),alert.classList.add("-z-10")},3000)},1000);
+    }
+
+    if (submitBtnUpdateProfil!==null){
+        submitBtnUpdateProfil.addEventListener("click",function(click){click.preventDefault();submit()})
     }
 }
