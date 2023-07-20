@@ -72,42 +72,44 @@
 </div>
 
 <!-- TABLE -->
-<div class="z-10 bg-white lg:bg-none">
+<div class="z-10 bg-white relative lg:bg-none">
     <div class="absolute bottom-0 left-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase bg-white border-t border-solid lg:bg-none border-stroke lg:border-none lg:static">
         <div class="flex mx-auto lg:w-2/5 xl:w-1/4 justify-between">
-    <!-- COURS OF CREATOR -->
-        <a id="tabBtn1" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
-            <img src="assets/svg/lesson.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mes cours en ligne">
-            <p class="hidden lg:flex">Mes cours</p>
-        </a>
-        <!-- FAVORIS -->
-        <a id="tabBtn2" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0 lg:mr-0">
-            <img src="assets/svg/fav.svg" class="w-6 h-6    lg:mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
-            <p class="hidden lg:flex">Mes favoris</p>
-        </a>
-        <!-- CREATE FOR CREATOR -->
-        <a href="?action=addVideo" class="flex items-center justify-center rounded-full lg:w-auto mx-4 w-14 h-14 bg-red lg:bg-transparent">
-            <svg width=30 height=30 class="w-7 h-7 lg:w-4 lg:h-4 lg:mr-1 stroke-white lg:stroke-black" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.8252 5.0189H18.2147M18.2147 5.0189H21.6042M18.2147 5.0189V8.40841M18.2147 5.0189V1.62939" stroke-linecap="round"/>
-                <path d="M1.32227 15.1877C1.39451 14.4533 1.55778 13.9589 1.92677 13.5899C2.58862 12.928 3.65384 12.928 5.78427 12.928C7.91471 12.928 8.97993 12.928 9.64178 13.5899C10.3036 14.2517 10.3036 15.3169 10.3036 17.4474C10.3036 19.5778 10.3036 20.643 9.64178 21.3049C8.97993 21.9667 7.91471 21.9667 5.78427 21.9667C3.65384 21.9667 2.58862 21.9667 1.92677 21.3049C1.57723 20.9553 1.4123 20.4933 1.33447 19.8212" stroke=" stroke-linecap="round"/>
-                <path d="M1.2666 5.01934C1.2666 2.88891 1.2666 1.82369 1.92844 1.16184C2.59029 0.5 3.65551 0.5 5.78595 0.5C7.91639 0.5 8.98161 0.5 9.64345 1.16184C10.3053 1.82369 10.3053 2.88891 10.3053 5.01934C10.3053 7.14978 10.3053 8.215 9.64345 8.87685C8.98161 9.53869 7.91639 9.53869 5.78595 9.53869C3.65551 9.53869 2.59029 9.53869 1.92844 8.87685C1.2666 8.215 1.2666 7.14978 1.2666 5.01934Z"/>
-                <path d="M13.6943 17.4474C13.6943 15.3169 13.6943 14.2517 14.3562 13.5899C15.018 12.928 16.0832 12.928 18.2137 12.928C20.3441 12.928 21.4093 12.928 22.0712 13.5899C22.733 14.2517 22.733 15.3169 22.733 17.4474C22.733 19.5778 22.733 20.643 22.0712 21.3049C21.4093 21.9667 20.3441 21.9667 18.2137 21.9667C16.0832 21.9667 15.018 21.9667 14.3562 21.3049C13.6943 20.643 13.6943 19.5778 13.6943 17.4474Z"/>
-            </svg>
-            <p class="hidden lg:flex">Ajouter</p>
-        </a>
-        <!-- HISTORIQUE -->
-        <a id="tabBtn3" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
-            <img src="assets/svg/time.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mon historique">
-            <p class="hidden lg:flex">Mon historique</p>
-        </a>
-        <!-- SETTING -->
-        <a class="flex items-center w-auto mx-4 lg:hidden" id="editBtn">
-            <img src="assets/svg/parm.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour changer mes données">
-        </a>
-</div>
-    </div>
+            <!-- COURS OF CREATOR -->
+            <a id="tabBtn1" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
+                <img src="assets/svg/lesson.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mes cours en ligne">
+                <p class="hidden lg:flex">Mes cours</p>
+            </a>
+            <!-- FAVORIS -->
+            <a id="tabBtn2" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0 lg:mr-0">
+                <img src="assets/svg/fav.svg" class="w-6 h-6    lg:mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
+                <p class="hidden lg:flex">Mes favoris</p>
+            </a>
+            <!-- CREATE FOR CREATOR -->
+            <!-- HISTORIQUE -->
+            <a id="tabBtn3" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
+                <img src="assets/svg/time.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mon historique">
+                <p class="hidden lg:flex">Mon historique</p>
+            </a>
+            <!-- SETTING -->
+            <a class="flex items-center w-auto mx-4 lg:hidden" id="editBtn">
+                <img src="assets/svg/parm.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour changer mes données">
+            </a>
+            </div>
+            
+        </div>
+        <a href="?action=addVideo" class="flex items-center absolute -top-1 right-4 justify-center uppercase font-semibold rounded-full lg:w-auto mx-4 w-14 h-14 bg-red lg:bg-transparent">
+                <svg width=30 height=30 class="w-7 h-7 lg:w-4 lg:h-4 lg:mr-1 stroke-white lg:stroke-black" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.8252 5.0189H18.2147M18.2147 5.0189H21.6042M18.2147 5.0189V8.40841M18.2147 5.0189V1.62939" stroke-linecap="round"/>
+                    <path d="M1.32227 15.1877C1.39451 14.4533 1.55778 13.9589 1.92677 13.5899C2.58862 12.928 3.65384 12.928 5.78427 12.928C7.91471 12.928 8.97993 12.928 9.64178 13.5899C10.3036 14.2517 10.3036 15.3169 10.3036 17.4474C10.3036 19.5778 10.3036 20.643 9.64178 21.3049C8.97993 21.9667 7.91471 21.9667 5.78427 21.9667C3.65384 21.9667 2.58862 21.9667 1.92677 21.3049C1.57723 20.9553 1.4123 20.4933 1.33447 19.8212" stroke=" stroke-linecap="round"/>
+                    <path d="M1.2666 5.01934C1.2666 2.88891 1.2666 1.82369 1.92844 1.16184C2.59029 0.5 3.65551 0.5 5.78595 0.5C7.91639 0.5 8.98161 0.5 9.64345 1.16184C10.3053 1.82369 10.3053 2.88891 10.3053 5.01934C10.3053 7.14978 10.3053 8.215 9.64345 8.87685C8.98161 9.53869 7.91639 9.53869 5.78595 9.53869C3.65551 9.53869 2.59029 9.53869 1.92844 8.87685C1.2666 8.215 1.2666 7.14978 1.2666 5.01934Z"/>
+                    <path d="M13.6943 17.4474C13.6943 15.3169 13.6943 14.2517 14.3562 13.5899C15.018 12.928 16.0832 12.928 18.2137 12.928C20.3441 12.928 21.4093 12.928 22.0712 13.5899C22.733 14.2517 22.733 15.3169 22.733 17.4474C22.733 19.5778 22.733 20.643 22.0712 21.3049C21.4093 21.9667 20.3441 21.9667 18.2137 21.9667C16.0832 21.9667 15.018 21.9667 14.3562 21.3049C13.6943 20.643 13.6943 19.5778 13.6943 17.4474Z"/>
+                </svg>
+                <p class="hidden lg:flex">Ajouter</p>
+            </a>
     <!-- TABLE FILE -->
     <div class="flex justify-center w-auto min-h-screen mx-auto my-5 ">
+        
         <div class="flex">
 
             <div id="content_1" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -116,7 +118,7 @@
             
                 <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl my-3 mx-4">
                 <!-- LOGOWHITE+TITLE+DESC -->
-                    <img src="assets/img/lesson_miniature<?=$lesson->getLessonCover()?>"  onclick="showFilter()" id="card_img" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                    <img src="assets/img/lesson_miniature/<?=$lesson->getLessonCover()?>"  onclick="showFilter()" id="card_img" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
                     <div class="absolute hidden duration-700" id="card_filter">
                         <div class="flex flex-col justify-start p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
                         <div class="absolute flex right-4 top-4 ">
@@ -324,7 +326,7 @@
             </div> 
         </div>
         <!-- EXIT -->
-        <a class="absolute top-4 right-4 lg:flex lg:static lg:items-start close-modal cursor-pointer">
+        <a class="absolute top-4 right-4 lg:flex lg:static lg:items-start close-modal cursor-pointer" data-target="form-video">
             <img src="assets/svg/cross.svg" alt="Croix pour fermer la fenêtre">
         </a>
     </div>
