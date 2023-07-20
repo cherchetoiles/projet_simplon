@@ -3,7 +3,7 @@
     <div class="w-4/5 px-8 mx-auto">
         <div class="flex flex-col items-center lg:flex-row lg:justify-between lg:my-5 lg:mx-5 lg:gap-8">
             <div class="text-center lg:w-72">
-                <img src="assets/svg/logo.svg">
+                <img src="/assets/svg/logo.svg">
                 <span class="text-red tracking-[0.35em] font-semibold text-sm lg:text-xs">APPRENDRE EN LIGNE</span>
             </div>
             <span class="mx-5 mt-10 font-light leading-7 text-center font-body lg:mt-0 lg:w-7/12 text-gray-dark lg:mx-0">
@@ -46,8 +46,8 @@
                 </span>
             </div>
             <div class="lg:absolute right-5 bottom-1.5 flex gap-2 my-2 lg:my-0">
-                <a href="https://www.linkedin.com/company/simplon-charleville/" target="blank"><img class="z-2" src="assets/svg/in.svg"></a>
-                <a href="https://www.facebook.com/ecoledescodeurs" target="_blank"><img class="z-2" src="assets/svg/fb.svg"></a>
+                <a href="https://www.linkedin.com/company/simplon-charleville/" target="blank"><img class="z-2" src="/assets/svg/in.svg"></a>
+                <a href="https://www.facebook.com/ecoledescodeurs" target="_blank"><img class="z-2" src="/assets/svg/fb.svg"></a>
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="flex flex-row items-center gap-2 px-4 py-2 font-extrabold border-b border-b-gray">
-                <img class="w-6 h-5 text-gray" src="assets/img/<?php echo $themes["theme_logo"] ?>" alt="">
+                <img class="w-6 h-5 text-gray" src="/assets/img/<?php echo $themes["theme_logo"] ?>" alt="">
                 <span class="text-gray font-body"><a href="?action=nos_cours"><?php echo $themes["theme_name"] ?></a></span>
             </div>
 

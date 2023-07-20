@@ -68,9 +68,8 @@
   
 async function changeContent(dataLocation,newUrl){
     mainContent.innerHTML="";
-    let stateObj = { id: "100" };
-    window.history.pushState(100,"crud","index.php?admin=".concat(newUrl));
-    fetch("?admin="+dataLocation)
+    window.history.pushState(100,"crud","admin-".concat(newUrl));
+    fetch("/index.php?admin="+dataLocation)
         .then(response => response.json())
         .then(data => data.forEach(element => { 
             let newNode=document.createRange().createContextualFragment(element);
@@ -103,7 +102,6 @@ if (themeBtn!=null){
    }    
 if (closeModalButtons!==null){
 Array.from(closeModalButtons).forEach(element => {
-    console.log(element.dataset.target)
     element.addEventListener("click",function(click){click.preventDefault(),openAndCloseModal(document.getElementById(element.dataset.target))})  
 });
 }
@@ -188,8 +186,11 @@ if (editBtn!==null){
     const alert = document.getElementById("alert");
     const alertTxt=document.getElementById("error_text")
 
-    function submit(){
-        let formData = new FormData(formAddVideo,submitBtnAddVideo);
+    console.log(formAddVideo);
+
+    function submit_video(){
+        console.log(formAddVideo);
+        let formData = new FormData(formAddVideo);
         fetch("?action=addVideoTreat",{method: 'POST',body:formData})
             .then(response=>response.json())
             .then(data=>changeAlert(data))
@@ -206,7 +207,7 @@ if (editBtn!==null){
     }
 
     if (submitBtnAddVideo!==null){
-        submitBtnAddVideo.addEventListener("click",function(click){click.preventDefault();submit()})
+        submitBtnAddVideo.addEventListener("click",function(click){click.preventDefault();submit_video()})
     }
 }
 

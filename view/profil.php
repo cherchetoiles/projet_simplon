@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <link href="dist/output.css" rel="stylesheet">
+    <link href="/dist/output.css" rel="stylesheet">
  
     <!-- DAISY UI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- JS CARD -->
-    <script src="assets/script/card_creator.js"></script>
+    <script src="/assets/script/card_creator.js"></script>
 
 
     <title>Mon Profil</title>
@@ -34,7 +34,7 @@
 <div class="container flex justify-center pt-8 pb-8 mx-auto border-b border-solid lg:w-11/12 xl:w-8/12 border-stroke">
    <!-- AVATAR -->
     <div class="px-2 md:w-1/5">
-        <img src="assets/img/user_avatar/<?=$user->getUserAvatar()?>" alt="Photo de profil de <?= $user->getUserSurname()?>" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44">
+        <img src="/assets/img/user_avatar/<?=$user->getUserAvatar()?>" alt="Photo de profil de <?= $user->getUserSurname()?>" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44">
     </div>
     <div class="flex flex-row justify-between sm:mt-2 lg:w-4/5">
         <div>
@@ -62,7 +62,7 @@
             </a>
 
             <?php if(isset($_SESSION) AND ($_SESSION["user"]->getRoleNom()) === "admin" ) { ?>
-                <a href="?admin=crud" class="bg-red hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl">
+                <a href="/admin-crudLesson" class="bg-red hidden cursor-pointer lg:flex text-center px-5 py-2 rounded-md text-lg lg:text-xl">
                     <p class="text-[#F5F5F5] font-medium">Tableau de bord</p>
                 </a>
             <?php } ?>
@@ -77,23 +77,23 @@
         <div class="flex mx-auto lg:w-2/5 xl:w-1/4 justify-between">
             <!-- COURS OF CREATOR -->
             <a id="tabBtn1" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
-                <img src="assets/svg/lesson.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mes cours en ligne">
+                <img src="/assets/svg/lesson.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mes cours en ligne">
                 <p class="hidden lg:flex">Mes cours</p>
             </a>
             <!-- FAVORIS -->
             <a id="tabBtn2" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0 lg:mr-0">
-                <img src="assets/svg/fav.svg" class="w-6 h-6    lg:mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
+                <img src="/assets/svg/fav.svg" class="w-6 h-6    lg:mr-1 lg:h-4 lg:w-4" alt="icon pour ajouter aux favoris" class="w-3 h-3">
                 <p class="hidden lg:flex">Mes favoris</p>
             </a>
             <!-- CREATE FOR CREATOR -->
             <!-- HISTORIQUE -->
             <a id="tabBtn3" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
-                <img src="assets/svg/time.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mon historique">
+                <img src="/assets/svg/time.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour voir mon historique">
                 <p class="hidden lg:flex">Mon historique</p>
             </a>
             <!-- SETTING -->
             <a class="flex items-center w-auto mx-4 lg:hidden" id="editBtn">
-                <img src="assets/svg/parm.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour changer mes données">
+                <img src="/assets/svg/parm.svg" class="w-6 h-6 mr-1 lg:h-4 lg:w-4" alt="icon pour changer mes données">
             </a>
             </div>
             
@@ -118,7 +118,7 @@
             
                 <div class="w-[323px]  bg-cover h-[182px] card_container rounded-xl my-3 mx-4">
                 <!-- LOGOWHITE+TITLE+DESC -->
-                    <img src="assets/img/lesson_miniature/<?=$lesson->getLessonCover()?>"  onclick="showFilter()" id="card_img" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                    <img src="/assets/img/lesson_miniature/<?=$lesson->getLessonCover()?>"  onclick="showFilter()" id="card_img" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
                     <div class="absolute hidden duration-700" id="card_filter">
                         <div class="flex flex-col justify-start p-5 text-white w-[323px] h-[182px] duration-700 -translate-y-full bg-black/30 font-body rounded-2xl">
                         <div class="absolute flex right-4 top-4 ">
@@ -129,19 +129,19 @@
                                 </svg>
                             </a>
                         </div>
-                            <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
+                            <img src="/assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
                             <h2 class="mt-2 text-sm font-semibold filter_content"><?=$lesson->getLessonTitle()?></h2>
                             <p class="mt-1 mb-2 text-[10px] leanding-8 filter_content"><?=$lesson->getLessonDescription()?>..</p>
                             <!-- NUMBER DIFFICULT+LIKE+VIEW -->
                             <div class="flex text-[10px] filter_content">
                                 <div class="flex mr-3 filter_content">
-                                    1 <img src="assets/svg/difficult/1.svg" class="w-3 h-auto ml-1" alt="difficult">
+                                    1 <img src="/assets/svg/difficult/1.svg" class="w-3 h-auto ml-1" alt="difficult">
                                 </div>
                                 <div class="flex mr-3 filter_content">
-                                    1 <img src="assets/svg/iconlike.svg" class="w-3 h-auto ml-1" alt="like">
+                                    1 <img src="/assets/svg/iconlike.svg" class="w-3 h-auto ml-1" alt="like">
                                 </div>
                                 <div class="flex filter_content">
-                                    1 <img src="assets/svg/view.svg" class="w-3 h-auto ml-1" alt="view">
+                                    1 <img src="/assets/svg/view.svg" class="w-3 h-auto ml-1" alt="view">
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                 <div class="w-[323px]  bg-cover h-[182px] card_container mx-4 mt-3 rounded-xl">
                 <!-- LOGOWHITE -->
                     <div class="w-[323px] h-[182px] flex justify-end">
-                        <img src="assets/img/lesson_miniature/<?=$fav_lesson->getLessonCover()?>"  onclick="showFav()" id="img_fav" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                        <img src="/assets/img/lesson_miniature/<?=$fav_lesson->getLessonCover()?>"  onclick="showFav()" id="img_fav" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
                             <a href="?action=unFavTreat&lesson_id=<?=$fav_lesson->getLessonId()?>" class="fixed mt-4 mr-4">
                                 <svg id="icon_fav" class="w-9 h-9" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5" d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="white"/>
@@ -185,7 +185,7 @@
                                 
                             </div>
                             <!-- +TITLE+DESC -->
-                            <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
+                            <img src="/assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
                             <h2 class="mt-2 text-sm font-semibold filter_content">Apprendre le HTML</h2>
                             <p class="mt-1 text-[10px] leanding-8 filter_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temuam explica ea voluptates?...</p>
                         </div>
@@ -201,7 +201,7 @@
                 <div class="w-[323px]  bg-cover h-[182px] card_container mx-4 mt-3 rounded-xl">
                 <!-- LOGOWHITE -->
                     <div class="w-[323px] h-[182px] flex justify-end">
-                        <img src="assets/img/lesson_miniature/<?=$finish_lesson->getLessonCover() ?>"  onclick="showHistory()" id="cours_cover" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
+                        <img src="/assets/img/lesson_miniature/<?=$finish_lesson->getLessonCover() ?>"  onclick="showHistory()" id="cours_cover" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
                         <a href="" class="absolute mt-4 mr-4">
                             <svg id="icon_history"  class="w-9 h-9" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.5" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="white"/>
@@ -229,7 +229,7 @@
                                 
                             </div>
                             <!-- +TITLE+DESC -->
-                            <img src="assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
+                            <img src="/assets/svg/categories/white/html.svg" alt="Logo hmtl" class="w-12 h-auto filter_content ">
                             <h2 class="mt-2 text-sm font-semibold filter_content">Apprendre le HTML</h2>
                             <p class="mt-1 text-[10px] leanding-8 filter_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temuam explica ea voluptates?...</p>
                         </div>
@@ -261,7 +261,7 @@
             <div class="flex flex-col items-center w-auto h-auto lg:items-start">
                 <div class="flex flex-col lg:flex-row">
                 <!-- CONDITION IF PP  -->
-                <img class="w-[90px] h-[90px] mx-auto rounded-full" src="assets/img/user_avatar/<?=$user->getUserAvatar()?>" id="avatar">
+                <img class="w-[90px] h-[90px] mx-auto rounded-full" src="/assets/img/user_avatar/<?=$user->getUserAvatar()?>" id="avatar">
                 <!-- FALSE PP -->
                 <!-- <img class="w-24 h-24 mx-auto rounded-full" src=""> --> 
                     <div class="flex flex-col-reverse justify-center text-center lg:text-start lg:flex-col lg:ml-5">
@@ -327,12 +327,12 @@
         </div>
         <!-- EXIT -->
         <a class="absolute top-4 right-4 lg:flex lg:static lg:items-start close-modal cursor-pointer" data-target="form-video">
-            <img src="assets/svg/cross.svg" alt="Croix pour fermer la fenêtre">
+            <img src="/assets/svg/cross.svg" alt="Croix pour fermer la fenêtre">
         </a>
     </div>
 </div>
 
 
 </body>
-<script src="assets/script/script.js"></script>
+<script src="/assets/script/script.js"></script>
 </html>

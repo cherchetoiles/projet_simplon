@@ -28,8 +28,8 @@ $categories=$repo -> getAllCategories();
           </div>
           
           <div class="lg:flex-none">
-            <a href="?action=homepage">
-              <img class="w-44 sm:w-52 md:w-60 lg:w-64" src="assets/img/logo.png" alt="">
+            <a href="/homepage">
+              <img class="w-44 sm:w-52 md:w-60 lg:w-64" src="/assets/img/logo.png" alt="">
             </a>
           </div>
 
@@ -45,17 +45,17 @@ $categories=$repo -> getAllCategories();
               </label>
               <ul tabindex="0" class="p-2 shadow dropdown-content menu bg-base-100 rounded-box w-52">
                 <div class="flex flex-row items-center gap-1 mb-4 border-b-4 w-fit border-b-red">
-                  <img class="w-6 h-5" src="assets/img/theme_logo/<?php echo $themes["theme_logo"] ?>" alt="">
+                  <img class="w-6 h-5" src="/assets/img/theme_logo/<?php echo $themes["theme_logo"] ?>" alt="">
                   <span class="text-lg font-semibold">
                     <?php echo $themes["theme_name"] ?>
                   </span>
                 </div>
                 <div>
-                  <a class="font-semibold" href="?action=nos_cours">Tous nos cours</a>
+                  <a class="font-semibold" href="/nos_cours">Tous nos cours</a>
                 </div>
                 <?php foreach($categories as $category) { ?>
                   <div>
-                    <a href="?action=cours&id=<?php echo $category->getCategoryId() ?>">
+                    <a href="/cours/<?php echo $category->getCategoryId() ?>">
                       <?php echo $category->getCategoryName() ?>
                     </a>
                   </div>
@@ -74,7 +74,7 @@ $categories=$repo -> getAllCategories();
               </label>
 
               <div tabindex="0" class="dropdown-content p-8 shadow bg-base-100 rounded-box w-[768px] flex flex-row gap-4">
-                <img class="w-8 h-8" src="assets/img/formations.png" alt="formations">
+                <img class="w-8 h-8" src="/assets/img/formations.png" alt="formations">
                 <div class="flex flex-col text-left">
                   <span class="text-2xl font-semibold">
                     Découvrez nos formations!
@@ -100,12 +100,12 @@ $categories=$repo -> getAllCategories();
 
           <div class="flex-row items-center hidden p-2 border xl:flex border-gray rounded-4xl">
             <input class="w-32 focus:bg-white" type="search" placeholder="Rechercher">
-            <img class="w-6 h-6" src="assets/img/search.png" alt="">
+            <img class="w-6 h-6" src="/assets/img/search.png" alt="">
           </div>
 
 
-          <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 rounded-4xl items-center" href="?action=profil&userId=<?=$_SESSION['user']->getUserId()?>">
-            <img src="assets/img/user_avatar/<?php echo $_SESSION["user"]->getUserAvatar();?>" class="rounded-full h-8">
+          <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 rounded-4xl items-center" href="profil/<?=$_SESSION['user']->getUserId()?>">
+            <img src="/assets/img/user_avatar/<?php echo $_SESSION["user"]->getUserAvatar();?>" class="rounded-full h-8">
             <span class="hidden text-blue xl:block leading-none">Profil</span>
           </a>
 

@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/svg/favicon.svg">
 
     <!-- DAISY UI -->
-    <link href="dist/output.css" rel="stylesheet">
+    <link href="/dist/output.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
     
     <!-- FONT -->
@@ -34,18 +34,18 @@
         </span>
     </div>
     <div class="flex items-end gap-6 mt-5">
-        <img src="assets/svg/categories/<?php echo $lesson["category"]->getCategoryLogo() ?>" class="w-16">
+        <img src="/assets/svg/categories/<?php echo $lesson["category"]->getCategoryLogo() ?>" class="w-16">
         <h2 class="text-4xl font-bold leading-0">
             <?php echo $lesson['lesson']->getLessonTitle() ?>
         </h2>     
     </div>
     <div class="flex mt-5">
         <div class="flex mx-auto bg-white rounded-lg shadow-lg">
-            <a href="#!" class="flex w-9/12">
+            <div class="flex w-9/12">
                 <video controls id="video">
-                    <source src="assets/lesson_videos/<?php echo $lesson["lesson"]->getLessonContent(); ?>">
+                    <source src="/assets/lesson_videos/<?php echo $lesson["lesson"]->getLessonContent(); ?>">
                 </video>
-            </a>
+            </div>
             <!-- card -->
             <div class="relative flex flex-col w-3/12 overflow-y-scroll grow" id="sideMenu">
                 <?php 
@@ -75,13 +75,13 @@
                 <?php }?>
                 <div class="flex flex-col gap-6 px-3 py-1 mt-2 <?php if ($linkedLesson["lesson"]->getLessonId()==$_GET["id"]){echo "bg-slate-200";} ?>">
                     <div class="flex justify-between">
-                        <a href="index?action=lesson&id=<?php echo $linkedLesson["lesson"]->getLessonId() ?>">
+                        <a href="/lesson/<?php echo $linkedLesson["lesson"]->getLessonId() ?>">
                         <div class="flex gap-4">
-                            <img src="assets/svg/play_icon.svg" class="w-6">
+                            <img src="/assets/svg/play_icon.svg" class="w-6">
                             <span class="font-semibold line-clamp-1"><?php echo $linkedLesson["lesson"]->getLessonTitle() ?></span>
                         </div>
                         </a>
-                        <!-- <img src="assets/svg/checktick_icon.svg" class="w-6"> -->
+                        <!-- <img src="/assets/svg/checktick_icon.svg" class="w-6"> -->
                     </div>
                     </a>
                 </div>
@@ -93,7 +93,7 @@
     <div class="container flex justify-center pt-8 pb-8 mx-auto border-b border-solid border-stroke">
     <!-- AVATAR -->
         <div class="px-2 md:w-1/5">
-            <img src="assets/img/user_avatar/<?php echo $lesson['user']->getUserAvatar()?>" alt="Photo de profil de <?= $lesson['user']->getUserSurname()?>" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:h-40 lg:w-40 xl:w-44 xl:h-44">
+            <img src="/assets/img/user_avatar/<?php echo $lesson['user']->getUserAvatar()?>" alt="Photo de profil de <?= $lesson['user']->getUserSurname()?>" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:h-40 lg:w-40 xl:w-44 xl:h-44">
         </div>
         <div class="flex flex-row justify-between sm:mt-2 lg:w-4/5">
             <div>
@@ -122,21 +122,14 @@
         <?php }?>
     </div>
     <!-- Notes -->
-<<<<<<< HEAD
     <div class="w-10/12 border-b pt-4 pb-4  mx-auto lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
         <label for="lname">n'oubliez pas d'écrire vos notes!</label>
         <textarea id="notesTextarea" class="h-auto w-full bg-gray/20 text-black-500" name="" cols="30" rows="10"><?php echo $notes; ?></textarea> 
     </div>          
-=======
-    <div class="w-10/12 pt-4 pb-4 mx-auto border-b lg:w-10/12 xl:w-9/12 2xl:w-8/12 border-stroke">
-            <label for="lname">n'oubliez pas d'écrire vos notes!</label>
-            <textarea  class="w-full h-auto  bg-gray/20 text-black-500" name="" id="" cols="30" rows="10"></textarea> 
-    </div>     
->>>>>>> a7c5c30f54a87fb5d5154d9f21784a2206e18664
 </div>
 <!-- FOOTER -->
 <?php include('view/footer.php') ?>
-<script src="assets/script/js_trick.js"></script>
+<script src="/assets/script/js_trick.js"></script>
 
 <script>
     function saveNotesToCookie() {

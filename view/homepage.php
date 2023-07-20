@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/svg/favicon.svg">
 
     <!-- DAISY UI -->
     <link href="dist/output.css" rel="stylesheet">
@@ -38,10 +38,10 @@
         
             <div class="bg-white shadow-lg drop-shadow-lg lg:w-2/3 rounded-2xl" data-lesson-id=<?php echo $topLesson["lesson"]->getLessonId() ?>>
                 <!-- COVER -->
-                <img src="assets/img/lesson_miniature/<?php echo $topLesson["lesson"]->getLessonCover() ?>" alt="<?php echo $topLesson["lesson"]->getLessonTitle() ?>" class="w-full rounded-t-2xl ">
+                <img src="/assets/img/lesson_miniature/<?php echo $topLesson["lesson"]->getLessonCover() ?>" alt="<?php echo $topLesson["lesson"]->getLessonTitle() ?>" class="w-full rounded-t-2xl ">
                 <div class="flex items-center mx-4 my-2">
                     <div class="w-auto">
-                        <img src="assets/img/user_avatar/<?php echo $topLesson["user"]->getUserAvatar()?>" alt="Photo de profil de Steven Blombou" class="w-10 h-10 rounded-full">
+                        <img src="/assets/img/user_avatar/<?php echo $topLesson["user"]->getUserAvatar()?>" alt="Photo de profil de Steven Blombou" class="w-10 h-10 rounded-full">
                     </div> 
                     <div class="flex items-center justify-between w-full">
                         <div class="flex flex-col items-start ml-2">
@@ -54,7 +54,7 @@
                             </div>    
                         </div>
                         <div>
-                            <img src="assets/svg/categories/<?php echo $topLesson['category']->getCategoryLogo() ?>" alt="Logo Html" class="w-auto h-8 my-auto">
+                            <img src="/assets/svg/categories/<?php echo $topLesson['category']->getCategoryLogo() ?>" alt="Logo Html" class="w-auto h-8 my-auto">
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
             <!-- AUTO LEARNING -->
             <div class="flex flex-col items-center md:w-1/3">
                 <div class="flex items-center justify-center mx-auto rounded-full w-60 h-60 xl:w-80 xl:h-80 bg-red/5" >
-                    <img src="assets/img/learn.png" alt="Illustration d'un homme travaillant sur son pc"  class="w-auto h-44">
+                    <img src="/assets/img/learn.png" alt="Illustration d'un homme travaillant sur son pc"  class="w-auto h-44">
                 </div>
                 <h3 class=" font-sans text-[26px] font-semibold lg:text-[32px] my-2">Apprendre seul</h3>
                 <p class="text-[22px] font-light leading-8 lg:text-2xl mx-10">Pouvoir travailler n’importe ou en autonomie.</p> 
@@ -81,7 +81,7 @@
             <!-- CREATE VIDEO -->
             <div class="flex flex-col items-center mt-0 md:w-1/3">
                 <div class="flex items-center justify-center mx-auto rounded-full w-60 h-60 xl:w-80 xl:h-80 bg-red/5" >
-                    <img src="assets/img/create.png" alt="Illustration d'un homme travaillant sur son pc"  class="w-auto h-44">
+                    <img src="/assets/img/create.png" alt="Illustration d'un homme travaillant sur son pc"  class="w-auto h-44">
                 </div>
                 <h3 class=" font-sans text-[26px] font-semibold lg:text-[32px] my-2">Créer des cours</h3>
                 <p class="text-[22px] font-light leading-8 lg:text-2xl mx-10">S’affirmer sur son savoir et le partager aux autres.</p> 
@@ -89,7 +89,7 @@
             <!-- TEAM FORUM -->
             <div class="flex flex-col items-center md:w-1/3">
                 <div class="flex items-center justify-center mx-auto rounded-full w-60 h-60 xl:w-80 xl:h-80 bg-red/5" >
-                    <img src="assets/img/team.png" alt="Illustration d'un homme travaillant sur son pc"  class="w-auto h-44">
+                    <img src="/assets/img/team.png" alt="Illustration d'un homme travaillant sur son pc"  class="w-auto h-44">
                 </div>
                 <h3 class=" font-sans text-[26px] font-semibold lg:text-[32px] my-2">Communiquer</h3>
                 <p class="text-[22px] font-light leading-8 lg:text-2xl mx-10">Débattre des avis  et questions sur les différents cours.</p> 
@@ -103,8 +103,8 @@
         
         <div class="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-14">
         <?php foreach($topCategory as $cat) { ?>
-            <a href="?action=cours&id=<?php echo $cat->getCategoryId() ?>" class="flex items-center justify-center w-auto mx-2 my-3 shadow-lg rounded-xl h-44" style="background-color:#<?php echo $cat->getCategoryMainColor()?>">
-                <img src="assets/svg/categories/white/<?=$cat->getCategoryWhiteLogo() ?>" alt="Logo <?php echo $cat->getCategoryName()?>">
+            <a href="/cours/<?php echo $cat->getCategoryId() ?>" class="flex items-center justify-center w-auto mx-2 my-3 shadow-lg rounded-xl h-44" style="background-color:#<?php echo $cat->getCategoryMainColor()?>">
+                <img src="/assets/svg/categories/white/<?=$cat->getCategoryWhiteLogo() ?>" alt="Logo <?php echo $cat->getCategoryName()?>">
             </a>
         <?php };?>
         </div>

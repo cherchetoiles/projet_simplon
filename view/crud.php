@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="dist/output.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.svg">
+    <link href="/dist/output.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/svg/favicon.svg">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Dashboard</title>
@@ -72,7 +72,7 @@
         <div class="relative z-0 flex flex-col items-center transition-all font-body grow lg:ml-5" id="mainCrudContent">
             <div class="w-full">
                 <div class="flex flex-col items-center gap-2 mx-auto text-red lg:mx-0">
-                    <a href="?action=homepage" class="lg:flex lg:justify-end lg:w-full">
+                    <a href="/homepage" class="lg:flex lg:justify-end lg:w-full">
                         Retour à la page d'accueil >
                     </a>
                     <div class="flex items-center gap-2 text-4xl font-semibold text-black w-fit lg:w-full lg:justify-start">

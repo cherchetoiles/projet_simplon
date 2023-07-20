@@ -1,0 +1,20 @@
+#--------------------------------------------------
+# Répertoire : /articles/
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+#--------------------------------------------------
+# Règles de réécriture d'URL :
+#--------------------------------------------------
+
+# page sans id
+RewriteRule ^([a-z_]+)$   /index.php?action=$1 [L]
+# page admin
+RewriteRule ^admin-([a-zA-Z]+)$   /index.php?admin=$1 [L]
+# page avec id :
+RewriteRule ^([a-z]+)/([0-9]+)$   /index.php?action=$1&id=$2 [L]

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/svg/favicon.svg">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="dist/output.css" rel="stylesheet">
+    <link href="/dist/output.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="assets/style/custom.css" rel="stylesheet">
+    <link href="/assets/style/custom.css" rel="stylesheet">
 
     <!-- DAISY UI -->
     <link href="dist/output.css" rel="stylesheet">
@@ -30,7 +30,7 @@
                             Cours > <?= $cat->getCategoryName()?>
                         </span>
                         <div class="flex gap-1 pt-4">
-                            <img src="assets/svg/categories/<?=$cat->getCategoryLogo()?>" class="w-16 md:w-64">
+                            <img src="/assets/svg/categories/<?=$cat->getCategoryLogo()?>" class="w-16 md:w-64">
                             <div class="flex flex-col gap-1 pl-4">
                                 <span class="font-semibold leading-3 font-body md:text-2xl 2xl:text-3xl ">Apprennez <?= $cat->getCategoryName()?></span>
                                 <span class="text-xs md:text-sm lg:text-lg lg:leading-6 font-body"><?= $cat->getCategoryDescription()?></span>
@@ -47,11 +47,11 @@
                         </span>
                         <div class="grid grid-cols-1 min-[400px]:grid-cols-2 mt-5 gap-5 lg:gap-2 lg:w-11/12">
                             <div class="relative flex flex-col gap-3 p-4 bg-white rounded-lg shadow-lg md:gap-1">
-                                <img src="assets/svg/categories/<?= $neededCat->getCategoryLogo() ?>" class="w-20 min-[400px]:w-1/3 min-[400px]:min-w-[60px]">
+                                <img src="/assets/svg/categories/<?= $neededCat->getCategoryLogo() ?>" class="w-20 min-[400px]:w-1/3 min-[400px]:min-w-[60px]">
                                 <span class="font-semibold leading-4"><?= $neededCat->getCategoryName() ?></span>
                                 <p class="text-xs leading-3"><?= $neededCat->getCategoryDescription() ?></p>
-                                <a href="?action=cours&id=<?= $neededCat->getCategoryId() ?>">
-                                    <img src="assets/svg/continue_icon.svg" class="absolute w-8 top-4 right-4">
+                                <a href="/cours/<?= $neededCat->getCategoryId() ?>">
+                                    <img src="/assets/svg/continue_icon.svg" class="absolute w-8 top-4 right-4">
                                 </a>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                     <?php }} ?>
                 </div>
                 <div class="hidden w-5/12 lg:inline-block ">
-                    <img class="w-2/3 h-auto pt-4" src="assets/img/illustration_lesson.png">
+                    <img class="w-2/3 h-auto pt-4" src="/assets/img/illustration_lesson.png">
                 </div>
             </div>
             <!-- fin -->
@@ -77,7 +77,7 @@
                     <span class="mt-4 mb-10 text-xs leading-4">
                     <?= $firstLesson["lesson"]->getLessonDescription() ?>
                     </span>
-                    <video src="assets/lesson_videos/<?= $firstLesson["lesson"]->getLessonContent() ?>" controls class="hidden md:inline-block"></video>
+                    <video src="/assets/lesson_videos/<?= $firstLesson["lesson"]->getLessonContent() ?>" controls class="hidden md:inline-block"></video>
                 </div>
                 <!-- fin -->
                 <!-- liste cours -->
@@ -106,13 +106,13 @@
                                 <div class="flex flex-col mt-5 ml-3 gap-3 w-full">
                                 <?php   }?>
                                 <div class="flex justify-between">
-                                    <a href="?action=lesson&id=<?php echo $lesson['lesson']->getLessonId()?>">
+                                    <a href="/lesson/<?php echo $lesson['lesson']->getLessonId()?>">
                                     <div class="flex gap-4">
-                                        <img src="assets/svg/play_icon.svg" class="w-6">
+                                        <img src="/assets/svg/play_icon.svg" class="w-6">
                                         <span class="font-semibold"><?= $lesson['lesson']->getLessonTitle() ?></span>
                                     </div>
                                     </a>
-                                    <img src="assets/svg/checktick_icon.svg" class="w-6 mr-3">
+                                    <img src="/assets/svg/checktick_icon.svg" class="w-6 mr-3">
                                 </div>
                                 <?php if ($i>$oldI){ ?>
                         <?php $oldI=$i; } ?>
