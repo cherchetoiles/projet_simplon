@@ -115,8 +115,27 @@ class Category_repo extends Connect_bdd{
         $sql .= ", category_logo=?";
         $sql .= ", category_description=?";
         $sql .= ", theme_id=?";
+        $sql .= ", category_main_color=?";
+        $sql .= ", category_white_logo=?";
+        $newLogoName = uniqid("category").".".explode("/",mime_content_type($category->getCategoryLogo()))[1];
+        $newWhiteLogoName = uniqid("category").".".explode("/",mime_content_type($category->getCategoryWhiteLogo()))[1];
+        if (move_uploaded_file($category->getCategoryLogo(),"assets/img/category_logo/basic/".$newLogoName)){
+            $category->setLogo($newLogoName);
+        }
+        else{
+            return ['success'=>FALSE,"error"=>"7"];
+        }
+        if (move_uploaded_file($category->getCategoryWhiteLogo(),"assets/img/category_logo/alt/".$newWhiteLogoName)){
+            $category->setWhiteLogo($newWhiteLogoName);
+        }
+        else{
+            unlink("/assets/img/category_logo/basic/".$category->getCategoryLogo());
+            return ['success'=>FALSE,"error"=>"7"];
+        }
         $req = $this->bdd->prepare($sql);
         $categoryName = $category->getCategoryName();
+        $categoryWhiteLogo = $category->getCategoryWhiteLogo();
+        $categoryMainColor = $category->getCategoryMainColor();
         $categoryLogo = $category->getCategoryLogo();
         $categoryDescription = $category->getCategoryDescription();
         $themeId = $category->getThemeId();
@@ -124,8 +143,15 @@ class Category_repo extends Connect_bdd{
         $req->bindParam(2, $categoryLogo);
         $req->bindParam(3, $categoryDescription);
         $req->bindParam(4, $themeId);
-        $req->execute();
-        return true;
+        $req->bindParam(5, $categoryMainColor);
+        $req->bindParam(6, $categoryWhiteLogo);
+        if ($req->execute()){
+            return ["success"=>TRUE];
+        }
+        {
+            return ["success"=>FALSE,"error"=>8];
+        }
+        
     } 
 
     function getAllCategories(){

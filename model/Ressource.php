@@ -13,6 +13,9 @@ class Ressource
         if (strlen($name)>2**6){
             return "nom de ressource trop long";
         }
+        if (!preg_match("/^http:\/\//m",$content) && !preg_match("/^https:\/\//m",$content)){
+            return "lien de la ressource incorrecte";
+        }
         $this->ressource_content=$content;
         $this->ressource_name=$name;
         $this->lesson_id=$lesson_id;

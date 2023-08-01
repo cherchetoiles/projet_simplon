@@ -6,7 +6,35 @@ class Lesson_repo extends Connect_bdd{
         parent::__construct();
     }
 
+    public function getLessonRequest(){
+        $sql = "SELECT l.lesson_id,lesson_title,lesson_description,lesson_content,lesson_cover,lesson_date,
+                    user_name,user_surname,user_avatar,
+                    category_logo
+                    FROM lesson l 
+                        NATURAL JOIN user u  
+                        NATURAL JOIN speciality s
+                        NATURAL JOIN category  c
+                    WHERE lesson_status = 0";
+
+        $req = $this->bdd->prepare($sql);
+        $req -> execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
     
+    public function updateLessonStatus($lesson_id,$newStatus){
+        if ($newStatus===1 | $newStatus===0){
+            $sql = "UPDATE lesson SET lesson_status = ? WHERE lesson_id = ?";
+            $req = $this->bdd->prepare($sql);
+            $req->bindParam(1,$newStatus);
+            $req->bindParam(2,$lesson_id);
+            if ($req->execute()){
+                return ["success"=>TRUE];
+            }
+        }
+        return ["success"=>FALSE];
+    }
+
     public function getAllLessonFull(){
         function activateOnMap($query){
             $tmpLesson=new Lesson();
@@ -28,6 +56,11 @@ class Lesson_repo extends Connect_bdd{
         $sql.="LEFT JOIN category ON lesson.category_id = category.category_id ";
         $sql.="LEFT JOIN watch ON lesson.lesson_id = watch.lesson_id ";
         $sql.="LEFT JOIN fav ON lesson.lesson_id = fav.lesson_id ";
+        if (isset($_GET['action'])){
+            if ($_GET['action']=="nos_cours"){
+                $sql.="WHERE lesson.lesson_status = 1 ";
+            }
+        }
         $sql.="GROUP BY lesson_id";
         $req=$this->bdd->prepare($sql);
         $req->execute();
@@ -98,16 +131,17 @@ class Lesson_repo extends Connect_bdd{
                     INNER JOIN category c ON l.category_id = c.category_id ) total ON l.lesson_id = total.lesson_id
             NATURAL JOIN category c 
             NATURAL JOIN user u
-            NATURAL JOIN speciality s";
+            NATURAL JOIN speciality s
+            WHERE l.lesson_status = 1 ";
 
     if (isset($option["category_id"])){
-     $sql.=" WHERE l.category_id = ".$option["category_id"]." ";
+     $sql.="AND l.category_id = ".$option["category_id"]." ";
      }
     if (isset($option["lesson_id"])){
-     $sql.=" WHERE l.lesson_id = ".$option["lesson_id"]." ";
+     $sql.="AND l.lesson_id = ".$option["lesson_id"]." ";
      }
      if (isset($option["theme_id"])){
-        $sql.='WHERE c.category_id = '.$option["theme_id"].' ';
+        $sql.='AND c.category_id = '.$option["theme_id"].' ';
      }
      $sql.=" ORDER BY ".$orderBy;
 

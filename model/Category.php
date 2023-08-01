@@ -98,11 +98,13 @@ class Category
         $this->categoriesNeeded=$repo -> getNeededCategories($this);
     }
     
-    public function createCategoryToInsert($category_name,$category_logo,$category_description,$theme_id){
+    public function createCategoryToInsert($category_name,$category_logo,$alt_category_logo,$category_main_color,$category_description,$theme_id){
         $this->category_name=$category_name;
         $this->category_logo=$category_logo;
         $this->category_description=$category_description;
         $this->theme_id=$theme_id;
+        $this->category_white_logo = $alt_category_logo;
+        $this->category_main_color = $category_main_color;
     }
 
     public function verifyCategory($file_size, $file_type) {
@@ -125,9 +127,17 @@ class Category
         return $this->lessonsFromCategory;
     }
 
+    public function SetLogo($logo){
+        $this->category_logo = $logo;
+    }
+
+    public function SetWhiteLogo($whiteLogo){
+        $this->category_white_logo = $whiteLogo;
+    }
+
     public function setLessonFromCategory(){
         $repo = new Lesson_repo();
-        $this->lessonsFromCategory = $repo->getLesson("lesson_difficult",["category_id"=>$this->category_id]); 
+        $this->lessonsFromCategory = $repo->getLesson("l.lesson_difficult",["category_id"=>$this->category_id]); 
     }
 
     public function setCategoryTotalViews(){

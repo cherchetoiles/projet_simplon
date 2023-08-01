@@ -56,7 +56,7 @@ function updateAvatar() {
       formData.append('profile_photo', file);
     
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', '?action=updateAvatar', true);
+      xhr.open('POST', '/updateAvatar', true);
       xhr.onload = function() {
         if (xhr.status === 200) {
           // Traitement réussi
@@ -64,7 +64,7 @@ function updateAvatar() {
           if (response.success) {
             alert('La photo de profil a été mise à jour.');
             // modifier image ici
-            document.getElementById("avatar").setAttribute("src",response.new_file)
+            Array.from(document.getElementsByClassName("avatar")).forEach(elt =>elt.setAttribute("src","/".concat(response.new_file)))
           } else {
             alert('Erreur : ' + response.message);
           }

@@ -1,6 +1,6 @@
 <?php
 $repo = new Theme_repo();
-$themes = $repo -> getAllThemes("Code");
+$themes = $repo -> getAllThemesMin();
 $repo = new Category_repo();
 $categories=$repo -> getAllCategories();
 ?>
@@ -53,13 +53,14 @@ $categories=$repo -> getAllCategories();
                 <div>
                   <a class="font-semibold" href="/nos_cours">Tous nos cours</a>
                 </div>
-                <?php foreach($categories as $category) { ?>
+                <?php foreach($categories as $category) {
+                  if ($category->getCategoryNbLesson()!=0) {?>
                   <div>
                     <a href="/cours/<?php echo $category->getCategoryId() ?>">
                       <?php echo $category->getCategoryName() ?>
                     </a>
                   </div>
-                <?php } ?>
+                <?php }} ?>
               </ul>
             </div>
 
@@ -104,8 +105,10 @@ $categories=$repo -> getAllCategories();
           </div>
 
 
-          <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 rounded-4xl items-center" href="profil/<?=$_SESSION['user']->getUserId()?>">
-            <img src="/assets/img/user_avatar/<?php echo $_SESSION["user"]->getUserAvatar();?>" class="rounded-full h-8">
+          <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 rounded-4xl items-center" href="/profil/<?=$_SESSION['user']->getUserId()?>">
+            <div class="rounded-full h-8 w-8 overflow-hidden">
+              <img src="/assets/img/user_avatar/<?php echo $_SESSION["user"]->getUserAvatar();?>" class="w-full">
+            </div>
             <span class="hidden text-blue xl:block leading-none">Profil</span>
           </a>
 

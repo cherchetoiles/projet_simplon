@@ -25,8 +25,6 @@
     $notes = isset($_COOKIE['notes']) ? $_COOKIE['notes'] : '';
 ?>
 
-    <!-- NAVBAR -->
-<?php include('view/navbar.php') ?>
 <div class="w-10/12 mx-auto mt-10">
     <div class="inline-block">
         <span class="italic font-light font-body text-gray-dark">
@@ -34,7 +32,7 @@
         </span>
     </div>
     <div class="flex items-end gap-6 mt-5">
-        <img src="/assets/svg/categories/<?php echo $lesson["category"]->getCategoryLogo() ?>" class="w-16">
+        <img src="/assets/img/category_logo/basic/<?php echo $lesson["category"]->getCategoryLogo() ?>" class="w-16">
         <h2 class="text-4xl font-bold leading-0">
             <?php echo $lesson['lesson']->getLessonTitle() ?>
         </h2>     
@@ -92,8 +90,8 @@
     <!-- profil -->
     <div class="container flex justify-center pt-8 pb-8 mx-auto border-b border-solid border-stroke">
     <!-- AVATAR -->
-        <div class="px-2 md:w-1/5">
-            <img src="/assets/img/user_avatar/<?php echo $lesson['user']->getUserAvatar()?>" alt="Photo de profil de <?= $lesson['user']->getUserSurname()?>" class="w-20 h-20 rounded-full sm:w-28 sm:h-28 md:w-36 md:h-36 lg:h-40 lg:w-40 xl:w-44 xl:h-44">
+        <div class="w-20 h-20 rounded-full overflow-hidden sm:w-28 sm:h-28 md:w-36 md:h-36 lg:h-40 lg:w-40 xl:w-44 xl:h-44">
+            <img src="/assets/img/user_avatar/<?php echo $lesson['user']->getUserAvatar()?>" alt="Photo de profil de <?= $lesson['user']->getUserSurname()?>" class="w-full">
         </div>
         <div class="flex flex-row justify-between sm:mt-2 lg:w-4/5">
             <div>
@@ -116,7 +114,10 @@
         <?php foreach($lesson["lesson"]->getLessonRessources() as $ressource){ ?>
             <div>
             <?= $ressource->getRessourceName() ?>
-                <a href="<?= $ressource->getRessourceContent() ?>"><span class="text-xs italic font-light font-body text-gray-dark"> <?= $ressource->getRessourceContent() ?> </span>
+                <a target="_blank" href="<?=$ressource->getRessourceContent()?>">
+                    <span class="text-xs italic font-light font-body text-gray-dark">
+                        <?= $ressource->getRessourceContent() ?> 
+                    </span>
                 </a>
             </div>
         <?php }?>

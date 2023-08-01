@@ -19,7 +19,7 @@ define('MB', 1048576);
 define('GB', 1073741824);
 define('TB', 1099511627776);
 
-define("MAX_IMG_SIZE", 5*MB);
+define("MAX_IMG_SIZE", 1*MB);
 define("MAX_VIDEO_SIZE",100*MB);
 
 define("VALID_IMG_TYPE", ["png","webp","jpeg"]);
@@ -36,33 +36,26 @@ function updateProfil(){
     $user_id = ($_SESSION['user']->getUserId());
     if (isset($_POST['user_email'])) {
         $user_email = $_POST['user_email'];
-        var_dump($user_email);
         $oldEmail=$user->getUserEmail();
-        var_dump($oldEmail);
         $user->setUserEmail($user_email);
         if($user->getUserEmail() != '') {
             if (filter_var($user->getUserEmail(),FILTER_VALIDATE_EMAIL)) {
                 if (!$repo->updateEmail($user_email,$user->getUserId())){
                     $user->setUserEmail($oldEmail);
-                    var_dump("Email modifiée avec succès");
                     header('Location:?action=?updateProfil');
                 } else {
-                    var_dump("Email déjà utilisée");
                     header('?action=?updateProfil');
                 }
             }
             else {
-                var_dump("Veuillez remplir une adresse email valide.");
                 header('?action=?updateProfil');
             }
         }
         else {
-            var_dump("Ce champ ne peut être vide");
             header('?action=?updateProfil');
         }
     }
     else {
-        var_dump("Ce champ ne peut être vide");
         header('?action=?updateProfil');
     }
 
@@ -75,17 +68,14 @@ function updateProfil(){
             $repo->updatePassword($user_password,$user->getUserId());
             }
             else {
-                var_dump("Veuillez remplir un mot de passe valide.");
                 header('?action=?updateProfil');
             }
         }
         else {
-            var_dump("Ce champ ne peut être vide");
             header('?action=?updateProfil');
         }
     }
     else {
-        var_dump("Ce champ ne peut être vide");
         header('?action=?updateProfil');
     }
 
@@ -129,13 +119,16 @@ function cours(){
     }
     $cat -> setCategoryNeededCategories();
     $cat -> setLessonFromCategory();
+    if (empty($cat->getLessonFromCategory())){
+        header("location:/homepage");
+    }
     include("view/cours.php");
 }
 
 function lesson(){
     if (isset($_GET['id'])){
         $repo = new Lesson_repo();
-        $reqResult = $repo -> getLesson("lesson_id",["lesson_id"=>$_GET['id'],"withcategorieslesson"=>TRUE,"limit"=>1]);
+        $reqResult = $repo -> getLesson("l.lesson_id",["lesson_id"=>$_GET['id'],"withcategorieslesson"=>TRUE,"limit"=>1]);
         if ($reqResult){
             $lesson=$reqResult[0];
             $lesson['lesson']->setLessonRessources();
@@ -143,13 +136,12 @@ function lesson(){
             require('view/lesson.php');
         }
         else{
-            header("location: ?action=homepage");
+            header("location: /homepage");
         }   
     }
     else{
-        header("location: ?action=homepage");
+        header("location: /homepage");
     }
-    
 }
 
 function formVideo(){
@@ -186,15 +178,19 @@ function profil(){
     $fav_lessons=$user_repo->getFavLesson($_SESSION['user']->getUserId());
     $finish_lessons=$user_repo->getFinishLesson($_SESSION['user']->getUserId());
     require('view/profil.php');
+    include("view/ajoutVideoForm.php");
 }
 
 function crud(){
+    $repo = new Theme_repo();
+    $themes = $repo -> getAllThemesMin();
     include("view/crud.php");
+    include("view/form/addCategory.php");
 }
 
 function signin_treat(){
     if (empty($_POST['email']) OR empty($_POST['password'])){
-        header("location: index.php");
+        header("location: /");
     }
     $repo = new User_repo();
     $tmpUser=$repo->getUserByEmail($_POST['email']);
@@ -207,14 +203,14 @@ function signin_treat(){
             setcookie("simplon_name",$user->getUserEmail(),time()+60*60*24*30,"/",httponly:TRUE);
             }
         $user->connectUser();
-        header("location:index.php?action=homepage");    
+        header("location:/homepage");    
         }
         else{
-            header("location:index.php?action=signin&error".$isOk);
+            header("location:/?action=signin&error".$isOk);
         }
     }
     else{
-        header("location:index.php?action=signin&error=userdontexist");
+        header("location:/?action=signin&error=userdontexist");
     }
 }
 
@@ -227,19 +223,18 @@ function signin_treat(){
 function FavLesson(){
     $fav_lessons = new User_repo();
     $fav_lessons->addFavLesson($_SESSION['user'],$_GET['lesson_id']);
-    header('Location:?action=nos_cours');  
+    header('Location:/?action=nos_cours');  
 }
 
 function UnFavLesson(){
     $fav_lessons = new User_repo();
     $fav_lessons->deleteFavLesson($_SESSION['user'],$_GET['lesson_id']);
-    header('Location:?action=profil');
+    header('Location:/?action=profil');
 }
 
 function getCardsForCrudLesson(){
     $repo = new Lesson_repo();
     $reqResult=$repo->getAllLessonFull();
-    // var_dump($reqResult);
     $toEncode=[];
     foreach ($reqResult as $result){
         $showedViews=$result["lesson"]->getLessonViews();
@@ -254,15 +249,13 @@ function getCardsForCrudLesson(){
             $showedLikes=intdiv($result['lesson']->getLessonLikes(),1000);
             $likesSuffix="K";
         }
-        $toEncode[]="<div class='flex flex-col items-center gap-10 p-6 bg-white rounded-lg' data-id=".$result['lesson']->getLessonId().">
-                        <div class='flex flex-col items-center'>
-                            <img src='assets/img/lesson_miniature/".$result["lesson"]->getLessonCover()."'>
-                        </div>
-                        <div class='flex flex-col items-center w-full'>
-                            <span class='text-xl font-semibold text-center'>".$result["lesson"]->getLessonTitle()."</span>
+        $toEncode[]="<div class='flex flex-col lg:flex-row items-center gap-10 lg:gap-5 p-6 bg-white rounded-lg max-w-sm lg:max-w-none' data-id=".$result['lesson']->getLessonId().">
+                        <img class='w-40' src='assets/img/lesson_miniature/".$result["lesson"]->getLessonCover()."'>
+                        <div class='flex flex-col items-center w-full grow'>
+                            <span class='text-xl lg:text-base font-semibold text-center'>".$result["lesson"]->getLessonTitle()."</span>
                             <div class='flex items-center gap-2'>
                                 <img src='assets/img/user_avatar/".$result["user"]->getUserAvatar()."' class='w-12 rounded-full'>
-                                <span class='text-lg leading-none'>".$result["user"]->getUserSurname()." ".$result["user"]->getUserName()."</span>
+                                <span class='text-lg lg:text-sm leading-none'>".$result["user"]->getUserSurname()." ".$result["user"]->getUserName()."</span>
                             </div>
                             <div class='flex w-full mt-4 justify-evenly'>
                                 <div class='flex items-center gap-1'>
@@ -280,7 +273,7 @@ function getCardsForCrudLesson(){
                                 <span class='text-blue'>".$result["category"]->getCategoryName()."</span>
                                 <span class='italic'>Niveau ".$result["lesson"]->getLessonDifficult()."</span>
                             </div>
-                            <span>".$result["lesson"]->getLessonDate()."</span>
+                            <span class='whitespace-nowrap'>".$result["lesson"]->getLessonDate()."</span>
                             <div class='flex justify-center w-full gap-4'>
                                 <img src='assets/svg/edit_icon.svg' data-id='".$result["lesson"]->getLessonId()." data-table=lesson'>
                                 <img src='assets/svg/trash_icon.svg' class='delete-btn test-btn' data-id='".$result["lesson"]->getLessonId()."' data-table=lesson onclick='openDeleteModal(delModal,".$result["lesson"]->getLessonId().",`lesson`)'>
@@ -288,7 +281,78 @@ function getCardsForCrudLesson(){
                         </div>
                     </div>";
     }
-    echo json_encode($toEncode);
+    echo json_encode(["success"=>TRUE,"data"=>$toEncode]);
+}
+
+function getLatestNews(){
+    $repo = new User_repo();
+    $reqResult=$repo->getUserRequesting();
+    $toEncode=[];
+    foreach ($reqResult as $result){
+        $toEncode[]="<div class='flex flex-col lg:flex-row items-center gap-10 p-6 bg-white rounded-lg opacity-100 max-h-96 transition-all duration-300 flex-1' data-id=".$result->getuserId().">
+                        <div class='flex flex-col items-center'>
+                            <div class='w-20 h-20 overflow-hidden rounded-full'>
+                                <img class='w-full h-full' src='/assets/img/user_avatar/".$result->getUserAvatar()."'>
+                            </div>
+                        </div>
+                        <div class='flex flex-col items-center w-full'>
+                            <span class='text-xl font-semibold text-center'>".$result->getUserSurname()." ".$result->getUserName()."</span>
+                        </div>
+                        <div class='flex lg:flex-col items-center w-fit text-white'>
+                            <div class='bg-green-500 btn' onclick='changeUserStatut(`accept`,".$result->getUserId().")'>V</div>
+                            <div class='bg-red btn' onclick='changeUserStatut(`decline`,".$result->getUserId().")' >X</div>
+                        </div>
+                    </div>";
+    }
+    $repo = new Lesson_repo();
+    $reqResult=$repo->getLessonRequest();
+    echo json_encode(["success"=>TRUE,"data"=>$toEncode,"latestLesson"=>$reqResult]);
+}
+
+function changeLessonStatus(){
+    $data = json_decode(file_get_contents('php://input'),true);
+    if ($data['requestValue']===1 | $data['requestValue']===0){
+        $repo = new Lesson_repo();
+        $response = $repo->updateLessonStatus($data['lessonId'],$data['requestValue']);
+        echo json_encode(['success'=>TRUE]);
+    }
+    else{
+        echo json_encode(['success'=>FALSE]);
+    }
+}
+
+function changeUserStatut(){
+    $data=json_decode(file_get_contents("php://input"),true);
+    if ($data['requestValue']!=="accept" AND $data['requestValue']!=="decline"){
+        echo json_encode("3");
+    }
+    else{
+        if ($data['requestValue']==='accept'){
+            $newValue = 3;
+        }
+        else{
+            $newValue = 2;
+        }
+        $repo = new User_repo();
+        $response = $repo->getUserById($data['userId']);
+        
+        if ($response['success']){
+            $tmpUser = $response['data'];
+            $response = $repo->updateUserStatut($tmpUser,$newValue);
+            if ($response['success']){
+                if ($newValue==3){
+                    $response = $repo->updateUserRole($tmpUser,"creator");    
+                }
+                echo json_encode(["success"=>TRUE,"id_user"=>$data["userId"]]);
+            }
+            else{
+                echo json_encode(["success"=>FALSE,"error"=>"erreur lors de la mise à jour du statut"]);
+            }
+        }
+        else{
+            echo json_encode(["success"=>FALSE,"error"=>"l'utilisateur n'existe pas"]);
+        }
+    }
 }
 
 function getCardsForCrudUser(){
@@ -340,7 +404,7 @@ function getCardsForCrudUser(){
                         </div>
                     </div>";
     }
-    echo json_encode($toEncode);
+    echo json_encode(["success"=>TRUE,"data"=>$toEncode]);
 }
 function getCardsForCrudCategory(){
     $repo = new Category_repo();
@@ -390,7 +454,7 @@ function getCardsForCrudCategory(){
                         </div>
                     </div>";
     }
-    echo json_encode($toEncode);
+    echo json_encode(["success"=>TRUE,"data"=>$toEncode]);
 }
 function getCardsForCrudTheme(){
     $repo = new Theme_repo();
@@ -439,28 +503,72 @@ function getCardsForCrudTheme(){
                         </div>
                     </div>";
     }
-    echo json_encode($toEncode);
+    echo json_encode(["success"=>TRUE,"data"=>$toEncode]);
 }
 
 function signup_treat(){
-    var_dump($_POST);
     $repo = new User_repo();
     $tmpUser=new User();
     $tmpUser->createUserToSignup($_POST['email'],$_POST['name'],$_POST['surname'],$_POST['pass']);
-    $isOk=$tmpUser->verifUserToSignup($_POST['re-pass'],$repo,$_POST['agree-term']);
-    var_dump($isOk);
+    // $isOk=$tmpUser->verifUserToSignup($_POST['re-pass'],$repo,$_POST['agree-term']);
+    $isOk=TRUE;
     if ($isOk=="True"){
-        $tmpUser->cryptUserPassword();
-        $repo->insertUserIntoBdd($tmpUser);
-        header("location:index.php?action=signin");
+        // $tmpUser->cryptUserPassword();
+        // $repo->insertUserIntoBdd($tmpUser);
+        sendValidationEmail($repo,$_POST['email']);
+        // header("location:index.php?action=signin");
     }
     else{
-        header("location:index.php?action=signup&error=".$isOk);
+        // header("location:index.php?action=signup&error=".$isOk);
     }
 }
 
+function sendValidationEmail($repo,$email){
+    $user_data=$repo->getUserByEmail($email);
+    if ($user_data){
+        $user=new User();
+        $user->createUserFromQuery($user_data);
+        $to=$user->getUserEmail();
+        $subject="Vérifiez votre Email pour K-ZEL Code";
+        $message="Bonjour,\r\n cliquez sur le lien suivant pour vérifier votre Email K-ZEL Code !\r\n"."k-zel-code?action=signup_validation&token=".$user->getUserToken()."&email=".$user->getUserEmail();
+        $headers = "From: gueretlouis13@gmail.com";
+
+        echo $to."<br>".$headers."<br>".$subject."<br>".$message;
+        // if (mail($to,$subject,$message,$headers)){
+        //     echo "success";
+        // }
+        // else{
+        //     echo "failure";
+        // }
+    }
+}
+
+function signup_validation(){
+    $repo = new User_repo();
+
+    $user_data = $repo->getUserByEmail($_GET["email"]);
+
+    if ($user_data){
+        $user = new User();
+        $user->createUserFromQuery($user_data);
+        if (checkToken($user,$_GET['token'])){
+            if($repo->updateUserStatut($user,2)){
+                $user->connectUser();
+                header("location:/homepage");
+            } 
+        }
+    }
+}
+
+function checkToken(User $user, string $token){
+    if ($user->getUserToken()==$token){
+        return true;
+    }
+    return False;
+    
+}
+
 function addThemeTreat(){
-    var_dump($_FILES);
     $file_type=explode("/",$_FILES["theme_logo"]["type"])[1];
     $theme=new Theme();
     $theme->createThemeToInsert($_POST["theme_name"],$_FILES["theme_logo"]["name"]);
@@ -485,34 +593,67 @@ function addThemeTreat(){
         header("location:index.php?action=addTheme&error=".$isOk);
     }
 }
+
 function addCategory(){
-    include('view/addCategory.php');
-}
-function addCategoryTreat(){
-   var_dump($_FILES,$_POST);
-        
-        $file_type = explode("/", $_FILES["category_logo"]["type"])[1];
-        $category_logo = $_FILES["category_logo"]["name"];
-        $category = new Category();
-        $category->createCategoryToInsert($_POST["category_name"], $category_logo, $_POST["category_description"], $_POST["theme_id"]);
-        $isOk = $category->verifyCategory($_FILES["category_logo"]["size"], $file_type);
-        if ($isOk == "True") {
-            $category->setCategoryId();
-            if (move_uploaded_file($_FILES["category_logo"]["tmp_name"], "assets/img/category_logo/" . $category_logo)) {
-                $repo = new Category_repo();
-                if ($repo->insertCategoryIntoBdd($category)) {
-                    header("location: index.php?action=addCategory");
-                } else {
-                    unlink("assets/img/category_logo/" . $category_logo);
-                    header("location: index.php?action=addCategory&error=failedinsert");
-                }
-            } else {
-                header("location: index.php?action=addCategory&error=failedupload");
-            }
-        } else {
-            header("location: index.php?action=addCategory&error=" . $isOk);
+    $fieldsToFullfill = [];
+    $post_fields = ['category_description','category_name','main_color','theme_parent'];
+    $files_fields = ['alt_category_logo','category_logo'];
+    foreach ($post_fields as $value){
+        if (empty($_POST[$value])){
+            $fieldsToFullfill[] = $value; 
         }
     }
+    foreach ($files_fields as $value){
+        if (empty($_FILES[$value]["tmp_name"])){
+            $fieldsToFullfill[] = $value; 
+        }
+    }
+    if (empty($fieldsToFullfill)){
+        if ((explode("/",mime_content_type($_FILES["alt_category_logo"]["tmp_name"]))[0]==="image") 
+        && ((explode("/",mime_content_type($_FILES["category_logo"]["tmp_name"]))[0]==="image"))){
+            if (($_FILES['category_logo']['size']<=MAX_IMG_SIZE) 
+            && ($_FILES['alt_category_logo']['size']<=MAX_IMG_SIZE)){
+                if (strlen($_POST['category_name'])<64){
+                    if (preg_match("/^#[0-9A-Fa-f]{6}/m",$_POST["main_color"])){
+                        $repo = new Theme_repo();
+                        if ($repo->getThemeById($_POST['theme_parent'])){
+                            $repo = new Category_repo();
+                            $category = new Category();
+                            $category->createCategoryToInsert(htmlspecialchars(strip_tags($_POST["category_name"])),
+                                                            $_FILES["category_logo"]['tmp_name'],
+                                                            $_FILES['alt_category_logo']['tmp_name'],
+                                                            $_POST['main_color'],
+                                                            htmlspecialchars(strip_tags($_POST['category_description'])),
+                                                            $_POST["theme_parent"]);
+                            echo json_encode($repo -> insertCategoryIntoBdd($category));
+                        }
+                        else{
+                            echo json_encode(["success"=>FALSE,"error"=>6]);
+                        }
+                    }
+                    else{
+                        echo json_encode(["success"=>FALSE,"error"=>5]);
+                    }
+                }
+                else{
+                    echo json_encode(["success"=>FALSE,"error"=>"4"]);
+                }
+            }
+            else{
+                echo json_encode(["success"=>FALSE,"error"=>"3"]);
+            }
+        }
+        else{
+            echo json_encode(["success"=>FALSE,"error"=>"2"]);
+        }
+        
+    }
+    else{
+        echo json_encode(["success"=>FALSE,"error"=>"1","errorData"=>$fieldsToFullfill,"debug"=>[$_POST,$_FILES]]); 
+    }
+    
+    
+}
 
 function addVideo(){
     if (isset(explode("/",$_FILES["content"]["type"])[1])){
@@ -539,12 +680,13 @@ function addVideo(){
         $lesson->createLessonToInsert($_POST['title'],$_POST['description'],$_POST['level'],$_POST["attract_title"],uniqid().".".$content_type,$cat->getCategoryId(),$cover_type,$content_type,$_SESSION['user']->getUserId());
         $isOk=$lesson->verifyLesson($_FILES['cover']["size"],$cover_type,$_FILES['content']["size"],$content_type);
     }
+    
     if($isOk=="True"){
         if (move_uploaded_file($_FILES["content"]["tmp_name"],"assets/lesson_videos/".$lesson->getLessonContent())){
             if (move_uploaded_file($_FILES["cover"]["tmp_name"],"assets/img/lesson_miniature/".$lesson->getLessonCover())){ 
                 $repo=new Lesson_repo();
                 if($repo->insertLessonIntoBdd($lesson)){
-                    $isOk="<div class='flex flex-row items-center gap-2'><img src='assets/svg/success_check.svg'> Reussite de l'upload des fichiers</div>";
+                    $isOk="<div class='flex flex-row items-center gap-2'><img src='/assets/svg/success_check.svg'> Reussite de l'upload des fichiers</div>";
                     $ressourcesRepo=new Ressource_repo();
                     $max_id=$repo->getMaxLessonId()[0];
                     if (isset($_POST['ressources-name'])){
@@ -595,6 +737,18 @@ function deleteLessonAjax(){
         else{
             echo json_encode("failure");
         }    
+    }
+}
+
+function reinitializeUserStatut(){
+    if (isset($_SESSION) AND $_SESSION["user"]->getUserStatut()===2 AND $_SESSION['user']->getRoleNom()!=="admin"){
+        $repo = new User_repo();
+        $repo->updateUserStatut($_SESSION["user"],1);
+        $_SESSION["user"]->updateUserStatut();
+        echo json_encode(["success"=>TRUE]);
+    }
+    else{
+        echo json_encode(["success"=>FALSE]);
     }
 }
 

@@ -55,6 +55,10 @@ class User
         return $this->speciality_name;
     }
 
+    public function getUserToken(){
+        return $this->user_token;
+    }
+
     public function cryptUserPassword(){
         $this->user_password=password_hash($this->user_password,PASSWORD_BCRYPT);
     }
@@ -65,6 +69,10 @@ class User
 
     public function getSpeName(){
         return $this->speciality_name;
+    }
+
+    public function getUserStatut(){
+        return $this->user_statut;
     }
 
     public function setUserEmail($user_email){
@@ -108,6 +116,9 @@ class User
         if (isset($queryResult['views'])){
             $this->user_views=$queryResult['views'];
         }
+        if (isset($queryResult['user_token'])){
+            $this->user_token=$queryResult['user_token'];
+        }
         if (isset($queryResult['fav'])){
             $this->user_likes=$queryResult['fav'];
         }
@@ -136,6 +147,19 @@ class User
         }
         else{
             $this->user_views=intval($reqResult);
+        }
+    }
+
+    public function setUserStatut($newValue){
+        $this->user_statut = $newValue;
+    }
+
+    public function updateUserStatut(){
+        $repo = new User_repo();
+        $response = $repo -> getUserById($this->getUserId());
+        if ($response['success']){
+            $distantUser = $response['data'];
+            $this->setUserStatut($distantUser->getUserStatut());
         }
     }
 
@@ -202,7 +226,7 @@ class User
         else {return "True";}
     }
 
-    function verifUserToSignin($pass){
+    public function verifUserToSignin($pass){
         if (!$this->user_statut==1){
             return "unactiveUser";
         }

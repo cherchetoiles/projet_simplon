@@ -23,9 +23,6 @@
     
 </head>
 <body class="w-full h-auto">
-    <!-- NAVBAR -->
-<?php include('view/navbar.php') ?>
-</body>
 <div class="flex flex-col items-center justify-center w-10/12 h-auto mx-auto text-center lg:w-9/12 md:w-full font-body ">
     <div class="container">
         <div class="lg:text-start lg:w-2/3 xl:w-1/2">  
@@ -40,8 +37,8 @@
                 <!-- COVER -->
                 <img src="/assets/img/lesson_miniature/<?php echo $topLesson["lesson"]->getLessonCover() ?>" alt="<?php echo $topLesson["lesson"]->getLessonTitle() ?>" class="w-full rounded-t-2xl ">
                 <div class="flex items-center mx-4 my-2">
-                    <div class="w-auto">
-                        <img src="/assets/img/user_avatar/<?php echo $topLesson["user"]->getUserAvatar()?>" alt="Photo de profil de Steven Blombou" class="w-10 h-10 rounded-full">
+                    <div class="w-10 h-10 overflow-hidden rounded-full">
+                        <img src="/assets/img/user_avatar/<?php echo $topLesson["user"]->getUserAvatar()?>" alt="Photo de profil de Steven Blombou" class="w-full">
                     </div> 
                     <div class="flex items-center justify-between w-full">
                         <div class="flex flex-col items-start ml-2">
@@ -103,8 +100,8 @@
         
         <div class="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-14">
         <?php foreach($topCategory as $cat) { ?>
-            <a href="/cours/<?php echo $cat->getCategoryId() ?>" class="flex items-center justify-center w-auto mx-2 my-3 shadow-lg rounded-xl h-44" style="background-color:#<?php echo $cat->getCategoryMainColor()?>">
-                <img src="/assets/svg/categories/white/<?=$cat->getCategoryWhiteLogo() ?>" alt="Logo <?php echo $cat->getCategoryName()?>">
+            <a href="/cours/<?php echo $cat->getCategoryId() ?>" class="flex items-center justify-center w-auto mx-2 my-3 shadow-lg rounded-xl h-44" style="background-color:<?php echo $cat->getCategoryMainColor()?>">
+                <img src="/assets/img/category_logo/alt/<?=$cat->getCategoryWhiteLogo() ?>" class="h-1/2" alt="Logo <?php echo $cat->getCategoryName()?>">
             </a>
         <?php };?>
         </div>

@@ -19,14 +19,14 @@ class Theme_repo extends Connect_bdd{
       
     }  
     
-    public function getAllThemes($theme_name) {
-        $sql = "SELECT * FROM theme WHERE theme_name = ?";
+    public function getAllThemesMin() {
+        $sql = "SELECT theme_id,theme_name FROM theme";
         $req = $this->bdd->prepare($sql);
-        $req->execute([$theme_name]);
-        return $req->fetch();
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
     }     
 
-    function getAllThemeFull(){
+    public function getAllThemeFull(){
         function activateOnMap($query){
             $tmpUser=new Theme();
             $tmpUser->createThemeFromQuery($query);
@@ -42,6 +42,14 @@ class Theme_repo extends Connect_bdd{
         $reqResult = $req->fetchAll(PDO::FETCH_ASSOC);
         return array_map("activateOnMap", $reqResult);
       
+    }
+
+    public function getThemeById($id){
+        $sql = "SELECT * FROM theme WHERE theme_id = ?";
+        $req = $this->bdd->prepare($sql);
+        $req->bindParam(1,$id);
+        $req->execute();
+        return $req->fetch();
     }
 }
 ?>

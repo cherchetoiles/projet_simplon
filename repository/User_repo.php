@@ -36,7 +36,7 @@ class User_repo extends Connect_bdd{
         $req=$this->bdd->prepare('SELECT user_id,user_name,user_email,user_surname,user_password,user_statut,user_token,user_avatar,role_nom,speciality_name FROM user u NATURAL JOIN role LEFT JOIN speciality s ON s.speciality_id = u.speciality_id  WHERE user_email=?');
         $req->bindParam(1,$email);
         $req->execute();
-        $tmpUser=$req->fetch();
+        $tmpUser=$req->fetch(PDO::FETCH_ASSOC);
         return $tmpUser;
     }
 
@@ -60,6 +60,20 @@ class User_repo extends Connect_bdd{
         } 
 
         return $lessons;
+    }
+
+    function getUserById($id){
+        $sql = 'SELECT * FROM user WHERE user_id = ?';
+        $req = $this -> bdd -> prepare($sql);
+        $req -> bindParam(1,$id);
+        $req -> execute();
+        $data = $req -> fetch(PDO::FETCH_ASSOC);
+        if (!$data){
+            return ["success"=>FALSE];
+        }
+        $tmpUser = new User();
+        $tmpUser ->createUserFromQuery($data);
+        return ["success"=>TRUE, "data"=>$tmpUser];
     }
 
     function getFavLesson($user,$option=[]){
@@ -104,6 +118,7 @@ class User_repo extends Connect_bdd{
         }
         return $finish_lessons;       
     }
+
     function updateUserData($user){
         
         $req = 'UPDATE user u SET u.user_email = ? WHERE u.user_id = ?';
@@ -111,12 +126,14 @@ class User_repo extends Connect_bdd{
         $req->execute([$user->getUserEmail(),$user->getUserId()]);
         
     }
+
     function updatePassword($password,$userId){
         $req = 'UPDATE user u SET u.user_password = ?  WHERE u.user_id = ?';
         $req = $this->bdd->prepare($req);
         $password = password_hash($password,PASSWORD_BCRYPT);
         $req->execute([$password,$userId]);
     }
+
     function updateEmail($email,$userId){
         if (!$this->getUserByEmail($email)){
             $req = 'UPDATE user u SET u.user_email = ?  WHERE u.user_id = ?';
@@ -125,6 +142,27 @@ class User_repo extends Connect_bdd{
             return True;
         }
         return false;
+    }
+
+    function updateUserRole(user $user,string $roleName){
+        try {
+            $sql = "SELECT role_id FROM role WHERE role_nom = ?";
+            $req = $this->bdd->prepare($sql);
+            $req -> bindParam(1,$roleName);
+            $req -> execute();
+            $roleId = $req->fetch(PDO::FETCH_ASSOC)["role_id"];
+
+            $userId = $user->getUserId();
+            $sql = "UPDATE user SET role_id = ? WHERE user_id = ?";
+            $req = $this->bdd->prepare($sql);
+            $req -> bindParam(1,$roleId);
+            $req -> bindParam(2,$userId);
+            $req -> execute();
+            return ["success"=>TRUE];
+        } catch (\Throwable $th) {
+            return ["success"=>FALSE,"error"=>$th];
+        }
+        
     }
 
     function updateAvatar($file,$user) {
@@ -157,7 +195,32 @@ class User_repo extends Connect_bdd{
             $response = ['success' => false, 'message' => 'No file uploaded.'];
             return json_encode($response);
         }
-;
+    }
+
+    function updateUserStatut(User $user,int $newStatut){
+        if ((0<=$newStatut) && ($newStatut<=3)){
+            $email = $user->getUserEmail();
+            $sql = "UPDATE user SET user_statut=? WHERE user_email = ?";
+            $req = $this->bdd->prepare($sql);
+            $req->bindParam(2,$email);
+            $req->bindParam(1,$newStatut);
+            return ["success"=>$req->execute()];
         }
+        return ["success"=>FALSE,"error"=>"uncorrect new statut"];
+    }
+
+    function getUserRequesting(){
+        function transformIntoUser($requestLine){
+            $tmpUser = new User();
+            $tmpUser->createUserFromQuery($requestLine);
+            return $tmpUser;
+        }
+        $sql = "SELECT * FROM `user` WHERE user_statut = 1";
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $result=$req->fetchAll(PDO::FETCH_ASSOC);
+        $result = array_map("transformIntoUser",$result);
+        return $result;
+    }
 }
 ?>

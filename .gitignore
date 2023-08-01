@@ -1,3 +1,8 @@
 node_modules
-
+assets/img/lesson_miniature
+assets/img/category_logo
+assets/img/user_avatar
+assets/lesson_videos
+vendor
+config
 dist

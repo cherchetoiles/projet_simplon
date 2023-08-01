@@ -45,6 +45,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
                 updateProfil();
                 break;
             
+            case 'reinitializeUserStatut':
+                reinitializeUserStatut();
+                break;
+
             case 'test':
                 modaltest();
                 break;
@@ -94,7 +98,9 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
             case 'signup':
                 signup();
                 break; 
-    
+            case 'signup_validation':
+                signup_validation();
+                break;
             case 'signup_treat':
                 signup_treat();
                 break;
@@ -111,6 +117,9 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
 }else{
     if(isset($_GET['admin']) && (!empty($_SESSION) && $_SESSION['user']->getRoleNom() == 'admin')){
         switch($_GET['admin']) {
+            case 'changeUserStatut':
+                changeUserStatut();
+                break;
             case 'deleteLesson':
                 deleteLessonAjax();
                 break;
@@ -142,6 +151,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
                 crud();
                 break;
 
+            case 'dashboard':
+                crud();
+                break;
+
             case 'getAllLessonCard':
                 getCardsForCrudLesson();
                 break;
@@ -153,11 +166,23 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
             case 'getAllCategoryCard': 
                 getCardsForCrudCategory();
                 break;
+
             case 'getAllThemeCard': 
                 getCardsForCrudTheme();
-                break;    
+                break;
 
-    
+            case 'getLatestNews':
+                getLatestNews();
+                break;
+
+            case "changeLessonStatus":
+                changeLessonStatus();
+                break;
+            
+            case "addCategory":
+                addCategory();
+                break;
+                
             default:
                 homepage();
                 break;

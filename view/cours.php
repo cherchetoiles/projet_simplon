@@ -19,7 +19,6 @@
     <title>Cours</title>
 </head>
 <body class="px-2">
-    <?php include('view/navbar.php')?>
     <div class="flex px-2 sm:px-[10%] pt-2 mb-5">
         <div class="flex flex-col">
             <!-- header -->

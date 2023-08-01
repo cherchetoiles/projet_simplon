@@ -129,34 +129,34 @@ class Lesson
     public function verifyLesson($cover_size,$cover_type,$video_size,$video_type){
         $cross_icon = "<div class='flex flex-row items-center gap-2'>";
         if (strlen($this->lesson_title)>63){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Titre trop long</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Titre trop long</div>";
         }
         if ($this->lesson_title===""){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Mettez un titre</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Mettez un titre</div>";
         }
         if (strlen($this->lesson_attract_title)>127){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Titre de mise en avant trop long</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Titre de mise en avant trop long</div>";
         }
         if (!in_array($this->lesson_difficult,[1,2,3,4,5,6,7,8,9])){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Merci de ne pas modifier les valeurs des choix de proposition</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Merci de ne pas modifier les valeurs des choix de proposition</div>";
         }
         if ($cover_type=="wrong"){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Mettez une miniature</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Mettez une miniature</div>";
         }
         if ($video_type=="wrong"){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Mettez une vidéo</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Mettez une vidéo</div>";
         }
         if ($cover_size>MAX_IMG_SIZE){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Miniature trop lourde</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Miniature trop lourde</div>";
         }
         if (!in_array($cover_type,VALID_IMG_TYPE)){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Mauvais type de fichier de miniature</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Mauvais type de fichier de miniature</div>";
         }
         if ($video_size>MAX_VIDEO_SIZE){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Vidéo trop lourde</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Vidéo trop lourde</div>";
         }
         if (!in_array($video_type,VALID_VIDEO_TYPE)){
-            return "$cross_icon<img src='assets/svg/failure_cross.svg'> Mauvais type de fichier de vidéo</div>";
+            return "$cross_icon<img src='/assets/svg/failure_cross.svg'> Mauvais type de fichier de vidéo</div>";
         }
         
         return "True";

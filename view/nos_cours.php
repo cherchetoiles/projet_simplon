@@ -24,9 +24,6 @@
     
 </head>
 <body class="w-full h-auto">
-    <!-- NAVBAR -->
-<?php include('view/navbar.php') ?>
-</body>
 <div class="flex flex-col items-center justify-center w-10/12 h-auto gap-8 mx-auto text-center lg:w-9/12 md:w-full font-body ">
     <div class="container">
         <div class="flex flex-row justify-between text-start"> 
