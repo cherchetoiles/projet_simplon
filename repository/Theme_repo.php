@@ -16,15 +16,22 @@ class Theme_repo extends Connect_bdd{
         $req->bindParam(2,$themeLogo);
         $req->execute();
         return true;
-      
-    }  
+    }
     
     public function getAllThemesMin() {
-        $sql = "SELECT theme_id,theme_name FROM theme";
+        $sql = "SELECT theme_id,theme_name,theme_logo FROM theme";
         $req = $this->bdd->prepare($sql);
         $req->execute();
-        return $req->fetchAll(PDO::FETCH_ASSOC);
-    }     
+        $themes = $req->fetchAll(PDO::FETCH_ASSOC);
+        $i=0;
+        foreach($themes as $theme){
+            $tmpTheme = new Theme();
+            $tmpTheme->createThemeFromQuery($theme);
+            $themes[$i]=$tmpTheme;
+            $i+=1;
+        }    
+        return $themes;
+    }
 
     public function getAllThemeFull(){
         function activateOnMap($query){

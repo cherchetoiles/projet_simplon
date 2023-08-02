@@ -1,130 +1,92 @@
-<?php
-$repo = new Theme_repo();
-$themes = $repo -> getAllThemesMin();
-$repo = new Category_repo();
-$categories=$repo -> getAllCategories();
-?>
-<div class="drawer drawer-end font-body">
-  <input id="my-drawer-3" type="checkbox" class="drawer-toggle" /> 
-  <div class="flex flex-col drawer-content">
-    <!-- Navbar -->
-    <div class="border-b border-b-gray">
-      <div class="flex flex-row items-center justify-center w-10/12 min-h-[4rem] mx-auto text-center lg:w-9/12 md:w-full font-body">
-        <div class="container flex items-center justify-between">
-          <div class="flex-none lg:hidden">
-            <label for="" class="btn btn-square btn-ghost sm:scale-125">
-              <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_11_796)">
-                <path d="M16.1875 16.1875L19.25 19.25" stroke="#F01E29" stroke-width="2" stroke-linecap="round"/>
-                <path d="M5.90625 2.86206C7.12891 2.15479 8.54843 1.75 10.0625 1.75C14.6534 1.75 18.375 5.47163 18.375 10.0625C18.375 14.6534 14.6534 18.375 10.0625 18.375C5.47163 18.375 1.75 14.6534 1.75 10.0625C1.75 8.54843 2.15479 7.12891 2.86206 5.90625" stroke="#F01E29" stroke-width="2" stroke-linecap="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_11_796">
-                <rect width="21" height="21" fill="white"/>
-                </clipPath>
-                </defs>
-              </svg>
-            </label>
-          </div>
-          
-          <div class="lg:flex-none">
-            <a href="/homepage">
-              <img class="w-44 sm:w-52 md:w-60 lg:w-64" src="/assets/img/logo.png" alt="">
-            </a>
-          </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-          <div class="flex-row hidden gap-4 lg:flex xl:gap-0">
-            <div class="dropdown dropdown-hover">
-              <label tabindex="0" class="flex gap-2 m-1 btn btn-ghost">
-                <span class="text-lg">
-                  Cours
-                </span>
-                <svg width="16" height="9" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17 1L9 9.84348L1 1" stroke="#F01E29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </label>
-              <ul tabindex="0" class="p-2 shadow dropdown-content menu bg-base-100 rounded-box w-52">
-                <div class="flex flex-row items-center gap-1 mb-4 border-b-4 w-fit border-b-red">
-                  <img class="w-6 h-5" src="/assets/img/theme_logo/<?php echo $themes["theme_logo"] ?>" alt="">
-                  <span class="text-lg font-semibold">
-                    <?php echo $themes["theme_name"] ?>
-                  </span>
-                </div>
-                <div>
-                  <a class="font-semibold" href="/nos_cours">Tous nos cours</a>
-                </div>
-                <?php foreach($categories as $category) {
-                  if ($category->getCategoryNbLesson()!=0) {?>
-                  <div>
-                    <a href="/cours/<?php echo $category->getCategoryId() ?>">
-                      <?php echo $category->getCategoryName() ?>
-                    </a>
-                  </div>
-                <?php }} ?>
-              </ul>
-            </div>
-
-            <div class="dropdown dropdown-hover">
-              <label tabindex="0" class="flex gap-2 m-1 btn btn-ghost">
-                <span class="text-lg">
-                  Formations
-                </span>
-                <svg width="16" height="9" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 17 1L9 9.84348L1 1" stroke="#F01E29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </label>
-
-              <div tabindex="0" class="dropdown-content p-8 shadow bg-base-100 rounded-box w-[768px] flex flex-row gap-4">
-                <img class="w-8 h-8" src="/assets/img/formations.png" alt="formations">
-                <div class="flex flex-col text-left">
-                  <span class="text-2xl font-semibold">
-                    Découvrez nos formations!
-                  </span>
-                  <span class="text-xl">
-                    Venez étudier au campus de l’UIMM de 
-                    Charleville-Mézières. Différentes formations y sont 
-                    proposés autour du numérique. <br>
-                    Rendez-vous sur notre site <a class="text-red" href="https://simplon-charleville.fr/" target="_blank">simplon-charleville.fr</a>
-                  </span>
-                </div>
+    <link rel="icon" type="image/x-icon" href="/assets/svg/favicon.svg">
+    <link href="dist/output.css" rel="stylesheet">
+    
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- LOTTIE -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> 
+    <script src="/assets/script/navbar.js"></script>
+    <title>Accueil K-ZEL Code</title>
+    
+</head>
+<nav class="flex px-4 py-1 justify-between h-14 items-center fixed top-0 w-full md:border-b md:border-gray md:border-solid">
+  <img src="/assets/svg/searchbar-icon.svg" class="w-8" alt="" onclick="document.getElementById('searchbar').classList.toggle('-translate-y-full')">
+  <div class="absolute top-0 left-0 z-10 w-full flex items-center justify-center -translate-y-full animate-all duration-200 h-14 bg-white" id="searchbar">
+    <input type="text" name="searchbar" placeholder="Rechercher" class="border border-solid border-gray px-2 text-xl rounded-full">
+    <div class="text-3xl absolute right-5 top-1/2 -translate-y-1/2 text-red -rotate-90" onclick="document.getElementById('searchbar').classList.toggle('-translate-y-full')">&#10140;</div>
+  </div>
+  <img src="/assets/img/logo.png" class="w-60">
+  <div class="flex flex-col absolute w-screen top-14 animate-all duration-500 ease-[0.1,0.2,1] left-0 origin-top scale-y-0 overflow-y-scroll md:overflow-y-hidden max-h-[calc(100vh-56px)] md:scale-y-100 md:hidden md:hover:flex" id="burgerContent"
+       onmouseenter="document.getElementById('coursDropdown').classList.add('border-y-[3px]')"
+       onmouseleave="document.getElementById('coursDropdown').classList.remove('border-y-[3px]')">
+    <?php foreach($themes as $theme){  ?>
+      <div class="flex-col flex md:mt-6 ">
+        <span class="flex gap-2 items-center opacity-40 ml-8 md:opacity-100 md:border-b-2 w-fit border-solid border-red">
+          <img src="/assets/img/theme_logo/<?= $theme->getThemeLogo() ?>" class="h-4 md:h-6">
+          <h2 class="leading-none md:text-2xl md:font-bold">
+            <?= $theme->getThemeName() ?>
+          </h2>
+        </span>
+        <div class="flex flex-col mt-4 md:flex-wrap md:flex-row md:ml-32">
+          <?php foreach($theme->getCategoriesFromTheme() as $categorie) {?>
+            <div class="flex flex-col md:max-w-[33%] lg:max-w-[25%]">
+              <span class="leading-none flex items-center gap-2 pl-12 py-2 border-b border-solid border-gray font-bold md:border-none md:pl-0 md:text-lg" onclick="this.querySelector('span').classList.toggle('rotate-90'),document.getElementById('category-<?=$categorie->getCategoryId()?>').classList.toggle('!hidden')"><span class="text-red text-3xl leading-none animate-all duration-200 md:hidden">></span><?= $categorie->getCategoryName() ?></span>
+              <div class="flex flex-col hidden pl-[74px] py-4 text-red gap-1 border-b border-solid border-gray duration-200 md:border-none md:flex md:pl-0 md:ml-20" id="category-<?=$categorie->getCategoryId()?>">
+                <?php foreach($categorie->getLessonFromCategory() as $lesson){?>
+                    <a class='whitespace-nowrap overflow-x-hidden coursLinks' href='/cours/<?= $lesson->getLessonId() ?>'><?= $lesson->getLessonTitle() ?><a>
+                <?php } ?>
               </div>
             </div>
-
-            <div>
-              <label tabindex="0" class="m-1 btn btn-ghost">
-                <span class="text-lg">
-                  Forum
-                </span>
-              </label>
-            </div>
-          </div>
-
-          <div class="flex-row items-center hidden p-2 border xl:flex border-gray rounded-4xl">
-            <input class="w-32 focus:bg-white" type="search" placeholder="Rechercher">
-            <img class="w-6 h-6" src="/assets/img/search.png" alt="">
-          </div>
-
-
-          <a class="flex-row hidden gap-2 p-2 cursor-pointer lg:flex bg-gray/20 rounded-4xl items-center" href="/profil/<?=$_SESSION['user']->getUserId()?>">
-            <div class="rounded-full h-8 w-8 overflow-hidden">
-              <img src="/assets/img/user_avatar/<?php echo $_SESSION["user"]->getUserAvatar();?>" class="w-full">
-            </div>
-            <span class="hidden text-blue xl:block leading-none">Profil</span>
-          </a>
-
-
-          <div class="flex-none lg:hidden">
-            <label for="my-drawer-3" class="btn btn-square btn-ghost sm:scale-125">
-              <svg width="21" height="21" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 18L1 18" stroke="black" stroke-width="2" stroke-linecap="round"/>
-                <path d="M21 9.5L1 9.5" stroke="black" stroke-width="2" stroke-linecap="round"/>
-                <path d="M21 1L1 1" stroke="black" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </label>
-          </div>
-
-          
-
+          <?php } ?>
         </div>
       </div>
+      <?php }  ?>
+    <div class="md:hidden" onclick="this.querySelector('div').classList.toggle('!hidden'),this.querySelector('span').querySelector('span').classList.toggle('rotate-90')">
+      <span class="leading-none flex items-center gap-2 pl-12 py-2 border-b border-solid border-gray font-bold"><span class="text-3xl leading-none animate-all duration-200">></span>Mon compte</span>
+      <div class="!hidden flex flex-col pl-[74px] ">
+        <a href="/profil">Mon profil</a>
+        <a href="/logout">se déconnecter</a>
+        <?php if ($_SESSION['user']->getRoleNom()==='admin'){
+          echo "<a href='/admin-dashboard'>Tableau de bord</a>";
+        }
+        ?>
+      </div>
+    </div> 
+  </div>
+  <div class="flex flex-col gap-2 md:hidden h-fit" onclick="document.getElementById('burgerContent').classList.toggle('!scale-y-100'),
+                                                  this.querySelector('.to-translate').classList.toggle('rotate-45'),
+                                                  this.querySelector('.to-hide').classList.toggle('opacity-0'),
+                                                  this.querySelector('.-to-translate').classList.toggle('translate-y-[3px]')
+                                                  this.querySelector('.-to-translate').classList.toggle('-rotate-45')">
+    <div class="py-[2px] px-5 bg-black rounded-full animate-all duration-500 origin-top-left to-translate"></div>
+    <div class="py-[2px] px-5 bg-black rounded-full animate-all duration-500 to-hide"></div>
+    <div class="py-[2px] px-5 bg-black rounded-full animate-all duration-500 origin-bottom-left -to-translate"></div>
+  </div>
+  <div class="flex items-center -mb-1 -mt-1 h-[calc(100%+8px)]">
+    <span class="text-2xl items-center h-full flex gap-2 px-4 hover:border-y-[3px] border-solid border-t-transparent border-b-red" id="coursDropdown" onmouseenter="document.getElementById('burgerContent').classList.remove('md:hidden')"
+                                           onmouseleave="document.getElementById('burgerContent').classList.add('md:hidden')"
+                                           onclick="document.getElementById('burgerContent').classList.toggle('md:!flex'),
+                                                    this.classList.toggle('!border-y-[3px]')">
+      Cours<span class="text-red">v</span>
+    </span>
+    <span class="text-2xl flex gap-2 px-4">
+      Formations<span class="text-red">v</span>
+    </span>
+  </div>
+  <a href='/profil' class="flex py-1 px-2 bg-gray-bg rounded-full items-center gap-2">
+    <div class="w-8 h-8 overflow-hidden rounded-full">  
+      <img src="/assets/img/user_avatar/<?= $_SESSION['user']->getUserAvatar() ?>">
     </div>
+    <span class="whitespace-nowrap leading-none">
+      <?= $_SESSION['user']->getUserName()." ".$_SESSION['user']->getUserSurname() ?>
+    </span>
+  </a>
+</nav>

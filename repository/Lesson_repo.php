@@ -22,6 +22,22 @@ class Lesson_repo extends Connect_bdd{
         return $result;
     }
     
+    public function getLessonByCategoryId($category_id){
+        $sql = "SELECT lesson_id,lesson_title FROM lesson WHERE category_id = ?";
+        $req = $this->bdd->prepare($sql);
+        $req->bindParam(1,$category_id);
+        $req->execute();
+        $lessons = $req->fetchAll(PDO::FETCH_ASSOC);
+        $i=0;
+        foreach ($lessons as $lesson){
+            $tmpLesson = new Lesson();
+            $tmpLesson->createLessonFromQuery($lesson);
+            $lessons[$i]=$tmpLesson;
+            $i++;
+        }
+        return $lessons;
+    }
+
     public function updateLessonStatus($lesson_id,$newStatus){
         if ($newStatus===1 | $newStatus===0){
             $sql = "UPDATE lesson SET lesson_status = ? WHERE lesson_id = ?";

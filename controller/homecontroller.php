@@ -30,6 +30,25 @@ function logout(){
     header('Location: ?action=signin');
 }
 
+function navbar(){
+    $repo = new Theme_repo();
+    $themes = $repo->getAllThemesMin();
+    $i=0;
+    foreach ($themes as $theme){
+        $theme->setCategoriesFromTheme();
+        if (!empty($theme->getCategoriesFromTheme())){
+            $theme->setLessonFromCategoriesFromTheme();
+        }
+        else{
+            array_splice($themes,$i,1);
+            $i--;
+        }
+        $i+=1;
+        
+    }
+    include("view/navbar.php");
+}   
+
 function updateProfil(){
     $user = $_SESSION['user'];
     $repo = new User_repo();

@@ -50,6 +50,22 @@ class Category_repo extends Connect_bdd{
         } 
         return $cat;
     }
+
+    public function getCategoryByThemeId($themeId){
+        $sql = "SELECT * FROM category WHERE theme_id = ?";
+        $req = $this->bdd->prepare($sql);
+        $req->bindParam(1,$themeId);
+        $req->execute();
+        $categories = $req->fetchAll(PDO::FETCH_ASSOC);
+        $i=0;
+        foreach($categories as $categorie){
+            $tmpCat = new Category();
+            $tmpCat->createCategoryFromQuery($categorie);
+            $categories[$i] = $tmpCat;
+            $i++;
+        }
+        return $categories;
+    }
     
     public function getAllCategoryName(){
         $sql="SELECT category_name FROM category";

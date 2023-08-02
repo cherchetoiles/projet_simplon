@@ -28,6 +28,27 @@ class Theme
         return $this->theme_views;
     }
 
+    public function getCategoriesFromTheme(){
+        return $this->categoriesFromTheme;
+    }
+
+    public function setCategoriesFromTheme(){
+        $repo = new Category_repo();
+        $this->categoriesFromTheme = $repo ->getCategoryByThemeId($this->theme_id);
+    }
+
+    public function setLessonFromCategoriesFromTheme(){
+        $i=0;
+        foreach($this->categoriesFromTheme as $category){
+            $category->setLessonFromCategory();
+            if (empty($category->getLessonFromCategory())){
+                array_splice($this->categoriesFromTheme,$i,1);
+                $i--;
+            }
+            $i++;
+        }
+    }
+
     public function getThemeNbLesson(){
         return $this->theme_nb_lesson;
     }
