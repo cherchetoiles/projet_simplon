@@ -137,7 +137,7 @@ class Category
 
     public function setLessonFromCategory(){
         $repo = new Lesson_repo();
-        $this->lessonsFromCategory = $repo->getLessonByCategoryId($this->category_id); 
+        $this->lessonsFromCategory = $repo->getLessonByCategoryId($this->category_id,["limit"=>4]); 
     }
 
     public function setCategoryTotalViews(){

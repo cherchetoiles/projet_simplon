@@ -14,7 +14,7 @@
                 <option value="" disabled selected>Selectionner une option</option>
                 <?php if (isset($themes)){
                     foreach ($themes as $theme):?>
-                        <option value=<?= $theme['theme_id'] ?>><?= $theme['theme_name'] ?></option>
+                        <option value=<?= $theme->getThemeId() ?>><?= $theme->getThemeName() ?></option>
                     <?php
                     endforeach;
                     }

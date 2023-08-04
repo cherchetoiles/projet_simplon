@@ -169,7 +169,7 @@
         let videoData = new FormData(addModal.crudLesson);
         fetch("/index.php?action=addVideoTreat",{method: 'POST',body:videoData})
             .then(response=>response.json())
-            .then(data=>changeAlert(data))
+            .then(data=>()=>{changeAlert(data),console.log(data)})
             .then(data=>{if (window.location.pathname === "/admin-crudLesson"){
                             changeContent("getAllLessonCard","crudLesson");
                         }})
@@ -177,12 +177,11 @@
     }
 
     function changeAlert(newText){
-        console.log(alertTxt_video);
         alert_video.classList.remove("duration-[3000ms]");
         alert_video.classList.remove("opacity-0");
         alert_video.classList.remove("-z-10");
         alert_video.classList.add("z-30");
-        alertTxt_video.innerHTML=newText;
+        alert_video.querySelector('span').innerHTML=newText;
         setTimeout(()=>{alert_video.classList.add("duration-[3000ms]");alert_video.classList.add("opacity-0");setTimeout(()=>{alert_video.classList.remove("z-30"),alert_video.classList.add("-z-10")},3000)},1000);
     }
   

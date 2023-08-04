@@ -22,8 +22,39 @@ class Lesson_repo extends Connect_bdd{
         return $result;
     }
     
-    public function getLessonByCategoryId($category_id){
-        $sql = "SELECT lesson_id,lesson_title FROM lesson WHERE category_id = ?";
+    public function getLessonByTitle($keywords){
+        $searchTitle = implode(" AND ", 
+                                array_map(function($keyword) {
+                                    return "l.lesson_title LIKE '%" . $keyword . "%'";
+                                }, $keywords));
+
+        $sql = "SELECT l.lesson_id, l.lesson_title, l.lesson_cover,l.lesson_difficult, c.category_logo 
+        FROM lesson l
+            INNER JOIN category c ON c.category_id = l.category_id
+            LEFT JOIN fav f ON l.lesson_id = f.lesson_id
+            LEFT JOIN watch w on l.lesson_id = w.lesson_id
+            LEFT JOIN (SELECT l.lesson_id,count(DISTINCT f.user_id) AS favorite,count(DISTINCT w.user_id) AS views
+                    FROM lesson l 
+                    INNER JOIN watch w ON l.lesson_id = w.lesson_id 
+                    INNER JOIN fav f ON l.lesson_id = f.lesson_id) total ON l.lesson_id = total.lesson_id
+        WHERE l.lesson_status = 1 AND " . $searchTitle ."
+            ORDER BY total.views/total.favorite DESC
+            LIMIT 5
+        ";
+
+        $req = $this->bdd->prepare($sql);
+
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function getLessonByCategoryId($category_id,$option = []){
+        $sql = "SELECT lesson_id,lesson_title FROM lesson WHERE category_id = ? AND lesson_status = 1";
+        if (isset($option['limit'])){
+            $sql.=" LIMIT $option[limit]";
+        }
         $req = $this->bdd->prepare($sql);
         $req->bindParam(1,$category_id);
         $req->execute();

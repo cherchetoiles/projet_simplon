@@ -44,10 +44,16 @@ function navbar(){
             $i--;
         }
         $i+=1;
-        
     }
     include("view/navbar.php");
 }   
+
+function searchbar(){
+    $POST = json_decode(file_get_contents('php://input'),true);
+    $repo = new Lesson_repo();
+    $searchResult = $repo->getLessonByTitle($POST);
+    echo json_encode($searchResult);
+}
 
 function updateProfil(){
     $user = $_SESSION['user'];
@@ -134,7 +140,7 @@ function cours(){
     $repo_cat = new Category_repo();
     $cat = $repo_cat->getCategoryById($_GET['id']);
     if (!$cat){
-        header("location: ?action=homepage");
+        header("location:/homepage");
     }
     $cat -> setCategoryNeededCategories();
     $cat -> setLessonFromCategory();
@@ -168,6 +174,7 @@ function formVideo(){
 }
 
 function homepage(){
+    navbar();
     $repo = new Lesson_repo();
     $topLesson=$repo -> getLesson("total.views/total.favorite DESC",["limit"=>1])[0];
     $repo = new Category_repo();

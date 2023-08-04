@@ -23,7 +23,7 @@
     
 </head>
 <body class="w-full h-auto">
-<div class="flex flex-col items-center justify-center w-10/12 h-auto mx-auto text-center lg:w-9/12 md:w-full font-body ">
+<div class="flex flex-col items-center justify-center w-10/12 h-auto mx-auto mt-10 text-center lg:w-9/12 md:w-full font-body ">
     <div class="container">
         <div class="lg:text-start lg:w-2/3 xl:w-1/2">  
             <h1 class="mt-10 font-sans text-[32px] w-full xl:w-4/5 font-semibold leading-9 lg:leading-snug lg:text-5xl mx-auto lg:mx-0">Apprendre en ligne avec <bold>K-ZEL CODE</bold> !</h1>

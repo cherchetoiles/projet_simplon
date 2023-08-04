@@ -8,6 +8,9 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
             case 'navbar':
                 navbar();
                 break;
+            case 'searchbar':
+                searchbar();
+                break;
             case 'homepage':
                 homepage();
                 break;
