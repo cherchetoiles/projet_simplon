@@ -11,7 +11,7 @@
         <label class="flex flex-col">
             <span class="font-bold text-lg whitespace-nowrap">Theme parent</span>
             <select form="form-category" name="theme_parent" class="border border-black border-solid" >
-                <option value="" disabled selected>Selectionner une option</option>
+                <option value="" disabled selected class="whitespace-nowrap">Selectionner une option</option>
                 <?php if (isset($themes)){
                     foreach ($themes as $theme):?>
                         <option value=<?= $theme->getThemeId() ?>><?= $theme->getThemeName() ?></option>
@@ -38,23 +38,43 @@
                 <input type="text" name="category_name" class="border-b border-black border-solid" >
             </label>
             <label class="flex flex-col">
-                <span class="font-bold text-lg whitespace-nowrap">Couleur principale</span>
-                <input name="main_color" data-coloris value="#000000" class="border-b border-black border-solid" >
+                <span class="font-bold text-lg whitespace-nowrap">Catégories parent</span>
+                <div class='relative'>
+                    <div class='w-[200px] text-center border border-solid border-black hover:cursor-pointer' onclick="this.parentNode.querySelector('#parentCategory').classList.toggle('hidden')">
+                        Selectionnez les option
+                    </div>
+                    <div class='hidden z-40 absolute bottom-full w-[200px] pl-1 max-h-40 overflow-y-auto flex flex-col bg-white border border-solid border-black border-b-transparent' id='parentCategory' onmouseleave="this.classList.add('hidden')">
+                        <?php
+                    foreach($categories as $cat){ ?>
+                        <div class="whitespace-nowrap">
+                            <input type='checkbox' value='<?= $cat[0]; ?>' name='categorie[]' >
+                            <?= $cat[0]; ?>
+                        </div>
+                    <?php }
+                        ?>
+                    </div>
+                </div>
             </label>
         </div>
         <label class="flex flex-col w-full">
             <span class="font-bold text-lg whitespace-nowrap">Description de la catégorie</span>
             <textarea form="form-category" name="category_description" class="border border-black border-solid bg-slate-100" rows=6></textarea>
         </label>
-        <label class="w-full flex flex-col gap-2">
-            <span class="font-bold text-lg whitespace-nowrap">Logo alternatif de la catégorie</span>
-            <div class="flex relative w-40 h-40 bg-contain bg-center bg-no-repeat border border-gray border-solid mx-auto drop_category_logo">
-                <div class="absolute top-1/2 translate-y-[-50%] text-center CTA-logo">glissez le logo alternatif de la catégorie ici !</div>
-                <input type='file' name="alt_category_logo" class="absolute top-0 left-0 opacity-0 z-10 w-full h-full cursor-pointer" >
-                <div class="grid grid-cols-1 w-3/4 max-h-full overflow-y-scroll gap-2 absolute left-40 used-color-container">
+        <div class="flex flex-col gap-4">
+            <label class="w-full flex flex-col gap-2">
+                <span class="font-bold text-lg whitespace-nowrap">Logo alternatif de la catégorie</span>
+                <div class="flex relative w-40 h-40 bg-contain bg-center bg-no-repeat border border-gray border-solid mx-auto drop_category_logo">
+                    <div class="absolute top-1/2 translate-y-[-50%] text-center CTA-logo">glissez le logo alternatif de la catégorie ici !</div>
+                    <input type='file' name="alt_category_logo" class="absolute top-0 left-0 opacity-0 z-10 w-full h-full cursor-pointer" >
+                    <div class="grid grid-cols-1 w-3/4 max-h-full overflow-y-scroll gap-2 absolute left-40 used-color-container">
+                    </div>
                 </div>
-            </div>
-        </label>
+            </label>
+            <label class="flex flex-col items-center">
+                <span class="font-bold text-lg whitespace-nowrap">Couleur principale</span>
+                <input name="main_color" data-coloris value="#000000" class="border-b border-black border-solid" >
+            </label>
+        </div>
         <!-- alt card preview -->
         <div class="flex flex-col w-10/12">
             <span class="text-lg font-bold">Pré-visualisation</span>

@@ -5,9 +5,6 @@ if (isset($_GET['action']) && $_GET['action'] !== '' && !isset($_GET['admin'])) 
     if(!empty($_SESSION['user'])){
         
         switch($_GET['action']) {
-            case 'navbar':
-                navbar();
-                break;
             case 'searchbar':
                 searchbar();
                 break;

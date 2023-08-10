@@ -265,7 +265,7 @@
 
                                             titleAndDesc.classList.add("flex","flex-col","max-h-[184px]","h-full","aspect-square","relative","cursor-pointer");
                                                 title.innerHTML = element.lesson_title;
-                                                title.classList.add("font-bold","text-lg","z-20","ml-2","line-clamp-2");
+                                                title.classList.add("font-bold","text-lg","z-20","ml-2","line-clamp-2","break-words");
                                             titleAndDesc.appendChild(title);
                                                 desc.innerHTML = element.lesson_description;
                                                 desc.classList.add("line-clamp-5","text-sm","ml-4","mt-4","z-20");

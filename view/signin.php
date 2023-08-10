@@ -28,16 +28,25 @@
             <form method="POST" action="/signin_treat" class="w-full">
 
                 <div class="flex flex-col"> 
-                    <label class="flex" name="email">
+                    <label class="flex relative" name="email">
                         <img src="assets/svg/User.svg" class="w-5 h-auto ml-[3px] mr-6 h-max-5">
                         <input type="email" name="email" placeholder="Votre adresse mail" class="w-full text-2xl font-light tracking-wide lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body" <?php if (isset($_COOKIE['simplon_name'])){echo "value=".$_COOKIE['simplon_name'];} ?>>
+                        <?php if (isset($_GET["error"])&&($_GET["error"]=="userdontexist")){
+                            echo "<div class='absolute text-red top-full'>Cet adresse e-mail n'est pas relié à un compte</div>";
+                        }; ?>
+                        <?php if (isset($_GET["error"])&&($_GET["error"]=="unactiveUser")){
+                            echo "<div class='absolute text-red top-full'>Veuillez valider votre compte</div>";
+                        }; ?>
                     </label>
                     
                     <div class="w-full block mt-1 h-[1px] rounded-full  bg-gray-dark"></div>
 
-                    <label class="flex mt-10" name="password">
+                    <label class="flex mt-10 relative" name="password">
                         <img src="assets/svg/Pass.svg" class="w-5 h-auto mr-6 h-max-5">
                         <input type="password" name="password" placeholder="Votre mot de passe" class="w-full text-2xl font-light lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
+                        <?php if ((isset($_GET["error"])&&($_GET["error"]=="uncorrectPassword"))){
+                            echo "<div class='absolute text-red top-full'>Mot de passe incorrect</div>";
+                        }; ?>
                     </label>
 
                     <div class="w-full block mt-1 h-[1px] rounded-full bg-gray-dark"></div>

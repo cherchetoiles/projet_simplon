@@ -66,7 +66,7 @@
 
                     <label class="flex mt-10" name="re-pass">
                         <img src="assets/svg/Repass.svg" class="w-5 h-auto mr-6 h-max-5">
-                        <input type="password" name="re-pass" placeholder="Vérifiaction du mot de passe" class="w-full text-2xl font-light lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
+                        <input type="password" name="re-pass" placeholder="Vérification du mot de passe" class="w-full text-2xl font-light lg:text-xl xl:text-2xl placeholder:font-ligth placeholder:text-gray placeholder:font-body text-body">
                     </label>
 
                     <div class="w-full block mt-1 h-[1px] rounded-full bg-gray-dark"></div>

@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Dashboard</title>
 </head>
-<body class="h-full overflow-x-hidden overflow-y-scroll bg-gray-bg">
+<body class="h-full overflow-x-hidden overflow-y-scroll bg-gray-bg font-body">
     <div id="notificationSquare" class="top-0 right-0 fixed flex flex-col items-end w-full md:max-w-1/3 md:w-[250px] z-[100]">
 
     </div>
@@ -125,8 +125,7 @@
                 <span class="font-semibold">catégorie</span>
                 <select id="category" name="category" class="px-4 py-1 border border-solid rounded-lg border-gray focus:outline-none" form="form-video">
                     <?php
-                    $catRepo=new Category_repo();
-                    foreach ($catRepo->getAllCategoryName() as $catName):?>
+                    foreach ($categories as $catName):?>
                         <option><?= $catName[0];?></option>
                     <?php endforeach?>
                 </select>

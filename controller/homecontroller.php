@@ -45,6 +45,9 @@ function navbar(){
         }
         $i+=1;
     }
+    $themes = array_filter($themes,function ($theme){
+        return !empty($theme->getCategoriesFromTheme());
+    }); 
     include("view/navbar.php");
 }   
 
@@ -129,6 +132,7 @@ function addTheme(){
 }
 
 function nos_cours(){
+    navbar();
     $user = new User();
     $repo=new User_repo();
     $repo_lesson=new Lesson_repo();
@@ -147,6 +151,7 @@ function cours(){
     if (empty($cat->getLessonFromCategory())){
         header("location:/homepage");
     }
+    navbar();
     include("view/cours.php");
 }
 
@@ -158,6 +163,7 @@ function lesson(){
             $lesson=$reqResult[0];
             $lesson['lesson']->setLessonRessources();
             $lesson['category']->setLessonFromCategory();
+            navbar();
             require('view/lesson.php');
         }
         else{
@@ -176,10 +182,10 @@ function formVideo(){
 function homepage(){
     navbar();
     $repo = new Lesson_repo();
-    $topLesson=$repo -> getLesson("total.views/total.favorite DESC",["limit"=>1])[0];
+    $topLesson=$repo -> getLesson("total.views/total.fav DESC",["limit"=>1])[0];
     $repo = new Category_repo();
     $topCategory=$repo -> getPopularCategory("total.views/total.favorite DESC",["limit"=>16]);
-    if ($topLesson["lesson"]-> getLessonDifficult() < 4){
+    if ($topLesson["lesson"]->getLessonDifficult() < 4){
         $colors = ["red","#D9D9D9","#EAEAEA"];
     }
     elseif ($topLesson["lesson"]->getLessonDifficult() > 6){
@@ -198,6 +204,7 @@ function homepage(){
 }
 
 function profil(){
+    navbar();
     $user = $_SESSION['user'];
     $user_repo=new User_repo();
     $lessons=$user_repo->getLessonsByUser($_SESSION['user']->getUserId());
@@ -210,6 +217,8 @@ function profil(){
 function crud(){
     $repo = new Theme_repo();
     $themes = $repo -> getAllThemesMin();
+    $catRepo=new Category_repo();
+    $categories = $catRepo->getAllCategoryName();
     include("view/crud.php");
     include("view/form/addCategory.php");
 }
@@ -232,7 +241,7 @@ function signin_treat(){
         header("location:/homepage");    
         }
         else{
-            header("location:/?action=signin&error".$isOk);
+            header("location:/?action=signin&error=".$isOk);
         }
     }
     else{
@@ -278,7 +287,7 @@ function getCardsForCrudLesson(){
         $toEncode[]="<div class='flex flex-col lg:flex-row items-center gap-10 lg:gap-5 p-6 bg-white rounded-lg max-w-sm lg:max-w-none' data-id=".$result['lesson']->getLessonId().">
                         <img class='w-40' src='assets/img/lesson_miniature/".$result["lesson"]->getLessonCover()."'>
                         <div class='flex flex-col items-center w-full grow'>
-                            <span class='text-xl lg:text-base font-semibold text-center'>".$result["lesson"]->getLessonTitle()."</span>
+                            <span class='text-xl lg:text-base font-semibold text-center font-sans'>".$result["lesson"]->getLessonTitle()."</span>
                             <div class='flex items-center gap-2'>
                                 <img src='assets/img/user_avatar/".$result["user"]->getUserAvatar()."' class='w-12 rounded-full'>
                                 <span class='text-lg lg:text-sm leading-none'>".$result["user"]->getUserSurname()." ".$result["user"]->getUserName()."</span>
@@ -315,7 +324,7 @@ function getLatestNews(){
     $reqResult=$repo->getUserRequesting();
     $toEncode=[];
     foreach ($reqResult as $result){
-        $toEncode[]="<div class='flex flex-col lg:flex-row items-center gap-10 p-6 bg-white rounded-lg opacity-100 max-h-96 transition-all duration-300 flex-1' data-id=".$result->getuserId().">
+        $toEncode[]="<div class='flex flex-col lg:flex-row items-center gap-10 p-6 pr-4 bg-white rounded-lg opacity-100 max-h-96 transition-all duration-300 flex-1' data-id=".$result->getuserId().">
                         <div class='flex flex-col items-center'>
                             <div class='w-20 h-20 overflow-hidden rounded-full'>
                                 <img class='w-full h-full' src='/assets/img/user_avatar/".$result->getUserAvatar()."'>
@@ -324,9 +333,9 @@ function getLatestNews(){
                         <div class='flex flex-col items-center w-full'>
                             <span class='text-xl font-semibold text-center'>".$result->getUserSurname()." ".$result->getUserName()."</span>
                         </div>
-                        <div class='flex lg:flex-col items-center w-fit text-white'>
-                            <div class='bg-green-500 btn' onclick='changeUserStatut(`accept`,".$result->getUserId().")'>V</div>
-                            <div class='bg-red btn' onclick='changeUserStatut(`decline`,".$result->getUserId().")' >X</div>
+                        <div class='flex lg:flex-col gap-2 w-fit text-white'>
+                            <div class='bg-green-600 text-center py-1 px-4 rounded-lg btn' onclick='changeUserStatut(`accept`,".$result->getUserId().")'>Accepter</div>
+                            <div class='bg-red text-center py-1 px-4 rounded-lg btn' onclick='changeUserStatut(`decline`,".$result->getUserId().")' >Decliner</div>
                         </div>
                     </div>";
     }
@@ -402,7 +411,7 @@ function getCardsForCrudUser(){
                             <img src='assets/img/user_avatar/".$result->getUserAvatar()."' class='w-full'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
-                            <span class='text-xl font-semibold text-center'>".$result->getUserSurname()." ".$result->getUserName()."</span>
+                            <span class='text-xl font-semibold text-center font-sans'>".$result->getUserSurname()." ".$result->getUserName()."</span>
                             <div class='flex flex-col items-center gap-2'>
                                 <span class='text-lg leading-none'>".$result->getUserSpe()."</span>
                                 <span class='text-lg leading-none'>".$result->getUserEmail()."</span>
@@ -449,11 +458,11 @@ function getCardsForCrudCategory(){
             $likesSuffix="K";
         }
         $toEncode[]="<div class='flex flex-col items-center gap-5 p-6 bg-white rounded-lg w-1/2 m-auto'>
-                        <div class='flex flex-col items-center w-3/4 mt-3 overflow-hidden rounded-full'>
-                            <img src='assets/svg/categories/".$result->getCategoryLogo()."'>
+                        <div class='flex flex-col items-center w-20 mt-3 '>
+                            <img class='w-20' src='/assets/img/category_logo/basic/".$result->getCategoryLogo()."'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
-                            <span class='text-xl font-semibold text-center'>".$result->getCategoryName()."
+                            <span class='text-xl font-semibold text-center font-sans'>".$result->getCategoryName()."<span>
                             <div class='flex flex-col items-center gap-2'>
                                 <span class='text-lg leading-none'>".$result->getCategoryDescription()."</span>
                             </div>
@@ -461,21 +470,21 @@ function getCardsForCrudCategory(){
                         <div class='flex flex-col items-center w-full gap-3'>
                             <div class='flex w-full mt-4 justify-evenly'>
                                 <div class='flex items-center gap-1'>
-                                    <img src='assets/svg/eye_icon.svg'>
+                                    <img src='/assets/svg/eye_icon.svg'>
                                     <span class='italic leading-none'>".$showedViews.$viewsSuffix."</span>
                                 </div>
                                 <div class='flex items-center gap-1'>
-                                    <img src='assets/svg/heart_icon.svg'>
+                                    <img src='/assets/svg/heart_icon.svg'>
                                     <span class='italic leading-none'>".$showedLikes.$likesSuffix."</span>
                                 </div>
                                 <div class='flex items-center gap-1'>
-                                    <img src='assets/svg/nb_lesson_icon.svg'>
+                                    <img src='/assets/svg/nb_lesson_icon.svg'>
                                     <span class='italic leading-none'>".$result->getCategoryNbLesson()."</span>
                                 </div>
                             </div>
                             <div class='flex justify-center w-full gap-4'>
-                                <img src='assets/svg/edit_icon.svg' data-id='".$result->getCategoryId()."'>
-                                <img src='assets/svg/trash_icon.svg' data-id='".$result->getCategoryId()."'>
+                                <img src='/assets/svg/edit_icon.svg' data-id='".$result->getCategoryId()."'>
+                                <img src='/assets/svg/trash_icon.svg' data-id='".$result->getCategoryId()."'>
                             </div>
                         </div>
                     </div>";
@@ -503,7 +512,7 @@ function getCardsForCrudTheme(){
                             <img src='assets/img/theme_logo/".$result->getThemeLogo()."' class='w-full'>
                         </div>
                         <div class='flex flex-col items-center w-full'>
-                            <span class='text-xl font-semibold text-center'>".$result->getThemeName()."
+                            <span class='text-xl font-semibold text-center font-sans'>".$result->getThemeName()."
                             <div class='flex flex-col items-center gap-2'>
                             </div>
                         </div>
@@ -536,16 +545,16 @@ function signup_treat(){
     $repo = new User_repo();
     $tmpUser=new User();
     $tmpUser->createUserToSignup($_POST['email'],$_POST['name'],$_POST['surname'],$_POST['pass']);
-    // $isOk=$tmpUser->verifUserToSignup($_POST['re-pass'],$repo,$_POST['agree-term']);
+    $isOk=$tmpUser->verifUserToSignup($_POST['re-pass'],$repo,$_POST['agree-term']);
     $isOk=TRUE;
     if ($isOk=="True"){
-        // $tmpUser->cryptUserPassword();
-        // $repo->insertUserIntoBdd($tmpUser);
+        $tmpUser->cryptUserPassword();
+        $repo->insertUserIntoBdd($tmpUser);
         sendValidationEmail($repo,$_POST['email']);
-        // header("location:index.php?action=signin");
+        header("location:index.php?action=signin");
     }
     else{
-        // header("location:index.php?action=signup&error=".$isOk);
+        header("location:index.php?action=signup&error=".$isOk);
     }
 }
 

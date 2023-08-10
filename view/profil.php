@@ -73,7 +73,7 @@
 
 <!-- TABLE -->
 <div class="z-10 bg-white relative lg:bg-none">
-    <div class="absolute bottom-0 left-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase bg-white border-t border-solid lg:bg-none border-stroke lg:border-none lg:static">
+    <div class="fixed bottom-0 left-0 flex justify-center w-full py-4 text-sm font-semibold tracking-wide uppercase bg-white border-t border-solid lg:bg-none border-stroke lg:border-none lg:static">
         <div class="flex mx-auto lg:w-2/5 xl:w-1/4 justify-between">
             <!-- COURS OF CREATOR -->
             <a id="tabBtn1" class="flex items-center w-auto mx-4 cursor-pointer lg:mx-0">
@@ -111,7 +111,7 @@
         <?php };?>
         
     <!-- TABLE FILE -->
-    <div class="flex justify-center w-auto min-h-screen mx-auto my-5 ">
+    <div class="flex justify-center w-auto mx-auto my-5 ">
         
         <div class="flex">
 
@@ -161,7 +161,7 @@
                 <!-- LOGOWHITE -->
                     <div class="w-[323px] h-[182px] flex justify-end">
                         <img src="/assets/img/lesson_miniature/<?=$fav_lesson->getLessonCover()?>"  onclick="showFav()" id="img_fav" class="flex w-[323px] hover:brightness-50 hover:blur-[2px] duration-700 h-auto  cover rounded-2xl">
-                            <a href="?action=unFavTreat&lesson_id=<?=$fav_lesson->getLessonId()?>" class="fixed mt-4 mr-4">
+                            <a href="?action=unFavTreat&lesson_id=<?=$fav_lesson->getLessonId()?>" class="absolute mt-4 mr-4">
                                 <svg id="icon_fav" class="w-9 h-9" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.5" d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="white"/>
                                     <path class="animate-pulse" d="M14 12.0455V9.54876C14 7.40445 14 6.3323 13.4142 5.66615C12.8284 5 11.8856 5 10 5C8.11438 5 7.17157 5 6.58579 5.66615C6 6.3323 6 7.40445 6 9.54876V12.0455C6 13.5937 6 14.3679 6.32627 14.7062C6.48187 14.8675 6.67829 14.9688 6.88752 14.9958C7.32623 15.0522 7.83855 14.5425 8.86318 13.5229C9.3161 13.0722 9.54256 12.8469 9.80457 12.7875C9.93359 12.7583 10.0664 12.7583 10.1954 12.7875C10.4574 12.8469 10.6839 13.0722 11.1368 13.5229L11.1368 13.5229C12.1615 14.5425 12.6738 15.0522 13.1125 14.9958C13.3217 14.9688 13.5181 14.8675 13.6737 14.7062C14 14.3679 14 13.5937 14 12.0455Z" fill="#F01E29"/>
@@ -246,24 +246,26 @@
 <?php  // include('view/footer.php') ?>
 
 <!-- MODAL FOR UPDATE PROFIL DATA -->
-<div class="hidden z-20 fixed right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2 mx-auto w-full lg:w-4/5 lg:rounded-2xl xl:w-3/5 xl:min-w-[1200px] bg-white" id="form-update">
+<div class="hidden z-20 fixed right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2 mx-auto lg:rounded-2xl bg-white" id="form-update">
     <div class="flex flex-col-reverse w-full p-5 mx-auto border border-solid-2 lg:flex-row font-body lg:shadow-lg border-stroke lg:rounded-2xl" >
         <!-- MENU -->
-        <div class="flex flex-col h-auto  lg:border-r justify-start lg:border-solid lg:w-1/4 border-[#C8C8C8] lg:my-10">
+        <!-- <div class="flex flex-col h-auto  lg:border-r justify-start lg:border-solid lg:w-1/4 border-[#C8C8C8] lg:my-10">
             <div class="flex text-[10px] mx-auto lg:text-xl lg:px-12 lg:flex-col text-gray-dark ">
                 <a href="" class="hidden mt-2 font-normal lg:flex text-red">Modification du profil</a>
                 <a href="" class="mr-2 font-normal lg:mr-0 lg:my-7">Politique de cookies</a>    
                 <span class="font-normal lg:hidden">-</span>
                 <a href="" class="ml-2 font-normal lg:ml-0 lg:mb-10">Politique de confidentialités</a>
             </div>
-        </div>
+        </div> -->
         <!-- PROFILUPDATE -->
-        <div class="mx-auto lg:pl-10 lg:w-3/4 lg:my-8">
+        <div class="mx-auto lg:pl-10 lg:my-8">
             <!-- PROFILPIC -->
-            <div class="flex flex-col items-center w-auto h-auto lg:items-start">
+            <div class="flex flex-col items-center w-auto h-auto">
                 <div class="flex flex-col lg:flex-row">
                 <!-- CONDITION IF PP  -->
-                <img class="w-[90px] h-[90px] mx-auto rounded-full avatar" src="/assets/img/user_avatar/<?=$user->getUserAvatar()?>">
+                <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
+                    <img class="w-full mx-auto avatar" src="/assets/img/user_avatar/<?=$user->getUserAvatar()?>">
+                </div>
                 <!-- FALSE PP -->
                 <!-- <img class="w-24 h-24 mx-auto rounded-full" src=""> --> 
                     <div class="flex flex-col-reverse justify-center text-center lg:text-start lg:flex-col lg:ml-5">
@@ -284,7 +286,7 @@
                     </div>
                 </div>
                 <!-- UPDATEDATA -->
-                <form method="post" action="/action=updateProfil" class="flex flex-col items-start justify-start my-3 lg:my-10 " id="form-update">
+                <form method="post" action="/action=updateProfil" class="flex flex-col items-center justify-center my-3 lg:mt-10 " id="form-update">
 
                     <!-- <div class="flex flex-col lg:flex-row">
                         <label for="bio" class="w-11/12 text-sm font-semibold lg:text-lg ">

@@ -26,13 +26,12 @@
 <div class="flex flex-col items-center justify-center w-10/12 h-auto mx-auto mt-10 text-center lg:w-9/12 md:w-full font-body ">
     <div class="container">
         <div class="lg:text-start lg:w-2/3 xl:w-1/2">  
-            <h1 class="mt-10 font-sans text-[32px] w-full xl:w-4/5 font-semibold leading-9 lg:leading-snug lg:text-5xl mx-auto lg:mx-0">Apprendre en ligne avec <bold>K-ZEL CODE</bold> !</h1>
+            <h1 class="mt-10 font-sans text-[32px] w-full xl:w-4/5 font-semibold leading-9 lg:leading-snug lg:text-5xl mx-auto lg:mx-0">Apprendre en <span class="whitespace-nowrap">ligne avec K-ZEL CODE !</span></h1>
             <p class="my-6 text-lg font-light leading-5 tracking-wide lg:text-2xl">Notre platforme à pour but d’aider à l’échange de connaissances à travers de courtes vidéos.</p>
             <p class="mb-2 text-lg font-medium md:mb-6 lg:text-2xl text-start">Cours le plus populaire :</p>
         </div>
         <!-- CARD VIDEO -->
         <div class="flex">
-        
             <div class="bg-white shadow-lg drop-shadow-lg lg:w-2/3 rounded-2xl" data-lesson-id=<?php echo $topLesson["lesson"]->getLessonId() ?>>
                 <!-- COVER -->
                 <img src="/assets/img/lesson_miniature/<?php echo $topLesson["lesson"]->getLessonCover() ?>" alt="<?php echo $topLesson["lesson"]->getLessonTitle() ?>" class="w-full rounded-t-2xl ">
@@ -51,7 +50,7 @@
                             </div>    
                         </div>
                         <div>
-                            <img src="/assets/svg/categories/<?php echo $topLesson['category']->getCategoryLogo() ?>" alt="Logo Html" class="w-auto h-8 my-auto">
+                            <img src="/assets/img/category_logo/basic/<?php echo $topLesson['category']->getCategoryLogo() ?>" alt="Logo <?=$topLesson['category']->getCategoryName()?>" class="w-auto h-8 my-auto">
                         </div>
                     </div>
                 </div>

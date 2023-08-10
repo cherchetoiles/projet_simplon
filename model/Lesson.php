@@ -100,6 +100,9 @@ class Lesson
         if (isset($query['fav'])){
             $this->lesson_likes = $query['fav'];
         }
+        else{
+            $this->lesson_likes = 0;
+        }
         if (isset($query['lesson_attract_title'])){
             $this->lesson_attract_title = $query['lesson_attract_title'];
         }

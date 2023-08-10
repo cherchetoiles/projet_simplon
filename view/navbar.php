@@ -2,7 +2,9 @@
 <nav class="flex px-4 bg-white py-1 justify-between h-14 z-20 items-center fixed top-0 w-full lg:border-b lg:border-gray lg:border-solid md:px-20 lg:px-4">
   <div class="flex items-center h-full gap-6">
     <img src="/assets/svg/searchbar-icon.svg" class="w-8 lg:hidden" alt="" onclick="document.getElementById('searchbar').classList.toggle('-translate-y-full')">
-    <img src="/assets/img/logo.png" class="w-60">
+    <a href="/homepage">
+      <img src="/assets/img/logo.png" class="w-60">
+    </a>
     <div class="hidden lg:flex items-center -mb-1 -mt-1 h-[calc(100%+8px)]">
       <span class="text-2xl items-center h-full cursor-pointer flex gap-2 px-4 hover:border-y-[3px] border-solid border-t-transparent border-b-red" id="coursDropdown" 
                                             onmouseenter="document.getElementById('burgerContent').classList.remove('lg:hidden'),
@@ -34,7 +36,7 @@
       </span>
     </div>
   </div>
-  <div class="flex flex-col h-[calc(100vw-3.5rem)] hidden scale-y-0 lg:h-auto absolute w-screen top-14 transition-all duration-500 ease-[0.1,0.2,1] left-0 origin-top  overflow-y-scroll lg:overflow-y-hidden lg:scale-y-100 lg:hidden lg:hover:flex lg:border-b border-solid border-gray bg-white" id="burgerContent"
+  <div class="flex flex-col h-[calc(100vh-3.5rem)] hidden scale-y-0 lg:h-auto absolute w-screen top-14 transition-all duration-500 ease-[0.1,0.2,1] left-0 origin-top overflow-y-scroll lg:overflow-y-hidden lg:scale-y-100 lg:hidden lg:hover:flex lg:border-b border-solid border-gray bg-white lg:pb-5" id="burgerContent"
        onmouseenter="document.getElementById('coursDropdown').classList.add('border-y-[3px]')"
        onmouseleave="document.getElementById('coursDropdown').classList.remove('border-y-[3px]')">
     <?php foreach($themes as $theme){  ?>
@@ -52,7 +54,7 @@
           <span class="leading-none cursor-pointer lg:cursor-default flex items-center gap-2 pl-12 py-2 lg:py-0 border-b border-solid border-gray font-bold lg:border-none lg:pl-0 lg:text-lg" onclick="this.querySelector('span').classList.toggle('rotate-90'),document.getElementById('category-<?=$categorie->getCategoryId()?>').classList.toggle('hidden')"><span class="text-red text-3xl leading-none transition-all duration-200 lg:hidden">></span><?= $categorie->getCategoryName() ?></span>
           <div class="flex flex-col hidden pl-[74px] py-4 lg:py-0 text-red gap-1 border-b border-solid border-gray duration-200 lg:border-none lg:flex lg:pl-0 lg:ml-20" id="category-<?=$categorie->getCategoryId()?>">
             <?php foreach($categorie->getLessonFromCategory() as $lesson){?>
-              <a class='whitespace-nowrap overflow-x-hidden coursLinks' href='/cours/<?= $lesson->getLessonId() ?>'><?= $lesson->getLessonTitle() ?></a>
+              <a class='whitespace-nowrap overflow-x-hidden coursLinks' href='/lesson/<?= $lesson->getLessonId() ?>'><?= $lesson->getLessonTitle() ?></a>
             <?php } ?>
           </div>
         </div>
@@ -129,3 +131,4 @@
     </div>
   </div>
 </nav>
+<div class="h-14"></div>

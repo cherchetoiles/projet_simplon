@@ -51,7 +51,10 @@ class Lesson_repo extends Connect_bdd{
     }
 
     public function getLessonByCategoryId($category_id,$option = []){
-        $sql = "SELECT lesson_id,lesson_title FROM lesson WHERE category_id = ? AND lesson_status = 1";
+        $sql = "SELECT lesson_id,lesson_title,lesson_description,lesson_content,lesson_difficult 
+                FROM lesson 
+                WHERE category_id = ? AND lesson_status = 1
+                ORDER BY lesson_difficult";
         if (isset($option['limit'])){
             $sql.=" LIMIT $option[limit]";
         }
@@ -167,11 +170,11 @@ class Lesson_repo extends Connect_bdd{
             $tmpUser->createUserFromQuery($query);
             return ["lesson"=>$tmpLesson,"category"=>$tmpCategory,"user"=>$tmpUser];}
         }
-      $sql="SELECT  l.lesson_id, l.lesson_title, l.lesson_description,  l.lesson_content, l.lesson_cover,l.lesson_attract_title,l.lesson_difficult,
+      $sql="SELECT  l.lesson_id, l.lesson_title, l.lesson_description,  l.lesson_content, l.lesson_cover,l.lesson_attract_title,l.lesson_difficult,total.fav,
                     c.category_id,c.category_logo,c.category_name,
                     u.user_name,u.user_surname,u.user_avatar,s.speciality_name
             FROM lesson l
-            LEFT JOIN (SELECT l.lesson_id,count(DISTINCT f.user_id) AS favorite,count(DISTINCT w.user_id) AS views
+            LEFT JOIN (SELECT l.lesson_id,count(DISTINCT f.user_id) AS fav,count(DISTINCT w.user_id) AS views
                     FROM lesson l 
                     INNER JOIN watch w ON l.lesson_id = w.lesson_id 
                     INNER JOIN fav f ON l.lesson_id = f.lesson_id

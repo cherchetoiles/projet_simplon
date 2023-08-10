@@ -23,7 +23,7 @@
     <title>Accueil K-ZEL Code</title>
     
 </head>
-<body class="w-full h-auto">
+<body class="w-full h-auto font-body">
 <div class="flex flex-col items-center justify-center w-10/12 h-auto gap-8 mx-auto text-center lg:w-9/12 md:w-full font-body ">
     <div class="container">
         <div class="flex flex-row justify-between text-start"> 
@@ -85,7 +85,7 @@
             <div class="flex flex-col w-auto gap-4 px-6 py-3 my-3 shadow-lg rounded-xl h-44">
                 <div class="flex flex-row justify-between border-b-gray">
                     <div>
-                        <img src="assets/svg/categories/<?php echo $lesson['category']->getCategoryLogo()?>" class="w-8">  
+                        <img src="assets/img/category_logo/basic/<?php echo $lesson['category']->getCategoryLogo()?>" class="w-8">  
                     </div>
                     <div>
                         <div class="flex flex-row gap-2">
@@ -115,7 +115,7 @@
                 <div class="overflow-hidden">                    
                     <p class="text-xs text-left font-body line-clamp-2"><?=$lesson['lesson']->getLessonDescription()?>..</p>
                 </div>
-            </div>
+            </div> 
             <?php }?>
         </div>
     </div>
