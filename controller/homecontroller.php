@@ -158,6 +158,7 @@ function cours(){
 function lesson(){
     if (isset($_GET['id'])){
         $repo = new Lesson_repo();
+        $isLiked = boolval($repo->getLessonLikeByUserId($_GET['id'],$_SESSION['user']->getUserId()));
         $reqResult = $repo -> getLesson("l.lesson_id",["lesson_id"=>$_GET['id'],"withcategorieslesson"=>TRUE,"limit"=>1]);
         if ($reqResult){
             $lesson=$reqResult[0];
@@ -211,7 +212,7 @@ function profil(){
     $fav_lessons=$user_repo->getFavLesson($_SESSION['user']->getUserId());
     $finish_lessons=$user_repo->getFinishLesson($_SESSION['user']->getUserId());
     require('view/profil.php');
-    include("view/ajoutVideoForm.php");
+    include("view/form/ajoutVideoForm.php");
 }
 
 function crud(){
@@ -221,6 +222,7 @@ function crud(){
     $categories = $catRepo->getAllCategoryName();
     include("view/crud.php");
     include("view/form/addCategory.php");
+    include("view/form/ajoutVideoForm.php");
 }
 
 function signin_treat(){
@@ -256,9 +258,17 @@ function signin_treat(){
 
 
 function FavLesson(){
+    $_POST = json_decode(file_get_contents('php://input'),true);
     $fav_lessons = new User_repo();
-    $fav_lessons->addFavLesson($_SESSION['user'],$_GET['lesson_id']);
-    header('Location:/?action=nos_cours');  
+    $repo = new Lesson_repo();
+    $isLiked = boolval($repo->getLessonLikeByUserId($_POST['lesson'],$_SESSION['user']->getUserId()));
+    if ($isLiked){
+        $response = $fav_lessons->deleteFavLesson($_SESSION['user'],$_POST['lesson']);
+    }
+    else{
+        $response = $fav_lessons->addFavLesson($_SESSION['user'],$_POST['lesson']);
+    }
+    echo json_encode($response);
 }
 
 function UnFavLesson(){

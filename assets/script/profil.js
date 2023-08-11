@@ -4,7 +4,7 @@ function openAndCloseModal(modal){
     
     let bg = document.createElement("div");
     if (document.getElementById("backgroundFilter")===null){
-        bg.classList.add("bg-black","opacity-50","backdrop-blur-md","fixed","z-10","top-0","left-0","w-screen","h-screen");
+        bg.classList.add("bg-black","opacity-50","backdrop-blur-md","fixed","z-40","top-0","left-0","w-screen","h-screen");
         bg.id="backgroundFilter";
         document.body.appendChild(bg);
     }

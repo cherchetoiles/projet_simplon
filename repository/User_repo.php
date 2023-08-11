@@ -94,15 +94,15 @@ class User_repo extends Connect_bdd{
     }
     
     function addFavLesson($user,$lesson_id){
-        $req = 'INSERT INTO bookmark (user_id,lesson_id) VALUES (?,?)';
+        $req = 'INSERT INTO fav (user_id,lesson_id) VALUES (?,?)';
         $req = $this->bdd->prepare($req);
-        $req->execute([$user->getUserId(),$lesson_id]);
+        return ["success"=>$req->execute([$user->getUserId(),$lesson_id]),"action"=>"add"];
     }
 
     function deleteFavLesson($user,$lesson_id) {
-        $req = 'DELETE FROM bookmark WHERE user_id=? AND lesson_id=?';
+        $req = 'DELETE FROM fav WHERE user_id=? AND lesson_id=?';
         $req = $this->bdd->prepare($req);
-        $req->execute([$user->getUserId(),$lesson_id]);
+        return ["success"=>$req->execute([$user->getUserId(),$lesson_id]),"action"=>"delete"];
     }
 
     function getFinishLesson($user){

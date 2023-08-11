@@ -176,9 +176,9 @@ class Lesson_repo extends Connect_bdd{
             FROM lesson l
             LEFT JOIN (SELECT l.lesson_id,count(DISTINCT f.user_id) AS fav,count(DISTINCT w.user_id) AS views
                     FROM lesson l 
-                    INNER JOIN watch w ON l.lesson_id = w.lesson_id 
-                    INNER JOIN fav f ON l.lesson_id = f.lesson_id
-                    INNER JOIN category c ON l.category_id = c.category_id ) total ON l.lesson_id = total.lesson_id
+                    LEFT JOIN watch w ON l.lesson_id = w.lesson_id 
+                    LEFT JOIN fav f ON l.lesson_id = f.lesson_id
+                    LEFT JOIN category c ON l.category_id = c.category_id ) total ON l.lesson_id = total.lesson_id
             NATURAL JOIN category c 
             NATURAL JOIN user u
             NATURAL JOIN speciality s
@@ -211,6 +211,15 @@ class Lesson_repo extends Connect_bdd{
         $req=$this->bdd->prepare($sql);
         $req->execute();
         return $req->fetch();
+    }
+
+    public function getLessonLikeByUserId($lesson_id,$user_id){
+        $sql="SELECT * FROM fav WHERE lesson_id=? AND user_id=?";
+        $req = $this->bdd->prepare($sql);
+        $req->bindParam(1,$lesson_id);
+        $req->bindParam(2,$user_id);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_ASSOC);
     }
 }
 ?>

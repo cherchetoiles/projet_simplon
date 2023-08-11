@@ -46,7 +46,7 @@
         modal.classList.toggle("flex");
         let bg = document.createElement("div");
         if (document.getElementById("backgroundFilter")===null){
-            bg.classList.add("bg-black","opacity-50","fixed","z-10","top-0","left-0","w-screen","h-screen");
+            bg.classList.add("bg-black","opacity-50","fixed","z-40","top-0","left-0","w-screen","h-screen");
             bg.id="backgroundFilter";
             document.body.appendChild(bg);
         }
@@ -169,20 +169,20 @@
         let videoData = new FormData(addModal.crudLesson);
         fetch("/index.php?action=addVideoTreat",{method: 'POST',body:videoData})
             .then(response=>response.json())
-            .then(data=>()=>{changeAlert(data),console.log(data)})
-            .then(data=>{if (window.location.pathname === "/admin-crudLesson"){
-                            changeContent("getAllLessonCard","crudLesson");
-                        }})
-            .catch(error=>console.error(error));      
+            .then(data=>{changeAlert(data),console.log(data)})
+            .catch(error=>console.error(error));
+            if (window.location.pathname === "/admin-crudLesson"){
+                changeContent("getAllLessonCard","crudLesson");
+        }      
     }
 
     function changeAlert(newText){
         alert_video.classList.remove("duration-[3000ms]");
         alert_video.classList.remove("opacity-0");
         alert_video.classList.remove("-z-10");
-        alert_video.classList.add("z-30");
-        alert_video.querySelector('span').innerHTML=newText;
-        setTimeout(()=>{alert_video.classList.add("duration-[3000ms]");alert_video.classList.add("opacity-0");setTimeout(()=>{alert_video.classList.remove("z-30"),alert_video.classList.add("-z-10")},3000)},1000);
+        alert_video.classList.add("z-[60]");
+        alert_video.innerHTML=newText;
+        setTimeout(()=>{alert_video.classList.add("duration-[3000ms]");alert_video.classList.add("opacity-0");setTimeout(()=>{alert_video.classList.remove("z-[60]"),alert_video.classList.add("-z-10")},3000)},1000);
     }
   
     async function changeContent(dataLocation,newUrl){
